@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1513">
+  <meta name="description" content="時空密室：在午夜之前，走過五道謎題，改寫公主的命運。互動遊戲架構雛形。">
+  <title>時空密室｜午夜之前</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230d1513'/%3E%3Cpath d='M18 10h28M18 54h28M22 10c0 16 20 16 20 32v12M42 10c0 16-20 16-20 32v12' fill='none' stroke='%23b8a575' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#play-area">跳到遊戲內容</a>
+  <header class="site-header">
+    <button class="brand" id="home" aria-label="時空密室，回到城堡開場"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 4h16M8 28h16M10 4c0 10 12 10 12 20v4M22 4c0 10-12 10-12 20v4"/><path d="m12 24 4-5 4 5z"/></svg></span><span>時空密室</span></button>
+    <div class="header-rule" aria-hidden="true"><span>◇</span></div>
+    <nav class="header-actions" aria-label="遊戲選項"><button class="outline small" id="instructions" aria-label="遊戲說明"><span data-icon="book"></span><span>遊戲說明</span></button><button class="outline small" id="settings" aria-label="設定"><span data-icon="settings"></span><span>設定</span></button></nav>
+  </header>
+  <div class="game-shell">
+    <aside class="chapter-rail"><h2>章節</h2><nav id="chapters" aria-label="關卡進度"></nav><div class="rail-note"><span data-icon="hourglass"></span><p>每一秒，<br>都曾經發生。</p></div></aside>
+    <main id="play-area" tabindex="-1">
+      <section class="scene" id="scene" aria-labelledby="scene-title"></section>
+      <div class="story-bar">
+        <section class="narration" aria-labelledby="narrator-label"><h2 id="narrator-label">旁白<span></span></h2><p id="narrator"></p><p class="status" id="status" role="status" aria-live="polite"></p></section>
+        <section class="inventory" aria-labelledby="inventory-label"><h2 id="inventory-label">隨身道具<span></span></h2><div id="items"></div></section>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer"><p id="save-state">遊戲雛形 · 進度儲存在此裝置</p><div><button class="text-button" id="hint"><span data-icon="spark"></span>需要一點提示</button><button class="text-button sound-control" id="sound" aria-pressed="false"><span data-icon="sound"></span><span id="sound-label">音效關閉</span></button></div></footer>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-content" id="modal-content"></div></dialog>
+  <div class="whisper" id="whisper" aria-hidden="true"></div>
+  <noscript><p class="noscript">請啟用 JavaScript，才能進入城堡與操作謎題。</p></noscript>
+</body>
+</html>
