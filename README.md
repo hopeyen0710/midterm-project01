@@ -35,7 +35,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 | 路徑 | 用途 |
 | --- | --- |
-| `plain.md` | 專案故事與使用者故事 |
+| `plan.md` | 專案簡介、使用者故事、解謎流程與實作計畫 |
 | `verify.md` | 原始需求的驗收清單，實測狀態另行記錄 |
 | `DESIGN.md` | 本版網站的範圍、視覺與架構決策 |
 | `dist/index.html` | 網站骨架 |

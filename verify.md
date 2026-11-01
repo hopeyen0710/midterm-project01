@@ -2,7 +2,7 @@
 
 ## 1. 驗收依據與目前狀態
 
-- 依據：同分支的 [plain.md](plain.md)，內容源自 [main 分支的 BRIEF.md](https://github.com/hopeyen0710/midterm-project01/blob/main/BRIEF.md)。
+- 依據：同分支的 [plan.md](plan.md)「專案簡介」，內容源自 [main 分支的 BRIEF.md](https://github.com/hopeyen0710/midterm-project01/blob/main/BRIEF.md)。
 - 本文件將故事設定與使用者故事整理為可操作的驗收項目，未代表遊戲已完成或測試通過。
 - 目前尚未執行遊戲測試，所有項目均為「未測試」。
 - 關卡時間沿用原始設定；實際計時方式與最終機關的詳細事件仍需確認，見第 5 節。
