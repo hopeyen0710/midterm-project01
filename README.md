@@ -7,7 +7,7 @@
 需要 Python 3。於專案根目錄執行：
 
 ```sh
-python -m http.server 4173 --bind 127.0.0.1 --directory dist
+python -m http.server 4173 --bind 127.0.0.1 --directory game
 ```
 
 以瀏覽器開啟 <http://127.0.0.1:4173>。網站使用原生 HTML、CSS 與 JavaScript，無需安裝前端套件；請使用 HTTP 伺服器開啟，避免直接雙擊 HTML 導致模組無法載入。
@@ -21,7 +21,7 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 
 ## 示範規則
 
-原始簡介未指定具體答案。本版採以下示範設定，均集中於 `dist/game-data.js`，可依正式劇本替換：
+原始簡介未指定具體答案。本版採以下示範設定，均集中於 `game/game-data.js`，可依正式劇本替換：
 
 1. 鋼琴：依序輸入 `1 → 3 → 2 → 4`。
 2. 日記：使用紅玻璃項鍊，顯示示範指令並取得畫室鑰匙。
@@ -38,10 +38,10 @@ python -m http.server 4173 --bind 127.0.0.1 --directory dist
 | `plan.md` | 專案簡介、使用者故事、解謎流程與實作計畫 |
 | `verify.md` | 原始需求的驗收清單，實測狀態另行記錄 |
 | `DESIGN.md` | 本版網站的範圍、視覺與架構決策 |
-| `dist/index.html` | 網站骨架 |
-| `dist/styles.css` | 桌面與手機樣式 |
-| `dist/game-data.js` | 關卡內容與示範答案 |
-| `dist/app.js` | 關卡互動、進度與設定 |
-| `dist/assets/` | 為本網站生成的城堡與關卡美術 |
+| `game/index.html` | 網站骨架 |
+| `game/styles.css` | 桌面與手機樣式 |
+| `game/game-data.js` | 關卡內容與示範答案 |
+| `game/app.js` | 關卡互動、進度與設定 |
+| `game/assets/` | 為本網站生成的城堡與關卡美術 |
 
 本版適合確認網站大架構與體驗流程；正式謎題規則仍以確認後的劇本為準。
