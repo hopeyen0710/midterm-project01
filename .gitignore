@@ -1,5 +1,0 @@
-*.tar.gz
-node_modules/
-.sites-runtime/
-.sites-checkout/
-__pycache__/
