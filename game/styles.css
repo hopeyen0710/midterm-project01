@@ -7,3 +7,19 @@
 .chapter.current.done .marker:after{display:none}
 .puzzle-scene:before{background-size:300% 211%}.puzzle-scene[data-art="3"]:before,.puzzle-scene[data-art="4"]:before,.ending-scene:before{background-size:300% 190%}.item.pendant{touch-action:none}.drag-pendant{position:fixed;z-index:40;transform:translate(-50%,-50%);pointer-events:none;width:54px;height:54px;border:1px solid #c59778;border-radius:50%;display:grid;place-items:center;background:#291c17d9;color:#de9c8a}.drag-pendant svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.5}.diary-paper.drop-ready{outline:3px solid #c66f62;outline-offset:5px}
 
+
+/* 劇情 v2：證據與實驗區沿用既有介面，容納較完整的文字。 */
+.puzzle-scene{height:auto;min-height:max(620px,calc(100svh - 320px))}
+.puzzle-content{width:68%;max-width:800px;padding-bottom:34px}
+.puzzle-widget{max-width:540px}.puzzle-footer{max-width:540px}
+.story-actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.story-actions .outline{font-size:12px;padding:8px 12px;letter-spacing:.02em}
+.story-actions+.music-row{margin-top:18px}.mechanism-state{border-left:2px solid var(--gold);padding:12px 16px;margin:14px 0;background:#142016eb;color:#d1d4c2;font-size:13px;line-height:1.9}
+.mechanism-state strong{font-weight:500;color:#e4d3a9}.chapter-tools{margin-top:16px}.chapter-tools .outline{font-size:12px;padding:7px 12px}
+.story-copy{font-family:var(--serif);font-size:18px;line-height:2;margin:20px 0;max-width:540px}.story-copy p{margin:12px 0}.story-copy blockquote{margin:20px 0;padding:16px 20px;border-left:2px solid var(--gold);background:#101a13d9}
+.script-text{white-space:pre-wrap;font-family:var(--serif)}.modal-content h3{font-size:17px;color:#dfcda4;font-family:var(--serif);line-height:1.7}
+.intro-scene:before{background-image:url('./assets/castle.png');background-size:cover;background-position:center}
+.portrait-record{font-size:16px}.ending-content .closing-line{line-height:2;font-size:14px;max-width:700px}.ending-content .lobby-actions{gap:10px}
+@media(max-width:1100px){.puzzle-content{width:76%}}
+@media(max-width:760px){.puzzle-content{width:100%;max-width:none}.puzzle-scene{min-height:640px}.story-actions .outline{font-size:12px}.portrait-record{font-size:15px}.story-copy{font-size:16px}.ending-scene{height:auto;min-height:690px}.ending-content{position:relative;inset:auto;padding:135px 24px 30px}.ending-content .closing-line{font-size:12px}.lobby-content>p{max-width:90%}}
+.scene.puzzle-scene:before{background-position:var(--art-x) var(--art-y)}.scene.intro-scene:before{background-position:center}.scene.ending-scene:before{background-position:100% 100%}
