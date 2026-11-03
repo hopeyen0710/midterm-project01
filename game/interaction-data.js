@@ -1,5 +1,6 @@
 // 步驟 06 的互動入口與簡短回饋；正式文件、對話及謎題仍依後續步驟加入。
 export const actionLabels = { inspect: '查看', talk: '交談', pickup: '拾取', operate: '操作' };
+import {pianoClueTargets} from './piano-clue-data.js';
 export const interactionTargets = [
   {
     "id": "door",
@@ -40,7 +41,7 @@ export const interactionTargets = [
       -19.0,
       0.8
     ],
-    "message": "琴鍵微微下沉。機關尚未啟動，還需要比對鋼琴旁的線索。"
+    "message": "鋼琴上的符號，似乎與周圍的線索有關。"
   },
   {
     "id": "book",
@@ -216,7 +217,7 @@ export const interactionTargets = [
     ],
     "approach": [
       0.35,
-      13.2
+      13.7
     ],
     "message": "已收起門把上的褪色白緞帶。"
   },
@@ -281,3 +282,5 @@ export const interactionTargets = [
     "message": "按 F 開啟或關閉這扇門。"
   }
 ];
+
+interactionTargets.push(...pianoClueTargets);

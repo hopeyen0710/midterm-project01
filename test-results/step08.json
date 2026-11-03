@@ -1,0 +1,2589 @@
+{
+  "step": "step08",
+  "recordedAt": "2026-11-03T16:41:09.853Z",
+  "environment": {
+    "node": "v24.22.1",
+    "os": "win32",
+    "browser": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "browserPlugin": "Browser plugin not available; regular Playwright used.",
+    "rendering": "ANGLE SwiftShader；T1.1.1～T1.1.4 以真實繪圖驗證，之後 WASD／碰撞／射線互動測試暫停 WebGL draw 呼叫，保留正式控制、碰撞、模型及射線邏輯；不宣稱真實 GPU 效能或行走過程視覺品質",
+    "offline": true,
+    "entryUrl": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "BRIEF.md": "3e1ac4d59fc6554a24226116f4df1b38c29968477fbb12119e8d98275ffbaaad",
+    "game/index.html": "34c91bd19af0279f5a7048a907979099cf2dd720072bc571c8b8f0040b088aaa",
+    "game/main.js": "a8cda48ea9372da8236961f3f265649a3f6a131c94d5c782fd1be1c362e39874",
+    "game/ui.js": "f6db214ca60413ed86a559deee45148571f1f7f785b08803644ba399f04384ce",
+    "game/scene.js": "b6260dfaef4d5324f90ffe64057b378303b22010686893cb585c2cdfdbcd2fd1",
+    "game/castle.js": "92acf288777037e68a63443f5f393f9ef0dc988f723018acdd97b2cea7659087",
+    "game/castle-data.js": "429dea504be2ae9860fb2d7eca8c0ae3d386cc6e4d49933deffab002eadc395f",
+    "game/rooms.js": "f6bcb2989037d3ae11f149cfa681ccb10b7f087a5a40b8777260b46f98631a98",
+    "game/controls.js": "c616d19a77cfaa9628ae4af360cb0dec5b5fafb709efaee2885f25e3de2f41a3",
+    "game/navigation.js": "40c20dfc20baacaccb28419293892376c21a8190b145b1e90eedb680b5305bac",
+    "game/interaction.js": "3ce7d0cfedf5446d066106b9aaa3af9037f0c25925ea7e4543e4959bbdc15f14",
+    "game/interaction-data.js": "11201a235266282d0fdb9b46d355783c09660b62fe0f1db4bfe4d188ee65448d",
+    "game/game-data.js": "5bb8e88ace016ceeae188556a825fe4a2eaa53890a4767e0dc369a2ba5b0cf7e",
+    "game/styles.css": "6508474eba0714e5985096007520e7f789f94f250e538da0a3ae8e2b5e7e14a0",
+    "game/page-template.html": "212a0ab64367cc6fbfb142de97b98e44452dfb6f72098448383a64893cb0f248",
+    "game/scripts/build.mjs": "ee57611470030f5d8c94fefee222886445de50672694afd79db0390affe1eaf5",
+    "game/state.js": "b8d274b489e11d27185004fbf5ead4e4ba89ef531741da6a9b5e820885722fcd"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "checks": [
+    {
+      "id": "T1.1.1",
+      "title": "首次離線開啟入口並進入第一個 3D 場景",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "S04.areas",
+      "title": "大廳與城堡外的配置及區域切換",
+      "status": "通過",
+      "evidence": "已實測切換城堡外與大廳；截圖供幾何配置核對。"
+    },
+    {
+      "id": "S03.navigation",
+      "title": "開關操作說明、返回首頁及多次重入場景",
+      "status": "通過",
+      "evidence": "說明按鈕與 Esc 正常；三次往返後仍僅一個畫布。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可重新進入 3D 場景",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "不同視窗尺寸下 3D 比例與介面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "S03.portable",
+      "title": "複製單一 HTML 到其他資料夾仍能離線顯示 3D",
+      "status": "通過",
+      "evidence": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\copied-game.html"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "自由環視城堡與檢查場景、文字及說明介面",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100349999999997,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100349999999997,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.758099999999995,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.758099999999995,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499649999999976,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499649999999976,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.7003499999999949,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.7003499999999949,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後 WASD 依目前視角移動",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.4597615715261011,
+            "y": 2.25,
+            "z": 9.7207018294799,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.4597615715261011,
+            "y": 2.25,
+            "z": 9.7207018294799,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.3804634010059919,
+            "y": 2.25,
+            "z": 9.260940257953775,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.3804634010059919,
+            "y": 2.25,
+            "z": 9.260940257953775,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.07929817052010907,
+            "y": 2.25,
+            "z": 9.340238428473876,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.07929817052010907,
+            "y": 2.25,
+            "z": 9.340238428473876,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -4.208439152719734e-15,
+            "y": 2.25,
+            "z": 9.799999999999978,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面與後退碰牆不能穿越",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316550000000007,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "左右側移均受碰撞限制",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.44930000000002,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449300000000013,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "斜向、牆角與長位移不穿牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352644317335047,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "場景邊界、關閉出口與石階高度正確",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "S05.reachability",
+      "title": "三扇門開啟後，所有預定互動區均有可行走路徑",
+      "status": "通過",
+      "evidence": {
+        "method": "以實際場景與門開啟時的碰撞範圍檢查網格連通；後續另用實際 F 開門走過，確認每個接近點可到達。",
+        "results": [
+          {
+            "landmark": "dais",
+            "distance": 0.17677669529663387
+          },
+          {
+            "landmark": "piano",
+            "distance": 0.14577379737113066
+          },
+          {
+            "landmark": "gallery",
+            "distance": 0.07905694150420499
+          },
+          {
+            "landmark": "cabinet",
+            "distance": 0.03535533905933039
+          },
+          {
+            "landmark": "book",
+            "distance": 0.17677669529663625
+          },
+          {
+            "landmark": "banquet",
+            "distance": 0.07905694150420765
+          },
+          {
+            "landmark": "clock",
+            "distance": 0.07905694150420611
+          },
+          {
+            "landmark": "entrance",
+            "distance": 0.14577379737113214
+          }
+        ]
+      }
+    },
+    {
+      "id": "S05.pause",
+      "title": "Esc、說明介面及失焦時不持續移動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "help": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurred": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.27465000000003,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurStopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.27465000000003,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "scope": "實測 Esc、說明介面及模擬 window blur，均清除按鍵並停止移動。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "以 F 操作有效距離內的大門",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {},
+          "sequence": 0,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一走到所有互動物件並操作四種類型",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.32485613447466105
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250376018549816,
+              "y": 2.25,
+              "z": 8.650159624531783,
+              "yaw": 1.2924437233962431,
+              "pitch": -0.07098464785074243
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.991537722746642,
+              "y": 2.25,
+              "z": 0.79854785373272,
+              "yaw": 0.003938582741720875,
+              "pitch": -0.2153583711047919
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957419427501174,
+              "y": 2.25,
+              "z": 0.3853340831543905,
+              "yaw": -0.003312789825529003,
+              "pitch": -0.7714596653630549
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005562047935339141,
+              "y": 2.25,
+              "z": -0.2317232709054285,
+              "yaw": 0.002348559034826614,
+              "pitch": 0.2281907535795163
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429598656601312,
+              "y": 2.25,
+              "z": -24.341422191996767,
+              "yaw": -0.0252495228916949,
+              "pitch": 0.4708277532021322
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414327141126503,
+              "y": 2.25,
+              "z": -11.222794111465097,
+              "yaw": -0.03932962027110731,
+              "pitch": 0.26870966429421644
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437309123379528,
+              "y": 2.25,
+              "z": -2.8493637091857167,
+              "yaw": -1.4089664092581358,
+              "pitch": 0.053430394124787194
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.9867822058100115,
+              "y": 2.25,
+              "z": 5.7344316933320005,
+              "yaw": 0.16386391425077296,
+              "pitch": -0.09640209182366707
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783620582691649,
+              "y": 2.25,
+              "z": 5.912764258021493,
+              "yaw": -0.00856300869111526,
+              "pitch": -0.026133269747983554
+            },
+            "count": 1
+          },
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.24441025987513418,
+              "y": 2.25,
+              "z": 13.440351770666004,
+              "yaw": -0.09566705899221277,
+              "pitch": 0.13487289926496204
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.01652170267724,
+              "y": 2.25,
+              "z": 0.15781953837673635,
+              "yaw": 1.4913965418217832,
+              "pitch": 0.025123535527934473
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.05373346088568681,
+              "y": 2.25,
+              "z": -15.848278480313281,
+              "yaw": -0.024967122782022632,
+              "pitch": 0.023225788411642242
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.9134483498031,
+              "y": 2.25,
+              "z": -0.26077365905501604,
+              "yaw": -1.695129946141839,
+              "pitch": 0.023773520810852475
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "空白與非互動牆面按 F 不誤觸",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按／長按不重複拾取，也不堆疊介面",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 14,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且近距離可互動",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2,
+            "ribbon": 1
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.782385601955169,
+          "y": 2.25,
+          "z": 5.958365653875419,
+          "yaw": -0.008994195252531423,
+          "pitch": -0.02552491604648669
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "目標可見但超出距離不互動，靠近後可恢復",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.7671748240267355,
+          "y": 2.25,
+          "z": 7.649497249060902,
+          "yaw": -0.008994195252529178,
+          "pitch": -0.01369910608008129
+        },
+        "near": {
+          "x": 7.929383372564765,
+          "y": 2.25,
+          "z": 6.14164702795757,
+          "yaw": 0.06033968704154963,
+          "pitch": -0.023299812310186564
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "D−ε、D、D+ε 的精確距離邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "轉身後不能操作身後物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "不透明的非互動遮擋物也會阻擋射線",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "F 按下當下重新選取，不沿用舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "UI.1",
+      "title": "文件重讀、物品欄、對話與面板暫停",
+      "status": "通過",
+      "evidence": {
+        "lines": [
+          "你來晚了。",
+          "我是說，這場宴會已經過時很久了。",
+          "這是我的字。可我不記得……",
+          "不記得有人真的回來過。"
+        ],
+        "modalIgnored": true,
+        "journalRetained": true
+      }
+    },
+    {
+      "id": "STATE.browser",
+      "title": "逐層提示不跳時、取消重置及確認重置、重入後控制正常",
+      "status": "通過",
+      "evidence": {
+        "method": "修正測試按鈕選取範圍後，獨立重跑：實際拾取白緞帶、提示、取消／確認重置及重入控制。繪圖暫停，保留正式控制與射線。",
+        "hints": [
+          "先查看隨身的求救信與城堡大門。",
+          "艾琳在信上交代：有人在門旁叫住你時，要回答他。",
+          "靠近大門按 F，回應伊恩；門開啟後，向前踏入城堡。"
+        ],
+        "reset": {
+          "stage": "opening",
+          "time": "23:30",
+          "events": [],
+          "documents": [],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        }
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "正常載入與重整無阻斷錯誤、無外部資源失敗",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "S03.error",
+      "title": "WebGL 不可用時顯示提示，恢復後可重試",
+      "status": "通過",
+      "evidence": {
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\webgl-unavailable.png",
+        "expectedErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+          "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new or (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:23902)\n    at Hl (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:37848993)\n    at HTMLButtonElement.w9 (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:37958573)"
+        ],
+        "uncaughtErrors": [],
+        "retry": "恢復 WebGL 後成功"
+      }
+    },
+    {
+      "id": "S03.contextLoss",
+      "title": "WebGL context 中斷後可重新建立場景",
+      "status": "通過",
+      "evidence": "模擬繪圖 context 中斷，錯誤提示出現，重試後恢復。"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100349999999997,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100349999999997,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.758099999999995,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.758099999999995,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499649999999976,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499649999999976,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.7003499999999949,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.7003499999999949,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.4597615715261011,
+            "y": 2.25,
+            "z": 9.7207018294799,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.4597615715261011,
+            "y": 2.25,
+            "z": 9.7207018294799,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.3804634010059919,
+            "y": 2.25,
+            "z": 9.260940257953775,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.3804634010059919,
+            "y": 2.25,
+            "z": 9.260940257953775,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.07929817052010907,
+            "y": 2.25,
+            "z": 9.340238428473876,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.07929817052010907,
+            "y": 2.25,
+            "z": 9.340238428473876,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -4.208439152719734e-15,
+            "y": 2.25,
+            "z": 9.799999999999978,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316550000000007,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.44930000000002,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449300000000013,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352644317335047,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {},
+          "sequence": 0,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.32485613447466105
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250376018549816,
+              "y": 2.25,
+              "z": 8.650159624531783,
+              "yaw": 1.2924437233962431,
+              "pitch": -0.07098464785074243
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.991537722746642,
+              "y": 2.25,
+              "z": 0.79854785373272,
+              "yaw": 0.003938582741720875,
+              "pitch": -0.2153583711047919
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957419427501174,
+              "y": 2.25,
+              "z": 0.3853340831543905,
+              "yaw": -0.003312789825529003,
+              "pitch": -0.7714596653630549
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005562047935339141,
+              "y": 2.25,
+              "z": -0.2317232709054285,
+              "yaw": 0.002348559034826614,
+              "pitch": 0.2281907535795163
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429598656601312,
+              "y": 2.25,
+              "z": -24.341422191996767,
+              "yaw": -0.0252495228916949,
+              "pitch": 0.4708277532021322
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414327141126503,
+              "y": 2.25,
+              "z": -11.222794111465097,
+              "yaw": -0.03932962027110731,
+              "pitch": 0.26870966429421644
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437309123379528,
+              "y": 2.25,
+              "z": -2.8493637091857167,
+              "yaw": -1.4089664092581358,
+              "pitch": 0.053430394124787194
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.9867822058100115,
+              "y": 2.25,
+              "z": 5.7344316933320005,
+              "yaw": 0.16386391425077296,
+              "pitch": -0.09640209182366707
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783620582691649,
+              "y": 2.25,
+              "z": 5.912764258021493,
+              "yaw": -0.00856300869111526,
+              "pitch": -0.026133269747983554
+            },
+            "count": 1
+          },
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.24441025987513418,
+              "y": 2.25,
+              "z": 13.440351770666004,
+              "yaw": -0.09566705899221277,
+              "pitch": 0.13487289926496204
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.01652170267724,
+              "y": 2.25,
+              "z": 0.15781953837673635,
+              "yaw": 1.4913965418217832,
+              "pitch": 0.025123535527934473
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.05373346088568681,
+              "y": 2.25,
+              "z": -15.848278480313281,
+              "yaw": -0.024967122782022632,
+              "pitch": 0.023225788411642242
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.9134483498031,
+              "y": 2.25,
+              "z": -0.26077365905501604,
+              "yaw": -1.695129946141839,
+              "pitch": 0.023773520810852475
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 14,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2,
+            "ribbon": 1
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.782385601955169,
+          "y": 2.25,
+          "z": 5.958365653875419,
+          "yaw": -0.008994195252531423,
+          "pitch": -0.02552491604648669
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.7671748240267355,
+          "y": 2.25,
+          "z": 7.649497249060902,
+          "yaw": -0.008994195252529178,
+          "pitch": -0.01369910608008129
+        },
+        "near": {
+          "x": 7.929383372564765,
+          "y": 2.25,
+          "z": 6.14164702795757,
+          "yaw": 0.06033968704154963,
+          "pitch": -0.023299812310186564
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    }
+  ],
+  "dataChecks": [
+    {
+      "id": "S01.1",
+      "title": "劇情來源版本與 SHA256 一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.2",
+      "title": "八幕原文完整且逐行可追溯",
+      "status": "通過"
+    },
+    {
+      "id": "S01.3",
+      "title": "八幕都有對話、物件及必要事件，所有 ID 唯一",
+      "status": "通過"
+    },
+    {
+      "id": "S01.4",
+      "title": "文件與出場物件引用存在，文件原文可重讀",
+      "status": "通過"
+    },
+    {
+      "id": "S01.5",
+      "title": "開場、五關、結局條件完整且無向後依賴",
+      "status": "通過"
+    },
+    {
+      "id": "S01.6",
+      "title": "時間節點與自由閱讀規則一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.7",
+      "title": "11 條劇情規則完整保留",
+      "status": "通過"
+    },
+    {
+      "id": "S01.8",
+      "title": "示範參數獨立標記，未指定的解答不杜撰",
+      "status": "通過"
+    },
+    {
+      "id": "S01.9",
+      "title": "誓約、登記、銀杯與終典規則符合原稿",
+      "status": "通過"
+    },
+    {
+      "id": "S01.10",
+      "title": "三次驚嚇順序正確，父王處決令不驚嚇",
+      "status": "通過"
+    }
+  ],
+  "stateChecks": [
+    {
+      "id": "STATE.1",
+      "title": "初始狀態、陌生事件與未達條件不得跳關",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.2",
+      "title": "閱讀、交談、拾取與提示均不推進故事時間",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.3",
+      "title": "開場回應與入室有前置條件，事件不重複",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.4",
+      "title": "五關時間只在整組完成條件滿足後推進",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.5",
+      "title": "只有艾琳可撤回自願誓約",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.6",
+      "title": "人偶登記需穩定心跳、王冠與閉合扣環，登記持續",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.7",
+      "title": "終典需要穩定心跳、有效登記、報時與制動連線",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.8",
+      "title": "重新開始清除事件、物品、文件、對話、誓約與終典狀態",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.9",
+      "title": "狀態快照不能從外部改寫正式進度",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.10",
+      "title": "逐層提示到最後一層停止，不改變時間或完成事件",
+      "status": "通過"
+    }
+  ],
+  "normalConsole": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": [],
+    "externalRequests": []
+  },
+  "errorPathConsole": {
+    "expectedErrors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new or (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:23902)\n    at Hl (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:37848993)\n    at HTMLButtonElement.w9 (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4398:37958573)"
+    ],
+    "uncaughtErrors": []
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step08",
+  "summary": {
+    "testPassed": 24,
+    "testFailed": 0,
+    "testBlocked": 0,
+    "additionalPassed": 9,
+    "dataPassed": 10,
+    "statePassed": 10
+  },
+  "notes": "TEST 24 案全通過。STATE.browser 初次因同名按鈕定位失敗，使用 check-reset.cjs 修正選取範圍並補測通過；沒有為此修改遊戲程式。10 項狀態單元檢查驗證未來關卡的時間與規則，並不表示那些謎題已可遊玩。"
+}

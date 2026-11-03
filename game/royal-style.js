@@ -43,12 +43,16 @@ export function applyRoyalStyle(scene, mats) {
   const flame = new MeshBasicMaterial({color:'#ffe6a9'});
   const ink = new MeshStandardMaterial({color:'#13121b',roughness:.5});
   const buckets = new Map();
+  const entranceDetail = new Group(); entranceDetail.name='entrance-detail'; scene.add(entranceDetail);
+  let atEntrance = false;
   let renderDetail = true;
   const matrix = new Matrix4(), rotation = new Quaternion();
   function detail(geo,mat,x,y,z,rx=0,ry=0,rz=0) {
     if(!renderDetail){geo.dispose();return;}
     rotation.setFromEuler(new Euler(rx,ry,rz)); matrix.compose(new Vector3(x,y,z),rotation,new Vector3(1,1,1));
-    geo.applyMatrix4(matrix); if (!buckets.has(mat)) buckets.set(mat,[]); buckets.get(mat).push(geo);
+    geo.applyMatrix4(matrix);
+    if (atEntrance) { const mesh=new Mesh(geo,mat); mesh.userData.ignoreInteractionRay=true; mesh.receiveShadow=true; entranceDetail.add(mesh); return; }
+    if (!buckets.has(mat)) buckets.set(mat,[]); buckets.get(mat).push(geo);
   }
   function box(x,y,z,w,h,d,mat=gold,ry=0) { detail(new BoxGeometry(w,h,d),mat,x,y,z,0,ry); }
   function ball(x,y,z,r,mat=gold) { detail(new SphereGeometry(r,10,8),mat,x,y,z); }
@@ -58,6 +62,7 @@ export function applyRoyalStyle(scene, mats) {
     if(!renderDetail)return;
     const p=new Vector3(...a),q=new Vector3(...b),dir=q.clone().sub(p),geo=new CylinderGeometry(r,r,dir.length(),8);
     geo.applyQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0,1,0),dir.normalize()));geo.translate(...p.add(q).multiplyScalar(.5).toArray());
+    if(atEntrance){const mesh=new Mesh(geo,mat);mesh.userData.ignoreInteractionRay=true;entranceDetail.add(mesh);return;}
     if(!buckets.has(mat))buckets.set(mat,[]);buckets.get(mat).push(geo);
   }
   function curve(a,b,c,r=.04,mat=gold) {
@@ -304,7 +309,9 @@ export function applyRoyalStyle(scene, mats) {
     for(let i=0;i<5;i++)box(x,2.4+i*1.5,14.28,1.6,.08,.08,gold);
   }
   for(const side of [-1,1]){
+    atEntrance = true;
     panel(side*1.02,3,12.34,1.8,4.4,Math.PI);arch(side*1.02,12.45,1.5,4,5.4,Math.PI);
+    atEntrance = false;
     for(const x of [side*4,side*7])candelabra(x,2.8,12.5);
   }
   const moon=new Mesh(new SphereGeometry(2.6,32,24),new MeshBasicMaterial({color:'#d8e7ff'}));moon.position.set(-17,21,-40);moon.userData.ignoreInteractionRay=true;scene.add(moon);

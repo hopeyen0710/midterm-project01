@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test:data": "node ../tests/check-step01.mjs --data-only",
-    "test:browser": "node ../tests/check-rooms.cjs"
+    "test:browser": "node ../tests/check-v2-progress.cjs",
+    "test:state": "node ../tests/check-v2-piano.mjs"
   },
   "dependencies": {
     "three": "0.187.0"
