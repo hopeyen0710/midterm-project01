@@ -5,6 +5,7 @@ import { createGameState } from './state.js';
 import { createOpening } from './opening.js';
 import { createIndoorStory } from './indoor-story.js';
 import { createPianoUI } from './piano-ui.js';
+import {createPianoReward} from './piano-reward.js';
 
 const entryScreen = document.querySelector('#entry-screen');
 const sceneScreen = document.querySelector('#scene-screen');
@@ -27,10 +28,11 @@ let viewer = null;
 let lastHelpButton = null;
 let openRequest = 0;
 let sceneGeneration = 0;
-const gameUI = createGameUI(session, { onPause: updateAnimation, onResume: updateAnimation });
+const gameUI = createGameUI(session, { onPause: updateAnimation, onResume: resumeExploration });
 const indoor = createIndoorStory({ session, ui:gameUI, getViewer:()=>viewer });
 const opening = createOpening({ session, ui: gameUI, getViewer: () => viewer, viewport, onEntered:()=>indoor.begin() });
-const pianoUI = createPianoUI({session,ui:gameUI,onNote:opening.playPianoNote});
+const reward=createPianoReward({session,ui:gameUI,getViewer:()=>viewer,onNote:opening.playPianoNote});
+const pianoUI = createPianoUI({session,ui:gameUI,onNote:opening.playPianoNote,reward});
 document.querySelector('#journal-button').addEventListener('click', () => gameUI.journal());
 session.subscribe(snapshot => {
   document.documentElement.dataset.gameState = JSON.stringify(snapshot);
@@ -54,7 +56,17 @@ document.documentElement.dataset.threeRevision = REVISION;
 
 function updateAnimation() {
   opening.syncSound();
-  viewer?.setActive(!sceneScreen.hidden && !helpDialog.open && !gameUI.isOpen && !document.hidden);
+  const active = !sceneScreen.hidden && viewport.dataset.state === 'ready' && !helpDialog.open && !gameUI.isOpen && !document.hidden;
+  explorePrompt.hidden=true;reticle.hidden=!active;interactionHint.hidden=!active||!interactionHint.textContent;
+  viewport.dataset.inputMode=active?'active':'paused';
+  viewer?.setActive(active);
+}
+
+function resumeExploration(){
+  updateAnimation();
+  // 關閉文本的點擊仍具有使用者啟用狀態時，直接恢復滑鼠鎖定。
+  // 瀏覽器拒絕鎖定時仍保留已恢復的 WASD／F 與拖曳環視。
+  if(viewport.dataset.inputMode==='active'&&navigator.userActivation?.isActive)viewer?.requestExploration();
 }
 
 function showError() {
@@ -81,7 +93,7 @@ async function openScene() {
   opening.begin();
   if (viewer) {
     viewer.resize();
-    explorePrompt.hidden = false;
+    explorePrompt.hidden = true;
     updateAnimation();
     return;
   }
@@ -102,9 +114,9 @@ async function openScene() {
     const current = () => generation === sceneGeneration && !sceneScreen.hidden;
     const candidate = await createCastleScene(viewport, () => { if (current()) showError(); }, (locked, error) => {
       if (!current()) return;
-      explorePrompt.hidden = locked || sceneScreen.hidden || viewport.dataset.state === 'error';
+      explorePrompt.hidden = true;
       exploreStatus.textContent = error || 'WASD 移動 · 滑鼠環視 · F 互動 · Esc 釋放游標';
-      reticle.hidden = !locked;
+      reticle.hidden = viewport.dataset.inputMode!=='active';
       if (!locked) interactionHint.hidden = true;
     }, {
       state: interactionState,
@@ -133,7 +145,7 @@ async function openScene() {
     viewport.dataset.state = 'ready';
     message.hidden = true;
     caption.hidden = false;
-    explorePrompt.hidden = false;
+    explorePrompt.hidden = true;
     updateAnimation();
   } catch (error) {
     if (request !== openRequest || sceneScreen.hidden) return;
@@ -160,11 +172,9 @@ for (const button of document.querySelectorAll('#help-button, #scene-help-button
 }
 helpDialog.addEventListener('close', () => {
   lastHelpButton?.focus();
-  updateAnimation();
+  resumeExploration();
 });
 document.addEventListener('visibilitychange', updateAnimation);
 window.addEventListener('pagehide', () => { viewer?.dispose(); viewer = null; opening.dispose(); });
 
 document.querySelector('#area-select').addEventListener('change', event => { event.target.value = opening.area; });
-
-document.querySelector('#explore-button').addEventListener('click', () => viewer?.requestExploration());

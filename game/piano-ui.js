@@ -2,7 +2,7 @@ import {stage1Piano} from './stage1-data.js';
 import {readableDocuments} from './ui.js';
 
 function node(tag,text,className){const element=document.createElement(tag);if(text!==undefined)element.textContent=text;if(className)element.className=className;return element;}
-export function createPianoUI({session,ui,onNote=()=>{}}){
+export function createPianoUI({session,ui,onNote=()=>{},reward}){
   readableDocuments.set('pianoNote',{id:'pianoNote',title:'鋼琴紙條・賓客的四聲',text:stage1Piano.note});
   readableDocuments.set('pianoVoices',{id:'pianoVoices',title:'鋼琴紙條・聲部對照',render(body){
     const scroll=node('div',undefined,'clue-table-scroll');scroll.tabIndex=0;scroll.setAttribute('aria-label','格數與聲部對照，可水平捲動');
@@ -30,7 +30,7 @@ export function createPianoUI({session,ui,onNote=()=>{}}){
           if(accepted.outcome==='hint'){
             session.recordLine({id:'piano-wrong-hint',speaker:'erin',text:stage1Piano.hint.text});
             ui.show({heading:'艾琳',text:stage1Piano.hint.text,kind:'erin-story',choices:[{label:'再試一次',action(){session.clearPianoInput();keyboard();}}]});
-          }else refresh();
+          }else if(accepted.outcome==='matched'&&reward)reward.begin();else refresh();
         });keys.append(button);return button;
       }
       values.forEach((frequency,index)=>key(special[index]?.[1]||'normal-'+index,frequency,'piano-white',special[index]?.[1]||'一般琴鍵 '+(index+1),special[index]));
@@ -39,7 +39,7 @@ export function createPianoUI({session,ui,onNote=()=>{}}){
     },choices:[{label:'清除重試',action(){session.clearPianoInput();keyboard();}},{label:'關閉琴鍵',action:()=>ui.close()}]});
   }
   return {handleInteraction(event){
-    if(event.id==='piano'){if(!session.hasEvent('explorationOpened'))return false;keyboard();return true;}
+    if(event.id==='piano'){if(!session.hasEvent('explorationOpened'))return false;if(session.hasEvent('pianoSequenceMatched')&&reward)reward.begin();else keyboard();return true;}
     const id=docs[event.id];if(!id)return false;ui.readDocument(id);return true;
   }};
 }

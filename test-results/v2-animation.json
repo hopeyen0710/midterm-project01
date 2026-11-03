@@ -1,0 +1,211 @@
+{
+  "id": "V2.ERIN.ANIMATION",
+  "status": "通過",
+  "method": "真實 WebGL 繪圖；原模型實際頂點差異與精確還原；WASD/F/滑鼠不移動玩家。僅導航停 draw，演出恢復；preserveDrawingBuffer 用於保存演出影格。",
+  "browser": "151.0.7922.34",
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-v2-animation",
+  "trace": [
+    {
+      "phase": "start",
+      "pose": {
+        "changedCoordinates": 0,
+        "maxDelta": 0
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            1.4999999994790854,
+            -2.906283631140411
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "rising",
+      "pose": {
+        "changedCoordinates": 311076,
+        "maxDelta": 0.003634117543697357
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            1.4999999994790854,
+            -2.906283631140411
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "stand": 0.00010233172605122686,
+      "lean": 0.01562563430502439,
+      "offset": 0
+    },
+    {
+      "phase": "leaving",
+      "pose": {
+        "changedCoordinates": 316565,
+        "maxDelta": 0.6600000858306885
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            1.4994607615825049,
+            -2.905051087376799
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            -0.0005392378965804435,
+            0.0012325437636124424
+          ]
+        }
+      ],
+      "stand": 1,
+      "lean": 1.0409497792752501e-16,
+      "offset": 0.0012325437636124424
+    },
+    {
+      "phase": "frozen",
+      "pose": {
+        "changedCoordinates": 316565,
+        "maxDelta": 0.6600000858306885
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            0.7999999994790854,
+            -1.3062836311404111
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            -0.7,
+            1.6
+          ]
+        }
+      ],
+      "stand": 1,
+      "lean": 1.0409497792752501e-16,
+      "offset": 1.6
+    },
+    {
+      "phase": "returning",
+      "pose": {
+        "changedCoordinates": 316565,
+        "maxDelta": 0.6600000858306885
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            0.8023700200230417,
+            -1.3117008209551684
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            -0.6976299794560437,
+            1.5945828101852428
+          ]
+        }
+      ],
+      "stand": 1,
+      "lean": 1.0409497792752501e-16,
+      "offset": 1.5945828101852428
+    },
+    {
+      "phase": "sitting",
+      "pose": {
+        "changedCoordinates": 317341,
+        "maxDelta": 0.6532413959503174
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            1.4999999994790854,
+            -2.906283631140411
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "stand": 0.9940380824666182,
+      "lean": 0.12047317107155467,
+      "offset": 0
+    },
+    {
+      "phase": "seated",
+      "pose": {
+        "changedCoordinates": 0,
+        "maxDelta": 0
+      },
+      "actors": [
+        {
+          "name": "detail-woman",
+          "position": [
+            2.3338689814078606e-8,
+            1.4999999994790854,
+            -2.906283631140411
+          ]
+        },
+        {
+          "name": "erin-gown",
+          "position": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "rising",
+    "frozen",
+    "sitting"
+  ],
+  "errors": [],
+  "recordedAt": "2026-11-03T19:07:05.080Z",
+  "sourceHashes": {
+    "game/erin-animation.js": "5278875c2ba11ff0604d1ebc080a597bc87e394c460e08a4ae436c1693456132",
+    "game/scene.js": "7e7ab417353214dd12be30880b3a03830d2f4c54f8b2e6807966d18570d465e2"
+  },
+  "notes": "真實繪圖補測完整包含 rising、leaving、frozen、returning、sitting、seated。初次 90 秒等待逾時後，調整測試等待至 240 秒；未為此縮短或跳過動畫。SwiftShader 軟體繪圖不代表實體 GPU 效能。此證據鎖定動畫與場景模組，完整版本的自動鎖定等操作另由第 14 步回歸驗證。"
+}

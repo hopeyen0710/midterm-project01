@@ -47,11 +47,19 @@ export function createGameState() {
    emit();return {accepted:true,outcome};
   },
   clearPianoInput(){data.piano.input=[];data.piano.outcome=null;emit();},
+  advancePiano(id){
+   const requires={pianoPerformanceStarted:'pianoSequenceMatched',pianoPerformanceFinished:'pianoPerformanceStarted',pianoAcknowledged:'pianoPerformanceFinished',pianoDrawerOpened:'pianoAcknowledged',pianoPendantCollected:'pianoDrawerOpened',stage1Complete:'pianoPendantCollected'};
+   if(data.stage!=='piano'||!requires[id]||data.events.includes(id)||!data.events.includes(requires[id]))return false;
+   if(id==='pianoPendantCollected')interaction.collected.add('glass');
+   data.events.push(id);emit();return true;
+  },
   readDocument(id){if(!knownDocuments.has(id)||data.documents.includes(id))return false;data.documents.push(id);emit();return true;},
   collectItem(id){if(!knownItems.has(id))return false;const changed=!interaction.collected.has(id);interaction.collected.add(id);emit();return changed;},
   recordLine(line){if(!line?.id||data.conversations.some(item=>item.id===line.id))return false;data.conversations.push({id:line.id,speaker:line.speaker,text:line.text});emit();return true;},
   completeEvent(id,{actor='visitor'}={}){
    if(data.events.includes(id))return false;
+   // 新版第一關有自己的演奏／領取鏈，不得觸發舊版關卡自動跳時與下一關。
+   if(data.stage==='piano')return false;
    if(id==='letterRead'){if(data.stage!=='opening')return false;data.events.push(id);emit();return true;}
    const stage=stages.find(stage=>stage.id===data.stage),index=stage.completionConditions.indexOf(id);
    if(index<0||!stage.completionConditions.slice(0,index).every(event=>data.events.includes(event)))return false;

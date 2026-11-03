@@ -114,5 +114,18 @@ button, select { border-radius: 1px; font-size: 14px; }
 @media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="opening-letter"],.story-dialog[data-kind="opening-letter"] .story-body p { animation-duration:.01s; animation-delay:0s; } }
 .story-dialog[data-kind="opening-letter"] .story-body { font-family:"PMingLiU",serif; font-size:clamp(18px,2.2vw,23px); line-height:2; }
 .objective-status { position:absolute; left:20px; bottom:65px; max-width:calc(100% - 40px); padding:8px 12px; margin:0; color:#eadcba; background:#080c18d9; font-size:13px; line-height:1.7; pointer-events:none; }
+.story-dialog[data-kind="piano-drawer"] { top:auto; bottom:18px; margin:0 auto; padding:16px 24px; }
+.story-dialog[data-kind="piano-drawer"]::backdrop { background:#02040b30; }
+.performance-notes { display:flex; gap:8px; margin:24px 0; }
+.performance-notes span { flex:1; padding:20px 4px; text-align:center; color:#342d20; background:#eee2bd; border-bottom:5px solid #9b804f; }
+.performance-notes .playing { background:#d8ab54; transform:translateY(4px); border-bottom-width:1px; }
+.pendant-art { width:68px; height:88px; margin:32px auto; background:linear-gradient(135deg,#f77987,#a71332 50%,#480b22); clip-path:polygon(50% 0,95% 35%,75% 85%,50% 100%,25% 85%,5% 35%); }
+.story-dialog[data-kind="stage1-complete"] { width:min(920px,calc(100vw - 32px)); text-align:center; background:#080b10; }
+.story-dialog[data-kind="stage1-complete"] h2 { font-size:clamp(23px,3vw,34px); color:#f5f2e9; }
+.completion-mark { color:#43ce86; font-size:48px; border:3px solid currentColor; border-radius:50%; width:68px; height:68px; line-height:60px; margin:8px auto 28px; }
+.story-dialog[data-kind="stage1-complete"] .story-actions { justify-content:center; }
+.story-dialog[data-kind="stage1-complete"] .completion-mark { margin:0 auto 16px; width:60px; height:60px; line-height:52px; font-size:42px; }
+.story-dialog[data-kind="stage1-complete"] .story-body p { margin-bottom:12px; }
+.story-dialog[data-kind="stage1-complete"] { padding:24px; }
 .scene-actions { flex-wrap:wrap; }
 @media(max-width:760px) { .scene-toolbar { align-items:flex-start; flex-direction:column; gap:8px; padding:12px; } .scene-actions { gap:6px; } .scene-toolbar button { padding:8px 10px; } }

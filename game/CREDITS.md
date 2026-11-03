@@ -53,3 +53,5 @@ Vite 已依使用者要求移除，現行版本不使用本地伺服器。
 Poly Haven 授權：https://polyhaven.com/license 。Innerscene 素材庫條款：https://www.innerscene.com/tools/library/terms 。CC0 1.0：https://creativecommons.org/publicdomain/zero/1.0/ 。
 
 修改包含：轉為自含貼圖的 GLB、貼圖縮至 1K（人物 2K）、不需透明的圖片改 JPEG、保留透明圖片 PNG、依材質合併靜態網格、尺寸與位置調整、鋼琴外殼改為深色、人物衣物改為象牙白並補上長裙。既有油畫覆在精細畫框中；落地鐘移除遮住鐘面的玻璃網格。人物原型的面貌及髮型與概念 A 不同，並非客製公主模型。
+
+第 13～14 步修改：艾琳以原坐姿模型的頂點進行程序化起身／坐下變形；暗格、吊墜模型及介面圖形由 Three.js 幾何／CSS 製作，自動演奏以 Web Audio 合成，未新增網路素材。第一關完成畫面參考使用者提供的附件配置，劇情內容仍依 Stage/stage1.md。

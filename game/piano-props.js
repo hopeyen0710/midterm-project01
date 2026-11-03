@@ -1,4 +1,4 @@
-import {Mesh,BoxGeometry,MeshStandardMaterial,CanvasTexture,SRGBColorSpace} from 'three';
+import {Mesh,Group,BoxGeometry,OctahedronGeometry,TorusGeometry,MeshStandardMaterial,CanvasTexture,SRGBColorSpace} from 'three';
 import {pianoClueTargets} from './piano-clue-data.js';
 
 export function addPianoClues(scene,castle){
@@ -19,4 +19,14 @@ export function addPianoClues(scene,castle){
   box('clue-musicbox-case',[-21.4,1.65,.8],[.9,.4,.6],wood);
   box('clue-musicbox-lid',[-21.4,1.9,.8],[.94,.08,.64],gold);
   castle.colliders.push({id:'musicbox-stand',area:'hall',minX:-21.95,maxX:-20.85,minZ:.35,maxZ:1.25});
+  const drawer=new Group();drawer.name='piano-secret-drawer';drawer.position.set(-19,1.45,-1.15);
+  function part(name,size,position,material){const mesh=new Mesh(new BoxGeometry(...size),material);mesh.name=name;mesh.position.set(...position);mesh.castShadow=true;drawer.add(mesh);return mesh;}
+  part('piano-drawer-bottom',[.9,.06,.65],[0,0,0],wood);
+  part('piano-drawer-front',[.96,.22,.06],[0,.1,.32],wood);
+  for(const x of [-.46,.46])part('piano-drawer-side',[.04,.18,.65],[x,.08,0],wood);
+  part('piano-drawer-handle',[.18,.05,.04],[0,.11,.37],gold);
+  const pendant=new Group();pendant.name='piano-red-pendant';pendant.position.set(0,.13,.04);
+  const gem=new Mesh(new OctahedronGeometry(.13),new MeshStandardMaterial({color:'#a81933',metalness:.3,roughness:.16,emissive:'#6b0616',emissiveIntensity:.4}));gem.name='piano-pendant-gem';gem.scale.set(1,.6,1.3);pendant.add(gem);
+  const ring=new Mesh(new TorusGeometry(.055,.012,8,24),gold);ring.name='piano-pendant-ring';ring.rotation.x=Math.PI/2;ring.position.z=-.16;pendant.add(ring);
+  drawer.add(pendant);scene.add(drawer);drawer.visible=false;
 }

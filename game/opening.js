@@ -27,7 +27,7 @@ export function createOpening({session,ui,getViewer,viewport,onEntered}) {
  function sync(){
   document.querySelector('#player-name').disabled=session.hasEvent('letterRead');
   areaSelect.disabled=true;areaSelect.value=entered()?'hall':'outside';document.querySelector('.area-label').hidden=true;
-  objective.textContent=entered()?(session.hasEvent('explorationOpened')?'前往西側音樂室，查看鋼琴周圍的線索。':'大門在身後關上了。聽艾琳說話。'):session.hasEvent('respondIan')?'大門已開啟。按「開始探索」，向前踏入城堡。':session.hasEvent('letterRead')?'沿石階靠近大門，對準大門按 F，回應伊恩。':'先讀完艾琳的求救信。';
+  objective.textContent=session.hasEvent('stage1Complete')?'第一關已完成。可重看隨身紀錄，或重新開始。':entered()?(session.hasEvent('explorationOpened')?'前往西側音樂室，查看鋼琴周圍的線索。':'大門在身後關上了。聽艾琳說話。'):session.hasEvent('respondIan')?'大門已開啟。向前踏入城堡。':session.hasEvent('letterRead')?'沿石階靠近大門，對準大門按 F，回應伊恩。':'先讀完艾琳的求救信。';
  }
  function syncSound(){audio.setMode(document.hidden||document.querySelector('#scene-screen').hidden?'silent':entered()?'inside':'outside');}
  session.subscribe(sync);
@@ -44,7 +44,7 @@ export function createOpening({session,ui,getViewer,viewport,onEntered}) {
    feedback.textContent='門旁暗處的伊恩在等你回應。';question();return true;
   },
   updatePosition(position,area){
-   if(area!=='outside'||entered()||!session.hasEvent('respondIan')||Math.abs(position.x)>=1.4||position.z>=13.1||!document.pointerLockElement)return;
+   if(area!=='outside'||entered()||ui.isOpen||!session.hasEvent('respondIan')||Math.abs(position.x)>=1.4||position.z>=13.1)return;
    if(!session.completeEvent('enterHall'))return;
    const viewer=getViewer();viewer.setArea('hall');viewer.setEntranceOpen(false);syncSound();
    ui.show({heading:'門在身後關上',kind:'entry',text:['雨聲消失，城堡大門在身後關上。','大廳中央有高臺與座椅。艾琳坐在高臺邊，正把白花一朵朵拔出。'],allowClose:false,choices:[{label:'看看大廳',action:()=>onEntered?onEntered():ui.close()}]});
