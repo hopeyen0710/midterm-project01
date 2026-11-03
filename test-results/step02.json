@@ -1,0 +1,307 @@
+{
+  "recordedAt": "2026-11-03T02:21:31.709Z",
+  "step": "02",
+  "browser": "151.0.7922.34",
+  "node": "v24.22.1",
+  "platform": "win32",
+  "browserPlugin": "Browser plugin not available; regular Playwright 1.62.1 used.",
+  "url": "http://127.0.0.1:5173/",
+  "previewUrl": null,
+  "flow": "開始頁 → 操作說明 → 關閉／Esc → 重新整理 → 入口仍正常；完整 3D 流程未實作。",
+  "sourceHashes": {
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "index.html": "3f8f6b4406fe6be39db4b98debda7976852f5653de1e16419e8b08f68b6f1048",
+    "styles.css": "63ed563859ce22708411a6e5f15c87d3c62bf104108e50b0e81439eba8e3d1f0",
+    "game/main.js": "54dcabca237cc7a57dc8bbdeb331583cb10e4644401734ad6abcd9976c4353e7",
+    "package.json": "cbf7bb564e28bdef0b3f7ac61c0d0463ec46c9cfeb89f297ac5aecc9f148aa3b",
+    "pnpm-lock.yaml": "ba36f56cc999dc3b16de7ed412a773d6d6952585af72ab7e7ad9152d1afbb447",
+    "scripts/build-standalone.mjs": "90ba69f6781eb0771e9118c28862b2abe4acffd8300105fc0616be8103cbb9ae",
+    "dist/standalone.html": "de27026ba59d5c8ecb803a8dc2116afb89a3be08d232fc4c02dfbd6c4bbf3995"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "checks": [
+    {
+      "id": "S02.1",
+      "title": "開發頁面網址、標題及內容正確",
+      "status": "通過",
+      "evidence": {
+        "url": "http://127.0.0.1:5173/",
+        "title": "時空密室｜午夜之前"
+      }
+    },
+    {
+      "id": "S02.2",
+      "title": "Three.js 套件已載入，無錯誤遮罩",
+      "status": "通過",
+      "evidence": "Three.js r187 模組載入成功；本步尚無 3D 畫布。"
+    },
+    {
+      "id": "S02.3",
+      "title": "操作說明可開啟、按鈕關閉、Esc 關閉",
+      "status": "通過",
+      "evidence": "開啟 → 按鈕關閉 → 重開 → Esc 關閉，焦點回到觸發按鈕。"
+    },
+    {
+      "id": "S02.4",
+      "title": "重新整理後入口與說明仍可使用",
+      "status": "通過",
+      "evidence": "重新整理後模組及入口操作正常；未驗證尚未實作的遊戲場景。"
+    },
+    {
+      "id": "S02.layout.1440",
+      "title": "1440×900 入口版面",
+      "status": "通過",
+      "evidence": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\entry-1440.png"
+      }
+    },
+    {
+      "id": "S02.layout.1920",
+      "title": "1920×1080 入口版面",
+      "status": "通過",
+      "evidence": {
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\entry-1920.png"
+      }
+    },
+    {
+      "id": "S02.layout.800",
+      "title": "800×700 入口版面",
+      "status": "通過",
+      "evidence": {
+        "viewport": {
+          "width": 800,
+          "height": 700
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\entry-800.png"
+      }
+    },
+    {
+      "id": "S02.layout.390",
+      "title": "390×844 入口版面",
+      "status": "通過",
+      "evidence": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\entry-390.png"
+      }
+    },
+    {
+      "id": "S02.5",
+      "title": "探索入口如實標記尚未開放",
+      "status": "通過",
+      "evidence": "未提供無效果的開始操作，不提前實作第三步。"
+    },
+    {
+      "id": "S02.6",
+      "title": "開發入口無主控台錯誤或資源失敗",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "badResponses": []
+      }
+    },
+    {
+      "id": "S02.offline",
+      "title": "單檔以 file:// 離線開啟、重新整理及操作",
+      "status": "通過",
+      "evidence": {
+        "offlineUrl": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/dist/standalone.html",
+        "portable": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\offline-copy.html",
+        "externalRequests": [],
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\standalone.png"
+      }
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "阻擋",
+      "actual": "已實測開始頁與說明、重新整理、四種尺寸及載入資源；原案例包含進入遊戲場景／3D 顯示，尚無場景而無法完整執行。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "阻擋",
+      "actual": "已實測開始頁與說明、重新整理、四種尺寸及載入資源；原案例包含進入遊戲場景／3D 顯示，尚無場景而無法完整執行。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "阻擋",
+      "actual": "已實測開始頁與說明、重新整理、四種尺寸及載入資源；原案例包含進入遊戲場景／3D 顯示，尚無場景而無法完整執行。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "阻擋",
+      "actual": "已實測開始頁與說明、重新整理、四種尺寸及載入資源；原案例包含進入遊戲場景／3D 顯示，尚無場景而無法完整執行。"
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "阻擋",
+      "actual": "已實測開始頁與說明、重新整理、四種尺寸及載入資源；原案例包含進入遊戲場景／3D 顯示，尚無場景而無法完整執行。"
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、WASD 控制與碰撞系統。"
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "阻擋",
+      "actual": "尚無可探索場景、F 鍵互動、距離及視線判定。"
+    }
+  ],
+  "console": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": [],
+    "badResponses": []
+  },
+  "buildChecks": [
+    {
+      "title": "pnpm install --frozen-lockfile",
+      "status": "通過"
+    },
+    {
+      "title": "pnpm build（一般網頁及 standalone.html）",
+      "status": "通過"
+    },
+    {
+      "title": "pnpm test:data",
+      "status": "通過",
+      "passed": 10
+    },
+    {
+      "title": "pnpm preview，原設定 4173",
+      "status": "阻擋",
+      "reason": "埠號占用；使用者選擇增加單檔 HTML，不改預覽埠。"
+    }
+  ],
+  "testDefinitionPolicy": "依完整預期結果判定。入口已測部分不等於已完成進入遊戲場景；保留各案例阻擋，另記入口專用檢查。",
+  "qaScript": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step02\\check-entry.cjs",
+  "testSummary": {
+    "passed": 0,
+    "failed": 0,
+    "blocked": 24
+  }
+}
