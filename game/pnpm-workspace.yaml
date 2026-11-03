@@ -1,0 +1,3 @@
+# 不執行 esbuild 的安裝腳本；使用已安裝且已驗證可用的平台套件。
+allowBuilds:
+  esbuild: false
