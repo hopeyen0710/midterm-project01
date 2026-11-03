@@ -13,6 +13,7 @@ const result = await build({
   platform: 'browser',
   target: 'es2022',
   minify: true,
+  loader: { '.png': 'dataurl', '.jpg': 'dataurl', '.glb': 'dataurl' },
   legalComments: 'inline',
   write: false,
   metafile: true,

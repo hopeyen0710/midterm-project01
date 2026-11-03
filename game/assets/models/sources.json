@@ -1,0 +1,254 @@
+{
+  "retrievedAt": "2026-11-03T13:37:52.890Z",
+  "assets": [
+    {
+      "id": "ArmChair_01",
+      "name": "Arm Chair 01",
+      "authors": [
+        "Kirill Sannikov"
+      ],
+      "source": "https://polyhaven.com/a/ArmChair_01",
+      "license": "CC0-1.0",
+      "resolution": "2k",
+      "bytes": 2804352,
+      "sha256": "f695f7824f5e1dd0d38ace2b43718ce5823e30b34d71cb19908d181ab53d1c21",
+      "triangles": 5626,
+      "runtime": {
+        "bytes": 621084,
+        "sha256": "1ce6340cdff20f5f4ae3ac910857f32939256145763ee319d3601e90d949fbfb",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "WoodenChair_01",
+      "name": "Wooden Chair 01",
+      "authors": [
+        "Jake Mobley"
+      ],
+      "source": "https://polyhaven.com/a/WoodenChair_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 1078556,
+      "sha256": "f312f7fdf51ad24d7464b388f83e4081c16876f28ed0dd104cb892dbf583d90a",
+      "triangles": 19992,
+      "runtime": {
+        "bytes": 978524,
+        "sha256": "8a1a3e4fa178da0e1811204e35eb29138c1414aa985ef6a95fea53e1e60a654a",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "GothicCabinet_01",
+      "name": "Gothic Cabinet 01",
+      "authors": [
+        "Kirill Sannikov"
+      ],
+      "source": "https://polyhaven.com/a/GothicCabinet_01",
+      "license": "CC0-1.0",
+      "resolution": "2k",
+      "bytes": 2116068,
+      "sha256": "1cbdff4c28990fd4508a94a6ef0b39ba5b26017948c115041203d7af670a64f5",
+      "triangles": 12170,
+      "runtime": {
+        "bytes": 919236,
+        "sha256": "96e92a08c07fd510f03b44276ab74f0800e3eaf70c7c29641d26d64312173902",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "ClassicConsole_01",
+      "name": "Classic Console 01",
+      "authors": [
+        "Kirill Sannikov"
+      ],
+      "source": "https://polyhaven.com/a/ClassicConsole_01",
+      "license": "CC0-1.0",
+      "resolution": "2k",
+      "bytes": 2041288,
+      "sha256": "700a869659df45913af84502eb7e2af5ddbe067f032ad8a8a8fc2754d480b0b8",
+      "triangles": 7566,
+      "runtime": {
+        "bytes": 630444,
+        "sha256": "5f836e38c8bd2ec8df349e19942c075fdf853fb3b5e9cf78cef827bdd166444c",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "Chandelier_03",
+      "name": "Chandelier 03",
+      "authors": [
+        "Kirill Sannikov"
+      ],
+      "source": "https://polyhaven.com/a/Chandelier_03",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 1362212,
+      "sha256": "b123e7f0cefe1272f67d6b123309534261944e74eed2af431bcf05a3785bc0c6",
+      "triangles": 29301,
+      "runtime": {
+        "bytes": 1268224,
+        "sha256": "850fb99bd3f8069270cd6e1dc5554b70391ec1d754dbfbef441e421cbb173d26",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "fancy_picture_frame_02",
+      "name": "Fancy Picture Frame 02",
+      "authors": [
+        "Rob Tuytel",
+        "Rico Cilliers"
+      ],
+      "source": "https://polyhaven.com/a/fancy_picture_frame_02",
+      "license": "CC0-1.0",
+      "resolution": "2k",
+      "bytes": 4240988,
+      "sha256": "cf286889a8bea8ed5875e57b167d7fd74206377e3ff3d8aaed115baa020090c1",
+      "triangles": 35102,
+      "runtime": {
+        "bytes": 1493060,
+        "sha256": "63433611153d31ddfa15f955ce485df06d91ea1ce71b5311f5d7042faaf223b9",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "gothic_statue",
+      "name": "Gothic Statue",
+      "authors": [
+        "Benny Weimer"
+      ],
+      "source": "https://polyhaven.com/a/gothic_statue",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 3977588,
+      "sha256": "1d3cd8eea9cdcd24cdf82c2ca7bffd6195f81425961e2bc50886e5139d513496",
+      "triangles": 27739,
+      "runtime": {
+        "bytes": 1704360,
+        "sha256": "ba391ba5b12085a0582bc8de7d7adfb9e81dab9defe11b7c03cd3e612b1bb940",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "lion_head",
+      "name": "Lion Head",
+      "authors": [
+        "Tina"
+      ],
+      "source": "https://polyhaven.com/a/lion_head",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 3199440,
+      "sha256": "80f096bf910ca16d0d90fc7c21e65bc38465a1518e29af2fae4ad79335d73e45",
+      "triangles": 47214,
+      "runtime": {
+        "bytes": 1533060,
+        "sha256": "52a81f7c539c85a5861dd2c9a6d25923e7b3e5bf8dbbba3d585245f94dfd188a",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "brass_candleholders",
+      "name": "Brass Candleholders",
+      "authors": [
+        "Tina"
+      ],
+      "source": "https://polyhaven.com/a/brass_candleholders",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 9585504,
+      "sha256": "57b5f78b2c252bd6c7488bac913ddf32fd9bd407568550b4aa086c2e3e013d7f",
+      "triangles": 41936,
+      "runtime": {
+        "bytes": 3231384,
+        "sha256": "627945a36ec543fb95dae92dc9e92f712296c18bf844054dc3a59c293de23e58",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "vintage_grandfather_clock_01",
+      "name": "Vintage Grandfather Clock 01",
+      "authors": [
+        "Yann Kervran",
+        "James Ray Cock"
+      ],
+      "source": "https://polyhaven.com/a/vintage_grandfather_clock_01",
+      "license": "CC0-1.0",
+      "resolution": "2k",
+      "bytes": 9287224,
+      "sha256": "c22957f95fb585096086a50866733ad24de004829d97208abac4cb961966d461",
+      "triangles": 12604,
+      "runtime": {
+        "bytes": 989468,
+        "sha256": "f27dd5f1b1893374e55c75a6d435adbd76b8c700eba8894a2732ff8174e3f8d8",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "antique_ceramic_vase_01",
+      "name": "Antique Ceramic Vase 01",
+      "authors": [
+        "James Ray Cock"
+      ],
+      "source": "https://polyhaven.com/a/antique_ceramic_vase_01",
+      "license": "CC0-1.0",
+      "resolution": "1k",
+      "bytes": 524936,
+      "sha256": "d422a0c48e1e3bea13f8615f367c8a49b25dc659b03df174f6c5a3470e369f7c",
+      "triangles": 9408,
+      "runtime": {
+        "bytes": 461532,
+        "sha256": "ae8020e2cb335e5f644ead2898b225c435fee0698788f2ea509b5a851f5294eb",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "grand-piano",
+      "name": "Grand piano - open lid",
+      "authors": [
+        "Innerscene"
+      ],
+      "source": "https://www.innerscene.com/tools/library/3d-parts/grand-piano-open-lid-b0c88240",
+      "license": "CC0-1.0",
+      "bytes": 3961868,
+      "sha256": "23b713c406652e8ca6c61bb317f6f9c8fe9037e7d6f502082e76fa0d73460dea",
+      "runtime": {
+        "bytes": 3697024,
+        "sha256": "1132a0f32f5df4bace980bf46883e3ecaf7ef67ebc4485de7f3c468ca8960494",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "seated-woman",
+      "name": "seated-woman",
+      "authors": [
+        "Innerscene",
+        "MakeHuman/MPFB"
+      ],
+      "source": "https://www.innerscene.com/tools/library/3d-parts/taylor-3d-person-woman-seated-on-chair-b792e2dc",
+      "license": "CC0-1.0",
+      "bytes": 17514540,
+      "sha256": "e36a4d4b42924e552131b417a72fd486338e8b4555e2143395c212f253696ae4",
+      "runtime": {
+        "bytes": 7619436,
+        "sha256": "c50441f08426bebcadc4ce208657b3b0dad959a88389cd4f9839337a334a7150",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    },
+    {
+      "id": "mannequin",
+      "name": "mannequin",
+      "authors": [
+        "Innerscene"
+      ],
+      "source": "https://www.innerscene.com/tools/library/3d-parts/standing-mannequin-original-retail-fixture-84ea17f0",
+      "license": "CC0-1.0",
+      "bytes": 436808,
+      "sha256": "b15ace94d06fdca83d6a2045055f501e76cebe91ed10aee90e9cc7e2f9a060ab",
+      "runtime": {
+        "bytes": 252204,
+        "sha256": "60a41e419269cbb8641703941e7b608a4099802326fa3746338df35355eebf3f",
+        "modifications": "Embedded texture images resized to 1k (woman: 2k); geometry retained."
+      }
+    }
+  ]
+}

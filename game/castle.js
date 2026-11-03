@@ -1,6 +1,7 @@
 import { Mesh, BoxGeometry, CylinderGeometry, SphereGeometry, MeshStandardMaterial, CanvasTexture, Sprite, SpriteMaterial, Group, PointLight } from 'three';
 import { areas, landmarks, groundHeight, roomAt } from './castle-data.js';
 import { buildSideRooms } from './rooms.js';
+import { applyRoyalStyle } from './royal-style.js';
 
 export function buildCastle(scene, state = {}) {
   const colliders = [];
@@ -145,5 +146,6 @@ export function buildCastle(scene, state = {}) {
   }
   activeSection='hall';
   const doors=buildSideRooms(scene,{box,label,mats,colliders},state);
+  applyRoyalStyle(scene, mats);
   return { colliders, areas, landmarks, groundHeight, roomAt, doors };
 }

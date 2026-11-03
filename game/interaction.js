@@ -7,11 +7,12 @@ function visibleInHierarchy(object) {
   return true;
 }
 // 射線檢查全部實體，先處理最近遮擋；不只射向可互動物件。
-export function selectInteraction(scene, camera, catalog, areaId, settings = interactionSettings) {
+export function selectInteraction(scene, camera, catalog, areaId, settings = interactionSettings, onRayHit) {
   scene.updateMatrixWorld(true); camera.updateMatrixWorld(true);
   const ray = new Raycaster(); ray.far = settings.maxDistance + settings.epsilon;
   ray.setFromCamera(new Vector2(0, 0), camera);
   const hit = ray.intersectObjects(scene.children, true).find(result => result.object.isMesh && visibleInHierarchy(result.object) && !result.object.userData.ignoreInteractionRay);
+  onRayHit?.(hit ? { mesh: hit.object.name, distance: hit.distance, interactionId: hit.object.userData.interactionId || null } : null);
   if (!hit || hit.distance > settings.maxDistance + settings.epsilon) return null;
   const target = catalog.get(hit.object.userData.interactionId);
   if (!target || target.enabled === false || (target.area !== 'both' && target.area !== areaId)) return null;
@@ -35,7 +36,7 @@ export function createInteractions(scene, camera, canvas, container, ui = {}) {
   container.dataset.interactionDistance = String(interactionSettings.maxDistance);
   function publish() { container.dataset.interactionState = JSON.stringify({ collected: [...state.collected], counts: state.counts, sequence: state.sequence, doors: state.doors || {} }); }
   function canUse() { return enabled && document.pointerLockElement === canvas; }
-  function choose() { return canUse() ? selectInteraction(scene, camera, catalog, areaId) : null; }
+  function choose() { return canUse() ? selectInteraction(scene, camera, catalog, areaId, interactionSettings, hit => {container.dataset.interactionRay=JSON.stringify(hit);}) : null; }
   function hint(selection) {
     const next = selection ? selection.target.id : '';
     if (next !== lastHint) {
