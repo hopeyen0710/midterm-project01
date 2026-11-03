@@ -1,0 +1,1221 @@
+{
+  "step": "05",
+  "recordedAt": "2026-11-03T03:08:15.085Z",
+  "environment": {
+    "node": "v24.22.1",
+    "os": "win32",
+    "browser": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "browserPlugin": "Browser plugin not available; regular Playwright used.",
+    "rendering": "ANGLE SwiftShader（軟體繪圖），未測量真實 GPU 效能",
+    "offline": true,
+    "entryUrl": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "BRIEF.md": "3e1ac4d59fc6554a24226116f4df1b38c29968477fbb12119e8d98275ffbaaad",
+    "game/index.html": "827cfb234c69f9047f363f5f0de839a88b8124ad4f4c89f08cacec8aea56f4eb",
+    "game/main.js": "dd5f91bae1c5f5463e7f25a83f063997fbcd9825d55338dd911cb7215ff64bb7",
+    "game/scene.js": "925078b3b41388ae143345943786dba65d6a427ecc253c7ab8503e8f58bd7f47",
+    "game/castle.js": "dca32bb190cd02a67afd15ad29a691362f9aceac36d5de754f26dfb335a30a86",
+    "game/castle-data.js": "d075ea95f78613e9a3561a7095f242466bdbf962f215f528c5c0e7e6228a7de0",
+    "game/controls.js": "1ede85c0b3fab5764b7c7f9b36d7df3d2cf3cdf30eabeada766b0cc5120cffb8",
+    "game/navigation.js": "b66dba894786188f7a48c266ab889e0962d08720069394d35a4eb3f10a5a62f8",
+    "game/styles.css": "0534bb8b2e2a49a2be9e9f516576c74642177076be71fa4793b5c87a7358eedc",
+    "game/page-template.html": "588391eee28d7776a3da0142164bebbdf77a570b3b7370faf4c89539e388fe4c",
+    "game/scripts/build.mjs": "094838bfbcbfc8b4275d29e12274d62b56c2670b95e7dbbeb3a351a54355e0c4"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "checks": [
+    {
+      "id": "T1.1.1",
+      "title": "首次離線開啟入口並進入第一個 3D 場景",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 1440,
+          "height": 900
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "S04.areas",
+      "title": "大廳與城堡外的配置及區域切換",
+      "status": "通過",
+      "evidence": "已實測切換城堡外與大廳；截圖供幾何配置核對。"
+    },
+    {
+      "id": "S03.navigation",
+      "title": "開關操作說明、返回首頁及多次重入場景",
+      "status": "通過",
+      "evidence": "說明按鈕與 Esc 正常；三次往返後仍僅一個畫布。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可重新進入 3D 場景",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "不同視窗尺寸下 3D 比例與介面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 1440,
+              "height": 900,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 1920,
+              "height": 1080,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 800,
+              "height": 700,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 390,
+              "height": 844,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "S03.portable",
+      "title": "複製單一 HTML 到其他資料夾仍能離線顯示 3D",
+      "status": "通過",
+      "evidence": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\copied-game.html"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "自由環視城堡與檢查場景、文字及說明介面",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -0.56
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.28345,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.28345,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": -1.866550000000001,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": -1.866550000000001,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 1.9834500000000028,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 1.9834500000000028,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後 WASD 依目前視角移動",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.9644900231547716,
+            "y": 2.25,
+            "z": 8.785229584962739,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.9644900231547716,
+            "y": 2.25,
+            "z": 8.785229584962739,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.034452937773115304,
+            "y": 2.25,
+            "z": 7.901274478741404,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.034452937773115304,
+            "y": 2.25,
+            "z": 7.901274478741404,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": -0.9300370853816563,
+            "y": 2.25,
+            "z": 8.916044893778666,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.9300370853816563,
+            "y": 2.25,
+            "z": 8.916044893778666,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.0847333296556109,
+            "y": 2.25,
+            "z": 9.880534916933419,
+            "yaw": -0.76
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面與後退碰牆不能穿越",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.375000000000007,
+          "yaw": 0
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "左右側移均受碰撞限制",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449766666666651,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449183333333355,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "斜向、牆角與長位移不穿牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.379999999999999,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "場景邊界、關閉出口與石階高度正確",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "S05.reachability",
+      "title": "所有預定互動區均有可行走路徑",
+      "status": "通過",
+      "evidence": {
+        "method": "以實際場景碰撞資料及遊戲 isBlocked 檢查網格連通，確認每個接近點可到達。",
+        "results": [
+          {
+            "landmark": "dais",
+            "distance": 0.12747548783981968
+          },
+          {
+            "landmark": "piano",
+            "distance": 0.12747548783981968
+          },
+          {
+            "landmark": "gallery",
+            "distance": 0.19039432764659642
+          },
+          {
+            "landmark": "cabinet",
+            "distance": 0.07905694150420949
+          },
+          {
+            "landmark": "book",
+            "distance": 0.1903943276465956
+          },
+          {
+            "landmark": "banquet",
+            "distance": 0.32596012026013294
+          },
+          {
+            "landmark": "clock",
+            "distance": 0.07905694150420892
+          },
+          {
+            "landmark": "entrance",
+            "distance": 0.14577379737113214
+          }
+        ]
+      }
+    },
+    {
+      "id": "S05.pause",
+      "title": "Esc、說明介面及失焦時不持續移動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.924999999999997,
+          "yaw": 0
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.924999999999997,
+          "yaw": 0
+        },
+        "help": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.924999999999997,
+          "yaw": 0
+        },
+        "blurred": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.224999999999994,
+          "yaw": 0
+        },
+        "blurStopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.224999999999994,
+          "yaw": 0
+        },
+        "scope": "實測 Esc、說明介面及模擬 window blur，均清除按鍵並停止移動。"
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "正常載入與重整無阻斷錯誤、無外部資源失敗",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "S03.error",
+      "title": "WebGL 不可用時顯示提示，恢復後可重試",
+      "status": "通過",
+      "evidence": {
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\webgl-unavailable.png",
+        "expectedErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+          "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new Fa (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:24022)\n    at Eh (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:66449)\n    at HTMLButtonElement.Ph (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:70043)"
+        ],
+        "uncaughtErrors": [],
+        "retry": "恢復 WebGL 後成功"
+      }
+    },
+    {
+      "id": "S03.contextLoss",
+      "title": "WebGL context 中斷後可重新建立場景",
+      "status": "通過",
+      "evidence": "模擬繪圖 context 中斷，錯誤提示出現，重試後恢復。"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 1440,
+          "height": 900
+        },
+        "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -0.56
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 1440,
+              "height": 900,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 1920,
+              "height": 1080,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 800,
+              "height": 700,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 390,
+              "height": 844,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.28345,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 8.28345,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": -1.866550000000001,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": -1.866550000000001,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "moved": {
+          "x": 1.9834500000000028,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        },
+        "stopped": {
+          "x": 1.9834500000000028,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.9644900231547716,
+            "y": 2.25,
+            "z": 8.785229584962739,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.9644900231547716,
+            "y": 2.25,
+            "z": 8.785229584962739,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.034452937773115304,
+            "y": 2.25,
+            "z": 7.901274478741404,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.034452937773115304,
+            "y": 2.25,
+            "z": 7.901274478741404,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": -0.9300370853816563,
+            "y": 2.25,
+            "z": 8.916044893778666,
+            "yaw": -0.76
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.9300370853816563,
+            "y": 2.25,
+            "z": 8.916044893778666,
+            "yaw": -0.76
+          },
+          "after": {
+            "x": 0.0847333296556109,
+            "y": 2.25,
+            "z": 9.880534916933419,
+            "yaw": -0.76
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.375000000000007,
+          "yaw": 0
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449766666666651,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449183333333355,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.379999999999999,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "阻擋",
+      "actual": "F 互動、物件選取、視線與距離限制尚未實作（計畫步驟 06）。"
+    }
+  ],
+  "dataChecks": [
+    {
+      "id": "S01.1",
+      "title": "劇情來源版本與 SHA256 一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.2",
+      "title": "八幕原文完整且逐行可追溯",
+      "status": "通過"
+    },
+    {
+      "id": "S01.3",
+      "title": "八幕都有對話、物件及必要事件，所有 ID 唯一",
+      "status": "通過"
+    },
+    {
+      "id": "S01.4",
+      "title": "文件與出場物件引用存在，文件原文可重讀",
+      "status": "通過"
+    },
+    {
+      "id": "S01.5",
+      "title": "開場、五關、結局條件完整且無向後依賴",
+      "status": "通過"
+    },
+    {
+      "id": "S01.6",
+      "title": "時間節點與自由閱讀規則一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.7",
+      "title": "11 條劇情規則完整保留",
+      "status": "通過"
+    },
+    {
+      "id": "S01.8",
+      "title": "示範參數獨立標記，未指定的解答不杜撰",
+      "status": "通過"
+    },
+    {
+      "id": "S01.9",
+      "title": "誓約、登記、銀杯與終典規則符合原稿",
+      "status": "通過"
+    },
+    {
+      "id": "S01.10",
+      "title": "三次驚嚇順序正確，父王處決令不驚嚇",
+      "status": "通過"
+    }
+  ],
+  "normalConsole": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": [],
+    "externalRequests": []
+  },
+  "errorPathConsole": {
+    "expectedErrors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new Fa (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:24022)\n    at Eh (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:66449)\n    at HTMLButtonElement.Ph (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4354:70043)"
+    ],
+    "uncaughtErrors": []
+  },
+  "artifacts": "C:\\Users\\tinge\\.codex\\visualizations\\2026\\11\\03\\01a19f11-41c4-7d00-a883-4900c87916b3\\step05",
+  "summary": {
+    "testPassed": 14,
+    "testFailed": 0,
+    "testBlocked": 10,
+    "additionalPassed": 7,
+    "dataPassed": 10
+  }
+}

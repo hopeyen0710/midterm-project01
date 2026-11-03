@@ -1,0 +1,250 @@
+{
+  "step": "01",
+  "recordedAt": "2026-11-03T02:11:20.776Z",
+  "timezone": "Asia/Taipei",
+  "environment": {
+    "node": "v24.22.1",
+    "platform": "win32",
+    "browser": "未啟動：無網站入口",
+    "url": null,
+    "viewport": null
+  },
+  "gitHead": "73c5d057b4f3e1f0fe59ac73f98e9ee7688cf024",
+  "sourceHashes": {
+    "BRIEF.md": "3e1ac4d59fc6554a24226116f4df1b38c29968477fbb12119e8d98275ffbaaad",
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "game/story-data.js": "28ca00435f56d15fe6e6933d7b4c44e9daf6171e277e4e969eca535b81d328ce",
+    "game/game-data.js": "48f6e2142d773f222fc7d7beb116cd40752a495b8292cdf234d501c684e37a4e"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "dataChecks": [
+    {
+      "id": "S01.1",
+      "title": "劇情來源版本與 SHA256 一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.2",
+      "title": "八幕原文完整且逐行可追溯",
+      "status": "通過"
+    },
+    {
+      "id": "S01.3",
+      "title": "八幕都有對話、物件及必要事件，所有 ID 唯一",
+      "status": "通過"
+    },
+    {
+      "id": "S01.4",
+      "title": "文件與出場物件引用存在，文件原文可重讀",
+      "status": "通過"
+    },
+    {
+      "id": "S01.5",
+      "title": "開場、五關、結局條件完整且無向後依賴",
+      "status": "通過"
+    },
+    {
+      "id": "S01.6",
+      "title": "時間節點與自由閱讀規則一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.7",
+      "title": "11 條劇情規則完整保留",
+      "status": "通過"
+    },
+    {
+      "id": "S01.8",
+      "title": "示範參數獨立標記，未指定的解答不杜撰",
+      "status": "通過"
+    },
+    {
+      "id": "S01.9",
+      "title": "誓約、登記、銀杯與終典規則符合原稿",
+      "status": "通過"
+    },
+    {
+      "id": "S01.10",
+      "title": "三次驚嚇順序正確，父王處決令不驚嚇",
+      "status": "通過"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "阻擋",
+      "actual": "無 index.html、啟動命令及可執行場景；無法開啟測試網站。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "阻擋",
+      "actual": "無 index.html、啟動命令及可執行場景；無法開啟測試網站。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "阻擋",
+      "actual": "無 index.html、啟動命令及可執行場景；無法開啟測試網站。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "阻擋",
+      "actual": "無 index.html、啟動命令及可執行場景；無法開啟測試網站。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "阻擋",
+      "actual": "無 index.html、啟動命令及可執行場景；無法開啟測試網站。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "阻擋",
+      "actual": "無可執行場景、玩家控制及碰撞系統，無法執行移動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "阻擋",
+      "actual": "無可執行場景、F 互動及射線距離判定，無法執行互動測試。",
+      "evidence": "執行時檢查根目錄無 index.html；本步僅建立劇情資料。"
+    }
+  ],
+  "summary": {
+    "dataPassed": 10,
+    "dataFailed": 0,
+    "testPassed": 0,
+    "testFailed": 0,
+    "testBlocked": 24
+  }
+}

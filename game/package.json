@@ -1,0 +1,21 @@
+{
+  "name": "time-chamber-escape",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test:data": "node ../tests/check-step01.mjs --data-only",
+    "test:browser": "node ../tests/check-rooms.cjs"
+  },
+  "dependencies": {
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

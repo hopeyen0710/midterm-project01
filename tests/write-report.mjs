@@ -1,0 +1,13 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const name=process.argv[2];
+if(!/^(step0[456]|rooms)$/.test(name))throw new Error('請指定 step04、step05、step06 或 rooms');
+const r=JSON.parse(await readFile(path.join(root,'test-results',name+'.json'),'utf8'));
+const rows=r.testCases.map(c=>`| ${c.id} | ${c.title} | ${c.status} | ${c.actual??'已實測，細節見 JSON'} |`).join('\n');
+const extra=r.checks.filter(c=>!c.id.startsWith('T')).map(c=>`| ${c.id} | ${c.title} | ${c.status} |`).join('\n');
+const time=new Date(r.recordedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false});
+const text=`# ${({step04:'步驟 04：城堡空間',step05:'步驟 05：第一人稱探索',step06:'步驟 06：物件互動',rooms:'多房間配置、走廊與木門'})[name]}\n\n時間：${time}（台北）。\n\n## 環境與方法\n\n${r.environment.os}、Node ${r.environment.node}、Chromium ${r.environment.browser}。Browser plugin not available，使用 Playwright。入口：${r.environment.entryUrl}。以 file:// 與離線模式測試；${r.environment.rendering}。\n\n執行前讀取 VERIFY.md 與 TEST.md。資料與原始結果見 [${name}.json](${name}.json)，含程式及驗證文件 SHA256。截圖位於 ${r.artifacts}。\n\n## TEST 逐案結果\n\n| 案例 | 測試 | 結果 | 說明 |\n| --- | --- | --- | --- |\n${rows}\n\n合計 ${r.summary.testPassed} 通過、${r.summary.testFailed} 未通過、${r.summary.testBlocked} 阻擋。阻擋項目均未冒充為通過。\n\n## 額外檢查\n\n| 編號 | 檢查 | 結果 |\n| --- | --- | --- |\n${extra}\n\n資料回歸 ${r.summary.dataPassed} 項通過。正常主控台錯誤 ${r.normalConsole.errors.length}、警告 ${r.normalConsole.warnings.length}，失敗請求 ${r.normalConsole.failedRequests.length}、外部網路請求 ${r.normalConsole.externalRequests.length}。故障注入的預期錯誤單獨記錄，不混入正常路徑。\n\n## 範圍\n\n${name==='rooms'?'依使用者追加要求建立三個側室，透過實際走廊與可開關木門連接中央大廳。此為空間配置調整，第 07 步尚未開始。':name==='step06'?'準星、名稱提示、F 鍵查看／交談入口／拾取／操作、距離與遮擋限制已實作。完整文件、對話與物品欄於步驟 07 實作。完成後等待使用者確認才繼續。':name==='step04'?'城堡大廳、外觀、石階、大門與各區物件已建立，第一人稱移動於步驟 05 執行。使用者已授權直接做到步驟 05，故本步驗證後接續執行。':'第一人稱移動、滑鼠視角、碰撞與區域邊界已實作；F 鍵互動於步驟 06 實作。完成後等待使用者確認才進行後續步驟。'}\n\nVERIFY.md 與 TEST.md 未修改；沒有使用外部模型、貼圖或音訊。\n`;
+await writeFile(path.join(root,'test-results',name+'.md'),text);
+console.log('已寫入 '+name+'.md');
