@@ -13,7 +13,9 @@ Vite 已依使用者要求移除，現行版本不使用本地伺服器。
 
 ## 視覺與音訊素材
 
-目前沒有使用網路模型、圖片、字型或音效。頁面使用自行撰寫的 CSS 與系統字型；城堡、家具、食物、白花、幾何畫像與艾琳的角色雛形均由 Three.js 基本幾何產生；標示由本機 Canvas 與系統字型繪製，無外部模型或貼圖。
+2026-11-03 採用使用者選定的 A「華麗王室」方向。`assets/royal-atlas.png` 由 OpenAI ImageGen 於本次工作產生，包含黑藍大理石、金紋酒紅絨布、深色木材與國王／艾琳／伊恩三幅油畫。美術方向參考使用者提供的哥德式城堡圖片；該參考圖未直接當作遊戲貼圖。
+
+貼圖由 `royal-style.js` 在本機切分材質。使用者選擇「現成精細模型」後，主要家具、吊燈、雕像、畫框、鐘、人物與人偶已改用下列 CC0 網格。所有模型及貼圖打包時以資料網址內嵌到單一 HTML，遊玩不向外部網站取得資源。建築外殼、拱肋、壁板、衣裙垂墜補片與機關連接件仍為程式產生。沒有新增外部字型或音效。
 劇情文字來自專案內的 BRIEF.md。
 
 ## 開發參考
@@ -21,4 +23,29 @@ Vite 已依使用者要求移除，現行版本不使用本地伺服器。
 - esbuild 原始碼及官方文件：https://github.com/evanw/esbuild 、https://esbuild.github.io/api/
 - 依賴版本及授權經 npm registry 查詢；以實際套件及鎖定檔為準。
 
-三間側室、走廊、木門與門把均為程式產生的基本幾何，沒有新增網路素材。
+三間側室、走廊、木門與門把沿用原有幾何與碰撞判定；A 方案裝飾按材質合併，避免每條雕花各自增加繪製呼叫。
+
+## 2026-11-03：現成精細模型
+
+下列模型的原始頁面均標示 CC0 1.0。下載時間、原始檔與遊戲用檔案 SHA256、解析度與修改記錄見 `assets/models/sources.json`。原始下載保留在 `assets/models/`，遊戲載入 `assets/models/runtime/` 的最佳化版本。
+
+| 模型 | 作者 | 原始來源 |
+| --- | --- | --- |
+| Arm Chair 01 | Kirill Sannikov | https://polyhaven.com/a/ArmChair_01 |
+| Wooden Chair 01 | Jake Mobley | https://polyhaven.com/a/WoodenChair_01 |
+| Gothic Cabinet 01 | Kirill Sannikov | https://polyhaven.com/a/GothicCabinet_01 |
+| Classic Console 01 | Kirill Sannikov | https://polyhaven.com/a/ClassicConsole_01 |
+| Chandelier 03 | Kirill Sannikov | https://polyhaven.com/a/Chandelier_03 |
+| Fancy Picture Frame 02 | Rob Tuytel、Rico Cilliers | https://polyhaven.com/a/fancy_picture_frame_02 |
+| Gothic Statue | Benny Weimer | https://polyhaven.com/a/gothic_statue |
+| Lion Head | Tina | https://polyhaven.com/a/lion_head |
+| Brass Candleholders | Tina | https://polyhaven.com/a/brass_candleholders |
+| Vintage Grandfather Clock 01 | Yann Kervran、James Ray Cock | https://polyhaven.com/a/vintage_grandfather_clock_01 |
+| Antique Ceramic Vase 01 | James Ray Cock | https://polyhaven.com/a/antique_ceramic_vase_01 |
+| Grand piano - open lid | Innerscene | https://www.innerscene.com/tools/library/3d-parts/grand-piano-open-lid-b0c88240 |
+| Taylor - Woman Seated on chair | Innerscene，改編自 MakeHuman／MPFB CC0 素材 | https://www.innerscene.com/tools/library/3d-parts/taylor-3d-person-woman-seated-on-chair-b792e2dc |
+| Standing mannequin | Innerscene | https://www.innerscene.com/tools/library/3d-parts/standing-mannequin-original-retail-fixture-84ea17f0 |
+
+Poly Haven 授權：https://polyhaven.com/license 。Innerscene 素材庫條款：https://www.innerscene.com/tools/library/terms 。CC0 1.0：https://creativecommons.org/publicdomain/zero/1.0/ 。
+
+修改包含：轉為自含貼圖的 GLB、貼圖縮至 1K（人物 2K）、不需透明的圖片改 JPEG、保留透明圖片 PNG、依材質合併靜態網格、尺寸與位置調整、鋼琴外殼改為深色、人物衣物改為象牙白並補上長裙。既有油畫覆在精細畫框中；落地鐘移除遮住鐘面的玻璃網格。人物原型的面貌及髮型與概念 A 不同，並非客製公主模型。

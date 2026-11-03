@@ -129,8 +129,8 @@ export const interactionTargets = [
     ],
     "focus": [
       0,
-      2.6,
-      -3.6
+      2.8,
+      -2.6
     ],
     "approach": [
       0,
