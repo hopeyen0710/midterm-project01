@@ -18,6 +18,10 @@ game/
   scene.js               Three.js 渲染、燈光與生命週期
   castle.js              城堡大廳、外觀及物件
   rooms.js               三個側室、走廊與可開關木門
+  royal-style.js         A 華麗王室的拱肋、吊燈、雕金花紋與場景材質
+  detailed-models.js     載入14種CC0精細模型、替換雛形並同步碰撞
+  assets/royal-atlas.png  內嵌的材質與三幅人物油畫
+  assets/models/         下載原檔、來源與SHA256；runtime為遊戲用檔
   castle-data.js         區域、出生點及地面高度
   controls.js            WASD、滑鼠視角及游標鎖定
   navigation.js          碰撞、邊界及石階高度
@@ -40,6 +44,12 @@ game/
 根目錄保留 `AGENTS.md`、`BRIEF.md`、`plan.v1.md`、`VERIFY.md`、`TEST.md` 與本 README，供專案規劃與驗證使用。
 
 ## 目前進度
+
+2026-11-03：已套用使用者選定的 A「華麗王室」美術方向：黑藍大理石、酒紅絨布、古金壁板、尖拱、燭光吊燈與冷月光。音樂室使用開蓋鋼琴，畫廊使用國王／艾琳／伊恩油畫與精細雕花框，工坊有雕花木櫃、象牙白展示人偶與胸口發條心臟示意。原本14個互動入口、三扇門與可行走區保留；主要家具的碰撞範圍依替換模型同步調整。
+
+依使用者後續選擇，主要物件已改用14種現成精細CC0模型，包括雕花家具、吊燈、燭臺、畫框、雕像、鋼琴、落地鐘、人物及人偶。模型不是A圖的客製資產，因此造型、人物面貌與髮型仍有差異。
+
+這是可自由走動的場景探索版；完整五關謎題、角色動畫與終典演出尚未開放。原始概念圖作為美術方向，並非實際遊戲截圖。
 
 步驟 01～06 已實作。開啟 game/index.html，按「進入城堡」後再按「開始探索」。
 
@@ -84,7 +94,7 @@ $projectPnpm = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-r
 
 ## 素材與驗證
 
-目前沒有使用網路模型、圖片、字型或音訊。後續新增素材也須內嵌並測試 file://、離線及複製到其他位置開啟。
+已新增 ImageGen 材質與油畫，以及 Poly Haven／Innerscene 的14種CC0模型，全部內嵌於單一HTML。完整作者、來源、授權與修改見 `game/CREDITS.md` 與 `game/assets/models/sources.json`；沒有外部字型或音訊。後續新增素材也須內嵌並測試 file://、離線及複製到其他位置開啟。
 來源記錄於 `game/CREDITS.md`。資料測試不能代替 `TEST.md` 的瀏覽器操作測試；最新配置測試見 [多房間驗證](test-results/rooms.md)，前次紀錄保留於 test-results/。
 歷史紀錄保留當時路徑與環境，不能視為目前的開啟方式。
 

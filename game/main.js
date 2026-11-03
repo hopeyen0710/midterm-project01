@@ -63,13 +63,14 @@ async function openScene() {
   await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
   if (request !== openRequest || sceneScreen.hidden) return;
   try {
-    viewer = createCastleScene(viewport, showError, (locked, error) => {
+    const candidate = await createCastleScene(viewport, showError, (locked, error) => {
       explorePrompt.hidden = locked || sceneScreen.hidden || viewport.dataset.state === 'error';
       exploreStatus.textContent = error || 'WASD 移動 · 滑鼠環視 · F 互動 · Esc 釋放游標';
       reticle.hidden = !locked;
       if (!locked) interactionHint.hidden = true;
     }, {
       state: interactionState,
+      onProgress(text) { if(request===openRequest)status.textContent=text; },
       onLocation(room) { document.querySelector('#room-location').textContent = room.name; },
       onHint(target) {
         interactionHint.hidden = !target;
@@ -84,6 +85,8 @@ async function openScene() {
         feedback.dataset.sequence = String(event.sequence);
       },
     });
+    if(request!==openRequest||sceneScreen.hidden){candidate.dispose();return;}
+    viewer=candidate;
     viewer.setArea(document.querySelector('#area-select').value);
     viewport.dataset.state = 'ready';
     message.hidden = true;
