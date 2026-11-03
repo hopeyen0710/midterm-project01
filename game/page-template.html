@@ -44,20 +44,20 @@
         <p id="scene-status">正在準備場景…</p>
         <button type="button" id="retry-button" hidden>重新嘗試</button>
       </div>
-      <p id="scene-caption" class="scene-caption" hidden>WASD 移動 · 滑鼠環視 · Esc 釋放游標 · F 互動</p>
+      <p id="scene-caption" class="scene-caption" hidden>WASD 移動 · 點擊場景環視／拖曳環視 · F 互動</p>
       <p id="objective-status" class="objective-status" role="status"></p>
       <div id="reticle" class="reticle" aria-hidden="true" hidden></div>
       <p id="interaction-hint" class="interaction-hint" role="status" hidden></p>
       <p id="interaction-feedback" class="interaction-feedback" role="status" hidden></p>
       <div id="explore-prompt" class="explore-prompt" hidden>
-        <button type="button" id="explore-button">開始探索</button>
+
         <p id="explore-status">WASD 移動 · 滑鼠環視 · Esc 釋放游標</p>
       </div>
     </section>
     <dialog id="help-dialog" aria-labelledby="help-title">
       <h2 id="help-title">操作說明</h2>
       <p>探索開放後，使用以下操作：</p>
-      <dl><dt>W A S D</dt><dd>前、左、後、右移動</dd><dt>滑鼠</dt><dd>環顧四周</dd><dt>F</dt><dd>與眼前的物品互動</dd><dt>Esc</dt><dd>離開滑鼠鎖定或關閉說明</dd></dl>
+      <dl><dt>W A S D</dt><dd>前、左、後、右移動</dd><dt>滑鼠</dt><dd>點擊場景鎖定滑鼠環視；未鎖定時可按住拖曳。劇情與閱讀結束後會自動恢復 WASD／F 操作。</dd><dt>F</dt><dd>與眼前的物品互動</dd><dt>Esc</dt><dd>離開滑鼠鎖定或關閉說明</dd></dl>
       <form method="dialog"><button type="submit">關閉說明</button></form>
     </dialog>
     <dialog id="story-dialog" class="story-dialog" aria-labelledby="story-title">

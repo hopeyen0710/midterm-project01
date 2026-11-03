@@ -9,7 +9,7 @@ exports.createWalker=async function(page){
  async function lock(){
   await close();
   for(let attempt=0;attempt<3;attempt++){
-   if(!await page.evaluate(()=>!!document.pointerLockElement)){await page.waitForTimeout(1600);await page.locator('#explore-button').click();}
+   if(!await page.evaluate(()=>!!document.pointerLockElement)){await page.waitForTimeout(1600);await page.locator('#scene-viewport canvas').click({position:{x:250,y:250}});}
    try{await page.waitForFunction(()=>document.pointerLockElement===document.querySelector('canvas')&&document.querySelector('canvas').dataset.pointerLocked==='true',{},{timeout:4000});await page.locator('#explore-prompt').waitFor({state:'hidden',timeout:4000});await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));return;}
    catch(error){if(attempt===2)throw error;}
   }

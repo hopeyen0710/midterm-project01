@@ -38,7 +38,7 @@ export function createInteractions(scene, camera, canvas, container, ui = {}) {
   container.dataset.interactionCatalog = JSON.stringify([...catalog.values()].map(({ meshes, ...target }) => ({...target,meshNames:meshes.map(mesh=>mesh.name)})));
   container.dataset.interactionDistance = String(interactionSettings.maxDistance);
   function publish() { container.dataset.interactionState = JSON.stringify({ collected: [...state.collected], counts: state.counts, sequence: state.sequence, doors: state.doors || {} }); }
-  function canUse() { return enabled && document.pointerLockElement === canvas; }
+  function canUse() { return enabled && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName); }
   function choose() { return canUse() ? selectInteraction(scene, camera, catalog, areaId, interactionSettings, hit => {container.dataset.interactionRay=JSON.stringify(hit);}) : null; }
   function hint(selection) {
     const next = selection ? selection.target.id : '';
