@@ -38,7 +38,7 @@ export function buildCastle(scene, state = {}) {
   box('front-lintel',0,6.7,12,4.2,1.6,0.6,'darkStone');
   box('closed-door',0,3.25,12,4.2,5.3,0.5,'wood',true);
   box('door-seam',0,2.9,11.73,0.035,4.4,0.03,'gold');
-  for(const x of [-0.3,0.3])sphere(x,2.5,11.66,0.09,'gold');
+  for(const x of [-0.3,0.3])sphere(x,2.5,11.66,0.09,'gold').name='entrance-handle';
   box('ceiling',0,7.6,-1,22,0.3,26,'darkStone');
   box('runner',0,0.612,6,3,0.02,9,'red');
   for(const x of [-10.1,10.1])for(const z of [-10,-3,4,10]) {
@@ -147,5 +147,12 @@ export function buildCastle(scene, state = {}) {
   activeSection='hall';
   const doors=buildSideRooms(scene,{box,label,mats,colliders},state);
   applyRoyalStyle(scene, mats);
-  return { colliders, areas, landmarks, groundHeight, roomAt, doors };
+  const exteriorGate = { id:'exterior-closed-gate', area:'outside', minX:-2.1, maxX:2.1, minZ:11.75, maxZ:13, enabled:true };
+  colliders.push(exteriorGate);
+  function setEntranceOpen(open) {
+    exteriorGate.enabled = !open;
+    scene.traverse(object => { if (['closed-door','door-seam','entrance-handle','entrance-detail'].includes(object.name)) object.visible = !open; });
+    scene.traverse(object => { if (object.name==='white-ribbon') object.visible=!open&&!state.collected?.has('ribbon'); });
+  }
+  return { colliders, areas, landmarks, groundHeight, roomAt, doors, setEntranceOpen };
 }

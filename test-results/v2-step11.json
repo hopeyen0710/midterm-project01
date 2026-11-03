@@ -1,0 +1,4500 @@
+{
+  "step": "v2-step11",
+  "recordedAt": "2026-11-03T18:11:36.409Z",
+  "environment": {
+    "browser": "151.0.7922.34",
+    "os": "win32",
+    "node": "v24.22.1",
+    "offline": true,
+    "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+    "viewport": "800×600、1280×720、390×844；deviceScaleFactor 1",
+    "browserPlugin": "Browser plugin not available; regular Playwright used.",
+    "rendering": "信件、對話及尺寸截圖使用真實 WebGL 繪圖；WASD、角色位移追跡與射線互動測試暫停 draw 呼叫，保留正式模型、控制、碰撞與射線。角色演出邏輯以實際模型位置追跡驗證，並非實體 GPU 畫質或骨架步行驗證。未測真實 GPU 效能或實體揚聲器聽感。"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "577c1abeac2d01bed54a11ef9bc392c35436016f28a43bf4d0084ee5e4e59555",
+    "TEST.md": "26b5a83230b60b2ea21e3955390eddfbb6c768189495f7e8bf4b9e4fa0100545",
+    "Stage/stage1.md": "0c50b473892ddf52fe487fd1217bd7ccf8f22ed574cd3cb8054962bb287e1746",
+    "game/index.html": "28f34eafe0c97be6322c725a0e8aae52679c79a173d2f46a19e763a360590b17",
+    "game/stage1-data.js": "b7966cb1d916721bdcfb6c0c07dc9f6197f20738f06c31685cf3bfd9c5907733",
+    "game/opening.js": "bac3b18b1fa5b64019855bb0c53e6f231613f6fdc67c5d679fe9d4ac7281bb3d",
+    "game/ui.js": "4b7e7f1b99fa9258c41081478677aaf8ff45270d9211ac3323b713d7d6ce2dd2",
+    "game/state.js": "5d796f68569d6373bd5680531abc199a4dfcda19e02e3bb32a40775e73f089a5",
+    "game/main.js": "3f2912a5c89639349eb613062e04443b2b6a201945e95b400b02cadf4b9f7a6c",
+    "game/page-template.html": "a22aab7ebf30c7d566d52dc6739b3abfc02699ff40fb9e0c633267835594ce63",
+    "game/styles.css": "818fe5759d9b6eda8ab1e0d01ac64529792f0f08d144c37b5425e7c8f675ac8c",
+    "game/scene.js": "1febdf81264e6402d7096ba7b89fbb2b20276494404dffe466cde8ccb4b492f7",
+    "game/audio.js": "2cf478852a4532377ee7c29c092f42245f8e6a18b67dc570ba1c36885d999ca3",
+    "game/scripts/build.mjs": "ee57611470030f5d8c94fefee222886445de50672694afd79db0390affe1eaf5",
+    "game/indoor-story.js": "bb88aa4ad1220db81c6c0cfeea4df390f75caa0cf4ddd70aa1176b4841512f2d",
+    "game/piano-clue-data.js": "29960ccccf5b640e58dcdfdb707d0f96aa73e43bf772424480aee032c17acf95",
+    "game/piano-props.js": "daa3edbc5323c813f6e3afc56ef7f5f8c6c3b09722aedb49bbc17b83c30ba454",
+    "game/piano-ui.js": "06a0000342e45431771603783930a88d20f53c216d1c4044ee3c705fa892c7a8",
+    "game/interaction-data.js": "781f5d4fd21eab543a8aaab67f3a5720a4cf84b7742666a9b6952111927a0d44"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\nstep4 劇情選項\r\n1.與npc互動時依照玩家選的回答選項回覆不同話\r\n第二階段\r\nstep5 開幕\r\n1.確認畫面有顯示求救信件\r\n2.旁白有正常顯示\r\n3.劇情選項有正常出現\r\nstep6 關卡一\r\n1.與鋼琴交互畫面會跳出琴鍵其中四個按鍵分別為月亮，鳥，花，王冠，其餘按鍵為正常琴鍵\r\n2.鋼琴上的紙條可以正常互動\r\n3.紙條上的內容顯示正常\r\n4.鋼琴旁的音樂盒可以正常查看\r\n5.音樂盒內部圖案顯示正確\r\n6.按照月亮 → 鳥 → 花 → 王冠觸發伊恩會將後兩位彈錯的提示\r\n7.按照月亮 → 鳥 → 王冠 → 花 鋼琴暗格開啟得到紅玻璃吊墜\r\n8.點擊吊墜後物品說明正常顯示\r\n\r\n\r\n\r\n\r\n",
+  "checks": [
+    {
+      "id": "T5.1.1",
+      "title": "新局顯示漸顯泛黃求救信與雨聲",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "fade": {
+          "animation": "letter-arrives",
+          "color": "radial-gradient(at 35% 20%, rgb(241, 223, 184), rgb(226, 199, 145) 75%, rgb(197, 165, 107))",
+          "keyframes": [
+            {
+              "offset": 0,
+              "opacity": "0"
+            },
+            {
+              "offset": 1,
+              "opacity": "1"
+            }
+          ]
+        },
+        "audio": {
+          "mode": "outside",
+          "muted": false,
+          "state": "running",
+          "rainGain": 0.3499999940395355,
+          "insideGain": 0
+        },
+        "playerName": "林雨"
+      }
+    },
+    {
+      "id": "T5.1.2",
+      "title": "信件逐句內容與署名符合 stage1",
+      "status": "通過",
+      "evidence": {
+        "lines": [
+          "「請在午夜以前抵達。",
+          "如果大門旁有人叫住你，請回答他。",
+          "他已經很久沒有和城堡外的人說話了。」",
+          "——艾琳"
+        ]
+      }
+    },
+    {
+      "id": "T5.1.3",
+      "title": "三種視窗尺寸均可讀完信件與操作",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "dialog": {
+            "x": 310,
+            "y": 98.21875,
+            "width": 660,
+            "height": 523.5625
+          },
+          "body": {
+            "height": 248,
+            "scrollHeight": 248
+          }
+        },
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 62.21875,
+            "width": 660,
+            "height": 475.5625
+          },
+          "body": {
+            "height": 208,
+            "scrollHeight": 208
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 180.21875,
+            "width": 352,
+            "height": 483.5625
+          },
+          "body": {
+            "height": 244,
+            "scrollHeight": 244
+          }
+        }
+      ]
+    },
+    {
+      "id": "T5.2.1",
+      "title": "旁白與伊恩台詞有清楚區別",
+      "status": "通過",
+      "evidence": {
+        "narration": "一封求救信",
+        "question": "你是……從外面來的人？"
+      }
+    },
+    {
+      "id": "T5.3.3",
+      "title": "開幕三選項可到達、快速提交不跨分支且面板隔離輸入",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1280,
+              "height": 720
+            },
+            "dialog": {
+              "x": 310,
+              "y": 106.84375,
+              "width": 660,
+              "height": 506.3125
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 186.84375,
+              "width": 352,
+              "height": 470.3125
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          }
+        ],
+        "position": {
+          "x": 0,
+          "y": 1.65,
+          "z": 20.5
+        },
+        "onlyAnswer": [
+          {
+            "id": "opening-answer-silence",
+            "speaker": "visitor",
+            "text": "……"
+          }
+        ],
+        "silenceReturnsToChoices": true
+      }
+    },
+    {
+      "id": "V2.GATE",
+      "title": "有效回覆讀完前門維持關閉，入室後關門及切換環境聲",
+      "status": "通過",
+      "evidence": {
+        "closed": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.325116666666606
+        },
+        "inside": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8
+        },
+        "state": {
+          "playerName": "林雨",
+          "promiseChoice": null,
+          "stage": "opening",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall"
+          ],
+          "documents": [
+            "rescueLetter"
+          ],
+          "conversations": [
+            {
+              "id": "opening-ian-question",
+              "speaker": "ian",
+              "text": "你是……從外面來的人？"
+            },
+            {
+              "id": "opening-answer-silence",
+              "speaker": "visitor",
+              "text": "……"
+            },
+            {
+              "id": "opening-reply-silence",
+              "speaker": "ian",
+              "text": "你沒聽見嗎？她信上不是請你回答？"
+            },
+            {
+              "id": "opening-answer-letter",
+              "speaker": "visitor",
+              "text": "我收到艾琳的信。"
+            },
+            {
+              "id": "opening-reply-letter",
+              "speaker": "ian",
+              "text": "她真的把信送出去了……進來吧。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        "audio": {
+          "mode": "inside",
+          "muted": false,
+          "state": "running",
+          "rainGain": 0.3354087173938751,
+          "insideGain": 0.003752046264708042
+        }
+      }
+    },
+    {
+      "id": "T5.2.3",
+      "title": "旁白長句與完整內容在一般及窄視窗可讀",
+      "status": "通過",
+      "evidence": {
+        "entryNarration": "雨聲消失，城堡大門在身後關上。\n\n大廳中央有高臺與座椅。艾琳坐在高臺邊，正把白花一朵朵拔出。",
+        "sizes": [
+          {
+            "viewport": {
+              "width": 800,
+              "height": 600
+            },
+            "dialog": {
+              "x": 70,
+              "y": 119.03125,
+              "width": 660,
+              "height": 361.9375
+            },
+            "body": {
+              "height": 94,
+              "scrollHeight": 94
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 239.4375,
+              "width": 352,
+              "height": 365.125
+            },
+            "body": {
+              "height": 126,
+              "scrollHeight": 126
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "T5.2.2",
+      "title": "旁白、對話與重開流程順序正確且沒有殘留上一段",
+      "status": "通過",
+      "evidence": {
+        "branches": [
+          {
+            "choice": "……",
+            "reply": "你沒聽見嗎？她信上不是請你回答？",
+            "doorOpen": false
+          },
+          {
+            "choice": "我收到艾琳的信。",
+            "reply": "她真的把信送出去了……進來吧。",
+            "opensAfterReply": true
+          },
+          {
+            "choice": "你是誰？",
+            "reply": "伊恩。你是來找艾琳的吧？",
+            "opensAfterReply": true
+          }
+        ],
+        "restartClearedProgress": true,
+        "returnedWithoutRepeatingLetter": true,
+        "reducedMotion": true
+      }
+    },
+    {
+      "id": "T5.3.1",
+      "title": "所有開幕選項依序出現，承諾含三項回答",
+      "status": "通過",
+      "evidence": {
+        "promiseIndex": 0,
+        "seen": [
+          "你來晚了。",
+          "我是說，這場宴會已經過時很久了。",
+          "這是我的字。可我不記得……",
+          "不記得有人真的回來過。",
+          "拜託，帶我出去",
+          "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+          "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+        ],
+        "first": [
+          {
+            "phase": "start",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "leaving",
+            "offset": 0.000007493749603132411,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999974235026592,
+                  -2.906276137390808
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.0000025759764260767664,
+                  0.000007493749603132411
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "frozen",
+            "offset": 1.6,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9499999994790853,
+                  -1.3062836311404111
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.55,
+                  1.6
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "returning",
+            "offset": 0,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "seated",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ],
+        "second": [
+          {
+            "phase": "start",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "leaving",
+            "offset": 0.00023040980795610425,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999207961076004,
+                  -2.906053221332455
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.00007920337148491083,
+                  0.00023040980795610425
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "frozen",
+            "offset": 1.6,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9499999994790853,
+                  -1.3062836311404111
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.55,
+                  1.6
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "returning",
+            "offset": 1.595677259680004,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9514859414640839,
+                  -1.3106063714604073
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.5485140580150014,
+                  1.595677259680004
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "seated",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ],
+        "book": [
+          "二十三時三十分。外來賓客入席。",
+          "午夜鐘響，公主的心跳必須停止。"
+        ],
+        "layouts": [
+          {
+            "viewport": {
+              "width": 800,
+              "height": 600
+            },
+            "dialog": {
+              "x": 70,
+              "y": 110.03125,
+              "width": 660,
+              "height": 379.9375
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 197.84375,
+              "width": 352,
+              "height": 448.3125
+            },
+            "body": {
+              "height": 78,
+              "scrollHeight": 78
+            }
+          }
+        ],
+        "result": {
+          "playerName": "林雨",
+          "promiseChoice": 0,
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened"
+          ],
+          "documents": [
+            "rescueLetter",
+            "openingCommand"
+          ],
+          "conversations": [
+            {
+              "id": "opening-ian-question",
+              "speaker": "ian",
+              "text": "你是……從外面來的人？"
+            },
+            {
+              "id": "opening-answer-silence",
+              "speaker": "visitor",
+              "text": "……"
+            },
+            {
+              "id": "opening-reply-silence",
+              "speaker": "ian",
+              "text": "你沒聽見嗎？她信上不是請你回答？"
+            },
+            {
+              "id": "opening-answer-letter",
+              "speaker": "visitor",
+              "text": "我收到艾琳的信。"
+            },
+            {
+              "id": "opening-reply-letter",
+              "speaker": "ian",
+              "text": "她真的把信送出去了……進來吧。"
+            },
+            {
+              "id": "indoor-erin-0",
+              "speaker": "erin",
+              "text": "你來晚了。"
+            },
+            {
+              "id": "indoor-erin-1",
+              "speaker": "erin",
+              "text": "我是說，這場宴會已經過時很久了。"
+            },
+            {
+              "id": "indoor-erin-2",
+              "speaker": "erin",
+              "text": "這是我的字。可我不記得……"
+            },
+            {
+              "id": "indoor-erin-3",
+              "speaker": "erin",
+              "text": "不記得有人真的回來過。"
+            },
+            {
+              "id": "indoor-erin-4",
+              "speaker": "erin",
+              "text": "拜託，帶我出去"
+            },
+            {
+              "id": "indoor-看見了嗎？我不是不想走。",
+              "speaker": "erin",
+              "text": "看見了嗎？我不是不想走。"
+            },
+            {
+              "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+              "speaker": "erin",
+              "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+            },
+            {
+              "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+              "speaker": "ian",
+              "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+            },
+            {
+              "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+              "speaker": "ian",
+              "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+            },
+            {
+              "id": "indoor-林雨，先答應我一件事。",
+              "speaker": "erin",
+              "text": "林雨，先答應我一件事。"
+            },
+            {
+              "id": "indoor-honesty-request",
+              "speaker": "erin",
+              "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+            },
+            {
+              "id": "promise-answer-0",
+              "speaker": "visitor",
+              "text": "我答應妳。我不會隱瞞。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        }
+      }
+    },
+    {
+      "id": "T5.3.2",
+      "title": "三種承諾各自走完室內事件並合流，不懲罰任一回答",
+      "status": "通過",
+      "evidence": [
+        {
+          "promiseIndex": 0,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.000007493749603132411,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999974235026592,
+                    -2.906276137390808
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0000025759764260767664,
+                    0.000007493749603132411
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 0,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.00023040980795610425,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999207961076004,
+                    -2.906053221332455
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.00007920337148491083,
+                    0.00023040980795610425
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.595677259680004,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9514859414640839,
+                    -1.3106063714604073
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5485140580150014,
+                    1.595677259680004
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "林雨",
+            "promiseChoice": 0,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-silence",
+                "speaker": "visitor",
+                "text": "……"
+              },
+              {
+                "id": "opening-reply-silence",
+                "speaker": "ian",
+                "text": "你沒聽見嗎？她信上不是請你回答？"
+              },
+              {
+                "id": "opening-answer-letter",
+                "speaker": "visitor",
+                "text": "我收到艾琳的信。"
+              },
+              {
+                "id": "opening-reply-letter",
+                "speaker": "ian",
+                "text": "她真的把信送出去了……進來吧。"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-林雨，先答應我一件事。",
+                "speaker": "erin",
+                "text": "林雨，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-0",
+                "speaker": "visitor",
+                "text": "我答應妳。我不會隱瞞。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        },
+        {
+          "promiseIndex": 1,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0005592648165180728,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4998077521984072,
+                    -2.905724366323893
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.00019224728067808753,
+                    0.0005592648165180728
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5869089459181673,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9545000493197153,
+                    -1.3193746852222439
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.54549995015937,
+                    1.5869089459181673
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0012967561762456926,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4995542395435009,
+                    -2.9049868749641656
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0004457599355844568,
+                    0.0012967561762456926
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5760662418679252,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9582272288369861,
+                    -1.330217389272486
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5417727706420993,
+                    1.5760662418679252
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 1,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-identity",
+                "speaker": "visitor",
+                "text": "你是誰？"
+              },
+              {
+                "id": "opening-reply-identity",
+                "speaker": "ian",
+                "text": "伊恩。你是來找艾琳的吧？"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-訪客，先答應我一件事。",
+                "speaker": "erin",
+                "text": "訪客，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-1",
+                "speaker": "visitor",
+                "text": "我會盡力，但我不能保證。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        },
+        {
+          "promiseIndex": 2,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0014300143604252396,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4995084320426892,
+                    -2.904853616779986
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0004915674363961762,
+                    0.0014300143604252396
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5575034050652807,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.964608203987895,
+                    -1.3487802260751305
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5353917954911903,
+                    1.5575034050652807
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.000001480932608128253,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999994904085012,
+                    -2.906282150207803
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -5.09070584044087e-7,
+                    0.000001480932608128253
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5584355238137095,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9642877881681227,
+                    -1.3478481073267017
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5357122113109627,
+                    1.5584355238137095
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 2,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-letter",
+                "speaker": "visitor",
+                "text": "我收到艾琳的信。"
+              },
+              {
+                "id": "opening-reply-letter",
+                "speaker": "ian",
+                "text": "她真的把信送出去了……進來吧。"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-訪客，先答應我一件事。",
+                "speaker": "erin",
+                "text": "訪客，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-2",
+                "speaker": "visitor",
+                "text": "妳一定會沒事的。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "T6.2.1",
+      "title": "實際走到鋼琴兩張紙條並分別用 F 查看",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.2.2",
+      "title": "紙條近距離可讀，遠距離與前方不透明物遮擋不操作後方紙條",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.2.3",
+      "title": "關閉重開紙條不堆疊介面",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.3.1",
+      "title": "兩張紙條全文與八聲部對照符合 stage1",
+      "status": "通過",
+      "evidence": {
+        "note": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。",
+        "rows": [
+          "格數12345678",
+          "聲部賓王賓王賓王賓王"
+        ]
+      }
+    },
+    {
+      "id": "T6.3.2",
+      "title": "紙條一般及窄視窗完整可讀，對照表可水平捲動",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 116.03125,
+            "width": 660,
+            "height": 367.9375
+          },
+          "body": {
+            "height": 47,
+            "scrollHeight": 47
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 236.4375,
+            "width": 352,
+            "height": 371.125
+          },
+          "body": {
+            "height": 78,
+            "scrollHeight": 78
+          }
+        },
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 65.9375,
+            "width": 660,
+            "height": 468.125
+          },
+          "body": {
+            "height": 147,
+            "scrollHeight": 147
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 201.9375,
+            "width": 352,
+            "height": 440.125
+          },
+          "body": {
+            "height": 147,
+            "scrollHeight": 147
+          }
+        }
+      ]
+    },
+    {
+      "id": "T6.3.3",
+      "title": "同一狀態重讀紙條內容一致",
+      "status": "通過",
+      "evidence": {
+        "first": "格數12345678聲部賓王賓王賓王賓王"
+      }
+    },
+    {
+      "id": "T6.4.1",
+      "title": "走到老舊音樂盒並開啟盒內查看",
+      "status": "通過",
+      "evidence": {
+        "title": "音樂盒・八格圖案",
+        "position": {
+          "x": -20.073719364516446,
+          "y": 2.25,
+          "z": 2.332027665861714,
+          "yaw": 0.7140000000000017,
+          "pitch": -0.24
+        }
+      }
+    },
+    {
+      "id": "T6.4.2",
+      "title": "盒內可關閉返回再開啟",
+      "status": "通過",
+      "evidence": {
+        "slots": 8
+      }
+    },
+    {
+      "id": "T6.4.3",
+      "title": "音樂盒面板隔離按鍵，退出後控制正常",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": -20.073719364516446,
+          "y": 2.25,
+          "z": 2.332027665861714,
+          "yaw": 0.7140000000000017,
+          "pitch": -0.24
+        },
+        "modalCount": 1
+      }
+    },
+    {
+      "id": "T6.5.1",
+      "title": "八格圖案、格號與鳥標籤逐一正確",
+      "status": "通過",
+      "evidence": {
+        "names": [
+          "月亮",
+          "王冠",
+          "鳥",
+          "花",
+          "花",
+          "月亮",
+          "王冠",
+          "鳥"
+        ]
+      }
+    },
+    {
+      "id": "T6.5.2",
+      "title": "音樂盒八格在一般及窄視窗完整顯示",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 16,
+            "width": 660,
+            "height": 568
+          },
+          "body": {
+            "height": 300,
+            "scrollHeight": 357
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 116.265625,
+            "width": 352,
+            "height": 611.46875
+          },
+          "body": {
+            "height": 319,
+            "scrollHeight": 319
+          }
+        }
+      ]
+    },
+    {
+      "id": "T6.5.3",
+      "title": "音樂盒重看圖案不變且證據可從隨身紀錄重讀",
+      "status": "通過",
+      "evidence": {
+        "documents": [
+          "rescueLetter",
+          "openingCommand",
+          "pianoNote",
+          "pianoVoices",
+          "musicBox"
+        ],
+        "boxExpected": [
+          "月亮",
+          "王冠",
+          "鳥",
+          "花",
+          "花",
+          "月亮",
+          "王冠",
+          "鳥"
+        ]
+      }
+    },
+    {
+      "id": "V2.DATA",
+      "title": "新版資料可追溯 stage1 且線索整理不等於已實作",
+      "status": "通過",
+      "evidence": {
+        "source": {
+          "file": "Stage/stage1.md",
+          "sha256": "0c50b473892ddf52fe487fd1217bd7ccf8f22ed574cd3cb8054962bb287e1746",
+          "characterAlias": {
+            "艾玲": "艾琳"
+          }
+        },
+        "box": [
+          {
+            "slot": 1,
+            "voice": "賓",
+            "symbol": "☾",
+            "name": "月亮"
+          },
+          {
+            "slot": 2,
+            "voice": "王",
+            "symbol": "♛",
+            "name": "王冠"
+          },
+          {
+            "slot": 3,
+            "voice": "賓",
+            "symbol": "♧",
+            "name": "鳥"
+          },
+          {
+            "slot": 4,
+            "voice": "王",
+            "symbol": "✿",
+            "name": "花"
+          },
+          {
+            "slot": 5,
+            "voice": "賓",
+            "symbol": "✿",
+            "name": "花"
+          },
+          {
+            "slot": 6,
+            "voice": "王",
+            "symbol": "☾",
+            "name": "月亮"
+          },
+          {
+            "slot": 7,
+            "voice": "賓",
+            "symbol": "♛",
+            "name": "王冠"
+          },
+          {
+            "slot": 8,
+            "voice": "王",
+            "symbol": "♧",
+            "name": "鳥"
+          }
+        ],
+        "implementedScope": "僅 step09 門外開場；鋼琴資料尚未接入玩法"
+      }
+    },
+    {
+      "id": "V2.HEALTH",
+      "title": "本輪開幕操作無執行錯誤與外部請求",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T5.1.1",
+      "title": "新局顯示漸顯泛黃求救信與雨聲",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "fade": {
+          "animation": "letter-arrives",
+          "color": "radial-gradient(at 35% 20%, rgb(241, 223, 184), rgb(226, 199, 145) 75%, rgb(197, 165, 107))",
+          "keyframes": [
+            {
+              "offset": 0,
+              "opacity": "0"
+            },
+            {
+              "offset": 1,
+              "opacity": "1"
+            }
+          ]
+        },
+        "audio": {
+          "mode": "outside",
+          "muted": false,
+          "state": "running",
+          "rainGain": 0.3499999940395355,
+          "insideGain": 0
+        },
+        "playerName": "林雨"
+      }
+    },
+    {
+      "id": "T5.1.2",
+      "title": "信件逐句內容與署名符合 stage1",
+      "status": "通過",
+      "evidence": {
+        "lines": [
+          "「請在午夜以前抵達。",
+          "如果大門旁有人叫住你，請回答他。",
+          "他已經很久沒有和城堡外的人說話了。」",
+          "——艾琳"
+        ]
+      }
+    },
+    {
+      "id": "T5.1.3",
+      "title": "三種視窗尺寸均可讀完信件與操作",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "dialog": {
+            "x": 310,
+            "y": 98.21875,
+            "width": 660,
+            "height": 523.5625
+          },
+          "body": {
+            "height": 248,
+            "scrollHeight": 248
+          }
+        },
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 62.21875,
+            "width": 660,
+            "height": 475.5625
+          },
+          "body": {
+            "height": 208,
+            "scrollHeight": 208
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 180.21875,
+            "width": 352,
+            "height": 483.5625
+          },
+          "body": {
+            "height": 244,
+            "scrollHeight": 244
+          }
+        }
+      ]
+    },
+    {
+      "id": "T5.2.1",
+      "title": "旁白與伊恩台詞有清楚區別",
+      "status": "通過",
+      "evidence": {
+        "narration": "一封求救信",
+        "question": "你是……從外面來的人？"
+      }
+    },
+    {
+      "id": "T5.2.2",
+      "title": "旁白、對話與重開流程順序正確且沒有殘留上一段",
+      "status": "通過",
+      "evidence": {
+        "branches": [
+          {
+            "choice": "……",
+            "reply": "你沒聽見嗎？她信上不是請你回答？",
+            "doorOpen": false
+          },
+          {
+            "choice": "我收到艾琳的信。",
+            "reply": "她真的把信送出去了……進來吧。",
+            "opensAfterReply": true
+          },
+          {
+            "choice": "你是誰？",
+            "reply": "伊恩。你是來找艾琳的吧？",
+            "opensAfterReply": true
+          }
+        ],
+        "restartClearedProgress": true,
+        "returnedWithoutRepeatingLetter": true,
+        "reducedMotion": true
+      }
+    },
+    {
+      "id": "T5.2.3",
+      "title": "旁白長句與完整內容在一般及窄視窗可讀",
+      "status": "通過",
+      "evidence": {
+        "entryNarration": "雨聲消失，城堡大門在身後關上。\n\n大廳中央有高臺與座椅。艾琳坐在高臺邊，正把白花一朵朵拔出。",
+        "sizes": [
+          {
+            "viewport": {
+              "width": 800,
+              "height": 600
+            },
+            "dialog": {
+              "x": 70,
+              "y": 119.03125,
+              "width": 660,
+              "height": 361.9375
+            },
+            "body": {
+              "height": 94,
+              "scrollHeight": 94
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 239.4375,
+              "width": 352,
+              "height": 365.125
+            },
+            "body": {
+              "height": 126,
+              "scrollHeight": 126
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "T5.3.1",
+      "title": "所有開幕選項依序出現，承諾含三項回答",
+      "status": "通過",
+      "evidence": {
+        "promiseIndex": 0,
+        "seen": [
+          "你來晚了。",
+          "我是說，這場宴會已經過時很久了。",
+          "這是我的字。可我不記得……",
+          "不記得有人真的回來過。",
+          "拜託，帶我出去",
+          "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+          "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+        ],
+        "first": [
+          {
+            "phase": "start",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "leaving",
+            "offset": 0.000007493749603132411,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999974235026592,
+                  -2.906276137390808
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.0000025759764260767664,
+                  0.000007493749603132411
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "frozen",
+            "offset": 1.6,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9499999994790853,
+                  -1.3062836311404111
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.55,
+                  1.6
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "returning",
+            "offset": 0,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "seated",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ],
+        "second": [
+          {
+            "phase": "start",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "leaving",
+            "offset": 0.00023040980795610425,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999207961076004,
+                  -2.906053221332455
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.00007920337148491083,
+                  0.00023040980795610425
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "frozen",
+            "offset": 1.6,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9499999994790853,
+                  -1.3062836311404111
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.55,
+                  1.6
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "returning",
+            "offset": 1.595677259680004,
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  0.9514859414640839,
+                  -1.3106063714604073
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  -0.5485140580150014,
+                  1.595677259680004
+                ]
+              }
+            ]
+          },
+          {
+            "phase": "seated",
+            "actors": [
+              {
+                "name": "detail-woman",
+                "position": [
+                  2.3338689814078606e-8,
+                  1.4999999994790854,
+                  -2.906283631140411
+                ]
+              },
+              {
+                "name": "erin-gown",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ],
+        "book": [
+          "二十三時三十分。外來賓客入席。",
+          "午夜鐘響，公主的心跳必須停止。"
+        ],
+        "layouts": [
+          {
+            "viewport": {
+              "width": 800,
+              "height": 600
+            },
+            "dialog": {
+              "x": 70,
+              "y": 110.03125,
+              "width": 660,
+              "height": 379.9375
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 197.84375,
+              "width": 352,
+              "height": 448.3125
+            },
+            "body": {
+              "height": 78,
+              "scrollHeight": 78
+            }
+          }
+        ],
+        "result": {
+          "playerName": "林雨",
+          "promiseChoice": 0,
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened"
+          ],
+          "documents": [
+            "rescueLetter",
+            "openingCommand"
+          ],
+          "conversations": [
+            {
+              "id": "opening-ian-question",
+              "speaker": "ian",
+              "text": "你是……從外面來的人？"
+            },
+            {
+              "id": "opening-answer-silence",
+              "speaker": "visitor",
+              "text": "……"
+            },
+            {
+              "id": "opening-reply-silence",
+              "speaker": "ian",
+              "text": "你沒聽見嗎？她信上不是請你回答？"
+            },
+            {
+              "id": "opening-answer-letter",
+              "speaker": "visitor",
+              "text": "我收到艾琳的信。"
+            },
+            {
+              "id": "opening-reply-letter",
+              "speaker": "ian",
+              "text": "她真的把信送出去了……進來吧。"
+            },
+            {
+              "id": "indoor-erin-0",
+              "speaker": "erin",
+              "text": "你來晚了。"
+            },
+            {
+              "id": "indoor-erin-1",
+              "speaker": "erin",
+              "text": "我是說，這場宴會已經過時很久了。"
+            },
+            {
+              "id": "indoor-erin-2",
+              "speaker": "erin",
+              "text": "這是我的字。可我不記得……"
+            },
+            {
+              "id": "indoor-erin-3",
+              "speaker": "erin",
+              "text": "不記得有人真的回來過。"
+            },
+            {
+              "id": "indoor-erin-4",
+              "speaker": "erin",
+              "text": "拜託，帶我出去"
+            },
+            {
+              "id": "indoor-看見了嗎？我不是不想走。",
+              "speaker": "erin",
+              "text": "看見了嗎？我不是不想走。"
+            },
+            {
+              "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+              "speaker": "erin",
+              "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+            },
+            {
+              "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+              "speaker": "ian",
+              "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+            },
+            {
+              "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+              "speaker": "ian",
+              "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+            },
+            {
+              "id": "indoor-林雨，先答應我一件事。",
+              "speaker": "erin",
+              "text": "林雨，先答應我一件事。"
+            },
+            {
+              "id": "indoor-honesty-request",
+              "speaker": "erin",
+              "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+            },
+            {
+              "id": "promise-answer-0",
+              "speaker": "visitor",
+              "text": "我答應妳。我不會隱瞞。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        }
+      }
+    },
+    {
+      "id": "T5.3.2",
+      "title": "三種承諾各自走完室內事件並合流，不懲罰任一回答",
+      "status": "通過",
+      "evidence": [
+        {
+          "promiseIndex": 0,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.000007493749603132411,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999974235026592,
+                    -2.906276137390808
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0000025759764260767664,
+                    0.000007493749603132411
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 0,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.00023040980795610425,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999207961076004,
+                    -2.906053221332455
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.00007920337148491083,
+                    0.00023040980795610425
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.595677259680004,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9514859414640839,
+                    -1.3106063714604073
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5485140580150014,
+                    1.595677259680004
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "林雨",
+            "promiseChoice": 0,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-silence",
+                "speaker": "visitor",
+                "text": "……"
+              },
+              {
+                "id": "opening-reply-silence",
+                "speaker": "ian",
+                "text": "你沒聽見嗎？她信上不是請你回答？"
+              },
+              {
+                "id": "opening-answer-letter",
+                "speaker": "visitor",
+                "text": "我收到艾琳的信。"
+              },
+              {
+                "id": "opening-reply-letter",
+                "speaker": "ian",
+                "text": "她真的把信送出去了……進來吧。"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-林雨，先答應我一件事。",
+                "speaker": "erin",
+                "text": "林雨，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-0",
+                "speaker": "visitor",
+                "text": "我答應妳。我不會隱瞞。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        },
+        {
+          "promiseIndex": 1,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0005592648165180728,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4998077521984072,
+                    -2.905724366323893
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.00019224728067808753,
+                    0.0005592648165180728
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5869089459181673,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9545000493197153,
+                    -1.3193746852222439
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.54549995015937,
+                    1.5869089459181673
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0012967561762456926,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4995542395435009,
+                    -2.9049868749641656
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0004457599355844568,
+                    0.0012967561762456926
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5760662418679252,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9582272288369861,
+                    -1.330217389272486
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5417727706420993,
+                    1.5760662418679252
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 1,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-identity",
+                "speaker": "visitor",
+                "text": "你是誰？"
+              },
+              {
+                "id": "opening-reply-identity",
+                "speaker": "ian",
+                "text": "伊恩。你是來找艾琳的吧？"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-訪客，先答應我一件事。",
+                "speaker": "erin",
+                "text": "訪客，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-1",
+                "speaker": "visitor",
+                "text": "我會盡力，但我不能保證。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        },
+        {
+          "promiseIndex": 2,
+          "seen": [
+            "你來晚了。",
+            "我是說，這場宴會已經過時很久了。",
+            "這是我的字。可我不記得……",
+            "不記得有人真的回來過。",
+            "拜託，帶我出去",
+            "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+            "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+          ],
+          "first": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.0014300143604252396,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4995084320426892,
+                    -2.904853616779986
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.0004915674363961762,
+                    0.0014300143604252396
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5575034050652807,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.964608203987895,
+                    -1.3487802260751305
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5353917954911903,
+                    1.5575034050652807
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "second": [
+            {
+              "phase": "start",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "leaving",
+              "offset": 0.000001480932608128253,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999994904085012,
+                    -2.906282150207803
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -5.09070584044087e-7,
+                    0.000001480932608128253
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "frozen",
+              "offset": 1.6,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9499999994790853,
+                    -1.3062836311404111
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.55,
+                    1.6
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "returning",
+              "offset": 1.5584355238137095,
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    0.9642877881681227,
+                    -1.3478481073267017
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    -0.5357122113109627,
+                    1.5584355238137095
+                  ]
+                }
+              ]
+            },
+            {
+              "phase": "seated",
+              "actors": [
+                {
+                  "name": "detail-woman",
+                  "position": [
+                    2.3338689814078606e-8,
+                    1.4999999994790854,
+                    -2.906283631140411
+                  ]
+                },
+                {
+                  "name": "erin-gown",
+                  "position": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "book": [
+            "二十三時三十分。外來賓客入席。",
+            "午夜鐘響，公主的心跳必須停止。"
+          ],
+          "layouts": [
+            {
+              "viewport": {
+                "width": 800,
+                "height": 600
+              },
+              "dialog": {
+                "x": 70,
+                "y": 110.03125,
+                "width": 660,
+                "height": 379.9375
+              },
+              "body": {
+                "height": 47,
+                "scrollHeight": 47
+              }
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "dialog": {
+                "x": 19,
+                "y": 197.84375,
+                "width": 352,
+                "height": 448.3125
+              },
+              "body": {
+                "height": 78,
+                "scrollHeight": 78
+              }
+            }
+          ],
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 2,
+            "stage": "piano",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened"
+            ],
+            "documents": [
+              "rescueLetter",
+              "openingCommand"
+            ],
+            "conversations": [
+              {
+                "id": "opening-ian-question",
+                "speaker": "ian",
+                "text": "你是……從外面來的人？"
+              },
+              {
+                "id": "opening-answer-letter",
+                "speaker": "visitor",
+                "text": "我收到艾琳的信。"
+              },
+              {
+                "id": "opening-reply-letter",
+                "speaker": "ian",
+                "text": "她真的把信送出去了……進來吧。"
+              },
+              {
+                "id": "indoor-erin-0",
+                "speaker": "erin",
+                "text": "你來晚了。"
+              },
+              {
+                "id": "indoor-erin-1",
+                "speaker": "erin",
+                "text": "我是說，這場宴會已經過時很久了。"
+              },
+              {
+                "id": "indoor-erin-2",
+                "speaker": "erin",
+                "text": "這是我的字。可我不記得……"
+              },
+              {
+                "id": "indoor-erin-3",
+                "speaker": "erin",
+                "text": "不記得有人真的回來過。"
+              },
+              {
+                "id": "indoor-erin-4",
+                "speaker": "erin",
+                "text": "拜託，帶我出去"
+              },
+              {
+                "id": "indoor-看見了嗎？我不是不想走。",
+                "speaker": "erin",
+                "text": "看見了嗎？我不是不想走。"
+              },
+              {
+                "id": "indoor-沒用的。只要我跨過那一步，身體就會自己回來。",
+                "speaker": "erin",
+                "text": "沒用的。只要我跨過那一步，身體就會自己回來。"
+              },
+              {
+                "id": "indoor-別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。",
+                "speaker": "ian",
+                "text": "別繼續讀。先去看鋼琴，裡面有一件能幫你的東西。"
+              },
+              {
+                "id": "indoor-我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。",
+                "speaker": "ian",
+                "text": "我記得那裡藏著一件東西。你要知道這本冊子做過什麼，就得先找到它。"
+              },
+              {
+                "id": "indoor-訪客，先答應我一件事。",
+                "speaker": "erin",
+                "text": "訪客，先答應我一件事。"
+              },
+              {
+                "id": "indoor-honesty-request",
+                "speaker": "erin",
+                "text": "如果你發現救不了我，告訴我。不要一直說一定會沒事。"
+              },
+              {
+                "id": "promise-answer-2",
+                "speaker": "visitor",
+                "text": "妳一定會沒事的。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "T5.3.3",
+      "title": "開幕三選項可到達、快速提交不跨分支且面板隔離輸入",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1280,
+              "height": 720
+            },
+            "dialog": {
+              "x": 310,
+              "y": 106.84375,
+              "width": 660,
+              "height": 506.3125
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dialog": {
+              "x": 19,
+              "y": 186.84375,
+              "width": 352,
+              "height": 470.3125
+            },
+            "body": {
+              "height": 47,
+              "scrollHeight": 47
+            }
+          }
+        ],
+        "position": {
+          "x": 0,
+          "y": 1.65,
+          "z": 20.5
+        },
+        "onlyAnswer": [
+          {
+            "id": "opening-answer-silence",
+            "speaker": "visitor",
+            "text": "……"
+          }
+        ],
+        "silenceReturnsToChoices": true
+      }
+    },
+    {
+      "id": "T6.1.1",
+      "title": "互動後開啟琴鍵面板",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.1.2",
+      "title": "四種特殊符號各有對應按鍵",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.1.3",
+      "title": "其餘按鍵維持正常琴鍵",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.1.4",
+      "title": "琴鍵介面尺寸與操作隔離",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.2.1",
+      "title": "實際走到鋼琴兩張紙條並分別用 F 查看",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.2.2",
+      "title": "紙條近距離可讀，遠距離與前方不透明物遮擋不操作後方紙條",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.2.3",
+      "title": "關閉重開紙條不堆疊介面",
+      "status": "通過",
+      "evidence": {
+        "method": "修正初測站位後，以正式 WASD／F 重測兩紙條正面、遠距離、鋼琴不透明外殼遮擋與重開。射線實際命中 piano-imported-piano，未操作後方紙條；沒有改寫玩家位置或射線結果。",
+        "positive": [
+          {
+            "id": "piano-note",
+            "title": "鋼琴紙條・賓客的四聲"
+          },
+          {
+            "id": "piano-voices",
+            "title": "鋼琴紙條・聲部對照"
+          }
+        ],
+        "blockedPosition": {
+          "x": -16.95768154315,
+          "y": 2.25,
+          "z": -2.228006473583971,
+          "yaw": 2.0140000000000002,
+          "pitch": 0.14400000000000002
+        },
+        "ray": {
+          "mesh": "piano-imported-piano",
+          "distance": 0.7409566251877683,
+          "interactionId": "piano"
+        },
+        "text": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。"
+      }
+    },
+    {
+      "id": "T6.3.1",
+      "title": "兩張紙條全文與八聲部對照符合 stage1",
+      "status": "通過",
+      "evidence": {
+        "note": "國王的聲音，不屬於賓客的合唱。只有賓客的四聲，才能喚醒沉睡的樂章。",
+        "rows": [
+          "格數12345678",
+          "聲部賓王賓王賓王賓王"
+        ]
+      }
+    },
+    {
+      "id": "T6.3.2",
+      "title": "紙條一般及窄視窗完整可讀，對照表可水平捲動",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 116.03125,
+            "width": 660,
+            "height": 367.9375
+          },
+          "body": {
+            "height": 47,
+            "scrollHeight": 47
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 236.4375,
+            "width": 352,
+            "height": 371.125
+          },
+          "body": {
+            "height": 78,
+            "scrollHeight": 78
+          }
+        },
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 65.9375,
+            "width": 660,
+            "height": 468.125
+          },
+          "body": {
+            "height": 147,
+            "scrollHeight": 147
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 201.9375,
+            "width": 352,
+            "height": 440.125
+          },
+          "body": {
+            "height": 147,
+            "scrollHeight": 147
+          }
+        }
+      ]
+    },
+    {
+      "id": "T6.3.3",
+      "title": "同一狀態重讀紙條內容一致",
+      "status": "通過",
+      "evidence": {
+        "first": "格數12345678聲部賓王賓王賓王賓王"
+      }
+    },
+    {
+      "id": "T6.4.1",
+      "title": "走到老舊音樂盒並開啟盒內查看",
+      "status": "通過",
+      "evidence": {
+        "title": "音樂盒・八格圖案",
+        "position": {
+          "x": -20.073719364516446,
+          "y": 2.25,
+          "z": 2.332027665861714,
+          "yaw": 0.7140000000000017,
+          "pitch": -0.24
+        }
+      }
+    },
+    {
+      "id": "T6.4.2",
+      "title": "盒內可關閉返回再開啟",
+      "status": "通過",
+      "evidence": {
+        "slots": 8
+      }
+    },
+    {
+      "id": "T6.4.3",
+      "title": "音樂盒面板隔離按鍵，退出後控制正常",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": -20.073719364516446,
+          "y": 2.25,
+          "z": 2.332027665861714,
+          "yaw": 0.7140000000000017,
+          "pitch": -0.24
+        },
+        "modalCount": 1
+      }
+    },
+    {
+      "id": "T6.5.1",
+      "title": "八格圖案、格號與鳥標籤逐一正確",
+      "status": "通過",
+      "evidence": {
+        "names": [
+          "月亮",
+          "王冠",
+          "鳥",
+          "花",
+          "花",
+          "月亮",
+          "王冠",
+          "鳥"
+        ]
+      }
+    },
+    {
+      "id": "T6.5.2",
+      "title": "音樂盒八格在一般及窄視窗完整顯示",
+      "status": "通過",
+      "evidence": [
+        {
+          "viewport": {
+            "width": 800,
+            "height": 600
+          },
+          "dialog": {
+            "x": 70,
+            "y": 16,
+            "width": 660,
+            "height": 568
+          },
+          "body": {
+            "height": 300,
+            "scrollHeight": 357
+          }
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dialog": {
+            "x": 19,
+            "y": 116.265625,
+            "width": 352,
+            "height": 611.46875
+          },
+          "body": {
+            "height": 319,
+            "scrollHeight": 319
+          }
+        }
+      ]
+    },
+    {
+      "id": "T6.5.3",
+      "title": "音樂盒重看圖案不變且證據可從隨身紀錄重讀",
+      "status": "通過",
+      "evidence": {
+        "documents": [
+          "rescueLetter",
+          "openingCommand",
+          "pianoNote",
+          "pianoVoices",
+          "musicBox"
+        ],
+        "boxExpected": [
+          "月亮",
+          "王冠",
+          "鳥",
+          "花",
+          "花",
+          "月亮",
+          "王冠",
+          "鳥"
+        ]
+      }
+    },
+    {
+      "id": "T6.6.1",
+      "title": "輸入指定序列顯示艾琳的末兩音提示",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.6.2",
+      "title": "未完成指定序列不冒充已觸發本提示",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.6.3",
+      "title": "錯誤提示後仍可重試",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.7.1",
+      "title": "指定正解開啟暗格並取得物品",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.7.2",
+      "title": "未包含完整正解的獨立輸入不解鎖",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.7.3",
+      "title": "重複正解不重複發放吊墜",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.7.4",
+      "title": "關閉面板不遺失取得結果",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.8.1",
+      "title": "點擊已取得吊墜開啟正確說明",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.8.2",
+      "title": "吊墜說明可完整閱讀",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    },
+    {
+      "id": "T6.8.3",
+      "title": "說明可關閉重看且不重複領取",
+      "status": "阻擋",
+      "actual": "依 plan.v2 分配至步驟 11～13；本步只整理資料，尚無新版琴鍵、兩張紙條、八格音樂盒或吊墜取得玩法，前置條件未具備。"
+    }
+  ],
+  "normalConsole": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": [],
+    "externalRequests": []
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-v2-step11",
+  "summary": {
+    "passed": 21,
+    "failed": 0,
+    "blocked": 14,
+    "supplementalPassed": 3
+  },
+  "notes": "T1～T4 本輪暫不執行。人物演出沿用靜態模型的前移、僵住與回座，無骨架步行。尚未輪到的後續功能逐案列為阻擋。 初測 T6.2.2 的站位仍可見紙條；已補齊琴架背板並改從背面驗證，定點重測 T6.2.1～T6.2.3 通過。原始完整測試版本見 initialSourceHashes，幾何修正後版本見 sourceHashes。",
+  "initialSourceHashes": {
+    "VERIFY.md": "577c1abeac2d01bed54a11ef9bc392c35436016f28a43bf4d0084ee5e4e59555",
+    "TEST.md": "26b5a83230b60b2ea21e3955390eddfbb6c768189495f7e8bf4b9e4fa0100545",
+    "Stage/stage1.md": "0c50b473892ddf52fe487fd1217bd7ccf8f22ed574cd3cb8054962bb287e1746",
+    "game/index.html": "731fa949cc51ea2037c5b5b290cc558b3ac02b007f97382aee990ddaf9c13cfe",
+    "game/stage1-data.js": "b7966cb1d916721bdcfb6c0c07dc9f6197f20738f06c31685cf3bfd9c5907733",
+    "game/opening.js": "bac3b18b1fa5b64019855bb0c53e6f231613f6fdc67c5d679fe9d4ac7281bb3d",
+    "game/ui.js": "4b7e7f1b99fa9258c41081478677aaf8ff45270d9211ac3323b713d7d6ce2dd2",
+    "game/state.js": "5d796f68569d6373bd5680531abc199a4dfcda19e02e3bb32a40775e73f089a5",
+    "game/main.js": "3f2912a5c89639349eb613062e04443b2b6a201945e95b400b02cadf4b9f7a6c",
+    "game/page-template.html": "a22aab7ebf30c7d566d52dc6739b3abfc02699ff40fb9e0c633267835594ce63",
+    "game/styles.css": "818fe5759d9b6eda8ab1e0d01ac64529792f0f08d144c37b5425e7c8f675ac8c",
+    "game/scene.js": "1febdf81264e6402d7096ba7b89fbb2b20276494404dffe466cde8ccb4b492f7",
+    "game/audio.js": "2cf478852a4532377ee7c29c092f42245f8e6a18b67dc570ba1c36885d999ca3",
+    "game/scripts/build.mjs": "ee57611470030f5d8c94fefee222886445de50672694afd79db0390affe1eaf5",
+    "game/indoor-story.js": "bb88aa4ad1220db81c6c0cfeea4df390f75caa0cf4ddd70aa1176b4841512f2d",
+    "game/piano-clue-data.js": "29960ccccf5b640e58dcdfdb707d0f96aa73e43bf772424480aee032c17acf95",
+    "game/piano-props.js": "4cc394056f7570b5c37000a5c02e2c5522dee09f9aca29396bef49d35eadf7fa",
+    "game/piano-ui.js": "06a0000342e45431771603783930a88d20f53c216d1c4044ee3c705fa892c7a8",
+    "game/interaction-data.js": "781f5d4fd21eab543a8aaab67f3a5720a4cf84b7742666a9b6952111927a0d44"
+  },
+  "retestedAt": "2026-11-03T18:18:50.221Z",
+  "retestHtml": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-v2-step11\\retested-game.html"
+}

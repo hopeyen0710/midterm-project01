@@ -1,0 +1,4516 @@
+{
+  "step": "step09",
+  "recordedAt": "2026-11-03T17:01:08.768Z",
+  "environment": {
+    "node": "v24.22.1",
+    "os": "win32",
+    "browser": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "browserPlugin": "Browser plugin not available; regular Playwright used.",
+    "rendering": "ANGLE SwiftShader；入口、場景與縮放截圖採真實繪圖，開場步行及後續 WASD／碰撞／射線互動期間暫停 WebGL draw 呼叫，保留正式控制、碰撞、模型與射線邏輯；未測真實 GPU 效能或行走過程畫質。另以原生解析度檢查求救信面板，並使用真實 Web Audio 驗證音訊排程。",
+    "offline": true,
+    "entryUrl": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "BRIEF.md": "3e1ac4d59fc6554a24226116f4df1b38c29968477fbb12119e8d98275ffbaaad",
+    "game/index.html": "0b3674c16ee1c63b5c3fb9ea6458ae5d74f560bdd56d21de4601afb6852bfef0",
+    "game/main.js": "3a29d49602a824e58477dad0483cce9f8d568d162df491808012d9b80e221975",
+    "game/ui.js": "27d3b0b344d2677a3dec288516436bd3a90d8339994c929b94c3e50159ab9833",
+    "game/scene.js": "9dd6941f8b0a04d0fdf29216a793dfe855a2a4e2d09651358947f5ae2fbbae82",
+    "game/castle.js": "6d6b115e1a4ad75b5686776f307cd775734222d8409bcd06994b4104e9c1d5ad",
+    "game/castle-data.js": "803f7d329150dae3af770f1f7a5b91bda6b98c437000e3a19f447622f928bfc6",
+    "game/rooms.js": "f6bcb2989037d3ae11f149cfa681ccb10b7f087a5a40b8777260b46f98631a98",
+    "game/controls.js": "c616d19a77cfaa9628ae4af360cb0dec5b5fafb709efaee2885f25e3de2f41a3",
+    "game/navigation.js": "adcbe7285c651625b6ee2ce1264bab7d10381d3d79097797dca484c930f29c72",
+    "game/interaction.js": "3ce7d0cfedf5446d066106b9aaa3af9037f0c25925ea7e4543e4959bbdc15f14",
+    "game/interaction-data.js": "3203e736572fb8d90c7dbbbe262996f9c91f0bca9a708421857907e9e2d7b373",
+    "game/game-data.js": "5bb8e88ace016ceeae188556a825fe4a2eaa53890a4767e0dc369a2ba5b0cf7e",
+    "game/styles.css": "4f3647543ad5965973f27bc1070beaf84f903f2744cfebeeab9b2303b367cb7a",
+    "game/page-template.html": "263196aab15084684e552dd959b06fdabe29858ebd0f6b6c02f03104446b1d5f",
+    "game/scripts/build.mjs": "ee57611470030f5d8c94fefee222886445de50672694afd79db0390affe1eaf5",
+    "game/state.js": "e351fb9b04de4339f40eaf29b71330a6a973e8c6f5e29cf3cda970171178f930",
+    "game/audio.js": "2cf478852a4532377ee7c29c092f42245f8e6a18b67dc570ba1c36885d999ca3",
+    "game/opening.js": "254cab411e13b44ecdcf12e667add48711d2135fae14afae392bca5c191f50d7",
+    "game/royal-style.js": "0eab3a77dc1a5bd2b8f4471966f2dbad7b3905f549d030ee0e8e50777f5c8a9a",
+    "game/detailed-models.js": "aac34b95fdc30bdf099183d8cdf20e6c2f9cd56973f3c289ddad8aaa2512b2ba"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "checks": [
+    {
+      "id": "T1.1.1",
+      "title": "首次離線開啟入口並進入第一個 3D 場景",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "S04.areas",
+      "title": "大廳與城堡外的配置及區域切換",
+      "status": "通過",
+      "evidence": {
+        "opening": {
+          "closedPosition": 13.383799999999956,
+          "before": {
+            "stage": "opening",
+            "time": "23:30",
+            "events": [
+              "letterRead"
+            ],
+            "documents": [
+              "rescueLetter"
+            ],
+            "conversations": [],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          },
+          "responded": {
+            "stage": "opening",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan"
+            ],
+            "documents": [
+              "rescueLetter"
+            ],
+            "conversations": [
+              {
+                "id": "opening-visitor-response",
+                "speaker": "visitor",
+                "text": "（訪客回應暗處的伊恩。）"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          },
+          "entered": {
+            "stage": "opening",
+            "time": "23:30",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall"
+            ],
+            "documents": [
+              "rescueLetter"
+            ],
+            "conversations": [
+              {
+                "id": "opening-visitor-response",
+                "speaker": "visitor",
+                "text": "（訪客回應暗處的伊恩。）"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": []
+          },
+          "audio": {
+            "mode": "inside",
+            "muted": false,
+            "state": "running",
+            "rainGain": 0.2624385356903076,
+            "insideGain": 0.02251581847667694
+          }
+        },
+        "areaSwitch": "僅允許通過開場入室；無選單捷徑"
+      }
+    },
+    {
+      "id": "S03.navigation",
+      "title": "開關操作說明、返回首頁及多次重入場景",
+      "status": "通過",
+      "evidence": "說明按鈕與 Esc 正常；三次往返後仍僅一個畫布。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可重新進入 3D 場景",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "不同視窗尺寸下 3D 比例與介面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "S03.portable",
+      "title": "複製單一 HTML 到其他資料夾仍能離線顯示 3D",
+      "status": "通過",
+      "evidence": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\copied-game.html"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "自由環視城堡與檢查場景、文字及說明介面",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100350000000018,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100350000000018,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499650000000035,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499650000000035,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.7003500000000203,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.7003500000000203,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後 WASD 依目前視角移動",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.4601064789315919,
+            "y": 2.25,
+            "z": 9.720642340979884,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.4601064789315919,
+            "y": 2.25,
+            "z": 9.720642340979884,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.3808083084114828,
+            "y": 2.25,
+            "z": 9.26088076945376,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.3808083084114828,
+            "y": 2.25,
+            "z": 9.26088076945376,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.0792981705201092,
+            "y": 2.25,
+            "z": 9.34023842847388,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.0792981705201092,
+            "y": 2.25,
+            "z": 9.34023842847388,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -8.673617379884035e-18,
+            "y": 2.25,
+            "z": 9.800000000000004,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面與後退碰牆不能穿越",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316900000000038,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "左右側移均受碰撞限制",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449650000000036,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449649999999979,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "斜向、牆角與長位移不穿牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352891804708436,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "場景邊界、關閉出口與石階高度正確",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 13.380000000000093
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "S05.reachability",
+      "title": "三扇門開啟後，所有預定互動區均有可行走路徑",
+      "status": "通過",
+      "evidence": {
+        "method": "以實際場景與門開啟時的碰撞範圍檢查網格連通；後續另用實際 F 開門走過，確認每個接近點可到達。",
+        "results": [
+          {
+            "landmark": "dais",
+            "distance": 0.17677669529663387
+          },
+          {
+            "landmark": "piano",
+            "distance": 0.14577379737113066
+          },
+          {
+            "landmark": "gallery",
+            "distance": 0.07905694150420499
+          },
+          {
+            "landmark": "cabinet",
+            "distance": 0.03535533905933039
+          },
+          {
+            "landmark": "book",
+            "distance": 0.17677669529663625
+          },
+          {
+            "landmark": "banquet",
+            "distance": 0.07905694150420765
+          },
+          {
+            "landmark": "clock",
+            "distance": 0.07905694150420611
+          },
+          {
+            "landmark": "entrance",
+            "distance": 0.12747548783981968
+          }
+        ]
+      }
+    },
+    {
+      "id": "S05.pause",
+      "title": "Esc、說明介面及失焦時不持續移動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.741200000000042,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.741200000000042,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "help": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.741200000000042,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurred": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.682400000000083,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurStopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.682400000000083,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "scope": "實測 Esc、說明介面及模擬 window blur，均清除按鍵並停止移動。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "以 F 操作有效距離內的大門",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 2
+          },
+          "sequence": 2,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一走到所有互動物件並操作四種類型",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.2431812653332901,
+              "y": 2.25,
+              "z": 13.965102500367934,
+              "yaw": -0.06563604182596074,
+              "pitch": 0.09184400029780393
+            },
+            "count": 1
+          },
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.324856134474661
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250839897656547,
+              "y": 2.25,
+              "z": 8.650171732400008,
+              "yaw": 1.2924358410994596,
+              "pitch": -0.07098559163733595
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.99136517979408,
+              "y": 2.25,
+              "z": 0.7983409512908238,
+              "yaw": 0.004019275293989821,
+              "pitch": -0.21537840934884772
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957258670191033,
+              "y": 2.25,
+              "z": 0.3852786990296848,
+              "yaw": -0.003325440022364075,
+              "pitch": -0.771481181125146
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005559122943118394,
+              "y": 2.25,
+              "z": -0.2314757070440912,
+              "yaw": 0.002347078622607409,
+              "pitch": 0.2281677225608041
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429378353416227,
+              "y": 2.25,
+              "z": -24.340732707172126,
+              "yaw": -0.025251565373179432,
+              "pitch": 0.47070435020207607
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414349780365397,
+              "y": 2.25,
+              "z": -11.222806184739495,
+              "yaw": -0.03931945585715102,
+              "pitch": 0.26871118604393984
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437306920892695,
+              "y": 2.25,
+              "z": -2.8497155143461654,
+              "yaw": -1.40933819372455,
+              "pitch": 0.05343350001057532
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.986783607056386,
+              "y": 2.25,
+              "z": 5.734428636066428,
+              "yaw": 0.16386498435062213,
+              "pitch": -0.09640224374841018
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783621389610369,
+              "y": 2.25,
+              "z": 5.912763856352718,
+              "yaw": -0.008562588660054216,
+              "pitch": -0.026133275327264525
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.016417123254707,
+              "y": 2.25,
+              "z": 0.15791177070708698,
+              "yaw": 1.4913545052212644,
+              "pitch": 0.025122127496097307
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.053738195763713296,
+              "y": 2.25,
+              "z": -15.848285443586212,
+              "yaw": -0.024969402688284504,
+              "pitch": 0.023225862224831723
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.91344906108786,
+              "y": 2.25,
+              "z": -0.26132307969264323,
+              "yaw": -1.6953892452918615,
+              "pitch": 0.023772757980133685
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "空白與非互動牆面按 F 不誤觸",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按／長按不重複拾取，也不堆疊介面",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {},
+            "sequence": 0,
+            "doors": {}
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1
+            },
+            "sequence": 1,
+            "doors": {}
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1,
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1,
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且近距離可互動",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.783874496201795,
+          "y": 2.25,
+          "z": 5.94823261427241,
+          "yaw": -0.008276801984572701,
+          "pitch": -0.02565777560513866
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "目標可見但超出距離不互動，靠近後可恢復",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.769874031657423,
+          "y": 2.25,
+          "z": 7.639724674405242,
+          "yaw": -0.008276801984573368,
+          "pitch": -0.013735968321852275
+        },
+        "near": {
+          "x": 7.930591539099864,
+          "y": 2.25,
+          "z": 6.1320667812473415,
+          "yaw": 0.061174721787463235,
+          "pitch": -0.023403281328456
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "D−ε、D、D+ε 的精確距離邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "轉身後不能操作身後物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "不透明的非互動遮擋物也會阻擋射線",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "F 按下當下重新選取，不沿用舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "UI.1",
+      "title": "文件重讀、物品欄、對話與面板暫停",
+      "status": "通過",
+      "evidence": {
+        "lines": [
+          "你來晚了。",
+          "我是說，這場宴會已經過時很久了。",
+          "這是我的字。可我不記得……",
+          "不記得有人真的回來過。"
+        ],
+        "modalIgnored": true,
+        "journalRetained": true
+      }
+    },
+    {
+      "id": "STATE.browser",
+      "title": "逐層提示不跳時、取消重置及確認重置、重入後控制正常",
+      "status": "通過",
+      "evidence": {
+        "hints": [
+          "艾琳在中央高臺上等候。",
+          "沿中央走道接近高臺，留意艾琳與她手中的白花。",
+          "對準艾琳按 F 交談；也可以隨時重看隨身紀錄。"
+        ],
+        "reset": {
+          "stage": "opening",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall"
+          ],
+          "documents": [
+            "rescueLetter"
+          ],
+          "conversations": [
+            {
+              "id": "opening-visitor-response",
+              "speaker": "visitor",
+              "text": "（訪客回應暗處的伊恩。）"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        "reentryControl": true
+      }
+    },
+    {
+      "id": "OPENING.1",
+      "title": "求救信、未回應禁止入室、回應開門、入室關門與聲音切換",
+      "status": "通過",
+      "evidence": {
+        "runs": [
+          {
+            "closedPosition": 13.383799999999956,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2624385356903076,
+              "insideGain": 0.02251581847667694
+            }
+          },
+          {
+            "closedPosition": 13.38379999999995,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.38379999999994,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.38344999999995,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.38309999999999,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.383799999999983,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2768150866031647,
+              "insideGain": 0.01881895773112774
+            }
+          },
+          {
+            "closedPosition": 13.38379999999998,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.383799999999933,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.38344999999996,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.383799999999935,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.38379999999998,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.383450000000032,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.383450000000032,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780379295349,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.383100000000013,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2768150866031647,
+              "insideGain": 0.01881895773112774
+            }
+          },
+          {
+            "closedPosition": 13.383799999999958,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2652527093887329,
+              "insideGain": 0.021792134270071983
+            }
+          },
+          {
+            "closedPosition": 13.387737205617674,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": [
+                "ribbon"
+              ]
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": [
+                "ribbon"
+              ]
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": [
+                "ribbon"
+              ]
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2738780081272125,
+              "insideGain": 0.019574185833334923
+            }
+          },
+          {
+            "closedPosition": 13.383799999999965,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.3499999940395355,
+              "insideGain": 0
+            }
+          },
+          {
+            "closedPosition": 13.32535,
+            "before": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "responded": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "entered": {
+              "stage": "opening",
+              "time": "23:30",
+              "events": [
+                "letterRead",
+                "respondIan",
+                "enterHall"
+              ],
+              "documents": [
+                "rescueLetter"
+              ],
+              "conversations": [
+                {
+                  "id": "opening-visitor-response",
+                  "speaker": "visitor",
+                  "text": "（訪客回應暗處的伊恩。）"
+                }
+              ],
+              "oath": "sealed",
+              "registrationSubject": "erin",
+              "dummy": {
+                "stableHeartbeat": false,
+                "crownWorn": false,
+                "claspClosed": false
+              },
+              "finale": {
+                "clockReady": false,
+                "brakeConnected": false,
+                "status": "idle"
+              },
+              "hints": {},
+              "items": []
+            },
+            "audio": {
+              "mode": "inside",
+              "muted": false,
+              "state": "running",
+              "rainGain": 0.2652527093887329,
+              "insideGain": 0.021792137995362282
+            }
+          }
+        ],
+        "muteDoesNotAdvanceTime": true
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "正常載入與重整無阻斷錯誤、無外部資源失敗",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "S03.error",
+      "title": "WebGL 不可用時顯示提示，恢復後可重試",
+      "status": "通過",
+      "evidence": {
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\webgl-unavailable.png",
+        "expectedErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+          "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new sr (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:23935)\n    at Al (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:37849723)\n    at HTMLButtonElement.$9 (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:37964712)"
+        ],
+        "uncaughtErrors": [],
+        "retry": "恢復 WebGL 後成功"
+      }
+    },
+    {
+      "id": "S03.contextLoss",
+      "title": "WebGL context 中斷後可重新建立場景",
+      "status": "通過",
+      "evidence": "模擬繪圖 context 中斷，錯誤提示出現，重試後恢復。"
+    },
+    {
+      "id": "LOAD.1",
+      "title": "取消載入後的舊場景 WebGL 錯誤不影響新場景",
+      "status": "通過",
+      "evidence": {
+        "id": "LOAD.1",
+        "status": "通過",
+        "recordedAt": "2026-11-03T16:56:25.446Z",
+        "browser": "151.0.7922.34",
+        "method": "故障注入：暫停舊模型解碼，返回首頁後完成新載入，再對舊 canvas 觸發 contextlost。新場景維持 ready，且可鎖定滑鼠。",
+        "pendingCanvases": 2
+      }
+    },
+    {
+      "id": "AUDIO.1",
+      "title": "原生解析度求救信與 Web Audio 雨聲／室內聲／靜音切換",
+      "status": "通過",
+      "evidence": {
+        "id": "AUDIO.1",
+        "title": "原生解析度求救信與 Web Audio 雨聲／室內聲／靜音切換",
+        "status": "通過",
+        "recordedAt": "2026-11-03T17:02:03.216Z",
+        "outside": {
+          "audio": {
+            "mode": "outside",
+            "muted": false,
+            "state": "running",
+            "rainGain": 0.34990131855010986,
+            "insideGain": 0
+          },
+          "targets": [
+            0.32,
+            0.35,
+            0
+          ]
+        },
+        "inside": {
+          "audio": {
+            "mode": "inside",
+            "muted": false,
+            "state": "running",
+            "rainGain": 0.2541733980178833,
+            "insideGain": 0.02464115247130394
+          },
+          "targets": [
+            0.32,
+            0,
+            0.09
+          ]
+        },
+        "muted": [
+          0,
+          0,
+          0.09
+        ],
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\opening-letter-native.png",
+        "method": "以原生 Web Audio 播放並記錄真實 AudioParam.setTargetAtTime 呼叫；沒有模擬音訊。3D 繪圖暫停，本案例只驗證面板與音訊排程，未測實體揚聲器聽感。"
+      }
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "warnings": [],
+        "failedRequests": [],
+        "externalRequests": []
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100350000000018,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.100350000000018,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499650000000035,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.499650000000035,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.7003500000000203,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.7003500000000203,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.4601064789315919,
+            "y": 2.25,
+            "z": 9.720642340979884,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.4601064789315919,
+            "y": 2.25,
+            "z": 9.720642340979884,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.3808083084114828,
+            "y": 2.25,
+            "z": 9.26088076945376,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.3808083084114828,
+            "y": 2.25,
+            "z": 9.26088076945376,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.0792981705201092,
+            "y": 2.25,
+            "z": 9.34023842847388,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.0792981705201092,
+            "y": 2.25,
+            "z": 9.34023842847388,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -8.673617379884035e-18,
+            "y": 2.25,
+            "z": 9.800000000000004,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316900000000038,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449650000000036,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449649999999979,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352891804708436,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 13.380000000000093
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 2
+          },
+          "sequence": 2,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.2431812653332901,
+              "y": 2.25,
+              "z": 13.965102500367934,
+              "yaw": -0.06563604182596074,
+              "pitch": 0.09184400029780393
+            },
+            "count": 1
+          },
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.324856134474661
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250839897656547,
+              "y": 2.25,
+              "z": 8.650171732400008,
+              "yaw": 1.2924358410994596,
+              "pitch": -0.07098559163733595
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.99136517979408,
+              "y": 2.25,
+              "z": 0.7983409512908238,
+              "yaw": 0.004019275293989821,
+              "pitch": -0.21537840934884772
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957258670191033,
+              "y": 2.25,
+              "z": 0.3852786990296848,
+              "yaw": -0.003325440022364075,
+              "pitch": -0.771481181125146
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005559122943118394,
+              "y": 2.25,
+              "z": -0.2314757070440912,
+              "yaw": 0.002347078622607409,
+              "pitch": 0.2281677225608041
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429378353416227,
+              "y": 2.25,
+              "z": -24.340732707172126,
+              "yaw": -0.025251565373179432,
+              "pitch": 0.47070435020207607
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414349780365397,
+              "y": 2.25,
+              "z": -11.222806184739495,
+              "yaw": -0.03931945585715102,
+              "pitch": 0.26871118604393984
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437306920892695,
+              "y": 2.25,
+              "z": -2.8497155143461654,
+              "yaw": -1.40933819372455,
+              "pitch": 0.05343350001057532
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.986783607056386,
+              "y": 2.25,
+              "z": 5.734428636066428,
+              "yaw": 0.16386498435062213,
+              "pitch": -0.09640224374841018
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783621389610369,
+              "y": 2.25,
+              "z": 5.912763856352718,
+              "yaw": -0.008562588660054216,
+              "pitch": -0.026133275327264525
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.016417123254707,
+              "y": 2.25,
+              "z": 0.15791177070708698,
+              "yaw": 1.4913545052212644,
+              "pitch": 0.025122127496097307
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.053738195763713296,
+              "y": 2.25,
+              "z": -15.848285443586212,
+              "yaw": -0.024969402688284504,
+              "pitch": 0.023225862224831723
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.91344906108786,
+              "y": 2.25,
+              "z": -0.26132307969264323,
+              "yaw": -1.6953892452918615,
+              "pitch": 0.023772757980133685
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {},
+            "sequence": 0,
+            "doors": {}
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1
+            },
+            "sequence": 1,
+            "doors": {}
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1,
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "ribbon": 1,
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.783874496201795,
+          "y": 2.25,
+          "z": 5.94823261427241,
+          "yaw": -0.008276801984572701,
+          "pitch": -0.02565777560513866
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.769874031657423,
+          "y": 2.25,
+          "z": 7.639724674405242,
+          "yaw": -0.008276801984573368,
+          "pitch": -0.013735968321852275
+        },
+        "near": {
+          "x": 7.930591539099864,
+          "y": 2.25,
+          "z": 6.1320667812473415,
+          "yaw": 0.061174721787463235,
+          "pitch": -0.023403281328456
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "ribbon": 1,
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    }
+  ],
+  "dataChecks": [
+    {
+      "id": "S01.1",
+      "title": "劇情來源版本與 SHA256 一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.2",
+      "title": "八幕原文完整且逐行可追溯",
+      "status": "通過"
+    },
+    {
+      "id": "S01.3",
+      "title": "八幕都有對話、物件及必要事件，所有 ID 唯一",
+      "status": "通過"
+    },
+    {
+      "id": "S01.4",
+      "title": "文件與出場物件引用存在，文件原文可重讀",
+      "status": "通過"
+    },
+    {
+      "id": "S01.5",
+      "title": "開場、五關、結局條件完整且無向後依賴",
+      "status": "通過"
+    },
+    {
+      "id": "S01.6",
+      "title": "時間節點與自由閱讀規則一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.7",
+      "title": "11 條劇情規則完整保留",
+      "status": "通過"
+    },
+    {
+      "id": "S01.8",
+      "title": "示範參數獨立標記，未指定的解答不杜撰",
+      "status": "通過"
+    },
+    {
+      "id": "S01.9",
+      "title": "誓約、登記、銀杯與終典規則符合原稿",
+      "status": "通過"
+    },
+    {
+      "id": "S01.10",
+      "title": "三次驚嚇順序正確，父王處決令不驚嚇",
+      "status": "通過"
+    }
+  ],
+  "stateChecks": [
+    {
+      "id": "STATE.1",
+      "title": "初始狀態、陌生事件與未達條件不得跳關",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.2",
+      "title": "閱讀、交談、拾取與提示均不推進故事時間",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.3",
+      "title": "開場回應與入室有前置條件，事件不重複",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.4",
+      "title": "五關時間只在整組完成條件滿足後推進",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.5",
+      "title": "只有艾琳可撤回自願誓約",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.6",
+      "title": "人偶登記需穩定心跳、王冠與閉合扣環，登記持續",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.7",
+      "title": "終典需要穩定心跳、有效登記、報時與制動連線",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.8",
+      "title": "重新開始清除事件、物品、文件、對話、誓約與終典狀態",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.9",
+      "title": "狀態快照不能從外部改寫正式進度",
+      "status": "通過"
+    },
+    {
+      "id": "STATE.10",
+      "title": "逐層提示到最後一層停止，不改變時間或完成事件",
+      "status": "通過"
+    }
+  ],
+  "normalConsole": {
+    "errors": [],
+    "warnings": [],
+    "failedRequests": [],
+    "externalRequests": []
+  },
+  "errorPathConsole": {
+    "expectedErrors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new sr (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:23935)\n    at Al (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:37849723)\n    at HTMLButtonElement.$9 (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4404:37964712)"
+    ],
+    "uncaughtErrors": []
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09",
+  "summary": {
+    "testPassed": 24,
+    "testFailed": 0,
+    "testBlocked": 0,
+    "additionalPassed": 12,
+    "dataPassed": 10,
+    "statePassed": 10
+  },
+  "notes": "第 09 步已完成求救信、門外回應與入室關門。全部開場樣本的故事時間均維持 23:30，AudioContext 均為 running。聲音檢查驗證真實 AudioParam 排程與靜音，未測實體揚聲器聽感。10 項狀態單元檢查包含未來關卡規則，並不表示那些謎題已可遊玩。LOAD.1 補測舊場景 contextlost 不影響新場景。第 10 步尚未開始。"
+}

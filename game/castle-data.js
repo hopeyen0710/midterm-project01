@@ -16,7 +16,7 @@ export const landmarks = [
   { id: 'book', name: '典禮冊書桌', area: 'hall', x: 6.8, z: 4, approach: [6.8, 6] },
   { id: 'banquet', name: '宴會長桌', area: 'hall', x: -4, z: 5, approach: [-1.4, 5] },
   { id: 'clock', name: '中央大鐘', area: 'hall', x: 4.5, z: -13.5, approach: [4.5, -11] },
-  { id: 'entrance', name: '城堡大門與石階', area: 'outside', x: 0, z: 12.4, approach: [0, 13.1] },
+  { id: 'entrance', name: '城堡大門與石階', area: 'outside', x: 0, z: 12.4, approach: [0, 13.7] },
 ];
 export function groundHeight(areaId, x, z) {
   if (areaId === 'hall') return 0.6;

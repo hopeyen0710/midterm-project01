@@ -11,7 +11,10 @@ export function selectInteraction(scene, camera, catalog, areaId, settings = int
   scene.updateMatrixWorld(true); camera.updateMatrixWorld(true);
   const ray = new Raycaster(); ray.far = settings.maxDistance + settings.epsilon;
   ray.setFromCamera(new Vector2(0, 0), camera);
-  const hit = ray.intersectObjects(scene.children, true).find(result => result.object.isMesh && visibleInHierarchy(result.object) && !result.object.userData.ignoreInteractionRay);
+  // 裝飾本來就不參與互動遮擋，先排除，避免每影格測試合併雕花的所有三角形。
+  const candidates = [];
+  scene.traverse(object => { if (object.isMesh && visibleInHierarchy(object) && !object.userData.ignoreInteractionRay) candidates.push(object); });
+  const hit = ray.intersectObjects(candidates, false)[0];
   onRayHit?.(hit ? { mesh: hit.object.name, distance: hit.distance, interactionId: hit.object.userData.interactionId || null } : null);
   if (!hit || hit.distance > settings.maxDistance + settings.epsilon) return null;
   const target = catalog.get(hit.object.userData.interactionId);

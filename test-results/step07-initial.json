@@ -1,0 +1,2834 @@
+{
+  "step": "step07",
+  "recordedAt": "2026-11-03T16:29:07.439Z",
+  "environment": {
+    "node": "v24.22.1",
+    "os": "win32",
+    "browser": "151.0.7922.34",
+    "playwright": "1.62.1",
+    "browserPlugin": "Browser plugin not available; regular Playwright used.",
+    "rendering": "ANGLE SwiftShader；T1.1.1～T1.1.4 以真實繪圖驗證，之後 WASD／碰撞／射線互動測試暫停 WebGL draw 呼叫，保留正式控制、碰撞、模型及射線邏輯；不宣稱真實 GPU 效能或行走過程視覺品質",
+    "offline": true,
+    "entryUrl": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "2c72e303b95941f4eebe7f05a478446e18b8dcec984a2388366c75248ba863d5",
+    "TEST.md": "ba60f6904691aaafb9f9d1fea5facc2d891d01a036d626b5d9b2b40060835c88",
+    "BRIEF.md": "3e1ac4d59fc6554a24226116f4df1b38c29968477fbb12119e8d98275ffbaaad",
+    "game/index.html": "8550e533d1641ab4cacd7e7289fa5ee5d0befc88d6573c5e7da6b61e57cbf2e2",
+    "game/main.js": "08065a3ef64b601ae759fe73961e576c69b41d07c5eb3761dfb79c0c5dc5a7b7",
+    "game/ui.js": "f6db214ca60413ed86a559deee45148571f1f7f785b08803644ba399f04384ce",
+    "game/scene.js": "ef49ce6e7eece645899320483763c72c2554ceec373ee6b698c4e0c5a450a3ad",
+    "game/castle.js": "92acf288777037e68a63443f5f393f9ef0dc988f723018acdd97b2cea7659087",
+    "game/castle-data.js": "429dea504be2ae9860fb2d7eca8c0ae3d386cc6e4d49933deffab002eadc395f",
+    "game/rooms.js": "f6bcb2989037d3ae11f149cfa681ccb10b7f087a5a40b8777260b46f98631a98",
+    "game/controls.js": "c616d19a77cfaa9628ae4af360cb0dec5b5fafb709efaee2885f25e3de2f41a3",
+    "game/navigation.js": "40c20dfc20baacaccb28419293892376c21a8190b145b1e90eedb680b5305bac",
+    "game/interaction.js": "3ce7d0cfedf5446d066106b9aaa3af9037f0c25925ea7e4543e4959bbdc15f14",
+    "game/interaction-data.js": "11201a235266282d0fdb9b46d355783c09660b62fe0f1db4bfe4d188ee65448d",
+    "game/game-data.js": "5bb8e88ace016ceeae188556a825fe4a2eaa53890a4767e0dc369a2ba5b0cf7e",
+    "game/styles.css": "6508474eba0714e5985096007520e7f789f94f250e538da0a3ae8e2b5e7e14a0",
+    "game/page-template.html": "ac249b769909af0c62052214a5a0c142fdf72c2a83f54fde88f7062023f199b8",
+    "game/scripts/build.mjs": "ee57611470030f5d8c94fefee222886445de50672694afd79db0390affe1eaf5"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\n\r\n",
+  "checks": [
+    {
+      "id": "T1.1.1",
+      "title": "首次離線開啟入口並進入第一個 3D 場景",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "S04.areas",
+      "title": "大廳與城堡外的配置及區域切換",
+      "status": "通過",
+      "evidence": "已實測切換城堡外與大廳；截圖供幾何配置核對。"
+    },
+    {
+      "id": "S03.navigation",
+      "title": "開關操作說明、返回首頁及多次重入場景",
+      "status": "通過",
+      "evidence": "說明按鈕與 Esc 正常；三次往返後仍僅一個畫布。"
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可重新進入 3D 場景",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.4",
+      "title": "不同視窗尺寸下 3D 比例與介面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "S03.portable",
+      "title": "複製單一 HTML 到其他資料夾仍能離線顯示 3D",
+      "status": "通過",
+      "evidence": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\copied-game.html"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "自由環視城堡與檢查場景、文字及說明介面",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.7584500000000105,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.7584500000000105,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.6996499999999795,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.6996499999999795,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.558800000000014,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.558800000000014,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 鍵方向與放開停止",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後 WASD 依目前視角移動",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.45976157152612607,
+            "y": 2.25,
+            "z": 9.720701829479895,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.45976157152612607,
+            "y": 2.25,
+            "z": 9.720701829479895,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.38040391250599825,
+            "y": 2.25,
+            "z": 9.260595350548254,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.38040391250599825,
+            "y": 2.25,
+            "z": 9.260595350548254,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.0793576590201279,
+            "y": 2.25,
+            "z": 9.339893521068362,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.0793576590201279,
+            "y": 2.25,
+            "z": 9.339893521068362,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.00005948850001870169,
+            "y": 2.25,
+            "z": 9.799655092594488,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面與後退碰牆不能穿越",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316550000000017,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "左右側移均受碰撞限制",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449650000000036,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449650000000034,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "斜向、牆角與長位移不穿牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352891804708477,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "場景邊界、關閉出口與石階高度正確",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "S05.reachability",
+      "title": "三扇門開啟後，所有預定互動區均有可行走路徑",
+      "status": "通過",
+      "evidence": {
+        "method": "以實際場景與門開啟時的碰撞範圍檢查網格連通；後續另用實際 F 開門走過，確認每個接近點可到達。",
+        "results": [
+          {
+            "landmark": "dais",
+            "distance": 0.17677669529663387
+          },
+          {
+            "landmark": "piano",
+            "distance": 0.14577379737113066
+          },
+          {
+            "landmark": "gallery",
+            "distance": 0.07905694150420499
+          },
+          {
+            "landmark": "cabinet",
+            "distance": 0.03535533905933039
+          },
+          {
+            "landmark": "book",
+            "distance": 0.17677669529663625
+          },
+          {
+            "landmark": "banquet",
+            "distance": 0.07905694150420765
+          },
+          {
+            "landmark": "clock",
+            "distance": 0.07905694150420611
+          },
+          {
+            "landmark": "entrance",
+            "distance": 0.14577379737113214
+          }
+        ]
+      }
+    },
+    {
+      "id": "S05.pause",
+      "title": "Esc、說明介面及失焦時不持續移動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "help": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.50810000000002,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurred": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.274649999999978,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "blurStopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.274649999999978,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "scope": "實測 Esc、說明介面及模擬 window blur，均清除按鍵並停止移動。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "以 F 操作有效距離內的大門",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {},
+          "sequence": 0,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一走到所有互動物件並操作四種類型",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.32485613447466105
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250376018549818,
+              "y": 2.25,
+              "z": 8.65015962453178,
+              "yaw": 1.2924437233962442,
+              "pitch": -0.07098464785074246
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.99145107063369,
+              "y": 2.25,
+              "z": 0.7984601795144753,
+              "yaw": 0.003979075027439105,
+              "pitch": -0.2153668567313619
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957019889961912,
+              "y": 2.25,
+              "z": 0.3856470645064939,
+              "yaw": -0.0033430597796706672,
+              "pitch": -0.7713379265752615
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005557654666601421,
+              "y": 2.25,
+              "z": -0.2314489088881933,
+              "yaw": 0.0023464321659679536,
+              "pitch": 0.22816523003719982
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429649917543292,
+              "y": 2.25,
+              "z": -24.34112865837232,
+              "yaw": -0.02524397531464003,
+              "pitch": 0.4707752751691596
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414472158916259,
+              "y": 2.25,
+              "z": -11.222355139990865,
+              "yaw": -0.03925520921827719,
+              "pitch": 0.26865881547873727
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437333077237856,
+              "y": 2.25,
+              "z": -2.849712664341119,
+              "yaw": -1.409330686697603,
+              "pitch": 0.05343494668254868
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.986738469434724,
+              "y": 2.25,
+              "z": 5.734727989464795,
+              "yaw": 0.1638118824546737,
+              "pitch": -0.09638655186745633
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783972351345516,
+              "y": 2.25,
+              "z": 5.9128957405687,
+              "yaw": -0.008378540066872553,
+              "pitch": -0.026131515115251636
+            },
+            "count": 1
+          },
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.2444205333076017,
+              "y": 2.25,
+              "z": 13.440001921474815,
+              "yaw": -0.09568804574250557,
+              "pitch": 0.13491500780053367
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.016420328178729,
+              "y": 2.25,
+              "z": 0.15790973686240226,
+              "yaw": 1.4913553962875874,
+              "pitch": 0.025122169850867907
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.053733021819285465,
+              "y": 2.25,
+              "z": -15.848668768125368,
+              "yaw": -0.024971446393768096,
+              "pitch": 0.0232299979388252
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.913475033925055,
+              "y": 2.25,
+              "z": -0.2607244786620123,
+              "yaw": -1.6951083118425603,
+              "pitch": 0.02377388898109479
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "空白與非互動牆面按 F 不誤觸",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按／長按不重複拾取，也不堆疊介面",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 14,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且近距離可互動",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2,
+            "ribbon": 1
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.78143940953885,
+          "y": 2.25,
+          "z": 5.958427462018533,
+          "yaw": -0.009477009055820718,
+          "pitch": -0.02552399706021029
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "目標可見但超出距離不互動，靠近後可恢復",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.76540881483416,
+          "y": 2.25,
+          "z": 7.6499015004044635,
+          "yaw": -0.00947700905582142,
+          "pitch": -0.013697527928412551
+        },
+        "near": {
+          "x": 7.929089769287746,
+          "y": 2.25,
+          "z": 6.142562459196648,
+          "yaw": 0.06017743185895623,
+          "pitch": -0.023290088738403363
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "D−ε、D、D+ε 的精確距離邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "轉身後不能操作身後物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "不透明的非互動遮擋物也會阻擋射線",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "F 按下當下重新選取，不沿用舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "ROOM.1",
+      "title": "三扇門可雙向開關，關閉時不能穿門",
+      "status": "通過",
+      "evidence": [
+        {
+          "id": "music-door",
+          "closedCollision": {
+            "x": -14.943082678322225,
+            "y": 2.25,
+            "z": 0.401088251924181,
+            "yaw": -1.1686759242164335,
+            "pitch": 0.03107910158426806
+          },
+          "reopened": true
+        },
+        {
+          "id": "gallery-door",
+          "closedCollision": {
+            "x": 0.2625995980115854,
+            "y": 2.25,
+            "z": -18.7866792580011,
+            "yaw": 2.819415225093972,
+            "pitch": 0.03538468678939023
+          },
+          "reopened": true
+        },
+        {
+          "id": "workshop-door",
+          "closedCollision": {
+            "x": 14.873068290602419,
+            "y": 2.25,
+            "z": -0.45485357286623307,
+            "yaw": 2.051088931380859,
+            "pitch": 0.031879003751379205
+          },
+          "reopened": true
+        }
+      ]
+    },
+    {
+      "id": "ROOM.2",
+      "title": "站在門口不能關門把自己夾住",
+      "status": "通過",
+      "evidence": [
+        {
+          "id": "music-door",
+          "position": {
+            "x": -14.116899822327296,
+            "y": 2.25,
+            "z": 0.10303425007622075,
+            "yaw": 0.7118791428808222,
+            "pitch": 0.023611315357724424
+          },
+          "blockedClose": true
+        },
+        {
+          "id": "workshop-door",
+          "position": {
+            "x": 14.021992901074402,
+            "y": 2.25,
+            "z": -0.25483612680516565,
+            "yaw": -2.4416163157060766,
+            "pitch": 0.02178939586843228
+          },
+          "blockedClose": true
+        },
+        {
+          "id": "gallery-door",
+          "position": {
+            "x": -0.02360563362499306,
+            "y": 2.25,
+            "z": -18.255513306477962,
+            "yaw": 0.8704252305418851,
+            "pitch": 0.025888484196301645
+          },
+          "blockedClose": true
+        }
+      ]
+    },
+    {
+      "id": "ROOM.3",
+      "title": "實際走廊進入各室、物件互動及位置標示正確",
+      "status": "未通過",
+      "actual": "locator.click: Timeout 120000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '開始探索', exact: true })\u001b[22m\n"
+    },
+    {
+      "id": "UI.1",
+      "title": "文件重讀、物品欄、對話與面板暫停",
+      "status": "通過",
+      "evidence": {
+        "lines": [
+          "你來晚了。",
+          "我是說，這場宴會已經過時很久了。",
+          "這是我的字。可我不記得……",
+          "不記得有人真的回來過。"
+        ],
+        "modalIgnored": true,
+        "journalRetained": true
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "正常載入與重整無阻斷錯誤、無外部資源失敗",
+      "status": "未通過",
+      "actual": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   'WebGL: too many errors, no more errors will be reported to the console for this context.'\n+ ]\n- []\n"
+    },
+    {
+      "id": "S03.error",
+      "title": "WebGL 不可用時顯示提示，恢復後可重試",
+      "status": "通過",
+      "evidence": {
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\webgl-unavailable.png",
+        "expectedErrors": [
+          "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+          "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new nr (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:23902)\n    at kl (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:37848993)\n    at HTMLButtonElement.ql (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:37946545)"
+        ],
+        "uncaughtErrors": [],
+        "retry": "恢復 WebGL 後成功"
+      }
+    },
+    {
+      "id": "S03.contextLoss",
+      "title": "WebGL context 中斷後可重新建立場景",
+      "status": "通過",
+      "evidence": "模擬繪圖 context 中斷，錯誤提示出現，重試後恢復。"
+    }
+  ],
+  "testCases": [
+    {
+      "id": "T1.1.1",
+      "title": "首次開啟網站",
+      "status": "通過",
+      "evidence": {
+        "url": "file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html",
+        "size": {
+          "width": 360,
+          "height": 225
+        },
+        "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1440.png",
+        "scope": "城堡幾何空間，尚未開放第一人稱移動"
+      }
+    },
+    {
+      "id": "T1.1.2",
+      "title": "重新整理後可正常開啟",
+      "status": "通過",
+      "evidence": "重整後可再次載入場景，不要求保留進度。"
+    },
+    {
+      "id": "T1.1.3",
+      "title": "3D 場景與介面正常顯示",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "after": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": -1.2,
+          "pitch": -0.06199999999999997
+        },
+        "scope": "已檢查目前城堡、標示與說明；物品文件面板於後續步驟加入。"
+      }
+    },
+    {
+      "id": "T1.1.4",
+      "title": "視窗縮放後畫面正常",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "dimensions": {
+              "width": 360,
+              "height": 225,
+              "clientWidth": 1440,
+              "clientHeight": 900,
+              "aspect": 1.6
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1440.png"
+          },
+          {
+            "viewport": {
+              "width": 1920,
+              "height": 1080
+            },
+            "dimensions": {
+              "width": 480,
+              "height": 270,
+              "clientWidth": 1920,
+              "clientHeight": 1080,
+              "aspect": 1.7777777777777777
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-1920.png"
+          },
+          {
+            "viewport": {
+              "width": 800,
+              "height": 700
+            },
+            "dimensions": {
+              "width": 200,
+              "height": 175,
+              "clientWidth": 800,
+              "clientHeight": 700,
+              "aspect": 1.1428571428571428
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-800.png"
+          },
+          {
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "dimensions": {
+              "width": 97,
+              "height": 211,
+              "clientWidth": 390,
+              "clientHeight": 844,
+              "aspect": 0.46208530805687204
+            },
+            "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07\\scene-390.png"
+          }
+        ],
+        "scope": "固定視角的幾何場景；攝影機自由環視待步驟 05"
+      }
+    },
+    {
+      "id": "T1.1.5",
+      "title": "載入資源與執行錯誤檢查",
+      "status": "未通過",
+      "actual": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   '[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.',\n+   'WebGL: too many errors, no more errors will be reported to the console for this context.'\n+ ]\n- []\n"
+    },
+    {
+      "id": "T2.1.1",
+      "title": "W 向前移動",
+      "status": "通過",
+      "evidence": {
+        "key": "w",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.7584500000000105,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.7584500000000105,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.2",
+      "title": "A 向左移動",
+      "status": "通過",
+      "evidence": {
+        "key": "a",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": -0.6996499999999795,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": -0.6996499999999795,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.3",
+      "title": "S 向後移動",
+      "status": "通過",
+      "evidence": {
+        "key": "s",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.558800000000014,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0,
+          "y": 2.25,
+          "z": 10.558800000000014,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.4",
+      "title": "D 向右移動",
+      "status": "通過",
+      "evidence": {
+        "key": "d",
+        "before": {
+          "x": 0,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "moved": {
+          "x": 0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "stopped": {
+          "x": 0.6996499999999796,
+          "y": 2.25,
+          "z": 9.8,
+          "yaw": 0,
+          "pitch": -0.03
+        }
+      }
+    },
+    {
+      "id": "T2.1.5",
+      "title": "轉向後的 WASD 對應",
+      "status": "通過",
+      "evidence": [
+        {
+          "key": "w",
+          "before": {
+            "x": 0,
+            "y": 2.25,
+            "z": 9.8,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.45976157152612607,
+            "y": 2.25,
+            "z": 9.720701829479895,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "a",
+          "before": {
+            "x": 0.45976157152612607,
+            "y": 2.25,
+            "z": 9.720701829479895,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": 0.38040391250599825,
+            "y": 2.25,
+            "z": 9.260595350548254,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "s",
+          "before": {
+            "x": 0.38040391250599825,
+            "y": 2.25,
+            "z": 9.260595350548254,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.0793576590201279,
+            "y": 2.25,
+            "z": 9.339893521068362,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        },
+        {
+          "key": "d",
+          "before": {
+            "x": -0.0793576590201279,
+            "y": 2.25,
+            "z": 9.339893521068362,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          },
+          "after": {
+            "x": -0.00005948850001870169,
+            "y": 2.25,
+            "z": 9.799655092594488,
+            "yaw": -1.4,
+            "pitch": 0.038000000000000006
+          }
+        }
+      ]
+    },
+    {
+      "id": "T2.2.1",
+      "title": "正面碰牆",
+      "status": "通過",
+      "evidence": {
+        "browserClosedDoorBoundary": {
+          "x": 0,
+          "y": 2.25,
+          "z": 11.316550000000017,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "forward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 7.479999999999999
+        },
+        "backward": {
+          "x": 0,
+          "y": 2.25,
+          "z": 6.600000000000001
+        }
+      }
+    },
+    {
+      "id": "T2.2.2",
+      "title": "側移碰牆",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 A／D 按鍵走到兩側柱體碰撞處，另測導航模組薄牆雙側碰撞。",
+        "keyboard": [
+          {
+            "key": "d",
+            "end": {
+              "x": 9.449650000000036,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          },
+          {
+            "key": "a",
+            "end": {
+              "x": -9.449650000000034,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": 0,
+              "pitch": -0.03
+            }
+          }
+        ],
+        "right": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        },
+        "left": {
+          "x": 0.47999999999999937,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.3",
+      "title": "牆角與斜向碰撞",
+      "status": "通過",
+      "evidence": {
+        "method": "實際 S+D 斜行至大廳牆角，另直接測薄牆接縫與大位移。",
+        "browserCorner": {
+          "x": 10.352891804708477,
+          "y": 2.25,
+          "z": 11.379999999999999,
+          "yaw": 0,
+          "pitch": -0.03
+        },
+        "corner": {
+          "x": -0.34999999999999876,
+          "y": 2.25,
+          "z": 2.4500000000000126
+        },
+        "large": {
+          "x": -0.39999999999999936,
+          "y": 2.25,
+          "z": 6
+        }
+      }
+    },
+    {
+      "id": "T2.2.4",
+      "title": "禁止通行的門與區域邊界",
+      "status": "通過",
+      "evidence": {
+        "samples": [
+          {
+            "area": "hall",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -9.440000000000007,
+              "y": 2.25,
+              "z": 9.8
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 11.379999999999999
+            }
+          },
+          {
+            "area": "hall",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": -0.5200000000000069
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 100,
+            "dz": 0,
+            "result": {
+              "x": 12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": -100,
+            "dz": 0,
+            "result": {
+              "x": -12.68,
+              "y": 1.65,
+              "z": 20.5
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": 100,
+            "result": {
+              "x": 0,
+              "y": 1.65,
+              "z": 22.68
+            }
+          },
+          {
+            "area": "outside",
+            "dx": 0,
+            "dz": -100,
+            "result": {
+              "x": 0,
+              "y": 2.25,
+              "z": 12.82
+            }
+          }
+        ],
+        "stair": {
+          "x": 0,
+          "y": 2.25,
+          "z": 13.500000000000018
+        },
+        "closedDoor": "T2.2.1 已用實際鍵盤測到大門前方邊界。"
+      }
+    },
+    {
+      "id": "T3.1.1",
+      "title": "指定物件可用 F 互動",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [],
+          "counts": {},
+          "sequence": 0,
+          "doors": {}
+        },
+        "after": {
+          "collected": [],
+          "counts": {
+            "door": 1
+          },
+          "sequence": 1,
+          "doors": {}
+        }
+      }
+    },
+    {
+      "id": "T3.1.2",
+      "title": "逐一檢查互動物件",
+      "status": "通過",
+      "evidence": {
+        "results": [
+          {
+            "id": "door",
+            "action": "operate",
+            "position": {
+              "x": 0,
+              "y": 2.25,
+              "z": 9.8,
+              "yaw": -3.141592653589793,
+              "pitch": 0.32485613447466105
+            },
+            "count": 2
+          },
+          {
+            "id": "banquet",
+            "action": "inspect",
+            "position": {
+              "x": -1.0250376018549818,
+              "y": 2.25,
+              "z": 8.65015962453178,
+              "yaw": 1.2924437233962442,
+              "pitch": -0.07098464785074246
+            },
+            "count": 1
+          },
+          {
+            "id": "piano",
+            "action": "operate",
+            "position": {
+              "x": -18.99145107063369,
+              "y": 2.25,
+              "z": 0.7984601795144753,
+              "yaw": 0.003979075027439105,
+              "pitch": -0.2153668567313619
+            },
+            "count": 1
+          },
+          {
+            "id": "throne",
+            "action": "inspect",
+            "position": {
+              "x": 1.8957019889961912,
+              "y": 2.25,
+              "z": 0.3856470645064939,
+              "yaw": -0.0033430597796706672,
+              "pitch": -0.7713379265752615
+            },
+            "count": 1
+          },
+          {
+            "id": "erin",
+            "action": "talk",
+            "position": {
+              "x": 0.005557654666601421,
+              "y": 2.25,
+              "z": -0.2314489088881933,
+              "yaw": 0.0023464321659679536,
+              "pitch": 0.22816523003719982
+            },
+            "count": 1
+          },
+          {
+            "id": "gallery",
+            "action": "inspect",
+            "position": {
+              "x": 3.4429649917543292,
+              "y": 2.25,
+              "z": -24.34112865837232,
+              "yaw": -0.02524397531464003,
+              "pitch": 0.4707752751691596
+            },
+            "count": 1
+          },
+          {
+            "id": "clock",
+            "action": "inspect",
+            "position": {
+              "x": 4.414472158916259,
+              "y": 2.25,
+              "z": -11.222355139990865,
+              "yaw": -0.03925520921827719,
+              "pitch": 0.26865881547873727
+            },
+            "count": 1
+          },
+          {
+            "id": "cabinet",
+            "action": "operate",
+            "position": {
+              "x": 19.437333077237856,
+              "y": 2.25,
+              "z": -2.849712664341119,
+              "yaw": -1.409330686697603,
+              "pitch": 0.05343494668254868
+            },
+            "count": 1
+          },
+          {
+            "id": "book",
+            "action": "inspect",
+            "position": {
+              "x": 6.986738469434724,
+              "y": 2.25,
+              "z": 5.734727989464795,
+              "yaw": 0.1638118824546737,
+              "pitch": -0.09638655186745633
+            },
+            "count": 1
+          },
+          {
+            "id": "cup",
+            "action": "inspect",
+            "position": {
+              "x": 7.783972351345516,
+              "y": 2.25,
+              "z": 5.9128957405687,
+              "yaw": -0.008378540066872553,
+              "pitch": -0.026131515115251636
+            },
+            "count": 1
+          },
+          {
+            "id": "ribbon",
+            "action": "pickup",
+            "position": {
+              "x": 0.2444205333076017,
+              "y": 2.25,
+              "z": 13.440001921474815,
+              "yaw": -0.09568804574250557,
+              "pitch": 0.13491500780053367
+            },
+            "count": 1
+          },
+          {
+            "id": "music-door",
+            "action": "operate",
+            "position": {
+              "x": -12.016420328178729,
+              "y": 2.25,
+              "z": 0.15790973686240226,
+              "yaw": 1.4913553962875874,
+              "pitch": 0.025122169850867907
+            },
+            "open": true
+          },
+          {
+            "id": "gallery-door",
+            "action": "operate",
+            "position": {
+              "x": -0.053733021819285465,
+              "y": 2.25,
+              "z": -15.848668768125368,
+              "yaw": -0.024971446393768096,
+              "pitch": 0.0232299979388252
+            },
+            "open": true
+          },
+          {
+            "id": "workshop-door",
+            "action": "operate",
+            "position": {
+              "x": 11.913475033925055,
+              "y": 2.25,
+              "z": -0.2607244786620123,
+              "yaw": -1.6951083118425603,
+              "pitch": 0.02377388898109479
+            },
+            "open": true
+          }
+        ],
+        "note": "以鍵盤沿可行走路徑移動；精確瞄準由模擬 mousemove 輸入完成，未修改玩家位置或選取結果。"
+      }
+    },
+    {
+      "id": "T3.1.3",
+      "title": "非互動物件與空白處",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 1,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 15,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    },
+    {
+      "id": "T3.1.4",
+      "title": "連按與長按 F",
+      "status": "通過",
+      "evidence": {
+        "pickupEvidence": {
+          "before": {
+            "collected": [],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1
+            },
+            "sequence": 14,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "repeatedInspect": {
+          "before": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 1,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 15,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          },
+          "after": {
+            "collected": [
+              "ribbon"
+            ],
+            "counts": {
+              "door": 2,
+              "banquet": 1,
+              "music-door": 1,
+              "piano": 1,
+              "throne": 1,
+              "erin": 1,
+              "gallery-door": 1,
+              "gallery": 1,
+              "clock": 1,
+              "workshop-door": 1,
+              "cabinet": 1,
+              "book": 2,
+              "cup": 1,
+              "ribbon": 1
+            },
+            "sequence": 16,
+            "doors": {
+              "music-door": true,
+              "gallery-door": true,
+              "workshop-door": true
+            }
+          }
+        },
+        "modalIgnored": true
+      }
+    },
+    {
+      "id": "T3.2.1",
+      "title": "可見且在範圍內的對照測試",
+      "status": "通過",
+      "evidence": {
+        "D": 3,
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 1,
+            "ribbon": 1
+          },
+          "sequence": 16,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 2,
+            "ribbon": 1
+          },
+          "sequence": 17,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "position": {
+          "x": 7.78143940953885,
+          "y": 2.25,
+          "z": 5.958427462018533,
+          "yaw": -0.009477009055820718,
+          "pitch": -0.02552399706021029
+        }
+      }
+    },
+    {
+      "id": "T3.2.2",
+      "title": "超出距離不能互動",
+      "status": "通過",
+      "evidence": {
+        "far": {
+          "x": 7.76540881483416,
+          "y": 2.25,
+          "z": 7.6499015004044635,
+          "yaw": -0.00947700905582142,
+          "pitch": -0.013697527928412551
+        },
+        "near": {
+          "x": 7.929089769287746,
+          "y": 2.25,
+          "z": 6.142562459196648,
+          "yaw": 0.06017743185895623,
+          "pitch": -0.023290088738403363
+        },
+        "distanceBasis": {
+          "D": 3,
+          "epsilon": 0.01,
+          "basis": "camera-to-nearest-visible-mesh-surface",
+          "near": "通過",
+          "exact": "通過（包含上限）",
+          "far": "通過（不選取）"
+        }
+      }
+    },
+    {
+      "id": "T3.2.3",
+      "title": "距離上限附近的邊界",
+      "status": "通過",
+      "evidence": {
+        "method": "直接執行與遊戲相同的 selectInteraction，以已知幾何表面距離 2.99、3、3.01 驗證。",
+        "D": 3,
+        "epsilon": 0.01,
+        "basis": "camera-to-nearest-visible-mesh-surface",
+        "near": "通過",
+        "exact": "通過（包含上限）",
+        "far": "通過（不選取）"
+      }
+    },
+    {
+      "id": "T3.2.4",
+      "title": "視野外與身後的物件",
+      "status": "通過",
+      "evidence": {
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "rayBehindCamera": "不選取"
+      }
+    },
+    {
+      "id": "T3.2.5",
+      "title": "隔牆與完全遮擋的物件",
+      "status": "通過",
+      "evidence": {
+        "method": "實際牆面不誤觸；另以同一選取函式的近距離目標＋非互動實牆驗證遮擋，移開牆後恢復。",
+        "occlusion": {
+          "opaqueWall": "阻擋",
+          "hiddenWall": "不阻擋",
+          "wallBehindTarget": "不阻擋",
+          "behindCamera": "不選取",
+          "disabled": "不選取",
+          "wrongArea": "不選取",
+          "hiddenParent": "不選取"
+        }
+      }
+    },
+    {
+      "id": "T3.2.6",
+      "title": "接近後移遠或被遮擋，不保留舊目標",
+      "status": "通過",
+      "evidence": {
+        "method": "同一個 JS task 內先轉身再按 F，不等待下一個渲染影格更新提示。",
+        "oldHint": "cup",
+        "before": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        },
+        "after": {
+          "collected": [
+            "ribbon"
+          ],
+          "counts": {
+            "door": 2,
+            "banquet": 1,
+            "music-door": 1,
+            "piano": 1,
+            "throne": 1,
+            "erin": 1,
+            "gallery-door": 1,
+            "gallery": 1,
+            "clock": 1,
+            "workshop-door": 1,
+            "cabinet": 1,
+            "book": 2,
+            "cup": 3,
+            "ribbon": 1
+          },
+          "sequence": 18,
+          "doors": {
+            "music-door": true,
+            "gallery-door": true,
+            "workshop-door": true
+          }
+        }
+      }
+    }
+  ],
+  "dataChecks": [
+    {
+      "id": "S01.1",
+      "title": "劇情來源版本與 SHA256 一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.2",
+      "title": "八幕原文完整且逐行可追溯",
+      "status": "通過"
+    },
+    {
+      "id": "S01.3",
+      "title": "八幕都有對話、物件及必要事件，所有 ID 唯一",
+      "status": "通過"
+    },
+    {
+      "id": "S01.4",
+      "title": "文件與出場物件引用存在，文件原文可重讀",
+      "status": "通過"
+    },
+    {
+      "id": "S01.5",
+      "title": "開場、五關、結局條件完整且無向後依賴",
+      "status": "通過"
+    },
+    {
+      "id": "S01.6",
+      "title": "時間節點與自由閱讀規則一致",
+      "status": "通過"
+    },
+    {
+      "id": "S01.7",
+      "title": "11 條劇情規則完整保留",
+      "status": "通過"
+    },
+    {
+      "id": "S01.8",
+      "title": "示範參數獨立標記，未指定的解答不杜撰",
+      "status": "通過"
+    },
+    {
+      "id": "S01.9",
+      "title": "誓約、登記、銀杯與終典規則符合原稿",
+      "status": "通過"
+    },
+    {
+      "id": "S01.10",
+      "title": "三次驚嚇順序正確，父王處決令不驚嚇",
+      "status": "通過"
+    }
+  ],
+  "normalConsole": {
+    "errors": [],
+    "warnings": [
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawArrays: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glBlitFramebuffer: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glClear: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "[.WebGL-0x7ce4001bb800] GL_INVALID_FRAMEBUFFER_OPERATION: glDrawElements: Framebuffer is incomplete: Attachment has zero size.",
+      "WebGL: too many errors, no more errors will be reported to the console for this context."
+    ],
+    "failedRequests": [],
+    "externalRequests": []
+  },
+  "errorPathConsole": {
+    "expectedErrors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "3D 場景初始化失敗 Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new nr (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:23902)\n    at kl (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:37848993)\n    at HTMLButtonElement.ql (file:///C:/Users/tinge/Desktop/codex/midterm-project01-main/game/index.html:4396:37946545)"
+    ],
+    "uncaughtErrors": []
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step07",
+  "summary": {
+    "testPassed": 23,
+    "testFailed": 1,
+    "testBlocked": 0,
+    "additionalPassed": 10,
+    "dataPassed": 10
+  }
+}
