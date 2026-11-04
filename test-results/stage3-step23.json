@@ -1,0 +1,165 @@
+{
+  "step": 23,
+  "recordedAt": "2026-11-04T06:01:07.110Z",
+  "scope": "只執行 VERIFY step9；T1～T8 不執行，前關狀態只作準備。",
+  "sourceHashes": {
+    "VERIFY.md": "bc456dcb999bc04567c32c1cf7f307a27955f9f22c60cdca40a1437a5a2c67d3",
+    "TEST.md": "8dc0939f1b47c9cda4314ce932764d39ab3df1f913972c87fc0b0494b7c6cc49",
+    "Stage/stage3.md": "3e8b1fd35de05046135b27b875ba0bfd79f415acbbfc1aec7e945fea3e88478c",
+    "game/stage3-data.js": "1081b8ecb174b77a7188c3ca2e82cde386b3c3b94a7beb3edcc4afe7ceabae00",
+    "game/state.js": "a21973a6028988d52af904e22506a9c061b60df670f30c06269123837d5b0747",
+    "game/index.html": "ad09d900e7df780c43432c87d9da6afe9606871c7c4e3e3d69b5fe095406d2a0",
+    "game/main.js": "22b228eb35a8164eb7c33bc309da25299c68b05b32620f3bdb54ef03287c8ef4",
+    "game/scene.js": "d1b3afd0fcbc422fcf76f6afc40b3feca6139adb6aa883d36a9a9ed5c0923c60",
+    "game/castle.js": "e5d8e47e9fe862901f8e527ff91b0a60636f63582cd67c0e56243cd4f921b768",
+    "game/royal-style.js": "6b5f05e50c8b294cb0ce63ce5d0a952e0ce47d39ff3b348b357a8f253118a974",
+    "game/detailed-models.js": "b4a4d8c0990c898a8768f66d3f36f6e63d5f601a2485a037cbc2b407fd883f82",
+    "game/opening.js": "9d51ade12e71bd4bdf4dddc6acef4d9a0a03ca33873bdd6ac02d98cf6f40cace",
+    "tests/stage3-helpers.cjs": "038320296a01ac43b8c4e497d707c81ce45c2d8e2b749745aae3d1cd96745ce2"
+  },
+  "cases": [
+    {
+      "id": "T9.1.1",
+      "title": "第三關由有效前置載入原畫廊",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.1.2",
+      "title": "前置不足不提前載入第三關內容",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.1.3",
+      "title": "原畫廊呈現三幅正確畫像且艾琳不在身旁",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.1.4",
+      "title": "告示及共用畫像互動正常",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.1.5",
+      "title": "重入保留第三關進度，新局重新載入",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.1",
+      "title": "三幅畫各為三列三欄九片",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.2",
+      "title": "九片來自同一畫像且無重複或漏圖",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.3",
+      "title": "初始九片未完成且可正常復原",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.4",
+      "title": "九片全部放對才判定復原成功",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.5",
+      "title": "各畫像九片排列獨立並可中途恢復",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.2.6",
+      "title": "九片操作及桌面／窄視窗顯示穩定",
+      "status": "阻擋",
+      "actual": "本步尚未具備完整畫廊／拼圖前置，保留已完成部分證據，不標整案通過。"
+    },
+    {
+      "id": "T9.3.1",
+      "title": "文本依復原結果與畫像順序解鎖",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.2",
+      "title": "艾琳復原後帳冊、演說稿與回應完整",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.3",
+      "title": "國王復原後原始處決令及四段對話正確",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.4",
+      "title": "伊恩復原後工匠學徒紀錄完整",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.5",
+      "title": "童年合照背面文字正確顯示",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.6",
+      "title": "機關修訂紀錄區分原目標與現行規則",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.7",
+      "title": "伊恩承認修訂及人偶線索對話依序顯示",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.8",
+      "title": "長篇文本在桌面與窄視窗可讀且操作隔離",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    },
+    {
+      "id": "T9.3.9",
+      "title": "提前退出與重看不漏文、不重複通關",
+      "status": "阻擋",
+      "actual": "文件及對話介面待步驟26～29，本次僅完成至步驟25。"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 0,
+    "blocked": 20
+  },
+  "partialEvidence": {
+    "source": "3e8b1fd35de05046135b27b875ba0bfd79f415acbbfc1aec7e945fea3e88478c",
+    "documents": [
+      "stage3Notice",
+      "stage3Ledger",
+      "stage3Speech",
+      "stage3OriginalOrder",
+      "stage3Apprentice",
+      "stage3Photo",
+      "stage3Revision"
+    ],
+    "dialogueCounts": {
+      "erin": 1,
+      "king": 4,
+      "ian": 15
+    },
+    "stateGates": "T9.1.2／T9.2.4／T9.3.1 狀態前置部分通過；正式整案待畫廊與拼圖UI。"
+  }
+}

@@ -1,3 +1,4 @@
+import {buildGalleryProps} from './gallery-props.js';
 import { Mesh, BoxGeometry, CylinderGeometry, SphereGeometry, PlaneGeometry, MeshStandardMaterial, MeshBasicMaterial, CanvasTexture, Sprite, SpriteMaterial, Group, PointLight } from 'three';
 import { areas, landmarks, groundHeight, roomAt } from './castle-data.js';
 import { buildSideRooms } from './rooms.js';
@@ -81,8 +82,7 @@ export function buildCastle(scene, state = {}) {
   label('鋼琴',-7.5,3.7,-2.2,2.5);
   activeSection='gallery';
   // 後方四幅幾何畫像，保留後續拼圖製作空間。
-  for(const [i,x] of [-7,-3.5,0,3.5,7].entries()) {
-    if(x===0)continue;
+  for(const [i,x] of [-5,0,5].entries()) {
     box('portrait-frame',x,3.4,-13.64,2.3,3.5,0.18,'gold');
     box('portrait-canvas',x,3.4,-13.5,2.05,3.25,0.08,i%2?'red':'green');
     const head=sphere(x,3.9,-13.32,0.42,'ivory');head.scale.z=0.22;
@@ -175,6 +175,7 @@ export function buildCastle(scene, state = {}) {
   activeSection='hall';
   const doors=buildSideRooms(scene,{box,label,mats,colliders},state);
   applyRoyalStyle(scene, mats);
+  const gallery=buildGalleryProps(scene,colliders);
   const exteriorGate = { id:'exterior-closed-gate', area:'outside', minX:-2.1, maxX:2.1, minZ:11.75, maxZ:13, enabled:true };
   colliders.push(exteriorGate);
   function setEntranceOpen(open) {
@@ -182,5 +183,5 @@ export function buildCastle(scene, state = {}) {
     scene.traverse(object => { if (['closed-door','door-seam','entrance-handle','entrance-detail'].includes(object.name)) object.visible = !open; });
     scene.traverse(object => { if (object.name==='white-ribbon') object.visible=!open&&!state.collected?.has('ribbon'); });
   }
-  return { colliders, areas, landmarks, groundHeight, roomAt, doors, setEntranceOpen };
+  return { colliders, areas, landmarks, groundHeight, roomAt, doors, setEntranceOpen, gallery };
 }

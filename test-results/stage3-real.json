@@ -1,0 +1,529 @@
+{
+  "recordedAt": "2026-11-04T07:29:17.202Z",
+  "status": "通過",
+  "scope": "step9 整合證據；T1～T8 不執行。前關只作有效狀態準備。第三關三幅拼圖／全部文本與對話均實際操作，未注入後段已讀狀態。",
+  "method": "Browser plugin not available；Chrome Playwright，離線 file://；正式 WebGL 與完整精細模型。另測未修改交付HTML複製開啟（僅可攜性載入略過GPU繪製，不驗收前關遊戲）。",
+  "browser": "156.0.8078.80",
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-stage3-complete",
+  "sourceHashes": {
+    "game/index.html": "2e9f6c68530afef048fd9e58829114a29bf1d61e11938df7a9398fa0221c8ca9",
+    "game/stage3.js": "11abe2c1a91c112f14eeedc3e64874d7a97a01f6b5d9107427d3bcdb2f9b002e",
+    "game/stage3-reading.js": "3c3df8501d67c67c7555a6de5fc253f0de80ca2e92fd985139c32bfd5d3113e4",
+    "game/stage3-data.js": "1d0511e478e9cbbd93ec6aa49bfede25e1d950c73a83828283658cf8badccc35",
+    "game/state.js": "6b4afbe61c106db72a133fcf687503f62127a2fe720c03fbb52f6a79d5182c67",
+    "game/styles.css": "e1dcb20abbfdfe2b6dcc601d95cd9e3e284a86c4d9b4c9ba6ed9abbb3663c466",
+    "tests/check-stage3-real.cjs": "cfc69a8521e8fcca0a944de72161ea70edb5ac78b538b2a86916ba5edf413526"
+  },
+  "arrival": {
+    "x": "0",
+    "z": "-20.2"
+  },
+  "evidence": [
+    {
+      "document": "stage3Ledger",
+      "text": "文件 A｜王室秘密帳冊\n原定救濟糧食\n500 袋\n實際送往災民\n0 袋\n轉入王室宴會倉庫\n500 袋"
+    },
+    {
+      "document": "stage3Speech",
+      "text": "「父王把原本要送給飢餓人民的糧食，拿來舉辦我的加冕宴會。\n城外的人正在挨餓，城堡裡卻擺滿食物。\n我不能假裝什麼都不知道，更不能戴著這頂王冠，成為下一個和父王一樣的統治者。\n今晚，我要在所有人面前公開這份帳冊，告訴人民真相。\n如果成為公主的代價是保持沉默，那我寧願不要這個身分。\n——艾琳」"
+    },
+    {
+      "speaker": "erin",
+      "text": "我只是想把原本屬於人民的東西還給他們。我沒想到，父王寧願殺了我，也不願承認自己做錯了。",
+      "id": "stage3-erin-line-0"
+    },
+    {
+      "document": "stage3OriginalOrder",
+      "text": "「艾琳公主意圖公開王室機密，拒絕履行繼承義務，視為背叛王室。」\n「取消公開加冕，改行閉門終典。」\n「午夜鐘響，艾琳本人的心跳必須停止。」\n「典禮完成，方可散席。」\n署名：國王"
+    },
+    {
+      "speaker": "erin",
+      "text": "我只是想揭發父王做的壞事，沒想到他竟然要殺了我。",
+      "id": "stage3-king-line-0"
+    },
+    {
+      "speaker": "visitor",
+      "text": "他可是妳的親生父親……",
+      "id": "stage3-king-line-1"
+    },
+    {
+      "speaker": "erin",
+      "text": "我也問過他，難道王位比自己的女兒還重要嗎？",
+      "id": "stage3-king-line-2"
+    },
+    {
+      "speaker": "erin",
+      "text": "他沒有回答，只是命令人替我戴上王冠，然後簽下處決令。",
+      "id": "stage3-king-line-3"
+    },
+    {
+      "document": "stage3Apprentice",
+      "text": "姓名：伊恩\n職務：城堡機關維護學徒\n「曾協助艾琳公主逃離城堡，遭王室追捕。」\n「曾參與王室終典機關的日常維護。」\n「伊恩和艾玲是從小的青梅竹馬。」"
+    },
+    {
+      "document": "stage3Revision",
+      "text": "原指定目標：艾琳本人\n現行執行目標：當前有效登記為「公主」者\n修改項目：執行機關的身分辨識方式\n修訂人：工匠學徒 伊恩\n\n典禮冊認證：已生效\n執行規則：「午夜終典將以現行有效登記對象執行裁決。」"
+    },
+    {
+      "speaker": "visitor",
+      "text": "伊恩，是你改的？",
+      "id": "stage3-ian-line-0"
+    },
+    {
+      "speaker": "narrator",
+      "text": "伊恩沉默了一下。",
+      "id": "stage3-ian-line-1"
+    },
+    {
+      "speaker": "ian",
+      "text": "是。",
+      "id": "stage3-ian-line-2"
+    },
+    {
+      "speaker": "visitor",
+      "text": "你為什麼要改？",
+      "id": "stage3-ian-line-3"
+    },
+    {
+      "speaker": "ian",
+      "text": "我改不了國王的命令。",
+      "id": "stage3-ian-line-4"
+    },
+    {
+      "speaker": "ian",
+      "text": "但如果機關只認得『公主』，而不是艾琳本人……也許還有辦法。",
+      "id": "stage3-ian-line-5"
+    },
+    {
+      "speaker": "ian",
+      "text": "所以我偷偷修改了機關的設定。原本它只會處決艾琳，現在它會處決『被登記為公主的人』。",
+      "id": "stage3-ian-line-6"
+    },
+    {
+      "speaker": "visitor",
+      "text": "所以，只要讓其他人代替艾琳成為公主……",
+      "id": "stage3-ian-line-7"
+    },
+    {
+      "speaker": "ian",
+      "text": "沒錯！只要能在午夜前完成新的公主登記，機關就不會再把艾琳當成處決對象。",
+      "id": "stage3-ian-line-8"
+    },
+    {
+      "speaker": "ian",
+      "text": "但我當時還沒找到成功替換身分的方法，就被國王的衛兵發現了。",
+      "id": "stage3-ian-line-9"
+    },
+    {
+      "speaker": "erin",
+      "text": "你不是說過，工坊裡有一具用來排演典禮的人偶嗎？",
+      "id": "stage3-ian-line-10"
+    },
+    {
+      "speaker": "ian",
+      "text": "對！有一次我們替它戴上王冠，機關竟然向它行禮。",
+      "id": "stage3-ian-line-11"
+    },
+    {
+      "speaker": "visitor",
+      "text": "所以那具人偶可能可以代替艾琳？",
+      "id": "stage3-ian-line-12"
+    },
+    {
+      "speaker": "ian",
+      "text": "有可能。研究紀錄藏在人偶底座裡，人偶就在大廳右側的工匠櫃。",
+      "id": "stage3-ian-line-13"
+    },
+    {
+      "speaker": "erin",
+      "text": "那就去找它。我不想再坐在這裡等死了。",
+      "id": "stage3-ian-line-14"
+    }
+  ],
+  "complete": {
+    "playerName": "訪客",
+    "promiseChoice": 0,
+    "piano": {
+      "input": [
+        "月亮",
+        "鳥",
+        "王冠",
+        "花"
+      ],
+      "outcome": "matched",
+      "hintSeen": false,
+      "matched": true
+    },
+    "stage2": {
+      "phase": "entered",
+      "command": "chair",
+      "flow": "drain",
+      "cupDry": true,
+      "pending": null,
+      "attempts": [
+        {
+          "id": "divert-seal",
+          "success": true
+        }
+      ],
+      "bookOpened": true,
+      "evidencePages": 3,
+      "guidePages": 3,
+      "pendingCandle": null,
+      "candleAttempts": [
+        "chair"
+      ],
+      "candles": {
+        "cup": "lit",
+        "crown": "lit",
+        "chair": "relit",
+        "clock": "lit"
+      }
+    },
+    "stage3": {
+      "active": true,
+      "current": "ian",
+      "photo": {
+        "found": true,
+        "side": "back",
+        "backRead": true
+      },
+      "puzzles": {
+        "erin": {
+          "tiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "solved": true,
+          "readComplete": true,
+          "dialogueIndex": 1
+        },
+        "king": {
+          "tiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "solved": true,
+          "readComplete": true,
+          "dialogueIndex": 4
+        },
+        "ian": {
+          "tiles": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "solved": true,
+          "readComplete": true,
+          "dialogueIndex": 15
+        }
+      }
+    },
+    "stage": "gallery",
+    "time": "23:45",
+    "events": [
+      "letterRead",
+      "respondIan",
+      "enterHall",
+      "erinRestricted",
+      "secondRestriction",
+      "readCommand",
+      "pianoGuidance",
+      "promiseHonesty",
+      "explorationOpened",
+      "pianoSequenceMatched",
+      "pianoPerformanceStarted",
+      "pianoPerformanceFinished",
+      "pianoAcknowledged",
+      "pianoDrawerOpened",
+      "pianoPendantCollected",
+      "stage1Complete",
+      "stage2Started",
+      "stage2Blocked",
+      "stage2CommandRevised",
+      "stage2EvidenceRead",
+      "stage2CandleGuidanceDone",
+      "stage2ChairVerified",
+      "stage2GuideUnlocked",
+      "stage2Complete",
+      "stage3Entered",
+      "stage3Started",
+      "stage3Puzzle-erin",
+      "stage3Puzzle-king",
+      "stage3Puzzle-ian",
+      "stage3Complete",
+      "stage3WorkshopClue"
+    ],
+    "documents": [
+      "stage3Notice",
+      "stage3Ledger",
+      "stage3Speech",
+      "stage3OriginalOrder",
+      "stage3Photo",
+      "stage3Apprentice",
+      "stage3Revision"
+    ],
+    "conversations": [
+      {
+        "id": "stage2-narrator-大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。",
+        "speaker": "narrator",
+        "text": "大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。"
+      },
+      {
+        "id": "stage3-erin-line-0",
+        "speaker": "erin",
+        "text": "我只是想把原本屬於人民的東西還給他們。我沒想到，父王寧願殺了我，也不願承認自己做錯了。"
+      },
+      {
+        "id": "stage3-king-line-0",
+        "speaker": "erin",
+        "text": "我只是想揭發父王做的壞事，沒想到他竟然要殺了我。"
+      },
+      {
+        "id": "stage3-king-line-1",
+        "speaker": "visitor",
+        "text": "他可是妳的親生父親……"
+      },
+      {
+        "id": "stage3-king-line-2",
+        "speaker": "erin",
+        "text": "我也問過他，難道王位比自己的女兒還重要嗎？"
+      },
+      {
+        "id": "stage3-king-line-3",
+        "speaker": "erin",
+        "text": "他沒有回答，只是命令人替我戴上王冠，然後簽下處決令。"
+      },
+      {
+        "id": "stage3-ian-line-0",
+        "speaker": "visitor",
+        "text": "伊恩，是你改的？"
+      },
+      {
+        "id": "stage3-ian-line-1",
+        "speaker": "narrator",
+        "text": "伊恩沉默了一下。"
+      },
+      {
+        "id": "stage3-ian-line-2",
+        "speaker": "ian",
+        "text": "是。"
+      },
+      {
+        "id": "stage3-ian-line-3",
+        "speaker": "visitor",
+        "text": "你為什麼要改？"
+      },
+      {
+        "id": "stage3-ian-line-4",
+        "speaker": "ian",
+        "text": "我改不了國王的命令。"
+      },
+      {
+        "id": "stage3-ian-line-5",
+        "speaker": "ian",
+        "text": "但如果機關只認得『公主』，而不是艾琳本人……也許還有辦法。"
+      },
+      {
+        "id": "stage3-ian-line-6",
+        "speaker": "ian",
+        "text": "所以我偷偷修改了機關的設定。原本它只會處決艾琳，現在它會處決『被登記為公主的人』。"
+      },
+      {
+        "id": "stage3-ian-line-7",
+        "speaker": "visitor",
+        "text": "所以，只要讓其他人代替艾琳成為公主……"
+      },
+      {
+        "id": "stage3-ian-line-8",
+        "speaker": "ian",
+        "text": "沒錯！只要能在午夜前完成新的公主登記，機關就不會再把艾琳當成處決對象。"
+      },
+      {
+        "id": "stage3-ian-line-9",
+        "speaker": "ian",
+        "text": "但我當時還沒找到成功替換身分的方法，就被國王的衛兵發現了。"
+      },
+      {
+        "id": "stage3-ian-line-10",
+        "speaker": "erin",
+        "text": "你不是說過，工坊裡有一具用來排演典禮的人偶嗎？"
+      },
+      {
+        "id": "stage3-ian-line-11",
+        "speaker": "ian",
+        "text": "對！有一次我們替它戴上王冠，機關竟然向它行禮。"
+      },
+      {
+        "id": "stage3-ian-line-12",
+        "speaker": "visitor",
+        "text": "所以那具人偶可能可以代替艾琳？"
+      },
+      {
+        "id": "stage3-ian-line-13",
+        "speaker": "ian",
+        "text": "有可能。研究紀錄藏在人偶底座裡，人偶就在大廳右側的工匠櫃。"
+      },
+      {
+        "id": "stage3-ian-line-14",
+        "speaker": "erin",
+        "text": "那就去找它。我不想再坐在這裡等死了。"
+      }
+    ],
+    "oath": "sealed",
+    "registrationSubject": "erin",
+    "dummy": {
+      "stableHeartbeat": false,
+      "crownWorn": false,
+      "claspClosed": false
+    },
+    "finale": {
+      "clockReady": false,
+      "brakeConnected": false,
+      "status": "idle"
+    },
+    "hints": {},
+    "items": [
+      "glass"
+    ]
+  },
+  "reset": {
+    "playerName": "訪客",
+    "promiseChoice": null,
+    "piano": {
+      "input": [],
+      "outcome": null,
+      "hintSeen": false,
+      "matched": false
+    },
+    "stage2": {
+      "phase": "inactive",
+      "command": "cup",
+      "flow": "cup",
+      "cupDry": false,
+      "pending": null,
+      "attempts": [],
+      "bookOpened": false,
+      "evidencePages": 0,
+      "guidePages": 0,
+      "pendingCandle": null,
+      "candleAttempts": [],
+      "candles": {
+        "cup": "lit",
+        "crown": "lit",
+        "chair": "lit",
+        "clock": "lit"
+      }
+    },
+    "stage3": {
+      "active": false,
+      "current": "erin",
+      "photo": {
+        "found": false,
+        "side": "front",
+        "backRead": false
+      },
+      "puzzles": {
+        "erin": {
+          "tiles": [
+            8,
+            5,
+            3,
+            0,
+            1,
+            2,
+            7,
+            6,
+            4
+          ],
+          "solved": false,
+          "readComplete": false,
+          "dialogueIndex": 0
+        },
+        "king": {
+          "tiles": [
+            4,
+            6,
+            3,
+            7,
+            0,
+            2,
+            1,
+            5,
+            8
+          ],
+          "solved": false,
+          "readComplete": false,
+          "dialogueIndex": 0
+        },
+        "ian": {
+          "tiles": [
+            4,
+            6,
+            0,
+            5,
+            8,
+            7,
+            1,
+            3,
+            2
+          ],
+          "solved": false,
+          "readComplete": false,
+          "dialogueIndex": 0
+        }
+      }
+    },
+    "stage": "opening",
+    "time": "23:30",
+    "events": [],
+    "documents": [
+      "rescueLetter"
+    ],
+    "conversations": [],
+    "oath": "sealed",
+    "registrationSubject": "erin",
+    "dummy": {
+      "stableHeartbeat": false,
+      "crownWorn": false,
+      "claspClosed": false
+    },
+    "finale": {
+      "clockReady": false,
+      "brakeConnected": false,
+      "status": "idle"
+    },
+    "hints": {},
+    "items": []
+  },
+  "errors": [],
+  "external": [],
+  "consoleErrors": [],
+  "portableErrors": [],
+  "portableExternal": [],
+  "photo": {
+    "image": "依指示待補",
+    "textAndFlip": "已通過",
+    "required": false
+  }
+}

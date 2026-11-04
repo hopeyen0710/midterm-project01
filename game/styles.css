@@ -135,3 +135,37 @@ button, select { border-radius: 1px; font-size: 14px; }
 @keyframes stage2-words { from { opacity:0; } to { opacity:1; } }
 @media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="stage2-text"]::backdrop,.story-dialog[data-kind="stage2-text"] > * { animation-duration:.01s; animation-delay:0s; } }
 @media(max-width:760px) { .scene-toolbar { align-items:flex-start; flex-direction:column; gap:8px; padding:12px; } .scene-actions { gap:6px; } .scene-toolbar button { padding:8px 10px; } }
+/* 第三關共用九片畫像；切片保持原畫比例，長面板可捲動。 */
+.portrait-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px;}
+.portrait-tabs button{flex:1;padding:9px 7px;font-size:14px;}
+.portrait-tabs button[aria-current="true"]{outline:2px solid #d7b778;outline-offset:2px;}
+.portrait-tabs button:disabled{opacity:.45;cursor:not-allowed;}
+.puzzle-status{font-size:14px;color:#dfc58d;min-height:24px;}
+.portrait-puzzle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:min(100%,290px);aspect-ratio:512/812;margin:0 auto 12px;padding:5px;background:#241d18;border:1px solid #a68b59;}
+.portrait-tile{display:block;min-width:0;padding:0;border:0;border-radius:0;background-size:300% 300%;background-repeat:no-repeat;box-shadow:inset 0 0 0 1px #a68b5970;}
+.portrait-tile[aria-pressed="true"]{outline:4px solid #ffe4a3;outline-offset:-4px;filter:brightness(1.2);}
+.portrait-tile:focus-visible{outline:4px solid white;outline-offset:-4px;}
+.portrait-tile:disabled{opacity:1;cursor:default;}
+.story-dialog[data-kind="stage3-puzzle"] .story-body{max-height:57vh;overflow:auto;}
+@media(max-width:500px){.portrait-puzzle{width:min(100%,240px);}.portrait-tabs button{font-size:12px;padding:8px 3px;}}
+.story-body .portrait-tile{margin:0;width:100%;height:100%;min-height:0;}
+.portrait-puzzle{grid-template-rows:repeat(3,minmax(0,1fr));}
+/* 全域按鈕 hover／disabled 的 background 簡寫不可重設畫片裁切。 */
+.story-body .portrait-tile,.story-body .portrait-tile:hover:not(:disabled),.story-body .portrait-tile:disabled{background-size:300% 300%;background-repeat:no-repeat;}
+/* 桌面將說明放在左側，保留右側完整九宮格；窄視窗回到單欄。 */
+.story-dialog[data-kind="stage3-puzzle"] .story-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:12px 16px;max-height:calc(100dvh - 280px);align-items:start;}
+.story-dialog[data-kind="stage3-puzzle"] .portrait-tabs{grid-column:1;grid-row:1;flex-direction:column;margin:0;}
+.story-body .portrait-tabs button{margin:0;}
+.story-dialog[data-kind="stage3-puzzle"] .story-body>p{grid-column:1;margin:0;}
+.story-dialog[data-kind="stage3-puzzle"] .portrait-puzzle{grid-column:2;grid-row:1 / span 3;width:100%;margin:0;}
+@media(max-width:600px){
+ .story-dialog[data-kind="stage3-puzzle"] .story-body{display:block;}
+ .story-dialog[data-kind="stage3-puzzle"] .portrait-tabs{flex-direction:row;margin-bottom:10px;}
+ .story-dialog[data-kind="stage3-puzzle"] .story-body>p{margin:8px 0;}
+ .story-dialog[data-kind="stage3-puzzle"] .portrait-puzzle{width:min(100%,220px);margin:8px auto;}
+}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop{background:#02040bf2;animation:stage2-darken .3s ease-out both;}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation:stage2-words .15s .3s both;}
+.story-dialog[data-kind="stage3-document"] .story-body{line-height:2.05;color:#f2e5cb;}
+.childhood-photo{margin:12px auto 20px;min-height:180px;width:min(100%,320px);display:grid;place-items:center;border:10px solid #bca579;outline:1px solid #6c5435;background:#29231e;color:#e6d6b5;font-size:18px;}
+@media(prefers-reduced-motion:reduce){.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop,.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation-duration:.01s;animation-delay:0s;}}

@@ -122,7 +122,7 @@ export function applyRoyalStyle(scene, mats) {
     if(object.name==='ceiling'){object.position.y=11.6;object.material=mats.darkWood;}
     if(object.name==='runner'){object.scale.z=2.05;object.position.z=1.2;}
     if(object.name==='portrait-canvas'){
-      object.material=new MeshStandardMaterial({map:portraits[object.position.x < -5 ? 0 : object.position.x < 0 ? 1 : object.position.x < 5 ? 2 : 1],roughness:.92});
+      object.material=new MeshStandardMaterial({map:portraits[object.position.x < 0 ? 1 : object.position.x === 0 ? 0 : 2],roughness:.92});
     }
     if(object.name==='portrait-figure'||(object.parent?.name==='gallery-furniture'&&object.geometry.type==='SphereGeometry'))object.visible=false;
     if(object.geometry.type==='BoxGeometry'&&object.material.emissiveIntensity===.8){object.material=blueGlass;}
@@ -256,7 +256,7 @@ export function applyRoyalStyle(scene, mats) {
   box(-20.08,2.5,-2.15,.4,.18,.3,gold);box(-20.08,2.6,-2.15,.3,.02,.24,velvetPlain);
   candelabra(-17.7,2.44,-2.5);
   // 畫廊：畫框層次、國王與艾琳的油畫，以及證據桌。
-  for(const x of [-7,-3.5,3.5,7]){
+  for(const x of [-5,0,5]){
     for(const dx of [-1.2,1.2])box(x+dx,3.4,-26.54,.055,3.62,.05,paleGold);
     for(const y of [1.57,5.23])box(x,y,-26.54,2.46,.06,.1,paleGold);
     crest(x,5.45,-26.55,.3);

@@ -150,6 +150,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
     observer.observe(container);
     return {
       resize,
+      syncGallery(progress){if(castle.gallery.sync(progress))renderer.shadowMap.needsUpdate=true;container.dataset.galleryPaintings=JSON.stringify(castle.gallery.manifest);},
       setArea(id) { if (castle.areas[id]) applyArea(id); },
       placePlayer(pose){const placed=controls.teleport(pose);if(placed){interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}return placed;},
       requestExploration() { controls.requestLock(); },
