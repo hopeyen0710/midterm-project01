@@ -1,7 +1,7 @@
 // 步驟 06 的互動入口與簡短回饋；正式文件、對話及謎題仍依後續步驟加入。
 export const actionLabels = { inspect: '查看', talk: '交談', pickup: '拾取', operate: '操作' };
 import {pianoClueTargets} from './piano-clue-data.js';
-export const interactionTargets = [
+export const interactionTargets = [{"id":"gallery-notice","label":"畫廊入口告示","action":"inspect","area":"hall","prefixes":["gallery-notice-"],"focus":[-2.8,2.5,-18.5],"approach":[-2.8,-20.5],"message":"三幅肖像封存著終典開始前的真相。"},
   {
     "id": "door",
     "label": "城堡大門",
@@ -148,15 +148,15 @@ export const interactionTargets = [
       "portrait-"
     ],
     "focus": [
-      3.5,
+      0,
       3.4,
-      -26.6
+      -26.54
     ],
     "approach": [
-      3.5,
+      0,
       -24.4
     ],
-    "message": "畫廊的畫像與名字牌需要重新比對。"
+    "message": "三幅破碎的畫像，封存著終典開始前的真相。"
   },
   {
     "id": "banquet",

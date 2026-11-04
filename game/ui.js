@@ -60,6 +60,7 @@ export function createGameUI(session, { onPause = () => {}, onResume = () => {} 
   dialog.addEventListener('close', () => { const callback = closed; closed = null; callback?.(); onResume(); });
   function readDocument(id, { required = false, onDone, kind = 'document' } = {}) {
     const doc = readableDocuments.get(id); if (!doc) return;
+    if(doc.open)return doc.open({fromJournal:true});
     session.readDocument(id);
     show({ heading: doc.title, text: doc.lines || doc.text, kind, allowClose: !required, renderBody:doc.render,
       choices: required ? [{ label: '收好求救信', action() { const view=revision; onDone?.(); if (view===revision) close(); } }] : [{ label: '返回隨身紀錄', action: journal }],

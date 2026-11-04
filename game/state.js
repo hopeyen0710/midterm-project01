@@ -1,7 +1,9 @@
+import {shufflePortrait} from './puzzle-shuffle.js';
+import {stage3Script} from './stage3-data.js';
 import { stages, documents, storyObjects } from './story-data.js';
 import {stage1Piano} from './stage1-data.js';
 import {stage2Script} from './stage2-data.js';
-const knownDocuments=new Set([...documents.map(d=>d.id),'catalogueCover','openingCommand','pianoNote','pianoVoices','musicBox','stage2Revision','stage2Evidence','stage2Guide']);
+const knownDocuments=new Set([...documents.map(d=>d.id),'catalogueCover','openingCommand','pianoNote','pianoVoices','musicBox','stage2Revision','stage2Evidence','stage2Guide',...stage3Script.documents.map(d=>d.id)]);
 const knownItems=new Set(storyObjects.map(o=>o.id));
 const hints={
  opening:['先查看隨身的求救信與城堡大門。','艾琳在信上交代：有人在門旁叫住你時，要回答他。','靠近大門按 F，回應伊恩；門開啟後，向前踏入城堡。'],
@@ -24,7 +26,7 @@ const stage2Hints={
 export function createGameState() {
  const interaction={collected:new Set(),counts:{},sequence:0,doors:{},locks:{}};
  const listeners=new Set();let data;
- function fresh(){return {playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
+ function fresh(){return {playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage3:{active:false,current:'erin',photo:{found:false,side:'front',backRead:false},puzzles:Object.fromEntries(stage3Script.portraits.map(p=>[p.id,{tiles:shufflePortrait(),solved:false,readComplete:false,dialogueIndex:0}]))},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
  data=fresh();
  const snapshot=()=>structuredClone({...data,items:[...interaction.collected]});
  const emit=()=>{for(const listener of listeners)listener(snapshot());};
@@ -92,7 +94,7 @@ export function createGameState() {
    if(id==='stage2ChairVerified')data.stage2.phase='verified';
    if(id==='stage2GuideUnlocked'){data.stage2.phase='gallery';interaction.locks['gallery-door']=false;}
    if(id==='stage2Complete'){data.stage2.phase='complete';data.time='23:45';}
-   if(id==='stage3Entered')data.stage2.phase='entered';
+   if(id==='stage3Entered'){data.stage2.phase='entered';data.stage='gallery';data.stage3.active=true;data.events.push('stage3Started');}
    emit();return true;
   },
   openStage2Book(){if(data.stage!=='stage2'||!data.events.includes('stage2CommandRevised'))return false;if(!data.stage2.bookOpened){data.stage2.bookOpened=true;emit();}return true;},
@@ -116,13 +118,45 @@ export function createGameState() {
    if(data.stage!=='stage2'||!data.events.includes('stage2ChairVerified')||data.events.includes('stage2GuideUnlocked')||!Number.isInteger(index)||index!==data.stage2.guidePages||index>=3)return false;
    data.stage2.guidePages++;emit();return true;
   },
+  canOpenStage3(id){const i=stage3Script.portraits.findIndex(p=>p.id===id);return data.stage==='gallery'&&data.stage3.active&&i>=0&&(i===0||data.stage3.puzzles[stage3Script.portraits[i-1].id].readComplete);},
+  swapStage3Tiles(id,a,b){
+   if(!api.canOpenStage3(id)||![a,b].every(n=>Number.isInteger(n)&&n>=0&&n<9)||a===b)return false;
+   const p=data.stage3.puzzles[id];if(p.solved)return false;
+   [p.tiles[a],p.tiles[b]]=[p.tiles[b],p.tiles[a]];
+   if(p.tiles.every((n,i)=>n===i)){p.solved=true;data.events.push('stage3Puzzle-'+id);}
+   emit();return true;
+  },
+  shuffleStage3(id){
+   if(!api.canOpenStage3(id)||data.stage3.puzzles[id].solved)return false;
+   const tiles=shufflePortrait(data.stage3.puzzles[id].tiles);
+   data.stage3.puzzles[id].tiles=tiles;emit();return true;
+  },
+  canReadStage3Document(id){
+   const def=stage3Script.portraits.find(p=>p.documents.includes(id));if(!def||!api.canOpenStage3(def.id)||!data.stage3.puzzles[def.id].solved)return false;
+   return def.documents.slice(0,def.documents.indexOf(id)).every(d=>data.documents.includes(d));
+  },
+  ackStage3Document(id){if(!api.canReadStage3Document(id))return false;return api.readDocument(id);},
+  ackStage3Line(id,index){
+   const def=stage3Script.portraits.find(p=>p.id===id),p=data.stage3.puzzles[id];
+   if(!def||!api.canOpenStage3(id)||!p.solved||p.readComplete||!def.documents.every(d=>data.documents.includes(d))||!Number.isInteger(index)||index!==p.dialogueIndex||!stage3Script.dialogs[id][index])return false;
+   p.dialogueIndex++;api.recordLine(stage3Script.dialogs[id][index]);emit();return true;
+  },
+  discoverStage3Photo(){if(!api.canOpenStage3('ian')||!data.stage3.puzzles.ian.solved)return false;data.stage3.photo.found=true;emit();return true;},
+  flipStage3Photo(side){if(!data.stage3.photo.found||!['front','back'].includes(side))return false;data.stage3.photo.side=side;emit();return true;},
+  ackStage3PhotoBack(){if(!data.stage3.photo.found||data.stage3.photo.side!=='back')return false;data.stage3.photo.backRead=true;api.readDocument('stage3Photo');emit();return true;},
+  completeStage3Reading(id){
+   const def=stage3Script.portraits.find(p=>p.id===id),p=data.stage3.puzzles[id];
+   if(!api.canOpenStage3(id)||!p.solved||p.readComplete||!def.documents.every(d=>data.documents.includes(d))||p.dialogueIndex!==stage3Script.dialogs[id].length)return false;
+   p.readComplete=true;const index=stage3Script.portraits.indexOf(def);if(index<2)data.stage3.current=stage3Script.portraits[index+1].id;
+   else{data.events.push('stage3Complete');data.events.push('stage3WorkshopClue');}emit();return true;
+  },
   readDocument(id){if(!knownDocuments.has(id)||data.documents.includes(id))return false;data.documents.push(id);emit();return true;},
   collectItem(id){if(!knownItems.has(id))return false;const changed=!interaction.collected.has(id);interaction.collected.add(id);emit();return changed;},
   recordLine(line){if(!line?.id||data.conversations.some(item=>item.id===line.id))return false;data.conversations.push({id:line.id,speaker:line.speaker,text:line.text});emit();return true;},
   completeEvent(id,{actor='visitor'}={}){
    if(data.events.includes(id))return false;
    // 新版第一關有自己的演奏／領取鏈，不得觸發舊版關卡自動跳時與下一關。
-   if(['piano','stage2'].includes(data.stage))return false;
+   if(['piano','stage2','gallery'].includes(data.stage))return false;
    if(id==='letterRead'){if(data.stage!=='opening')return false;data.events.push(id);emit();return true;}
    const stage=stages.find(stage=>stage.id===data.stage),index=stage.completionConditions.indexOf(id);
    if(index<0||!stage.completionConditions.slice(0,index).every(event=>data.events.includes(event)))return false;
@@ -148,7 +182,7 @@ export function createGameState() {
   setFinale(values){for(const key of ['clockReady','brakeConnected'])if(typeof values[key]==='boolean')data.finale[key]=values[key];emit();},
   getHint(){
    const level=Math.min((data.hints[data.stage]||0)+1,3);data.hints[data.stage]=level;
-   const choices=data.stage==='stage2'?(stage2Hints[data.stage2.phase]||hints.stage2):data.stage==='opening'&&data.events.includes('enterHall')?['艾琳在中央高臺上等候。','沿中央走道接近高臺，留意艾琳與她手中的白花。','對準艾琳按 F 交談；也可以隨時重看隨身紀錄。']:hints[data.stage];
+   const choices=data.stage==='gallery'?(data.events.includes('stage3Complete')?['畫廊的封存紀錄已經讀完。','沿原路回到大廳，再走向東側工坊。','工匠櫃中的人偶底座藏著研究紀錄。']:['閱讀畫廊入口告示。','依揭露者、裁決者、改寫者的順序復原畫像。','點選兩片畫面即可交換，九片全部復原才完成畫作。']):data.stage==='stage2'?(stage2Hints[data.stage2.phase]||hints.stage2):data.stage==='opening'&&data.events.includes('enterHall')?['艾琳在中央高臺上等候。','沿中央走道接近高臺，留意艾琳與她手中的白花。','對準艾琳按 F 交談；也可以隨時重看隨身紀錄。']:hints[data.stage];
    emit();return {level,text:choices[level-1]};
   },
   reset(){data=fresh();interaction.collected.clear();interaction.counts={};interaction.sequence=0;interaction.doors={};interaction.locks={};emit();},

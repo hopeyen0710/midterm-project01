@@ -12,6 +12,7 @@ export async function createCastleScene(container,onError,onControlChange,callba
  const interactions=createInteractions(scene,camera,canvas,container,{...callbacks,doors:castle.doors,onGeometryChange:publish});publish();
  function frame(t){if(!running)return;controls.update(last?Math.min((t-last)/1000,.05):0);last=t;callbacks.onPosition?.(camera.position,container.dataset.area);interactions.update();if(running)frameId=requestAnimationFrame(frame);}
  return {
+  syncGallery(progress){castle.gallery.sync(progress);container.dataset.galleryPaintings=JSON.stringify(castle.gallery.manifest);},
   resize(){},setArea(id){controls.setArea(id);interactions.setArea(id);container.dataset.area=id;},
   placePlayer(pose){const placed=controls.teleport(pose);if(placed){interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';}return placed;},
   setEntranceOpen(value){castle.setEntranceOpen(value);container.dataset.entranceOpen=String(value);publish();},

@@ -93,7 +93,7 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
   place('cabinet',{x:22.5,y:.6,z:-3,height:3.3,rotation:-Math.PI/2,target:'cabinet',colliderId:'cabinet'});
   place('clock',{x:4.5,y:.6,z:-13,height:5,target:'clock',solid:true});
   for(const z of [-7,2,8])place('chandelier',{x:0,y:6.25,z,height:3});
-  for(const x of [-7,-3.5,3.5,7]){
+  for(const x of [-5,0,5]){
     const portrait=place('frame',{x,y:1.52,z:-26.57,height:3.7,target:'portrait'});
     // 畫框保留原本雕花；中心繼續顯示本劇的三幅人物畫像。
     portrait.traverse(o=>{if(o.isMesh&&o.material.name.includes('canvas'))o.visible=false;});
