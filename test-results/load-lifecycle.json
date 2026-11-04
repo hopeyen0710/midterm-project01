@@ -1,0 +1,8 @@
+{
+  "id": "LOAD.1",
+  "status": "通過",
+  "recordedAt": "2026-11-03T16:56:25.446Z",
+  "browser": "151.0.7922.34",
+  "method": "故障注入：暫停舊模型解碼，返回首頁後完成新載入，再對舊 canvas 觸發 contextlost。新場景維持 ready，且可鎖定滑鼠。",
+  "pendingCanvases": 2
+}

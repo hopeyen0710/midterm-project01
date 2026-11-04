@@ -1,0 +1,41 @@
+{
+  "id": "AUDIO.1",
+  "title": "原生解析度求救信與 Web Audio 雨聲／室內聲／靜音切換",
+  "status": "通過",
+  "recordedAt": "2026-11-03T17:02:03.216Z",
+  "outside": {
+    "audio": {
+      "mode": "outside",
+      "muted": false,
+      "state": "running",
+      "rainGain": 0.34990131855010986,
+      "insideGain": 0
+    },
+    "targets": [
+      0.32,
+      0.35,
+      0
+    ]
+  },
+  "inside": {
+    "audio": {
+      "mode": "inside",
+      "muted": false,
+      "state": "running",
+      "rainGain": 0.2541733980178833,
+      "insideGain": 0.02464115247130394
+    },
+    "targets": [
+      0.32,
+      0,
+      0.09
+    ]
+  },
+  "muted": [
+    0,
+    0,
+    0.09
+  ],
+  "screenshot": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-validation\\step09\\opening-letter-native.png",
+  "method": "以原生 Web Audio 播放並記錄真實 AudioParam.setTargetAtTime 呼叫；沒有模擬音訊。3D 繪圖暫停，本案例只驗證面板與音訊排程，未測實體揚聲器聽感。"
+}

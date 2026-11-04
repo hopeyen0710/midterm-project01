@@ -1,6 +1,7 @@
 // 步驟 06 的互動入口與簡短回饋；正式文件、對話及謎題仍依後續步驟加入。
 export const actionLabels = { inspect: '查看', talk: '交談', pickup: '拾取', operate: '操作' };
-export const interactionTargets = [
+import {pianoClueTargets} from './piano-clue-data.js';
+export const interactionTargets = [{"id":"gallery-notice","label":"畫廊入口告示","action":"inspect","area":"hall","prefixes":["gallery-notice-"],"focus":[-2.8,2.5,-18.5],"approach":[-2.8,-20.5],"message":"三幅肖像封存著終典開始前的真相。"},
   {
     "id": "door",
     "label": "城堡大門",
@@ -40,7 +41,7 @@ export const interactionTargets = [
       -19.0,
       0.8
     ],
-    "message": "琴鍵微微下沉。機關尚未啟動，還需要比對鋼琴旁的線索。"
+    "message": "鋼琴上的符號，似乎與周圍的線索有關。"
   },
   {
     "id": "book",
@@ -52,7 +53,7 @@ export const interactionTargets = [
     ],
     "focus": [
       6.7,
-      2.08,
+      2.21,
       4
     ],
     "approach": [
@@ -147,19 +148,19 @@ export const interactionTargets = [
       "portrait-"
     ],
     "focus": [
-      3.5,
+      0,
       3.4,
-      -26.6
+      -26.54
     ],
     "approach": [
-      3.5,
+      0,
       -24.4
     ],
-    "message": "畫廊的畫像與名字牌需要重新比對。"
+    "message": "三幅破碎的畫像，封存著終典開始前的真相。"
   },
   {
     "id": "banquet",
-    "label": "宴會長桌與白花",
+    "label": "四根儀式燭臺／宴會長桌",
     "action": "inspect",
     "area": "hall",
     "prefixes": [
@@ -216,7 +217,7 @@ export const interactionTargets = [
     ],
     "approach": [
       0.35,
-      13.2
+      13.7
     ],
     "message": "已收起門把上的褪色白緞帶。"
   },
@@ -281,3 +282,5 @@ export const interactionTargets = [
     "message": "按 F 開啟或關閉這扇門。"
   }
 ];
+
+interactionTargets.push(...pianoClueTargets);

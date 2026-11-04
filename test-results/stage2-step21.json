@@ -1,0 +1,4662 @@
+{
+  "step": 21,
+  "recordedAt": "2026-11-04T02:53:38.514Z",
+  "environment": {
+    "browser": "156.0.8078.80",
+    "offline": true,
+    "url": "file:///C:/Users/tinge/AppData/Local/Temp/midterm-stage2-step21/fixture.html",
+    "method": "Browser plugin not available；Playwright。測試打包正式 main/UI/狀態/控制/射線及基礎場景；僅以不繪圖的場景替身省略 WebGL 與精細替換模型。第一關完成狀態作測試前置，不驗收 T1～T6。不截圖，以 DOM、CSS、事件與操作結果判定。"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "62912bf0c29d26c38f2dcc3f5b18b82f75d68589a333de3095fcc1077167de3e",
+    "TEST.md": "021954a03dc68d46726897a1fdee6660f7cbc7e92c55b98919a8d48f6ed62ba7",
+    "Stage/stage2.md": "46d76375b906676312cf695c4ec198192ca1cb511540c55c484602f75c1adbea",
+    "game/index.html": "82ebdd45773f707cfc5418882caa4eda6d5971abf67ac1c25f220b56f27edd61",
+    "game/main.js": "22b228eb35a8164eb7c33bc309da25299c68b05b32620f3bdb54ef03287c8ef4",
+    "game/state.js": "10ef0dc9229c4cc33516ee3aee3e81aa8343f22244b63cb8c43a5f97f20ad914",
+    "game/stage2-data.js": "bdf73dbe20a0e58206329c1c6734c1c86f82481b4b195263e3c913aa60d636fd",
+    "game/stage2.js": "fe9804a5015c1d0b559e58d04ac74fadacbe274a53eec0c873a3df1deac7f318",
+    "game/piano-reward.js": "1e37644cd8b49be7520c92dfb3ff38c27356f687375a8ec241eca33db8cba737",
+    "game/opening.js": "54a523fcc1e71c78423475c291294a6a629ae3a6137bb399404dccd3fb23e8d8",
+    "game/scene.js": "73518109e999616f0e48079812555887e2bdc18c13205cf00d466b9a7d69dd32",
+    "game/package.json": "4093424bece8da9d0e05abeba3ca66632a618c8cf0b1f333c4b22a194b96c965",
+    "game/ui.js": "8021e82e309995c0de6d378c39f2266c8748c1a7452738610cf7affd67d8e05a",
+    "game/styles.css": "5f7fdb820ba9b584b38fed20127da654a5f9cb33b4f796b934277f9ee84d5635",
+    "game/rooms.js": "d9dcaf83643164aad71fad3211be2fce5d94cd45ecfee8442fc4c8b44adba57c",
+    "game/interaction.js": "f6f76cc62c7333d907eba35cd221316d376248dd721b085265039f3852494ebf",
+    "tests/check-stage2.cjs": "0aaa529a71747ace6f952aab1f11eafd52c757f638ac4ce19f0661af487fe133",
+    "tests/build-stage2-fixture.cjs": "4bb67c0ae7e279d5dfe5816676ee951ed73c78e59f7fb8627a74fbc2a4479fd3",
+    "tests/stage2-scene-fixture.js": "d6979eef22c877352ac47962ff2d6738a46bd5af395872a9c5135e2b841eff6d",
+    "game/controls.js": "6082fc6c9ec876ad415222641f29098ec2b800409f1ff59af8694e3bc96d0b5c",
+    "tests/stage2-investigation-checks.cjs": "94a6b650009b84113a537de799c60a4bb105f44db1b78da364fb43c3becbe377",
+    "tests/stage2-candle-checks.cjs": "2bc87e4b2481387dea4a335ca857cddce2b9632ab1a84a16e2fa28a772becabe",
+    "tests/stage2-gallery-checks.cjs": "2db26fc6937b9391afadb368ec6f123c3d607f280b69914a579deb7ca56439fb"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\nstep4 劇情選項\r\n1.與npc互動時依照玩家選的回答選項回覆不同話\r\n第二階段\r\nstep5 開幕\r\n1.確認畫面有顯示求救信件\r\n2.旁白有正常顯示\r\n3.劇情選項有正常出現\r\nstep6 關卡一\r\n1.與鋼琴交互畫面會跳出琴鍵其中四個按鍵分別為月亮，鳥，花，王冠，其餘按鍵為正常琴鍵\r\n2.鋼琴上的紙條可以正常互動\r\n3.紙條上的內容顯示正常\r\n4.鋼琴旁的音樂盒可以正常查看\r\n5.音樂盒內部圖案顯示正確\r\n6.按照月亮 → 鳥 → 花 → 王冠觸發伊恩會將後兩位彈錯的提示\r\n7.按照月亮 → 鳥 → 王冠 → 花 鋼琴暗格開啟得到紅玻璃吊墜\r\n8.點擊吊墜後物品說明正常顯示\r\nstep7 第二段劇情\r\n1.正確銜接第二段劇情\r\n2.選擇選項後回覆正確的結果\r\nstep8 關卡二\r\n1.使用深紅色玻璃吊墜典禮冊出現新劇情\r\n2.直接翻閱不觸發劇情\r\n3.\r\n\r\n\r\n\r\n\r\n",
+  "testCases": [
+    {
+      "id": "T7.1.1",
+      "title": "最後對話後自動銜接",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "crisis",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started"
+        ],
+        "documents": [],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T7.1.2",
+      "title": "前置不足不提前開始",
+      "status": "通過",
+      "evidence": [
+        {
+          "playerName": "訪客",
+          "promiseChoice": null,
+          "piano": {
+            "input": [],
+            "outcome": null,
+            "hintSeen": false,
+            "matched": false
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "opening",
+          "time": "23:30",
+          "events": [],
+          "documents": [
+            "rescueLetter"
+          ],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [],
+            "outcome": null,
+            "hintSeen": false,
+            "matched": false
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened"
+          ],
+          "documents": [],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected"
+          ],
+          "documents": [],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T7.1.3",
+      "title": "漸暗文字完整可讀且操作隔離",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "size": {
+              "width": 800,
+              "height": 600
+            },
+            "box": {
+              "x": 70,
+              "y": 127.03125,
+              "width": 660,
+              "height": 345.9375
+            }
+          },
+          {
+            "size": {
+              "width": 390,
+              "height": 844
+            },
+            "box": {
+              "x": 19,
+              "y": 247.4375,
+              "width": 352,
+              "height": 349.125
+            }
+          }
+        ],
+        "backdrop": "stage2-darken",
+        "wordOpacityKeyframes": [
+          "0",
+          "1"
+        ],
+        "controlsResume": true,
+        "screenshotsTaken": 0
+      }
+    },
+    {
+      "id": "T7.1.4",
+      "title": "重入不重複開場或跳時",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "crisis",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started"
+        ],
+        "documents": [],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T7.1.5",
+      "title": "取消／確認重新開始",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": null,
+        "piano": {
+          "input": [],
+          "outcome": null,
+          "hintSeen": false,
+          "matched": false
+        },
+        "stage2": {
+          "phase": "inactive",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "opening",
+        "time": "23:30",
+        "events": [],
+        "documents": [
+          "rescueLetter"
+        ],
+        "conversations": [],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": []
+      }
+    },
+    {
+      "id": "T7.2.1",
+      "title": "獨立失敗分支：take-cup",
+      "status": "通過",
+      "evidence": {
+        "text": "典禮冊的約束力強行將銀杯固化在托盤上，無法移開。艾琳的手距離杯緣更近了！",
+        "result": {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "crisis",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": "take-cup",
+            "attempts": [
+              {
+                "id": "take-cup",
+                "success": false
+              }
+            ],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started"
+          ],
+          "documents": [],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "直接用手強行端走銀杯"
+            },
+            {
+              "id": "stage2-narrator-典禮冊的約束力強行將銀杯固化在托盤上，無法移開。艾琳的手距離杯緣更近了！",
+              "speaker": "narrator",
+              "text": "典禮冊的約束力強行將銀杯固化在托盤上，無法移開。艾琳的手距離杯緣更近了！"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      }
+    },
+    {
+      "id": "T7.2.2",
+      "title": "獨立失敗分支：jam-gear",
+      "status": "通過",
+      "evidence": {
+        "text": "齒輪力量過大，鐵桿被瞬間絞斷！管道內的液體繼續下壓。",
+        "result": {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "crisis",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": "jam-gear",
+            "attempts": [
+              {
+                "id": "jam-gear",
+                "success": false
+              }
+            ],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started"
+          ],
+          "documents": [],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "用鐵桿卡住管道上方的傳動齒輪"
+            },
+            {
+              "id": "stage2-narrator-齒輪力量過大，鐵桿被瞬間絞斷！管道內的液體繼續下壓。",
+              "speaker": "narrator",
+              "text": "齒輪力量過大，鐵桿被瞬間絞斷！管道內的液體繼續下壓。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      }
+    },
+    {
+      "id": "T7.2.3",
+      "title": "阻流成功接上完整改令與引導",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "investigate",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised"
+        ],
+        "documents": [
+          "stage2Revision"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T7.2.4",
+      "title": "獨立失敗分支：block-outlet",
+      "status": "通過",
+      "evidence": {
+        "text": "液體帶有腐蝕性／劇毒！你受到傷害被迫收手，未能及時阻斷水流。",
+        "result": {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "crisis",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": "block-outlet",
+            "attempts": [
+              {
+                "id": "block-outlet",
+                "success": false
+              }
+            ],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started"
+          ],
+          "documents": [],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "嘗試用手擋住管道出口"
+            },
+            {
+              "id": "stage2-narrator-液體帶有腐蝕性／劇毒！你受到傷害被迫收手，未能及時阻斷水流。",
+              "speaker": "narrator",
+              "text": "液體帶有腐蝕性／劇毒！你受到傷害被迫收手，未能及時阻斷水流。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      }
+    },
+    {
+      "id": "T7.2.5",
+      "title": "各失敗後可重試，另測直接正解",
+      "status": "通過",
+      "evidence": [
+        {
+          "after": "take-cup",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "investigate",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "take-cup",
+                  "success": false
+                },
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 0,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [],
+              "candles": {
+                "cup": "lit",
+                "crown": "lit",
+                "chair": "lit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised"
+            ],
+            "documents": [
+              "stage2Revision"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "直接用手強行端走銀杯"
+              },
+              {
+                "id": "stage2-narrator-典禮冊的約束力強行將銀杯固化在托盤上，無法移開。艾琳的手距離杯緣更近了！",
+                "speaker": "narrator",
+                "text": "典禮冊的約束力強行將銀杯固化在托盤上，無法移開。艾琳的手距離杯緣更近了！"
+              },
+              {
+                "id": "stage2-choice-2",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        },
+        {
+          "after": "jam-gear",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "investigate",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "jam-gear",
+                  "success": false
+                },
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 0,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [],
+              "candles": {
+                "cup": "lit",
+                "crown": "lit",
+                "chair": "lit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised"
+            ],
+            "documents": [
+              "stage2Revision"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "用鐵桿卡住管道上方的傳動齒輪"
+              },
+              {
+                "id": "stage2-narrator-齒輪力量過大，鐵桿被瞬間絞斷！管道內的液體繼續下壓。",
+                "speaker": "narrator",
+                "text": "齒輪力量過大，鐵桿被瞬間絞斷！管道內的液體繼續下壓。"
+              },
+              {
+                "id": "stage2-choice-2",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        },
+        {
+          "after": "block-outlet",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "investigate",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "block-outlet",
+                  "success": false
+                },
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 0,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [],
+              "candles": {
+                "cup": "lit",
+                "crown": "lit",
+                "chair": "lit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised"
+            ],
+            "documents": [
+              "stage2Revision"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "嘗試用手擋住管道出口"
+              },
+              {
+                "id": "stage2-narrator-液體帶有腐蝕性／劇毒！你受到傷害被迫收手，未能及時阻斷水流。",
+                "speaker": "narrator",
+                "text": "液體帶有腐蝕性／劇毒！你受到傷害被迫收手，未能及時阻斷水流。"
+              },
+              {
+                "id": "stage2-choice-2",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        },
+        {
+          "after": "direct",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "investigate",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 0,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [],
+              "candles": {
+                "cup": "lit",
+                "crown": "lit",
+                "chair": "lit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised"
+            ],
+            "documents": [
+              "stage2Revision"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T7.2.6",
+      "title": "連點不串分支、閱讀隔離與返回恢復",
+      "status": "通過",
+      "evidence": {
+        "attempts": [
+          {
+            "id": "take-cup",
+            "success": false
+          }
+        ],
+        "controlsResume": true
+      }
+    },
+    {
+      "id": "T8.1.1",
+      "title": "原吊墜開啟紅玻璃證據入口",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "investigate",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised"
+        ],
+        "documents": [
+          "stage2Revision"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T8.1.2",
+      "title": "揭露印記、約束規則與附件線索",
+      "status": "阻擋",
+      "actual": "依使用者指示暫不製作三份缺稿文件全文與具體附件編號；已知印記、約束規則及畫廊線索另由補充測試核對，缺稿逐字驗收保留待補。"
+    },
+    {
+      "id": "T8.1.3",
+      "title": "完整讀取後才引導燭臺，重看不重播",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "candles",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 3,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone"
+        ],
+        "documents": [
+          "stage2Revision",
+          "stage2Evidence"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+            "speaker": "erin",
+            "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+          },
+          {
+            "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+            "speaker": "ian",
+            "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T8.1.4",
+      "title": "證據文字尺寸、操作隔離與退出恢復",
+      "status": "通過",
+      "evidence": {
+        "rows": [
+          {
+            "size": {
+              "width": 800,
+              "height": 600
+            },
+            "box": {
+              "x": 70,
+              "y": 116.03125,
+              "width": 660,
+              "height": 367.9375
+            }
+          },
+          {
+            "size": {
+              "width": 390,
+              "height": 844
+            },
+            "box": {
+              "x": 19,
+              "y": 236.4375,
+              "width": 352,
+              "height": 371.125
+            }
+          }
+        ],
+        "controlResume": true,
+        "screenshots": 0
+      }
+    },
+    {
+      "id": "T8.1.5",
+      "title": "提前退出、缺前置與重看不誤記成功",
+      "status": "通過",
+      "evidence": {
+        "earlyExit": true,
+        "missingItem": true,
+        "missingRevision": true
+      }
+    },
+    {
+      "id": "T8.2.1",
+      "title": "普通翻閱僅提示，不揭露有效證據",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "investigate",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised"
+        ],
+        "documents": [
+          "stage2Revision"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-narrator-你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。",
+            "speaker": "narrator",
+            "text": "你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。"
+          },
+          {
+            "id": "stage2-ian-用肉眼是看不穿這些掩飾的。",
+            "speaker": "ian",
+            "text": "用肉眼是看不穿這些掩飾的。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T8.2.2",
+      "title": "普通翻閱後仍能使用吊墜完成已知證據",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "candles",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 3,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone"
+        ],
+        "documents": [
+          "stage2Revision",
+          "stage2Evidence"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-narrator-你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。",
+            "speaker": "narrator",
+            "text": "你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。"
+          },
+          {
+            "id": "stage2-ian-用肉眼是看不穿這些掩飾的。",
+            "speaker": "ian",
+            "text": "用肉眼是看不穿這些掩飾的。"
+          },
+          {
+            "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+            "speaker": "erin",
+            "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+          },
+          {
+            "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+            "speaker": "ian",
+            "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T8.2.3",
+      "title": "重複普通翻閱不累積進度、不清除已得證據",
+      "status": "通過",
+      "evidence": [
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "investigate",
+            "command": "chair",
+            "flow": "drain",
+            "cupDry": true,
+            "pending": null,
+            "attempts": [
+              {
+                "id": "divert-seal",
+                "success": true
+              }
+            ],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started",
+            "stage2Blocked",
+            "stage2CommandRevised"
+          ],
+          "documents": [
+            "stage2Revision"
+          ],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+            },
+            {
+              "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+              "speaker": "narrator",
+              "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+            },
+            {
+              "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+              "speaker": "narrator",
+              "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+            },
+            {
+              "id": "stage2-erin-呼……呼……阻止了嗎？",
+              "speaker": "erin",
+              "text": "呼……呼……阻止了嗎？"
+            },
+            {
+              "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+              "speaker": "narrator",
+              "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+            },
+            {
+              "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+              "speaker": "narrator",
+              "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+            },
+            {
+              "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+              "speaker": "erin",
+              "text": "為什麼？我們不是已經阻止它了嗎？"
+            },
+            {
+              "id": "stage2-ian-你阻止的是機關，不是命令。",
+              "speaker": "ian",
+              "text": "你阻止的是機關，不是命令。"
+            },
+            {
+              "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+              "speaker": "erin",
+              "text": "那至少讓我知道，我為什麼坐在這裡。"
+            },
+            {
+              "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+              "speaker": "ian",
+              "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+            },
+            {
+              "id": "stage2-narrator-你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。",
+              "speaker": "narrator",
+              "text": "你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。"
+            },
+            {
+              "id": "stage2-ian-用肉眼是看不穿這些掩飾的。",
+              "speaker": "ian",
+              "text": "用肉眼是看不穿這些掩飾的。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        },
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "candles",
+            "command": "chair",
+            "flow": "drain",
+            "cupDry": true,
+            "pending": null,
+            "attempts": [
+              {
+                "id": "divert-seal",
+                "success": true
+              }
+            ],
+            "evidencePages": 3,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started",
+            "stage2Blocked",
+            "stage2CommandRevised",
+            "stage2EvidenceRead",
+            "stage2CandleGuidanceDone"
+          ],
+          "documents": [
+            "stage2Revision",
+            "stage2Evidence"
+          ],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+            },
+            {
+              "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+              "speaker": "narrator",
+              "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+            },
+            {
+              "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+              "speaker": "narrator",
+              "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+            },
+            {
+              "id": "stage2-erin-呼……呼……阻止了嗎？",
+              "speaker": "erin",
+              "text": "呼……呼……阻止了嗎？"
+            },
+            {
+              "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+              "speaker": "narrator",
+              "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+            },
+            {
+              "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+              "speaker": "narrator",
+              "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+            },
+            {
+              "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+              "speaker": "erin",
+              "text": "為什麼？我們不是已經阻止它了嗎？"
+            },
+            {
+              "id": "stage2-ian-你阻止的是機關，不是命令。",
+              "speaker": "ian",
+              "text": "你阻止的是機關，不是命令。"
+            },
+            {
+              "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+              "speaker": "erin",
+              "text": "那至少讓我知道，我為什麼坐在這裡。"
+            },
+            {
+              "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+              "speaker": "ian",
+              "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+            },
+            {
+              "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+              "speaker": "erin",
+              "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+            },
+            {
+              "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+              "speaker": "ian",
+              "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+            },
+            {
+              "id": "stage2-narrator-你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。",
+              "speaker": "narrator",
+              "text": "你直接翻閱典禮冊，只看見一般泛黃的紙頁與模糊墨跡，無法辨識帶有王室印記的有效指令。"
+            },
+            {
+              "id": "stage2-ian-用肉眼是看不穿這些掩飾的。",
+              "speaker": "ian",
+              "text": "用肉眼是看不穿這些掩飾的。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      ]
+    }
+  ],
+  "supplemental": [
+    {
+      "id": "S2.2",
+      "title": "燭臺編號／前置與畫廊門鎖",
+      "status": "通過",
+      "evidence": {
+        "door": {
+          "id": "gallery-door",
+          "name": "畫廊木門",
+          "open": false,
+          "locked": true,
+          "closedBounds": {
+            "minX": -1.5,
+            "maxX": 1.5,
+            "minZ": -18.07999999821186,
+            "maxZ": -17.92000000178814
+          },
+          "openBounds": {
+            "minX": -1.5799999982118607,
+            "maxX": -1.4200000017881385,
+            "minZ": -21,
+            "maxZ": -18
+          },
+          "focus": [
+            0,
+            2.3,
+            -18
+          ],
+          "approach": [
+            0,
+            -16.1
+          ]
+        },
+        "candles": [
+          "第 1 根 · 銀杯 · 尚未試驗",
+          "第 2 根 · 王冠 · 尚未試驗",
+          "第 3 根 · 座椅 · 尚未試驗",
+          "第 4 根 · 報時 · 尚未試驗"
+        ]
+      }
+    },
+    {
+      "id": "S2.REDUCED",
+      "title": "減少動態效果不阻擋閱讀",
+      "status": "通過",
+      "evidence": {
+        "reducedMotion": true
+      }
+    },
+    {
+      "id": "S2.EVIDENCE.KNOWN",
+      "title": "已提供印記／約束規則／畫廊線索，不虛構缺稿",
+      "status": "通過",
+      "evidence": {
+        "texts": [
+          "紅玻璃讓原墨與後來的覆印變得可辨認。有效的指令帶有【王室執行印】。",
+          "典禮冊僅約束登記參與者（艾琳），不作用於外來賓客（玩家）。",
+          "被覆印的舊命令底下留著附件線索，指向後方的王室畫廊。"
+        ],
+        "deferred": [
+          "三份文件全文",
+          "具體附件編號"
+        ]
+      }
+    },
+    {
+      "id": "S2.6.INVALID",
+      "title": "三種無效燭臺各可重看並改選座椅",
+      "status": "通過",
+      "evidence": [
+        {
+          "id": "cup",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "verified",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 3,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [
+                "cup",
+                "chair"
+              ],
+              "candles": {
+                "cup": "off",
+                "crown": "lit",
+                "chair": "relit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised",
+              "stage2EvidenceRead",
+              "stage2CandleGuidanceDone",
+              "stage2ChairVerified"
+            ],
+            "documents": [
+              "stage2Revision",
+              "stage2Evidence"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              },
+              {
+                "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+                "speaker": "erin",
+                "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+              },
+              {
+                "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+                "speaker": "ian",
+                "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+              },
+              {
+                "id": "stage2-ian-不對，那是被阻斷的舊方案。火苗熄滅後沒有再次點燃。",
+                "speaker": "ian",
+                "text": "不對，那是被阻斷的舊方案。火苗熄滅後沒有再次點燃。"
+              },
+              {
+                "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+                "speaker": "narrator",
+                "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+              },
+              {
+                "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+                "speaker": "erin",
+                "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        },
+        {
+          "id": "crown",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "verified",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 3,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [
+                "crown",
+                "chair"
+              ],
+              "candles": {
+                "cup": "lit",
+                "crown": "off",
+                "chair": "relit",
+                "clock": "lit"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised",
+              "stage2EvidenceRead",
+              "stage2CandleGuidanceDone",
+              "stage2ChairVerified"
+            ],
+            "documents": [
+              "stage2Revision",
+              "stage2Evidence"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              },
+              {
+                "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+                "speaker": "erin",
+                "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+              },
+              {
+                "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+                "speaker": "ian",
+                "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+              },
+              {
+                "id": "stage2-ian-沒有反應。王室身分登記目前並未被驅動。",
+                "speaker": "ian",
+                "text": "沒有反應。王室身分登記目前並未被驅動。"
+              },
+              {
+                "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+                "speaker": "narrator",
+                "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+              },
+              {
+                "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+                "speaker": "erin",
+                "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        },
+        {
+          "id": "clock",
+          "result": {
+            "playerName": "訪客",
+            "promiseChoice": 0,
+            "piano": {
+              "input": [
+                "月亮",
+                "鳥",
+                "王冠",
+                "花"
+              ],
+              "outcome": "matched",
+              "hintSeen": false,
+              "matched": true
+            },
+            "stage2": {
+              "phase": "verified",
+              "command": "chair",
+              "flow": "drain",
+              "cupDry": true,
+              "pending": null,
+              "attempts": [
+                {
+                  "id": "divert-seal",
+                  "success": true
+                }
+              ],
+              "evidencePages": 3,
+              "guidePages": 0,
+              "pendingCandle": null,
+              "candleAttempts": [
+                "clock",
+                "chair"
+              ],
+              "candles": {
+                "cup": "lit",
+                "crown": "lit",
+                "chair": "relit",
+                "clock": "off"
+              }
+            },
+            "stage": "stage2",
+            "time": "23:40",
+            "events": [
+              "letterRead",
+              "respondIan",
+              "enterHall",
+              "erinRestricted",
+              "secondRestriction",
+              "readCommand",
+              "pianoGuidance",
+              "promiseHonesty",
+              "explorationOpened",
+              "pianoSequenceMatched",
+              "pianoPerformanceStarted",
+              "pianoPerformanceFinished",
+              "pianoAcknowledged",
+              "pianoDrawerOpened",
+              "pianoPendantCollected",
+              "stage1Complete",
+              "stage2Started",
+              "stage2Blocked",
+              "stage2CommandRevised",
+              "stage2EvidenceRead",
+              "stage2CandleGuidanceDone",
+              "stage2ChairVerified"
+            ],
+            "documents": [
+              "stage2Revision",
+              "stage2Evidence"
+            ],
+            "conversations": [
+              {
+                "id": "piano-after-reward-0",
+                "speaker": "ian",
+                "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+              },
+              {
+                "id": "piano-after-reward-1",
+                "speaker": "erin",
+                "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+              },
+              {
+                "id": "piano-after-reward-2",
+                "speaker": "ian",
+                "text": "先留著。你會用到。"
+              },
+              {
+                "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+                "speaker": "narrator",
+                "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+              },
+              {
+                "id": "stage2-erin-快一點……我撐不住！",
+                "speaker": "erin",
+                "text": "快一點……我撐不住！"
+              },
+              {
+                "id": "stage2-choice-1",
+                "speaker": "visitor",
+                "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+              },
+              {
+                "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+                "speaker": "narrator",
+                "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+              },
+              {
+                "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+                "speaker": "narrator",
+                "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+              },
+              {
+                "id": "stage2-erin-呼……呼……阻止了嗎？",
+                "speaker": "erin",
+                "text": "呼……呼……阻止了嗎？"
+              },
+              {
+                "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+                "speaker": "narrator",
+                "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+              },
+              {
+                "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+                "speaker": "narrator",
+                "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+              },
+              {
+                "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+                "speaker": "erin",
+                "text": "為什麼？我們不是已經阻止它了嗎？"
+              },
+              {
+                "id": "stage2-ian-你阻止的是機關，不是命令。",
+                "speaker": "ian",
+                "text": "你阻止的是機關，不是命令。"
+              },
+              {
+                "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+                "speaker": "erin",
+                "text": "那至少讓我知道，我為什麼坐在這裡。"
+              },
+              {
+                "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+                "speaker": "ian",
+                "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+              },
+              {
+                "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+                "speaker": "erin",
+                "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+              },
+              {
+                "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+                "speaker": "ian",
+                "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+              },
+              {
+                "id": "stage2-ian-毫無動靜。報時機關目前處於靜止狀態。",
+                "speaker": "ian",
+                "text": "毫無動靜。報時機關目前處於靜止狀態。"
+              },
+              {
+                "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+                "speaker": "narrator",
+                "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+              },
+              {
+                "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+                "speaker": "erin",
+                "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+              }
+            ],
+            "oath": "sealed",
+            "registrationSubject": "erin",
+            "dummy": {
+              "stableHeartbeat": false,
+              "crownWorn": false,
+              "claspClosed": false
+            },
+            "finale": {
+              "clockReady": false,
+              "brakeConnected": false,
+              "status": "idle"
+            },
+            "hints": {},
+            "items": [
+              "glass"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "S2.6.DIRECT",
+      "title": "可直接選座椅，連點不重複驗證",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "verified",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 3,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified"
+        ],
+        "documents": [
+          "stage2Revision",
+          "stage2Evidence"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+            "speaker": "erin",
+            "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+          },
+          {
+            "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+            "speaker": "ian",
+            "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+          },
+          {
+            "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+            "speaker": "narrator",
+            "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+          },
+          {
+            "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+            "speaker": "erin",
+            "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "S2.6.GATE",
+      "title": "未讀完有效證據與引導前不能試驗",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "investigate",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised"
+        ],
+        "documents": [
+          "stage2Revision"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "S2.7.DIRECT",
+      "title": "附件指引讀完才解鎖，直接前進並安全到場",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "entered",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 3,
+          "guidePages": 3,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:45",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified",
+          "stage2GuideUnlocked",
+          "stage2Complete",
+          "stage3Entered"
+        ],
+        "documents": [
+          "stage2Revision",
+          "stage2Evidence",
+          "stage2Guide"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+            "speaker": "erin",
+            "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+          },
+          {
+            "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+            "speaker": "ian",
+            "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+          },
+          {
+            "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+            "speaker": "narrator",
+            "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+          },
+          {
+            "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+            "speaker": "erin",
+            "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+          },
+          {
+            "id": "stage2-erin-附件……不在這本冊子裡。線索指向後方的王室畫廊！他們把真正的記錄藏在畫像後面了。",
+            "speaker": "erin",
+            "text": "附件……不在這本冊子裡。線索指向後方的王室畫廊！他們把真正的記錄藏在畫像後面了。"
+          },
+          {
+            "id": "stage2-ian-走吧，去畫廊。",
+            "speaker": "ian",
+            "text": "走吧，去畫廊。"
+          },
+          {
+            "id": "stage2-narrator-大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。",
+            "speaker": "narrator",
+            "text": "大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "S2.7.STAY",
+      "title": "逗留不移位或丟失進度，再前進仍可入場",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "entered",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 3,
+          "guidePages": 3,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:45",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified",
+          "stage2GuideUnlocked",
+          "stage2Complete",
+          "stage3Entered"
+        ],
+        "documents": [
+          "stage2Revision",
+          "stage2Evidence",
+          "stage2Guide"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          },
+          {
+            "id": "stage2-erin-剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？",
+            "speaker": "erin",
+            "text": "剛才紙頁上顯示了測試方法……桌上那四根燭臺，是不是就代表著不同的設施？"
+          },
+          {
+            "id": "stage2-ian-典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。",
+            "speaker": "ian",
+            "text": "典禮冊現在已經把死法修訂成了『座椅』。去動一下代表座椅的燭臺，看看這條殺意命令是不是真的被驅動了。"
+          },
+          {
+            "id": "stage2-narrator-燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。",
+            "speaker": "narrator",
+            "text": "燭火熄滅後瞬間重新點燃！高臺座椅內的彈簧再次扣緊——確認目前生效的殺意指令為「座椅」。"
+          },
+          {
+            "id": "stage2-erin-去找那份附件。我想知道，他們到底說我做了什麼。",
+            "speaker": "erin",
+            "text": "去找那份附件。我想知道，他們到底說我做了什麼。"
+          },
+          {
+            "id": "stage2-erin-附件……不在這本冊子裡。線索指向後方的王室畫廊！他們把真正的記錄藏在畫像後面了。",
+            "speaker": "erin",
+            "text": "附件……不在這本冊子裡。線索指向後方的王室畫廊！他們把真正的記錄藏在畫像後面了。"
+          },
+          {
+            "id": "stage2-ian-走吧，去畫廊。",
+            "speaker": "ian",
+            "text": "走吧，去畫廊。"
+          },
+          {
+            "id": "stage2-narrator-高臺座椅內的彈簧再次發出緊繃的聲響。",
+            "speaker": "narrator",
+            "text": "高臺座椅內的彈簧再次發出緊繃的聲響。"
+          },
+          {
+            "id": "stage2-erin-這裡已經沒有其他線索了，高臺座椅隨時會再次發動，我們得快點進去畫廊！",
+            "speaker": "erin",
+            "text": "這裡已經沒有其他線索了，高臺座椅隨時會再次發動，我們得快點進去畫廊！"
+          },
+          {
+            "id": "stage2-narrator-大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。",
+            "speaker": "narrator",
+            "text": "大門緩緩推開，冷風拂過，兩旁掛了三幅巨大肖像。畫像的面容多已被拆開或塗改，名字牌錯置交亂。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "S2.7.RESET",
+      "title": "畫廊入場後重置清除所有第二關狀態",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": null,
+        "piano": {
+          "input": [],
+          "outcome": null,
+          "hintSeen": false,
+          "matched": false
+        },
+        "stage2": {
+          "phase": "inactive",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "opening",
+        "time": "23:30",
+        "events": [],
+        "documents": [
+          "rescueLetter"
+        ],
+        "conversations": [],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": []
+      }
+    },
+    {
+      "id": "S2.BLOCK.SUCCESS",
+      "title": "正解阻流結果已完成，改令留待步驟18",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "investigate",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "evidencePages": 0,
+          "guidePages": 0,
+          "pendingCandle": null,
+          "candleAttempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised"
+        ],
+        "documents": [
+          "stage2Revision"
+        ],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          },
+          {
+            "id": "stage2-erin-快一點……我撐不住！",
+            "speaker": "erin",
+            "text": "快一點……我撐不住！"
+          },
+          {
+            "id": "stage2-choice-1",
+            "speaker": "visitor",
+            "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+          },
+          {
+            "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+            "speaker": "narrator",
+            "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+          },
+          {
+            "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+            "speaker": "narrator",
+            "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+          },
+          {
+            "id": "stage2-erin-呼……呼……阻止了嗎？",
+            "speaker": "erin",
+            "text": "呼……呼……阻止了嗎？"
+          },
+          {
+            "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+            "speaker": "narrator",
+            "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+          },
+          {
+            "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+            "speaker": "narrator",
+            "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+          },
+          {
+            "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+            "speaker": "erin",
+            "text": "為什麼？我們不是已經阻止它了嗎？"
+          },
+          {
+            "id": "stage2-ian-你阻止的是機關，不是命令。",
+            "speaker": "ian",
+            "text": "你阻止的是機關，不是命令。"
+          },
+          {
+            "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+            "speaker": "erin",
+            "text": "那至少讓我知道，我為什麼坐在這裡。"
+          },
+          {
+            "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+            "speaker": "ian",
+            "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "S2.REAL",
+      "title": "正式場景載入與第二關 F 入口（無截圖）",
+      "status": "通過",
+      "evidence": {
+        "realErrors": [],
+        "result": {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "investigate",
+            "command": "chair",
+            "flow": "drain",
+            "cupDry": true,
+            "pending": null,
+            "attempts": [
+              {
+                "id": "divert-seal",
+                "success": true
+              }
+            ],
+            "evidencePages": 0,
+            "guidePages": 0,
+            "pendingCandle": null,
+            "candleAttempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "stage2",
+          "time": "23:40",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected",
+            "stage1Complete",
+            "stage2Started",
+            "stage2Blocked",
+            "stage2CommandRevised"
+          ],
+          "documents": [
+            "stage2Revision"
+          ],
+          "conversations": [
+            {
+              "id": "piano-after-reward-0",
+              "speaker": "ian",
+              "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+            },
+            {
+              "id": "piano-after-reward-1",
+              "speaker": "erin",
+              "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+            },
+            {
+              "id": "piano-after-reward-2",
+              "speaker": "ian",
+              "text": "先留著。你會用到。"
+            },
+            {
+              "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+              "speaker": "narrator",
+              "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+            },
+            {
+              "id": "stage2-erin-快一點……我撐不住！",
+              "speaker": "erin",
+              "text": "快一點……我撐不住！"
+            },
+            {
+              "id": "stage2-choice-1",
+              "speaker": "visitor",
+              "text": "轉動緊急分流閥門，並用銅蓋封堵主管道"
+            },
+            {
+              "id": "stage2-narrator-啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！",
+              "speaker": "narrator",
+              "text": "啪嗒！閥門轉動，液體被改道排入下方暗槽。銀杯內保持乾燥。艾琳的手猛然垂下，大口喘氣！"
+            },
+            {
+              "id": "stage2-narrator-銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。",
+              "speaker": "narrator",
+              "text": "銀杯失去了用途。艾琳靠在牆邊，猛然喘氣。"
+            },
+            {
+              "id": "stage2-erin-呼……呼……阻止了嗎？",
+              "speaker": "erin",
+              "text": "呼……呼……阻止了嗎？"
+            },
+            {
+              "id": "stage2-narrator-典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。",
+              "speaker": "narrator",
+              "text": "典禮冊上的墨水自動蔓延，原句被粗暴地劃掉：第一方案不可執行。修訂：座椅。"
+            },
+            {
+              "id": "stage2-narrator-喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。",
+              "speaker": "narrator",
+              "text": "喀啦——高臺座椅內部傳來金屬彈簧上緊的刺耳聲響。"
+            },
+            {
+              "id": "stage2-erin-為什麼？我們不是已經阻止它了嗎？",
+              "speaker": "erin",
+              "text": "為什麼？我們不是已經阻止它了嗎？"
+            },
+            {
+              "id": "stage2-ian-你阻止的是機關，不是命令。",
+              "speaker": "ian",
+              "text": "你阻止的是機關，不是命令。"
+            },
+            {
+              "id": "stage2-erin-那至少讓我知道，我為什麼坐在這裡。",
+              "speaker": "erin",
+              "text": "那至少讓我知道，我為什麼坐在這裡。"
+            },
+            {
+              "id": "stage2-ian-真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。",
+              "speaker": "ian",
+              "text": "真正的罪名，不會寫在普通的紙上。紅色的眼睛才能看見它。"
+            }
+          ],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        },
+        "modelSources": 14,
+        "method": "正式 main 與完整場景模組；只附加測試前置 API，暫停 WebGL draw，不測畫質、不截圖。實際 WASD／射線／F 進入銀杯選項。"
+      }
+    },
+    {
+      "id": "S2.HEALTH",
+      "title": "瀏覽器離線與主控台健康",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "externalRequests": [],
+        "title": "時空密室｜午夜之前",
+        "screenshotsTaken": 0
+      }
+    }
+  ],
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-stage2-step21",
+  "summary": {
+    "passed": 18,
+    "failed": 0,
+    "blocked": 1
+  },
+  "notes": "只有第二關 T7／T8 共 19 案；空白 step8.3 不建案。未執行或前置未具備不得標通過。"
+}

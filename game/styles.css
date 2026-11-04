@@ -64,3 +64,108 @@ button, select { border-radius: 1px; font-size: 14px; }
 .explore-prompt p { font-size: 12px; }
 .interaction-feedback { border-radius: 0; border-color: #c6a368; box-shadow: 0 12px 40px #0004; }
 @media(max-width:480px) { .scene-toolbar #room-location { font-size: 17px; } .entry-content { padding-left:22px; } .scene-caption { letter-spacing:0; } }
+.story-dialog { width:min(660px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); padding:clamp(18px,4vw,36px); overflow:auto; background:#10131f; color:#eee7d7; border:1px solid #ad8e57; }
+.story-dialog::backdrop { background:#02040bd9; }
+.story-dialog h2 { margin:8px 0 20px; font-family:serif; color:#f1dfb7; }
+.story-body { max-height:50dvh; overflow:auto; overscroll-behavior:contain; line-height:1.95; white-space:pre-wrap; overflow-wrap:anywhere; padding-right:10px; }
+.story-body p { margin:0 0 16px; }
+.story-body button { display:block; margin:10px 0; width:100%; text-align:left; }
+.story-actions { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 12px; }
+.story-dialog button { min-height:44px; }
+.story-dialog[data-kind="opening-letter"] { background:radial-gradient(ellipse at 35% 20%,#f1dfb8,#e2c791 75%,#c5a56b); color:#38291c; border:1px solid #9e7944; box-shadow:0 12px 70px #0008,inset 0 0 45px #8a5d2020; animation:letter-arrives .9s ease-out both; }
+.story-dialog[data-kind="opening-letter"]::backdrop { background:#000; }
+.story-dialog[data-kind="opening-letter"] h2 { color:#443019; }
+.story-dialog[data-kind="opening-letter"] .eyebrow { color:#70522e; }
+.story-dialog[data-kind="opening-letter"] .story-body p { animation:letter-line .6s ease-out both; }
+.story-dialog[data-kind="opening-letter"] .story-body p:nth-child(1) { animation-delay:.15s; }
+.story-dialog[data-kind="opening-letter"] .story-body p:nth-child(2) { animation-delay:.45s; }
+.story-dialog[data-kind="opening-letter"] .story-body p:nth-child(3) { animation-delay:.75s; }
+.story-dialog[data-kind="opening-letter"] .story-body p:nth-child(4) { animation-delay:1.05s; text-align:right; }
+.story-dialog[data-kind="ian-question"] .story-actions { flex-direction:column; }
+.story-dialog[data-kind="ian-question"] .story-actions button { text-align:left; }
+.name-field { display:flex; flex-direction:column; gap:8px; max-width:340px; margin:24px 0; font-size:14px; color:#eddbb7; }
+.name-field span { font-size:12px; color:#b9ac96; }
+.name-field input { width:100%; padding:12px; border:1px solid #9b804f; color:#eee7d7; background:#0b0f1b; font:inherit; }
+@keyframes letter-arrives { from { opacity:0; transform:translateY(18px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes letter-line { from { opacity:0; } to { opacity:1; } }
+.story-dialog[data-kind="restriction"] { top:auto; bottom:18px; margin:0 auto; padding:14px 24px; max-width:620px; }
+.story-dialog[data-kind="restriction"]::backdrop { background:transparent; }
+.story-dialog[data-kind="restriction"] h2 { margin:4px 0 8px; font-size:20px; }
+.story-dialog[data-kind="ceremony-page"] { background:#e8d9b5; color:#39281a; transform-origin:left center; animation:book-unfold .8s ease-out both; }
+.story-dialog[data-kind="ceremony-page"] h2,.story-dialog[data-kind="ceremony-page"] .eyebrow { color:#654322; }
+.story-dialog[data-kind="ceremony-page"] .story-body p { animation:letter-line .6s both; animation-delay:.4s; }
+.story-dialog[data-kind="ceremony-page"] .story-body p:nth-child(2) { animation-delay:1s; color:#742b23; }
+@keyframes book-unfold { from { opacity:0; transform:perspective(900px) rotateY(-65deg); } to { opacity:1; transform:perspective(900px) rotateY(0); } }
+.clue-table-scroll { max-width:100%; overflow-x:auto; margin:16px 0; border:1px solid #9e8150; }
+.clue-table { border-collapse:collapse; min-width:510px; width:100%; white-space:nowrap; }
+.clue-table th,.clue-table td { padding:12px; border:1px solid #80683e; text-align:center; }
+.music-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; padding:14px; margin:14px 0; background:#30221c; border:2px solid #9b7642; }
+.music-slot { min-width:0; display:flex; flex-direction:column; align-items:center; padding:10px 4px; color:#ead9ae; background:#141824; border:1px solid #76613e; }
+.slot-number { font-size:12px; }.slot-glyph { font-size:36px; line-height:1.4; }
+.piano-scroll { max-width:100%; overflow-x:auto; margin:12px 0; padding-bottom:12px; }
+.piano-keyboard { display:flex; position:relative; min-width:680px; height:160px; background:#231a18; }
+.story-dialog .piano-white { display:flex; flex-direction:column; justify-content:flex-end; align-items:center; flex:1; min-width:0; height:160px; padding:0 3px 10px; border:1px solid #5d513c; color:#342d20; background:linear-gradient(#f9f3e1,#ddd4b9); box-shadow:inset 0 -5px #bcb193; }
+.story-dialog .piano-black { position:absolute; top:0; width:36px; height:96px; min-height:0; padding:0; z-index:1; border:1px solid #0a0b10; background:linear-gradient(#34333b,#0c0d13); box-shadow:inset 0 -5px #06070a; }
+.story-dialog[data-kind="piano-keys"] .story-body p { margin:0 0 6px; line-height:1.5; }
+.key-glyph { font-size:31px; line-height:1.2; }.key-label { font-size:13px; }.piano-input { color:#f0d69c; }.piano-result { min-height:26px; }
+.piano-key:disabled { opacity:.8; cursor:default; }.piano-white:active { box-shadow:inset 0 -1px #bcb193; background:#cbbd98; }
+@media(max-width:480px) { .music-grid { gap:6px; padding:8px; }.slot-glyph { font-size:28px; } }
+@media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="ceremony-page"],.story-dialog[data-kind="ceremony-page"] .story-body p { animation-duration:.01s; animation-delay:0s; } }
+@media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="opening-letter"],.story-dialog[data-kind="opening-letter"] .story-body p { animation-duration:.01s; animation-delay:0s; } }
+.story-dialog[data-kind="opening-letter"] .story-body { font-family:"PMingLiU",serif; font-size:clamp(18px,2.2vw,23px); line-height:2; }
+.objective-status { position:absolute; left:20px; bottom:65px; max-width:calc(100% - 40px); padding:8px 12px; margin:0; color:#eadcba; background:#080c18d9; font-size:13px; line-height:1.7; pointer-events:none; }
+.story-dialog[data-kind="piano-drawer"] { top:auto; bottom:18px; margin:0 auto; padding:16px 24px; }
+.story-dialog[data-kind="piano-drawer"]::backdrop { background:#02040b30; }
+.performance-notes { display:flex; gap:8px; margin:24px 0; }
+.performance-notes span { flex:1; padding:20px 4px; text-align:center; color:#342d20; background:#eee2bd; border-bottom:5px solid #9b804f; }
+.performance-notes .playing { background:#d8ab54; transform:translateY(4px); border-bottom-width:1px; }
+.pendant-art { width:68px; height:88px; margin:32px auto; background:linear-gradient(135deg,#f77987,#a71332 50%,#480b22); clip-path:polygon(50% 0,95% 35%,75% 85%,50% 100%,25% 85%,5% 35%); }
+.story-dialog[data-kind="stage1-complete"] { width:min(920px,calc(100vw - 32px)); text-align:center; background:#080b10; }
+.story-dialog[data-kind="stage1-complete"] h2 { font-size:clamp(23px,3vw,34px); color:#f5f2e9; }
+.completion-mark { color:#43ce86; font-size:48px; border:3px solid currentColor; border-radius:50%; width:68px; height:68px; line-height:60px; margin:8px auto 28px; }
+.story-dialog[data-kind="stage1-complete"] .story-actions { justify-content:center; }
+.story-dialog[data-kind="stage1-complete"] .completion-mark { margin:0 auto 16px; width:60px; height:60px; line-height:52px; font-size:42px; }
+.story-dialog[data-kind="stage1-complete"] .story-body p { margin-bottom:12px; }
+.story-dialog[data-kind="stage1-complete"] { padding:24px; }
+.scene-actions { flex-wrap:wrap; }
+.story-dialog[data-kind="stage2-text"]::backdrop { background:#02040bf2; animation:stage2-darken .3s ease-out both; }
+.story-dialog[data-kind="stage2-text"] { background:#090c14; }
+.story-dialog[data-kind="stage2-text"] > * { animation:stage2-words .15s .3s both; }
+@keyframes stage2-darken { from { background:#02040b00; } to { background:#02040bf2; } }
+@keyframes stage2-words { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="stage2-text"]::backdrop,.story-dialog[data-kind="stage2-text"] > * { animation-duration:.01s; animation-delay:0s; } }
+@media(max-width:760px) { .scene-toolbar { align-items:flex-start; flex-direction:column; gap:8px; padding:12px; } .scene-actions { gap:6px; } .scene-toolbar button { padding:8px 10px; } }
+/* 第三關共用九片畫像；切片保持原畫比例，長面板可捲動。 */
+.portrait-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px;}
+.portrait-tabs button{flex:1;padding:9px 7px;font-size:14px;}
+.portrait-tabs button[aria-current="true"]{outline:2px solid #d7b778;outline-offset:2px;}
+.portrait-tabs button:disabled{opacity:.45;cursor:not-allowed;}
+.puzzle-status{font-size:14px;color:#dfc58d;min-height:24px;}
+.portrait-puzzle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:min(100%,290px);aspect-ratio:512/812;margin:0 auto 12px;padding:5px;background:#241d18;border:1px solid #a68b59;}
+.portrait-tile{display:block;min-width:0;padding:0;border:0;border-radius:0;background-size:300% 300%;background-repeat:no-repeat;box-shadow:inset 0 0 0 1px #a68b5970;}
+.portrait-tile[aria-pressed="true"]{outline:4px solid #ffe4a3;outline-offset:-4px;filter:brightness(1.2);}
+.portrait-tile:focus-visible{outline:4px solid white;outline-offset:-4px;}
+.portrait-tile:disabled{opacity:1;cursor:default;}
+.story-dialog[data-kind="stage3-puzzle"] .story-body{max-height:57vh;overflow:auto;}
+@media(max-width:500px){.portrait-puzzle{width:min(100%,240px);}.portrait-tabs button{font-size:12px;padding:8px 3px;}}
+.story-body .portrait-tile{margin:0;width:100%;height:100%;min-height:0;}
+.portrait-puzzle{grid-template-rows:repeat(3,minmax(0,1fr));}
+/* 全域按鈕 hover／disabled 的 background 簡寫不可重設畫片裁切。 */
+.story-body .portrait-tile,.story-body .portrait-tile:hover:not(:disabled),.story-body .portrait-tile:disabled{background-size:300% 300%;background-repeat:no-repeat;}
+/* 桌面將說明放在左側，保留右側完整九宮格；窄視窗回到單欄。 */
+.story-dialog[data-kind="stage3-puzzle"] .story-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:12px 16px;max-height:calc(100dvh - 280px);align-items:start;}
+.story-dialog[data-kind="stage3-puzzle"] .portrait-tabs{grid-column:1;grid-row:1;flex-direction:column;margin:0;}
+.story-body .portrait-tabs button{margin:0;}
+.story-dialog[data-kind="stage3-puzzle"] .story-body>p{grid-column:1;margin:0;}
+.story-dialog[data-kind="stage3-puzzle"] .portrait-puzzle{grid-column:2;grid-row:1 / span 3;width:100%;margin:0;}
+@media(max-width:600px){
+ .story-dialog[data-kind="stage3-puzzle"] .story-body{display:block;}
+ .story-dialog[data-kind="stage3-puzzle"] .portrait-tabs{flex-direction:row;margin-bottom:10px;}
+ .story-dialog[data-kind="stage3-puzzle"] .story-body>p{margin:8px 0;}
+ .story-dialog[data-kind="stage3-puzzle"] .portrait-puzzle{width:min(100%,220px);margin:8px auto;}
+}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop{background:#02040bf2;animation:stage2-darken .3s ease-out both;}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation:stage2-words .15s .3s both;}
+.story-dialog[data-kind="stage3-document"] .story-body{line-height:2.05;color:#f2e5cb;}
+.childhood-photo{margin:12px auto 20px;min-height:180px;width:min(100%,320px);display:grid;place-items:center;border:10px solid #bca579;outline:1px solid #6c5435;background:#29231e;color:#e6d6b5;font-size:18px;}
+@media(prefers-reduced-motion:reduce){.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop,.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation-duration:.01s;animation-delay:0s;}}

@@ -1,4 +1,4 @@
-import {Box3,Vector3,Group,Mesh,MeshStandardMaterial,BufferGeometry,Float32BufferAttribute,DoubleSide,TorusGeometry,CylinderGeometry,BoxGeometry} from 'three';
+import {Box3,Vector3,Raycaster,Group,Mesh,MeshStandardMaterial,BufferGeometry,Float32BufferAttribute,DoubleSide,TorusGeometry,CylinderGeometry,BoxGeometry} from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import chairURL from './assets/models/runtime/ArmChair_01.glb';
@@ -30,8 +30,13 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
     if(id==='clock')root.traverse(object=>{if(object.isMesh&&object.material?.name.includes('glass'))object.visible=false;});
     root.updateMatrixWorld(true);
     // 將鋼琴的 778 個零件依材質合併；保留同樣的實際表面供 F 鍵射線檢查。
+    // 書桌僅使用一座完整燭臺，避免整套三座模型跨出承托表面。
+    const variants=[[id,root]];
+    if(id==='candles')variants.push(['bookCandle',root.getObjectByName('brass_candleholder_03')]);
+    for(const [templateId,source]of variants){
+    if(!source)throw Error('找不到燭臺模型');
     const materialGroups=new Map();
-    root.traverse(object=>{
+    source.traverse(object=>{
       if(!object.isMesh||!object.visible)return;
       let visible=true;for(let p=object.parent;p;p=p.parent)if(!p.visible)visible=false;if(!visible)return;
       if(Array.isArray(object.material))return;
@@ -51,16 +56,20 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
       for(const g of geometries)g.dispose();
     }
     if(!compact.children.length)throw Error('模型沒有可顯示的網格：'+id);
-    templates[id]=compact;onProgress(++finished,Object.keys(urls).length);
+    templates[templateId]=compact;
+    }
+    onProgress(++finished,Object.keys(urls).length);
   }
   function hide(prefixes){scene.traverse(o=>{if(o.isMesh&&prefixes.some(p=>o.name.startsWith(p)))o.visible=false;});}
   hide(['piano-','white-key','black-key','empty-chair','chair-back','throne-','cabinet','clock-','pendulum-','minute-hand','hour-hand','portrait-frame','book-desk','erin-','flower-vase']);
   const installed=[];
-  function place(id,{x,y,z,height,width,depth,rotation=0,target,solid=false,name,colliderId}={}){
+  function place(id,{x,y,z,height,width,depth,dimensions,rotation=0,target,solid=false,name,colliderId}={}){
     const clone=templates[id].clone(true);clone.rotation.y=rotation;clone.updateMatrixWorld(true);
     const bounds=new Box3().setFromObject(clone),size=bounds.getSize(new Vector3());
     const scale=height?height/size.y:width?width/size.x:depth/size.z;
-    clone.scale.setScalar(scale);clone.updateMatrixWorld(true);
+    if(dimensions)clone.scale.set(dimensions[0]/size.x,dimensions[1]/size.y,dimensions[2]/size.z);
+    else clone.scale.setScalar(scale);
+    clone.updateMatrixWorld(true);
     const scaled=new Box3().setFromObject(clone),center=scaled.getCenter(new Vector3());
     clone.position.set(x-center.x,y-scaled.min.y,z-center.z);clone.name=name||'detail-'+id;
     clone.traverse(o=>{if(o.isMesh){o.name=(target||'decor')+'-imported-'+id;o.userData.ignoreInteractionRay=false;}});
@@ -79,18 +88,31 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
   place('diningChair',{x:-19,y:.6,z:-.25,height:1.05,colliderId:'piano-bench'});
   // 原始木色鋼琴保留細緻的琴弦、鍵盤與金屬件，外殼改為 A 的黑檀色。
   piano.traverse(o=>{if(o.isMesh&&o.material.name==='music_walnut'){o.material=o.material.clone();o.material.color.set('#14121b');o.material.roughness=.23;}});
-  place('console',{x:6.8,y:.6,z:4,height:1.42,target:'book',colliderId:'book-desk'});
+  // 寬桌面完整承托典禮冊、銀杯與裝飾，碰撞體使用放大後的實際尺寸。
+  const bookDesk=place('console',{x:6.8,y:.6,z:4,dimensions:[3.6,1.42,1.9],target:'book',colliderId:'book-desk'});
   place('cabinet',{x:22.5,y:.6,z:-3,height:3.3,rotation:-Math.PI/2,target:'cabinet',colliderId:'cabinet'});
   place('clock',{x:4.5,y:.6,z:-13,height:5,target:'clock',solid:true});
   for(const z of [-7,2,8])place('chandelier',{x:0,y:6.25,z,height:3});
-  for(const x of [-7,-3.5,3.5,7]){
+  for(const x of [-5,0,5]){
     const portrait=place('frame',{x,y:1.52,z:-26.57,height:3.7,target:'portrait'});
     // 畫框保留原本雕花；中心繼續顯示本劇的三幅人物畫像。
     portrait.traverse(o=>{if(o.isMesh&&o.material.name.includes('canvas'))o.visible=false;});
   }
   for(const [x,z,rotation]of [[-9,-11,Math.PI/2],[9,-11,-Math.PI/2],[-8,-25.5,0],[8,-25.5,0]])place('statue',{x,y:.6,z,height:2.65,rotation,solid:true});
   for(const x of [-9.95,9.95])for(const z of [-10,-3,4,10])place('lion',{x,y:5.5,z,height:.9,rotation:x<0?Math.PI/2:-Math.PI/2});
-  for(const [x,y,z]of [[-4,2.07,3],[-4,2.07,6.8],[5.7,2.05,4],[-17.75,2.3,-2.4],[19.4,1.85,4],[0,1.32,-3.8]])place('candles',{x,y,z,height:.85});
+  // 長桌前端保留四根獨立儀式燭臺；多枝裝飾燭臺留在其他區域。
+  for(const [x,y,z]of [[-17.75,2.3,-2.4],[19.4,1.85,4],[0,1.32,-3.8]])place('candles',{x,y,z,height:.85});
+  const bookCandle=place('bookCandle',{x:5.65,y:2.02,z:4,height:.85,name:'book-desk-candelabrum'});
+  // 以實際桌面三角形校正燭臺底座，不用整張桌子的外框最高點代替支撐面。
+  const supportRay=new Raycaster(new Vector3(5.65,4,4),new Vector3(0,-1,0));
+  const support=supportRay.intersectObject(bookDesk,true)[0];
+  if(!support)throw Error('書桌燭臺下方缺少支撐面');
+  const candleBounds=new Box3().setFromObject(bookCandle);
+  bookCandle.position.y+=support.point.y-candleBounds.min.y;bookCandle.updateMatrixWorld(true);
+  candleBounds.setFromObject(bookCandle);
+  const candleRecord=installed.at(-1);
+  candleRecord.bounds={min:candleBounds.min.toArray(),max:candleBounds.max.toArray()};
+  candleRecord.support={table:bookDesk.name,surfaceY:support.point.y,baseY:candleBounds.min.y,gap:candleBounds.min.y-support.point.y};
   place('vase',{x:-4,y:2.05,z:5,height:.9,target:'flower'});
   const mannequin=place('mannequin',{x:20.3,y:.6,z:-3,height:2.65,rotation:-Math.PI/2,target:'cabinet',solid:true});
   mannequin.traverse(o=>{

@@ -43,12 +43,16 @@ export function applyRoyalStyle(scene, mats) {
   const flame = new MeshBasicMaterial({color:'#ffe6a9'});
   const ink = new MeshStandardMaterial({color:'#13121b',roughness:.5});
   const buckets = new Map();
+  const entranceDetail = new Group(); entranceDetail.name='entrance-detail'; scene.add(entranceDetail);
+  let atEntrance = false;
   let renderDetail = true;
   const matrix = new Matrix4(), rotation = new Quaternion();
   function detail(geo,mat,x,y,z,rx=0,ry=0,rz=0) {
     if(!renderDetail){geo.dispose();return;}
     rotation.setFromEuler(new Euler(rx,ry,rz)); matrix.compose(new Vector3(x,y,z),rotation,new Vector3(1,1,1));
-    geo.applyMatrix4(matrix); if (!buckets.has(mat)) buckets.set(mat,[]); buckets.get(mat).push(geo);
+    geo.applyMatrix4(matrix);
+    if (atEntrance) { const mesh=new Mesh(geo,mat); mesh.userData.ignoreInteractionRay=true; mesh.receiveShadow=true; entranceDetail.add(mesh); return; }
+    if (!buckets.has(mat)) buckets.set(mat,[]); buckets.get(mat).push(geo);
   }
   function box(x,y,z,w,h,d,mat=gold,ry=0) { detail(new BoxGeometry(w,h,d),mat,x,y,z,0,ry); }
   function ball(x,y,z,r,mat=gold) { detail(new SphereGeometry(r,10,8),mat,x,y,z); }
@@ -58,6 +62,7 @@ export function applyRoyalStyle(scene, mats) {
     if(!renderDetail)return;
     const p=new Vector3(...a),q=new Vector3(...b),dir=q.clone().sub(p),geo=new CylinderGeometry(r,r,dir.length(),8);
     geo.applyQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0,1,0),dir.normalize()));geo.translate(...p.add(q).multiplyScalar(.5).toArray());
+    if(atEntrance){const mesh=new Mesh(geo,mat);mesh.userData.ignoreInteractionRay=true;entranceDetail.add(mesh);return;}
     if(!buckets.has(mat))buckets.set(mat,[]);buckets.get(mat).push(geo);
   }
   function curve(a,b,c,r=.04,mat=gold) {
@@ -117,7 +122,7 @@ export function applyRoyalStyle(scene, mats) {
     if(object.name==='ceiling'){object.position.y=11.6;object.material=mats.darkWood;}
     if(object.name==='runner'){object.scale.z=2.05;object.position.z=1.2;}
     if(object.name==='portrait-canvas'){
-      object.material=new MeshStandardMaterial({map:portraits[object.position.x < -5 ? 0 : object.position.x < 0 ? 1 : object.position.x < 5 ? 2 : 1],roughness:.92});
+      object.material=new MeshStandardMaterial({map:portraits[object.position.x < 0 ? 1 : object.position.x === 0 ? 0 : 2],roughness:.92});
     }
     if(object.name==='portrait-figure'||(object.parent?.name==='gallery-furniture'&&object.geometry.type==='SphereGeometry'))object.visible=false;
     if(object.geometry.type==='BoxGeometry'&&object.material.emissiveIntensity===.8){object.material=blueGlass;}
@@ -199,14 +204,10 @@ export function applyRoyalStyle(scene, mats) {
   for(const x of [-9.8,9.8])for(const z of [-10,4,9]){
     candelabra(x,2.85,z);const light=new PointLight('#ffbd73',12,6,2);light.position.set(x,3.9,z);scene.add(light);
   }
-  // 書桌：開頁、燭臺、送水管與象徵四席的旗幟。
+  // 書桌：開頁、燭臺與送水管；移除窗前懸空的四席燭臺旗幟。
   renderDetail = true;
   candelabra(5.65,1.98,4);rod(7.95,2.55,3.55,.04,1.15,mats.silver);
   line([7.95,3.12,3.55],[7.8,3.12,4],.04,mats.silver);
-  for(let i=0;i<4;i++){
-    const x=8.6+i*.48;rod(x,3.5,7,.018,2.2);panel(x,3.35,7,.4,1.1,Math.PI);
-    candle(x,4.65,7,.3);
-  }
   // 裝飾用文字以本機 Canvas 製作，可在離線單檔使用。
   function pageTexture(text) {
     const c=document.createElement('canvas');c.width=512;c.height=512;const ctx=c.getContext('2d');ctx.fillStyle='#c4ae82';ctx.fillRect(0,0,512,512);
@@ -255,7 +256,7 @@ export function applyRoyalStyle(scene, mats) {
   box(-20.08,2.5,-2.15,.4,.18,.3,gold);box(-20.08,2.6,-2.15,.3,.02,.24,velvetPlain);
   candelabra(-17.7,2.44,-2.5);
   // 畫廊：畫框層次、國王與艾琳的油畫，以及證據桌。
-  for(const x of [-7,-3.5,3.5,7]){
+  for(const x of [-5,0,5]){
     for(const dx of [-1.2,1.2])box(x+dx,3.4,-26.54,.055,3.62,.05,paleGold);
     for(const y of [1.57,5.23])box(x,y,-26.54,2.46,.06,.1,paleGold);
     crest(x,5.45,-26.55,.3);
@@ -304,7 +305,9 @@ export function applyRoyalStyle(scene, mats) {
     for(let i=0;i<5;i++)box(x,2.4+i*1.5,14.28,1.6,.08,.08,gold);
   }
   for(const side of [-1,1]){
+    atEntrance = true;
     panel(side*1.02,3,12.34,1.8,4.4,Math.PI);arch(side*1.02,12.45,1.5,4,5.4,Math.PI);
+    atEntrance = false;
     for(const x of [side*4,side*7])candelabra(x,2.8,12.5);
   }
   const moon=new Mesh(new SphereGeometry(2.6,32,24),new MeshBasicMaterial({color:'#d8e7ff'}));moon.position.set(-17,21,-40);moon.userData.ignoreInteractionRay=true;scene.add(moon);

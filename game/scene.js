@@ -9,6 +9,8 @@ import {loadDetailedModels} from './detailed-models.js';
 import { buildCastle } from './castle.js';
 import { createFirstPersonControls } from './controls.js';
 import { createInteractions } from './interaction.js';
+import { addPianoClues } from './piano-props.js';
+import {createErinPose} from './erin-animation.js';
 
 // 城堡空間、渲染與生命週期。
 export async function createCastleScene(container, onError, onControlChange = () => {}, interactionUI = {}) {
@@ -20,6 +22,9 @@ export async function createCastleScene(container, onError, onControlChange = ()
   let disposed = false;
   let lastFrame = 0;
   let castle;
+  let lastView = '';
+  let drawerView = null;
+  const cinematics = new Set();
   const camera = new PerspectiveCamera(68, 1, 0.1, 80);
   camera.position.set(6.5, 4.7, 8.5);
   camera.lookAt(0, 0.6, 0);
@@ -27,6 +32,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
   function dispose() {
     if (disposed) return;
     disposed = true;
+    for(const cancel of [...cinematics])cancel();
     renderer.setAnimationLoop(null);
     observer?.disconnect();
     interactions?.dispose();
@@ -41,6 +47,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
     for (const geometry of geometries) geometry.dispose();
     for (const material of materials) { material.map?.dispose(); material.dispose(); }
     renderer.dispose();
+    if (!renderer.getContext().isContextLost()) renderer.forceContextLoss();
     scene.environment?.dispose();
     renderer.domElement.remove();
   }
@@ -53,8 +60,10 @@ export async function createCastleScene(container, onError, onControlChange = ()
 
   function resize() {
     if (disposed) return;
-    const width = Math.max(1, container.clientWidth);
-    const height = Math.max(1, container.clientHeight);
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    // 返回首頁後容器會隱藏，不能將零尺寸乘上低像素比建立無效 framebuffer。
+    if (width <= 0 || height <= 0) return;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -69,9 +78,11 @@ export async function createCastleScene(container, onError, onControlChange = ()
     lastFrame = timestamp;
 
     controls?.update(delta);
+    interactionUI.onPosition?.(camera.position, container.dataset.area);
     interactions?.update();
     // 沒有動畫或鏡頭變化的暫停畫面不重複繪圖，讓操作介面保持回應。
-    try { if(document.pointerLockElement===renderer.domElement||renderer.shadowMap.needsUpdate)renderer.render(scene, camera); }
+    const view=camera.position.toArray().concat(camera.rotation.toArray()).join(',');
+    try { if(view!==lastView||renderer.shadowMap.needsUpdate){renderer.render(scene, camera);lastView=view;} }
     catch (error) { console.error('3D 畫面更新失敗', error); onError(); }
   }
 
@@ -108,6 +119,12 @@ export async function createCastleScene(container, onError, onControlChange = ()
     await loadDetailedModels(scene,castle,(done,total)=>{
       interactionUI.onProgress?.(`正在載入精細模型 ${done}／${total}…`);
     });
+    addPianoClues(scene,castle);
+    container.dataset.pianoDrawer='closed';container.dataset.pianoPerformanceNote='';
+    const erinActors=['detail-woman','erin-gown'].map(name=>scene.getObjectByName(name)).filter(Boolean);
+    const erinPose=createErinPose(erinActors);
+    const erinHome=erinActors.map(actor=>actor.position.clone());
+    container.dataset.erinLocation='hall';delete container.dataset.erinActors;
     const pmrem=new PMREMGenerator(renderer),environment=new RoomEnvironment();
     scene.environment=pmrem.fromScene(environment,.04).texture;scene.environmentIntensity=.18;
     environment.dispose();pmrem.dispose();
@@ -133,8 +150,73 @@ export async function createCastleScene(container, onError, onControlChange = ()
     observer.observe(container);
     return {
       resize,
+      syncGallery(progress){if(castle.gallery.sync(progress))renderer.shadowMap.needsUpdate=true;container.dataset.galleryPaintings=JSON.stringify(castle.gallery.manifest);},
       setArea(id) { if (castle.areas[id]) applyArea(id); },
+      placePlayer(pose){const placed=controls.teleport(pose);if(placed){interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}return placed;},
       requestExploration() { controls.requestLock(); },
+      setDoorLocked(id,value){if(castle.doors.setLocked(id,value)){renderer.shadowMap.needsUpdate=true;publishNavigation();}},
+      openGalleryDoor(){const door=castle.doors.snapshot().find(d=>d.id==='gallery-door');if(!door||door.locked)return false;if(!door.open)castle.doors.toggle('gallery-door',camera.position);renderer.shadowMap.needsUpdate=true;publishNavigation();return castle.doors.snapshot().find(d=>d.id==='gallery-door').open;},
+      enterGallery(pose){
+        if(!controls.teleport(pose))return false;
+        interactions.setArea('hall');container.dataset.area='hall';
+        // 畫廊轉場只移動玩家，艾琳維持大廳原位。
+        container.dataset.erinLocation='hall';container.dataset.erinActors=JSON.stringify(erinActors.map((a,i)=>({name:a.name,position:a.position.toArray(),homePosition:erinHome[i].toArray()})));
+        renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);return true;
+      },
+      openPianoDrawer(){
+        const drawer=scene.getObjectByName('piano-secret-drawer');
+        if(disposed||!drawer)return Promise.resolve(false);
+        if(container.dataset.pianoDrawer==='open')return Promise.resolve(true);
+        drawerView={position:camera.position.clone(),rotation:camera.rotation.clone()};
+        camera.position.set(-17.8,2.5,1.2);camera.lookAt(-19,1.1,-.6);
+        drawer.visible=true;container.dataset.pianoDrawer='opening';
+        const origin=-1.15,start=performance.now();
+        return new Promise(resolve=>{
+          let frameId,finished=false;
+          function finish(ok){if(finished)return;finished=true;cancelAnimationFrame(frameId);cinematics.delete(cancel);if(ok){drawer.position.z=origin+.72;container.dataset.pianoDrawer='open';}renderer.shadowMap.needsUpdate=true;resolve(ok);}
+          const cancel=()=>finish(false);cinematics.add(cancel);
+          function tick(){if(disposed)return finish(false);const t=Math.min(1,(performance.now()-start)/1000);drawer.position.z=origin+.72*t*t*(3-2*t);renderer.shadowMap.needsUpdate=true;try{renderer.render(scene,camera);}catch{finish(false);onError();return;}if(t===1)finish(true);else frameId=requestAnimationFrame(tick);}
+          frameId=requestAnimationFrame(tick);
+        });
+      },
+      takePianoPendant(){const pendant=scene.getObjectByName('piano-red-pendant');if(pendant)pendant.visible=false;if(drawerView){camera.position.copy(drawerView.position);camera.rotation.copy(drawerView.rotation);drawerView=null;}renderer.shadowMap.needsUpdate=true;},
+      playRestriction(number) {
+        if(disposed)return Promise.resolve(false);
+        const actors=erinActors;
+        if(!actors.length)return Promise.resolve(false);
+        const starts=actors.map(actor=>actor.position.clone()),savedPosition=camera.position.clone(),savedRotation=camera.rotation.clone();
+        camera.position.set(3.1,3.8,3.6);camera.lookAt(0,2.9,-1.9);
+        return new Promise(resolve=>{
+          const snapshot=phase=>({phase,pose:erinPose.measure(),actors:actors.map(actor=>({name:actor.name,position:actor.position.toArray()}))});
+          let frameId,finished=false,peakSeen=false,elapsed=0,lastTick=performance.now();const trace=[snapshot('start')];
+          function finish(ok){if(finished)return;finished=true;cancelAnimationFrame(frameId);erinPose.restore();actors.forEach((actor,i)=>actor.position.copy(starts[i]));camera.position.copy(savedPosition);camera.rotation.copy(savedRotation);renderer.shadowMap.needsUpdate=true;cinematics.delete(cancel);trace.push(snapshot('seated'));container.dataset.restrictionPhase='seated';container.dataset.restrictionTrace=JSON.stringify(trace);resolve(ok);}
+          const cancel=()=>finish(false);cinematics.add(cancel);
+          function tick(){
+            if(disposed){finish(false);return;}
+            // 慢速 GPU 也必須顯示起身與坐回的中間姿勢，避免一次長影格跳過整段演出。
+            const now=performance.now();elapsed+=Math.min(now-lastTick,200);lastTick=now;
+            let t=Math.min(1,elapsed/5400);
+            if(!peakSeen&&t>=.45){t=.5;peakSeen=true;}
+            const phase=t<.25?'rising':t<.45?'leaving':t<.62?'frozen':t<.82?'returning':'sitting';
+            const progress=t<.25?0:t<.45?(t-.25)/.2:t<.62?1:t<.82?(.82-t)/.2:0;const smooth=progress*progress*(3-2*progress);
+            const standRaw=t<.25?t/.25:t<.82?1:(1-t)/.18,stand=standRaw*standRaw*(3-2*standRaw);
+            const lean=Math.sin(standRaw*Math.PI)*.85;
+            erinPose.apply(stand,lean);
+            actors.forEach((actor,i)=>{actor.position.copy(starts[i]);actor.position.z+=smooth*1.6;actor.position.y-=smooth*.7;});
+            container.dataset.restrictionPhase=phase;container.dataset.restrictionAttempt=String(number);
+            if(!trace.some(row=>row.phase===phase))trace.push({...snapshot(phase),stand,lean,offset:smooth*1.6});
+            try{renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}catch(error){finish(false);onError();return;}
+            if(t>=1){finish(true);return;}frameId=requestAnimationFrame(tick);
+          }
+          frameId=requestAnimationFrame(tick);
+        });
+      },
+      setEntranceOpen(value) {
+        castle.setEntranceOpen(value);
+        container.dataset.entranceOpen = String(value);
+        renderer.shadowMap.needsUpdate = true;
+        publishNavigation();
+      },
       setActive(active) {
         if (disposed) return;
         lastFrame = 0;

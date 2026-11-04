@@ -11,7 +11,10 @@ export function selectInteraction(scene, camera, catalog, areaId, settings = int
   scene.updateMatrixWorld(true); camera.updateMatrixWorld(true);
   const ray = new Raycaster(); ray.far = settings.maxDistance + settings.epsilon;
   ray.setFromCamera(new Vector2(0, 0), camera);
-  const hit = ray.intersectObjects(scene.children, true).find(result => result.object.isMesh && visibleInHierarchy(result.object) && !result.object.userData.ignoreInteractionRay);
+  // 裝飾本來就不參與互動遮擋，先排除，避免每影格測試合併雕花的所有三角形。
+  const candidates = [];
+  scene.traverse(object => { if (object.isMesh && visibleInHierarchy(object) && !object.userData.ignoreInteractionRay) candidates.push(object); });
+  const hit = ray.intersectObjects(candidates, false)[0];
   onRayHit?.(hit ? { mesh: hit.object.name, distance: hit.distance, interactionId: hit.object.userData.interactionId || null } : null);
   if (!hit || hit.distance > settings.maxDistance + settings.epsilon) return null;
   const target = catalog.get(hit.object.userData.interactionId);
@@ -35,7 +38,7 @@ export function createInteractions(scene, camera, canvas, container, ui = {}) {
   container.dataset.interactionCatalog = JSON.stringify([...catalog.values()].map(({ meshes, ...target }) => ({...target,meshNames:meshes.map(mesh=>mesh.name)})));
   container.dataset.interactionDistance = String(interactionSettings.maxDistance);
   function publish() { container.dataset.interactionState = JSON.stringify({ collected: [...state.collected], counts: state.counts, sequence: state.sequence, doors: state.doors || {} }); }
-  function canUse() { return enabled && document.pointerLockElement === canvas; }
+  function canUse() { return enabled && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName); }
   function choose() { return canUse() ? selectInteraction(scene, camera, catalog, areaId, interactionSettings, hit => {container.dataset.interactionRay=JSON.stringify(hit);}) : null; }
   function hint(selection) {
     const next = selection ? selection.target.id : '';
@@ -54,7 +57,7 @@ export function createInteractions(scene, camera, canvas, container, ui = {}) {
     const {target} = selection;
     let message = target.message;
     if (target.doorId) {
-      const result = ui.doors.toggle(target.doorId, camera.position);
+      const result = ui.canToggleDoor?.(target.doorId)===false?{changed:false,message:'請依典禮冊的附件指引前往畫廊。'}:ui.doors.toggle(target.doorId, camera.position);
       message = result.message;
       if (result.changed) ui.onGeometryChange?.();
     }

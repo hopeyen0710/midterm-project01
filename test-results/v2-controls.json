@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-11-03T19:18:15.197Z",
+  "method": "以原控制器與真實 Three.js 攝影機，搭配 EventTarget 文件／畫布替身，控制鎖定請求的晚到時序；此為控制器回歸，瀏覽器權限另由第 14 步實際操作驗證。",
+  "sourceHashes": {
+    "game/controls.js": "4d60874da8ee78f223dc569f4891b1c0a6a823760c02e0ff90438f9ade6b3806",
+    "tests/check-v2-controls.mjs": "561a4a22bde29885ee206a0943f8b78515bea614a5d1a756f858c57866160941"
+  },
+  "checks": [
+    {
+      "id": "CONTROL.1",
+      "title": "Esc 可取消晚到的鎖定，無需再次按 Esc",
+      "status": "通過"
+    },
+    {
+      "id": "CONTROL.2",
+      "title": "劇情停用期間，晚到的鎖定不能隱藏閱讀游標",
+      "status": "通過"
+    },
+    {
+      "id": "CONTROL.3",
+      "title": "無鎖定亦可移動，閱讀時按鍵無效、恢復後可移動",
+      "status": "通過"
+    },
+    {
+      "id": "CONTROL.4",
+      "title": "移動途中取得滑鼠鎖定不吞掉已按住的 WASD",
+      "status": "通過"
+    },
+    {
+      "id": "CONTROL.5",
+      "title": "鎖定失敗仍可拖曳環視，輸入欄打字不移動",
+      "status": "通過"
+    }
+  ]
+}

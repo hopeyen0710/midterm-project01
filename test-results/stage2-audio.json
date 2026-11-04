@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-11-04T03:03:05.258Z",
+  "sourceHashes": {
+    "game/audio.js": "99acb0f6c78e79054057e26ee74a4cda11ff8b7d747538a529b2bc1f34a05e7f",
+    "game/opening.js": "54a523fcc1e71c78423475c291294a6a629ae3a6137bb399404dccd3fb23e8d8",
+    "tests/stage2-audio-check.cjs": "23014ff44505048e66f239b21a3493a9f42f68c4e62e9e8edb72c3b802e41e31"
+  },
+  "id": "S2.8.AUDIO",
+  "status": "通過",
+  "method": "第二關危機暫返探索時實際點擊靜音與開啟，不截圖、不驗收揚聲器",
+  "samples": [
+    {
+      "mode": "inside",
+      "muted": true,
+      "state": "running",
+      "rainGain": 0,
+      "insideGain": 0.07516148686408997
+    },
+    {
+      "mode": "inside",
+      "muted": false,
+      "state": "running",
+      "rainGain": 0,
+      "insideGain": 0.07680429518222809
+    }
+  ]
+}

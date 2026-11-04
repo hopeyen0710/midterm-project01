@@ -11,7 +11,7 @@ export function isBlocked(x, z, areaId, colliders, radius = PLAYER_RADIUS) {
       if (!regions.some(r=>x+ox>=r.minX&&x+ox<=r.maxX&&z+oz>=r.minZ&&z+oz<=r.maxZ)) return true;
     }
   }
-  return colliders.some(c => c.area === areaId && x > c.minX - radius && x < c.maxX + radius && z > c.minZ - radius && z < c.maxZ + radius);
+  return colliders.some(c => c.enabled !== false && c.area === areaId && x > c.minX - radius && x < c.maxX + radius && z > c.minZ - radius && z < c.maxZ + radius);
 }
 // 位移分成小段，每段先 X 後 Z；沿牆滑動，且長影格不能跳過薄牆。
 export function movePosition(position, dx, dz, areaId, colliders, radius = PLAYER_RADIUS) {

@@ -15,6 +15,9 @@
         <p class="eyebrow">一封求救信，一場尚未結束的典禮</p>
         <h1 id="game-title">午夜之前</h1>
         <p class="intro">走進城堡，尋找被封存的真相。<br />為艾琳找出一條離開的路。</p>
+        <label class="name-field" for="player-name">你的稱呼 <span>留白時稱呼為「訪客」</span>
+          <input id="player-name" name="playerName" type="text" maxlength="30" placeholder="訪客" autocomplete="off" />
+        </label>
         <div class="actions">
           <button type="button" id="scene-button" aria-describedby="availability">進入城堡</button>
           <button class="secondary" type="button" id="help-button">操作說明</button>
@@ -29,6 +32,10 @@
       <header class="scene-toolbar">
         <span><span id="room-location">中央大廳</span> <span class="scene-clock">23:30</span></span>
         <div class="scene-actions"><label class="area-label">區域 <select id="area-select"><option value="hall">城堡內</option><option value="outside">城堡外</option></select></label>
+          <button type="button" class="secondary" id="journal-button">隨身紀錄</button>
+          <button type="button" class="secondary" id="hint-button">探索提示</button>
+          <button type="button" class="secondary" id="restart-button">重新開始</button>
+          <button type="button" class="secondary" id="sound-button">啟用聲音</button>
           <button type="button" class="secondary" id="scene-help-button">操作說明</button>
           <button type="button" class="secondary" id="back-button">返回首頁</button>
         </div>
@@ -37,20 +44,28 @@
         <p id="scene-status">正在準備場景…</p>
         <button type="button" id="retry-button" hidden>重新嘗試</button>
       </div>
-      <p id="scene-caption" class="scene-caption" hidden>WASD 移動 · 滑鼠環視 · Esc 釋放游標 · F 互動</p>
+      <p id="scene-caption" class="scene-caption" hidden>WASD 移動 · 點擊場景環視／拖曳環視 · F 互動</p>
+      <p id="objective-status" class="objective-status" role="status"></p>
       <div id="reticle" class="reticle" aria-hidden="true" hidden></div>
       <p id="interaction-hint" class="interaction-hint" role="status" hidden></p>
       <p id="interaction-feedback" class="interaction-feedback" role="status" hidden></p>
       <div id="explore-prompt" class="explore-prompt" hidden>
-        <button type="button" id="explore-button">開始探索</button>
+
         <p id="explore-status">WASD 移動 · 滑鼠環視 · Esc 釋放游標</p>
       </div>
     </section>
     <dialog id="help-dialog" aria-labelledby="help-title">
       <h2 id="help-title">操作說明</h2>
       <p>探索開放後，使用以下操作：</p>
-      <dl><dt>W A S D</dt><dd>前、左、後、右移動</dd><dt>滑鼠</dt><dd>環顧四周</dd><dt>F</dt><dd>與眼前的物品互動</dd><dt>Esc</dt><dd>離開滑鼠鎖定或關閉說明</dd></dl>
+      <dl><dt>W A S D</dt><dd>前、左、後、右移動</dd><dt>滑鼠</dt><dd>點擊場景鎖定滑鼠環視；未鎖定時可按住拖曳。劇情與閱讀結束後會自動恢復 WASD／F 操作。</dd><dt>F</dt><dd>與眼前的物品互動</dd><dt>Esc</dt><dd>離開滑鼠鎖定或關閉說明</dd></dl>
       <form method="dialog"><button type="submit">關閉說明</button></form>
+    </dialog>
+    <dialog id="story-dialog" class="story-dialog" aria-labelledby="story-title">
+      <p id="story-context" class="eyebrow">午夜之前 · 隨身紀錄</p>
+      <h2 id="story-title"></h2>
+      <div id="story-body" class="story-body" tabindex="0"></div>
+      <div id="story-actions" class="story-actions"></div>
+      <button type="button" class="secondary" id="story-close">關閉面板</button>
     </dialog>
     <!-- INLINE_JS -->
   </body>
