@@ -123,6 +123,8 @@ export async function createCastleScene(container, onError, onControlChange = ()
     container.dataset.pianoDrawer='closed';container.dataset.pianoPerformanceNote='';
     const erinActors=['detail-woman','erin-gown'].map(name=>scene.getObjectByName(name)).filter(Boolean);
     const erinPose=createErinPose(erinActors);
+    const erinHome=erinActors.map(actor=>actor.position.clone());
+    container.dataset.erinLocation='hall';delete container.dataset.erinActors;
     const pmrem=new PMREMGenerator(renderer),environment=new RoomEnvironment();
     scene.environment=pmrem.fromScene(environment,.04).texture;scene.environmentIntensity=.18;
     environment.dispose();pmrem.dispose();
@@ -149,7 +151,17 @@ export async function createCastleScene(container, onError, onControlChange = ()
     return {
       resize,
       setArea(id) { if (castle.areas[id]) applyArea(id); },
+      placePlayer(pose){const placed=controls.teleport(pose);if(placed){interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}return placed;},
       requestExploration() { controls.requestLock(); },
+      setDoorLocked(id,value){if(castle.doors.setLocked(id,value)){renderer.shadowMap.needsUpdate=true;publishNavigation();}},
+      openGalleryDoor(){const door=castle.doors.snapshot().find(d=>d.id==='gallery-door');if(!door||door.locked)return false;if(!door.open)castle.doors.toggle('gallery-door',camera.position);renderer.shadowMap.needsUpdate=true;publishNavigation();return castle.doors.snapshot().find(d=>d.id==='gallery-door').open;},
+      enterGallery(pose){
+        if(!controls.teleport(pose))return false;
+        interactions.setArea('hall');container.dataset.area='hall';
+        // 畫廊轉場只移動玩家，艾琳維持大廳原位。
+        container.dataset.erinLocation='hall';container.dataset.erinActors=JSON.stringify(erinActors.map((a,i)=>({name:a.name,position:a.position.toArray(),homePosition:erinHome[i].toArray()})));
+        renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);return true;
+      },
       openPianoDrawer(){
         const drawer=scene.getObjectByName('piano-secret-drawer');
         if(disposed||!drawer)return Promise.resolve(false);

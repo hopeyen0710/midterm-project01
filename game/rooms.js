@@ -3,6 +3,7 @@ import { Group, Mesh, BoxGeometry, Box3, PointLight, SphereGeometry } from 'thre
 export function buildSideRooms(scene, kit, state = {}) {
   const { box, label, mats, colliders } = kit;
   state.doors ||= {};
+  state.locks ||= {};
   function shell(id,x,z,w,d,floor) {
     box(id+'-floor',x,0.5,z,w,0.2,d,floor);
     box(id+'-ceiling',x,5.9,z,w,0.25,d,'darkStone');
@@ -59,20 +60,27 @@ export function buildSideRooms(scene, kit, state = {}) {
     }
     hinge.updateMatrixWorld(true);const closedBounds=bounds(leaf);
     hinge.rotation.y=def.angle;hinge.updateMatrixWorld(true);const openBounds=bounds(leaf);
-    const open=!!state.doors[def.id];hinge.rotation.y=open?def.angle:0;hinge.updateMatrixWorld(true);
+    const locked=!!state.locks[def.id],open=!locked&&!!state.doors[def.id];state.doors[def.id]=open;hinge.rotation.y=open?def.angle:0;hinge.updateMatrixWorld(true);
     const collider={id:'room-door-'+def.id,area:'hall',...bounds(leaf)};colliders.push(collider);
-    doors.set(def.id,{...def,hinge,leaf,collider,closedBounds,openBounds,open});
+    doors.set(def.id,{...def,hinge,leaf,collider,closedBounds,openBounds,open,locked});
     label(def.name,...(def.kind==='side'?[def.hinge[0],4.2,0]:[0,4.2,-18]),2.7);
   }
   return {
     toggle(id,player){
       const door=doors.get(id);if(!door)return {changed:false,message:'找不到這扇門。'};
+      if(door.locked)return {changed:false,message:'畫廊入口仍被典禮封鎖。先處理銀杯與典禮冊的線索。'};
       const opening=!door.open,candidate=opening?door.openBounds:door.closedBounds;
       const r=0.34;
       if(player.x>candidate.minX-r&&player.x<candidate.maxX+r&&player.z>candidate.minZ-r&&player.z<candidate.maxZ+r)return {changed:false,message:'門扇附近有人，請先退開再開關門。'};
       door.open=opening;state.doors[id]=opening;door.hinge.rotation.y=opening?door.angle:0;door.hinge.updateMatrixWorld(true);Object.assign(door.collider,bounds(door.leaf));
       return {changed:true,message:door.name+(opening?'已開啟。':'已關閉。')};
     },
-    snapshot(){return [...doors.values()].map(d=>({id:d.id,name:d.name,open:d.open,closedBounds:d.closedBounds,openBounds:d.openBounds,focus:[(d.collider.minX+d.collider.maxX)/2,2.3,(d.collider.minZ+d.collider.maxZ)/2],approach:d.open?d.openApproach:d.closedApproach}));},
+    setLocked(id,value){
+      const door=doors.get(id);if(!door||door.locked===value)return false;
+      door.locked=value;state.locks[id]=value;
+      if(value){door.open=false;state.doors[id]=false;door.hinge.rotation.y=0;door.hinge.updateMatrixWorld(true);Object.assign(door.collider,bounds(door.leaf));}
+      return true;
+    },
+    snapshot(){return [...doors.values()].map(d=>({id:d.id,name:d.name,open:d.open,locked:d.locked,closedBounds:d.closedBounds,openBounds:d.openBounds,focus:[(d.collider.minX+d.collider.maxX)/2,2.3,(d.collider.minZ+d.collider.maxZ)/2],approach:d.open?d.openApproach:d.closedApproach}));},
   };
 }

@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-11-04T04:02:17.251Z",
+  "sourceHashes": {
+    "game/state.js": "ba563219589f2c52a59bf95d658c686201aa2001384c7b6712219cc42aa83f49",
+    "game/stage2-data.js": "bdf73dbe20a0e58206329c1c6734c1c86f82481b4b195263e3c913aa60d636fd",
+    "game/rooms.js": "d9dcaf83643164aad71fad3211be2fce5d94cd45ecfee8442fc4c8b44adba57c",
+    "game/controls.js": "6082fc6c9ec876ad415222641f29098ec2b800409f1ff59af8694e3bc96d0b5c",
+    "tests/check-stage2-state.mjs": "14b78e209f2f64bc878ac7d6ad79f17f0077e9ad08d9ee330b65c2819ce4be3c"
+  },
+  "checks": [
+    {
+      "id": "S2.STATE.1",
+      "title": "來源版本與缺稿不冒充全文",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.2",
+      "title": "開始前置與一次性保護",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.3",
+      "title": "不可跳過阻流或沿用舊版事件",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.4",
+      "title": "提交鎖定、讀完才成功、完成後不可重複阻流",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.5",
+      "title": "三種失敗都可重試且無道具消耗／跳時",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.6",
+      "title": "證據頁與燭臺前置、後續事件及新局清除",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.7",
+      "title": "畫廊既有開門狀態不能繞過任務鎖",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.8",
+      "title": "大廳傳送面向艾琳、清除移動鍵並拒絕非法落點",
+      "status": "通過"
+    },
+    {
+      "id": "S2.STATE.9",
+      "title": "證據與附件指引必須依序讀完，燭臺前置與待讀提交不能略過",
+      "status": "通過"
+    }
+  ],
+  "notes": "第二關純狀態、門鎖及傳送控制回歸；瀏覽器流程另見 stage2-step22。缺稿全文與具體附件編號依使用者指示暫不製作。"
+}

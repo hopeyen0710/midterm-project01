@@ -1,4 +1,4 @@
-import { movePosition, EYE_HEIGHT } from './navigation.js';
+import { movePosition, isBlocked, EYE_HEIGHT } from './navigation.js';
 
 export function createFirstPersonControls(camera, canvas, castle, onStateChange, onLocationChange = () => {}) {
   const keys = new Set();
@@ -73,6 +73,12 @@ export function createFirstPersonControls(camera, canvas, castle, onStateChange,
   setArea('hall');
   const api = {
     setArea,
+    teleport({area='hall',x,z,lookAt}){
+      if(disposed||!castle.areas[area]||!Number.isFinite(x)||!Number.isFinite(z)||isBlocked(x,z,area,castle.colliders))return false;
+      release();areaId=area;camera.position.set(x,castle.groundHeight(area,x,z)+EYE_HEIGHT,z);
+      if(lookAt){yaw=Math.atan2(-(lookAt[0]-x),-(lookAt[2]-z));pitch=Math.max(-1.35,Math.min(1.35,Math.atan2(lookAt[1]-camera.position.y,Math.hypot(lookAt[0]-x,lookAt[2]-z))));}
+      camera.rotation.set(pitch,yaw,0);publish();return true;
+    },
     setEnabled(value) { enabled = value; keys.clear();dragging=false;if (!value) release();publish(); },
     requestLock() {
       if (!enabled || disposed || locked() || lockPending) return;

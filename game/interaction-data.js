@@ -53,7 +53,7 @@ export const interactionTargets = [
     ],
     "focus": [
       6.7,
-      2.08,
+      2.21,
       4
     ],
     "approach": [
@@ -160,7 +160,7 @@ export const interactionTargets = [
   },
   {
     "id": "banquet",
-    "label": "宴會長桌與白花",
+    "label": "四根儀式燭臺／宴會長桌",
     "action": "inspect",
     "area": "hall",
     "prefixes": [

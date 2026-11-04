@@ -6,6 +6,7 @@ import { createOpening } from './opening.js';
 import { createIndoorStory } from './indoor-story.js';
 import { createPianoUI } from './piano-ui.js';
 import {createPianoReward} from './piano-reward.js';
+import {createStage2} from './stage2.js';
 
 const entryScreen = document.querySelector('#entry-screen');
 const sceneScreen = document.querySelector('#scene-screen');
@@ -31,12 +32,14 @@ let sceneGeneration = 0;
 const gameUI = createGameUI(session, { onPause: updateAnimation, onResume: resumeExploration });
 const indoor = createIndoorStory({ session, ui:gameUI, getViewer:()=>viewer });
 const opening = createOpening({ session, ui: gameUI, getViewer: () => viewer, viewport, onEntered:()=>indoor.begin() });
-const reward=createPianoReward({session,ui:gameUI,getViewer:()=>viewer,onNote:opening.playPianoNote});
+const stage2=createStage2({session,ui:gameUI,getViewer:()=>viewer});
+const reward=createPianoReward({session,ui:gameUI,getViewer:()=>viewer,onNote:opening.playPianoNote,onComplete:()=>stage2.begin()});
 const pianoUI = createPianoUI({session,ui:gameUI,onNote:opening.playPianoNote,reward});
 document.querySelector('#journal-button').addEventListener('click', () => gameUI.journal());
 session.subscribe(snapshot => {
   document.documentElement.dataset.gameState = JSON.stringify(snapshot);
   document.querySelector('.scene-clock').textContent = snapshot.time;
+  viewer?.setDoorLocked('gallery-door',snapshot.stage==='stage2'&&!snapshot.events.includes('stage2GuideUnlocked'));
 });
 function showHint() {
   const hint = session.getHint();
@@ -120,6 +123,7 @@ async function openScene() {
       if (!locked) interactionHint.hidden = true;
     }, {
       state: interactionState,
+      canToggleDoor:id=>id!=='gallery-door'||session.snapshot.stage!=='stage2',
       onProgress(text) { if(request===openRequest)status.textContent=text; },
       onLocation(room) { if (current()) document.querySelector('#room-location').textContent = room.name; },
       onPosition: opening.updatePosition,
@@ -135,7 +139,7 @@ async function openScene() {
         feedback.dataset.target = event.id;
         feedback.dataset.action = event.action;
         feedback.dataset.sequence = String(event.sequence);
-        if (!opening.handleInteraction(event)&&!pianoUI.handleInteraction(event)) gameUI.handleInteraction(event);
+        if (!opening.handleInteraction(event)&&!stage2.handleInteraction(event)&&!pianoUI.handleInteraction(event)) gameUI.handleInteraction(event);
       },
     });
     if(request!==openRequest||sceneScreen.hidden){candidate.dispose();return;}
