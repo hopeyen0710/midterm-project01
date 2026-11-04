@@ -1,17 +1,16 @@
 import {stage1Piano as script} from './stage1-data.js';
 import {itemDetails} from './ui.js';
 
-export function createPianoReward({session,ui,getViewer,onNote}){
+export function createPianoReward({session,ui,getViewer,onNote,onComplete=()=>{}}){
   itemDetails.glass={name:script.pendant.name,text:script.pendant.description};
   let epoch=0,busy=false;
   session.subscribe(snapshot=>{if(!snapshot.events.includes('explorationOpened')){epoch++;busy=false;}});
   const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   function gem(body){const art=document.createElement('div');art.className='pendant-art';art.setAttribute('role','img');art.setAttribute('aria-label','深紅色玻璃吊墜');body.append(art);}
   function complete(){
-    session.advancePiano('stage1Complete');
-    ui.show({heading:'恭喜完成第一關：沒有演奏者的鋼琴！',kind:'stage1-complete',text:['你破解了鋼琴的隱藏旋律，發現伊恩記錯的音符，並取得紅玻璃吊墜。','獲得道具：紅玻璃吊墜','紅玻璃可分辨原墨與後來的王室覆印。','故事時間：23:30'],renderBody(body){const mark=document.createElement('div');mark.className='completion-mark';mark.textContent='✓';body.prepend(mark);},choices:[{label:'返回城堡探索',action:()=>ui.close()},{label:'查看隨身紀錄',action:()=>ui.journal()}]});
+    if(session.advancePiano('stage1Complete'))onComplete();
   }
-  function afterReward(){ui.dialogue(script.afterReward.map((line,index)=>({...line,id:'piano-after-reward-'+index})),{required:true,onDone:complete,finalLabel:'完成第一關'});}
+  function afterReward(){ui.dialogue(script.afterReward.map((line,index)=>({...line,id:'piano-after-reward-'+index})),{required:true,onDone:complete,finalLabel:'繼續'});}
   function description(required=false){
     ui.show({heading:script.pendant.name,text:script.pendant.description,kind:'pendant',allowClose:!required,renderBody:gem,choices:required?[{label:'聽伊恩說話',action:afterReward}]:[{label:'返回隨身紀錄',action:()=>ui.journal()}]});
   }

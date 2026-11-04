@@ -1,4 +1,4 @@
-import { Mesh, BoxGeometry, CylinderGeometry, SphereGeometry, MeshStandardMaterial, CanvasTexture, Sprite, SpriteMaterial, Group, PointLight } from 'three';
+import { Mesh, BoxGeometry, CylinderGeometry, SphereGeometry, PlaneGeometry, MeshStandardMaterial, MeshBasicMaterial, CanvasTexture, Sprite, SpriteMaterial, Group, PointLight } from 'three';
 import { areas, landmarks, groundHeight, roomAt } from './castle-data.js';
 import { buildSideRooms } from './rooms.js';
 import { applyRoyalStyle } from './royal-style.js';
@@ -97,14 +97,42 @@ export function buildCastle(scene, state = {}) {
   for(const z of [-4.2,-3.8])sphere(7.88,2.3,z,0.08,'gold').name='cabinet-handle';
   label('工匠櫃',8.6,4.3,-4,2.8);
   activeSection='hall';
-  box('book-desk',6.8,1.25,4,3,1.3,1.3,'wood',true);
-  box('book-cover',6.7,1.98,4,1.15,0.15,0.8,'red');
-  box('book-pages',6.7,2.08,4,1.02,0.08,0.72,'ivory');
+  box('book-desk',6.8,1.31,4,3.6,1.42,1.9,'wood',true);
+  box('book-cover',6.7,2.095,4,1.15,0.15,0.8,'red');
+  box('book-pages',6.7,2.21,4,1.02,0.08,0.72,'ivory');
   const cup=cylinder(7.8,2.2,4,0.13,0.35,'silver');cup.name='silver-cup';
   label('典禮冊書桌',6.8,3,4,3.2);
   // 長桌、空椅、乾癟餐點與白花。
   box('banquet-table',-4,1.3,5,2.3,1.4,6.2,'wood',true);
   box('tablecloth',-4,2.02,5,2.4,0.06,6.3,'ivory');
+  // 四根可辨認、可直接按 F 的燭臺，排列在靠大廳入口的桌端。
+  // 火焰為靜態造型；試驗結果仍依劇本使用漸暗文字呈現。
+  for(let index=0;index<4;index++){
+    const x=-4.9+index*.6,z=7.78,prefix=`banquet-ritual-${index+1}-`;
+    cylinder(x,2.09,z,.19,.08).name=prefix+'base';
+    cylinder(x,2.29,z,.045,.34).name=prefix+'stem';
+    cylinder(x,2.48,z,.12,.06).name=prefix+'cup';
+    cylinder(x,2.7,z,.065,.38,'ivory').name=prefix+'wax';
+    const flame=add(new SphereGeometry(.065,12,8),glow,x,2.98,z);flame.scale.set(.65,1.8,.65);flame.name=prefix+'flame';
+    const canvas=document.createElement('canvas');canvas.width=384;canvas.height=256;
+    const ctx=canvas.getContext('2d');ctx.fillStyle='#211a15';ctx.fillRect(0,0,384,256);ctx.strokeStyle='#d7b36b';ctx.lineWidth=10;ctx.strokeRect(5,5,374,246);
+    // 純圖形標記：銀杯、王冠、座椅、報時，不使用文字、數字或字型圖示。
+    ctx.strokeStyle='#ffe6ad';ctx.fillStyle='#ffe6ad';ctx.lineWidth=14;ctx.lineCap='round';ctx.lineJoin='round';
+    const path=points=>{ctx.beginPath();points.forEach(([px,py],i)=>i?ctx.lineTo(px,py):ctx.moveTo(px,py));ctx.stroke();};
+    if(index===0){
+      ctx.beginPath();ctx.moveTo(118,58);ctx.lineTo(266,58);ctx.quadraticCurveTo(260,150,192,151);ctx.quadraticCurveTo(124,150,118,58);ctx.stroke();
+      path([[192,152],[192,202]]);path([[148,204],[236,204]]);
+    }else if(index===1){
+      ctx.beginPath();ctx.moveTo(108,178);ctx.lineTo(92,75);ctx.lineTo(148,115);ctx.lineTo(192,52);ctx.lineTo(236,115);ctx.lineTo(292,75);ctx.lineTo(276,178);ctx.closePath();ctx.stroke();
+      path([[110,202],[274,202]]);
+    }else if(index===2){
+      ctx.strokeRect(142,50,100,90);path([[124,162],[260,162]]);path([[124,128],[124,203]]);path([[260,128],[260,203]]);path([[142,162],[142,213]]);path([[242,162],[242,213]]);
+    }else{
+      ctx.beginPath();ctx.arc(192,128,76,0,Math.PI*2);ctx.stroke();path([[192,78],[192,128],[227,148]]);
+      path([[119,55],[139,39]]);path([[245,39],[265,55]]);path([[146,194],[132,212]]);path([[238,194],[252,212]]);
+    }
+    const plaque=add(new PlaneGeometry(.53,.35),new MeshBasicMaterial({map:new CanvasTexture(canvas)}),x,2.28,7.99);plaque.name=prefix+'label';
+  }
   for(const x of [-5.9,-2.1])for(const z of [2.8,5,7.2]) {
     box('empty-chair',x,1.1,z,0.75,0.9,0.8,'wood',true);
     box('chair-back',x+(x<-4?-0.3:0.3),1.8,z,0.12,1.3,0.8,'wood');

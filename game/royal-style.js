@@ -204,14 +204,10 @@ export function applyRoyalStyle(scene, mats) {
   for(const x of [-9.8,9.8])for(const z of [-10,4,9]){
     candelabra(x,2.85,z);const light=new PointLight('#ffbd73',12,6,2);light.position.set(x,3.9,z);scene.add(light);
   }
-  // 書桌：開頁、燭臺、送水管與象徵四席的旗幟。
+  // 書桌：開頁、燭臺與送水管；移除窗前懸空的四席燭臺旗幟。
   renderDetail = true;
   candelabra(5.65,1.98,4);rod(7.95,2.55,3.55,.04,1.15,mats.silver);
   line([7.95,3.12,3.55],[7.8,3.12,4],.04,mats.silver);
-  for(let i=0;i<4;i++){
-    const x=8.6+i*.48;rod(x,3.5,7,.018,2.2);panel(x,3.35,7,.4,1.1,Math.PI);
-    candle(x,4.65,7,.3);
-  }
   // 裝飾用文字以本機 Canvas 製作，可在離線單檔使用。
   function pageTexture(text) {
     const c=document.createElement('canvas');c.width=512;c.height=512;const ctx=c.getContext('2d');ctx.fillStyle='#c4ae82';ctx.fillRect(0,0,512,512);

@@ -128,4 +128,10 @@ button, select { border-radius: 1px; font-size: 14px; }
 .story-dialog[data-kind="stage1-complete"] .story-body p { margin-bottom:12px; }
 .story-dialog[data-kind="stage1-complete"] { padding:24px; }
 .scene-actions { flex-wrap:wrap; }
+.story-dialog[data-kind="stage2-text"]::backdrop { background:#02040bf2; animation:stage2-darken .3s ease-out both; }
+.story-dialog[data-kind="stage2-text"] { background:#090c14; }
+.story-dialog[data-kind="stage2-text"] > * { animation:stage2-words .15s .3s both; }
+@keyframes stage2-darken { from { background:#02040b00; } to { background:#02040bf2; } }
+@keyframes stage2-words { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .story-dialog[data-kind="stage2-text"]::backdrop,.story-dialog[data-kind="stage2-text"] > * { animation-duration:.01s; animation-delay:0s; } }
 @media(max-width:760px) { .scene-toolbar { align-items:flex-start; flex-direction:column; gap:8px; padding:12px; } .scene-actions { gap:6px; } .scene-toolbar button { padding:8px 10px; } }

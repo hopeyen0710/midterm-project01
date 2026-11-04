@@ -57,7 +57,7 @@ export function createInteractions(scene, camera, canvas, container, ui = {}) {
     const {target} = selection;
     let message = target.message;
     if (target.doorId) {
-      const result = ui.doors.toggle(target.doorId, camera.position);
+      const result = ui.canToggleDoor?.(target.doorId)===false?{changed:false,message:'請依典禮冊的附件指引前往畫廊。'}:ui.doors.toggle(target.doorId, camera.position);
       message = result.message;
       if (result.changed) ui.onGeometryChange?.();
     }

@@ -1,0 +1,632 @@
+{
+  "step": 16,
+  "recordedAt": "2026-11-04T02:21:36.130Z",
+  "environment": {
+    "browser": "156.0.8078.80",
+    "offline": true,
+    "url": "file:///C:/Users/tinge/AppData/Local/Temp/midterm-stage2-step16/fixture.html",
+    "method": "Browser plugin not available；Playwright。測試打包正式 main/UI/狀態/控制/射線及基礎場景；僅以不繪圖的場景替身省略 WebGL 與精細替換模型。第一關完成狀態作測試前置，不驗收 T1～T6。不截圖，以 DOM、CSS、事件與操作結果判定。"
+  },
+  "sourceHashes": {
+    "VERIFY.md": "62912bf0c29d26c38f2dcc3f5b18b82f75d68589a333de3095fcc1077167de3e",
+    "TEST.md": "021954a03dc68d46726897a1fdee6660f7cbc7e92c55b98919a8d48f6ed62ba7",
+    "Stage/stage2.md": "46d76375b906676312cf695c4ec198192ca1cb511540c55c484602f75c1adbea",
+    "game/index.html": "88c5954c214ace818f990e124366d5959b69693bd029013faec6b8d37352d215",
+    "game/main.js": "cbb2dd74b09f503109f3dabca04a2ef25fbe4ba643bcd00131d3e8947195e90e",
+    "game/state.js": "3775ffc1cea9f35581c2dd42927d4e2bc58a4ab36630474d0d0e17e5ae68289c",
+    "game/stage2-data.js": "9248131ba3d1bc43601f4768c9b7141da641a8db96a9cc1ca5dae4782dabaee5",
+    "game/stage2.js": "e487ffa93776c43e84bc504255060cc696566d6de093b2bf60f6b21a536028d6",
+    "game/piano-reward.js": "1e37644cd8b49be7520c92dfb3ff38c27356f687375a8ec241eca33db8cba737",
+    "game/ui.js": "6693d2239771e5ab4ebd0f8bae598341dcd1b708e47153ea1c1b96d6ab5dac74",
+    "game/styles.css": "5f7fdb820ba9b584b38fed20127da654a5f9cb33b4f796b934277f9ee84d5635",
+    "game/rooms.js": "d9dcaf83643164aad71fad3211be2fce5d94cd45ecfee8442fc4c8b44adba57c",
+    "game/interaction.js": "8d68188e4a2a676f2ae8572d143f86bacb6c6d07fc06b3e1315d132190de8ffa",
+    "tests/check-stage2.cjs": "00574e28f480a6036e3c214a2e387cb395ddb4f096747e6e6a57d7f0fe412805",
+    "tests/build-stage2-fixture.cjs": "4bb67c0ae7e279d5dfe5816676ee951ed73c78e59f7fb8627a74fbc2a4479fd3",
+    "tests/stage2-scene-fixture.js": "2f13ccef7d467c8aebf84d40b4b99b32b875a7a6f67df334cbfc35dee88fe3e6"
+  },
+  "verifySource": "step1 開啟網站\r\n1.能成功開啟網站並且畫面顯示正常\r\nstep2 移動\r\n1.使用鍵盤wasd能分別控制前左後右移動\r\n2.不會穿牆或離開規範場景\r\nstep3 互動\r\n1.使用鍵盤f鍵可以與特定物品進行互動\r\n2.不能跟看不到的東西互動，也不能跟距離太遠的東西互動\r\nstep4 劇情選項\r\n1.與npc互動時依照玩家選的回答選項回覆不同話\r\n第二階段\r\nstep5 開幕\r\n1.確認畫面有顯示求救信件\r\n2.旁白有正常顯示\r\n3.劇情選項有正常出現\r\nstep6 關卡一\r\n1.與鋼琴交互畫面會跳出琴鍵其中四個按鍵分別為月亮，鳥，花，王冠，其餘按鍵為正常琴鍵\r\n2.鋼琴上的紙條可以正常互動\r\n3.紙條上的內容顯示正常\r\n4.鋼琴旁的音樂盒可以正常查看\r\n5.音樂盒內部圖案顯示正確\r\n6.按照月亮 → 鳥 → 花 → 王冠觸發伊恩會將後兩位彈錯的提示\r\n7.按照月亮 → 鳥 → 王冠 → 花 鋼琴暗格開啟得到紅玻璃吊墜\r\n8.點擊吊墜後物品說明正常顯示\r\nstep7 第二段劇情\r\n1.正確銜接第二段劇情\r\n2.選擇選項後回覆正確的結果\r\nstep8 關卡二\r\n1.使用深紅色玻璃吊墜典禮冊出現新劇情\r\n2.直接翻閱不觸發劇情\r\n3.\r\n\r\n\r\n\r\n\r\n",
+  "testCases": [
+    {
+      "id": "T7.1.1",
+      "title": "最後對話後自動銜接",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "crisis",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started"
+        ],
+        "documents": [],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T7.1.2",
+      "title": "前置不足不提前開始",
+      "status": "通過",
+      "evidence": [
+        {
+          "playerName": "訪客",
+          "promiseChoice": null,
+          "piano": {
+            "input": [],
+            "outcome": null,
+            "hintSeen": false,
+            "matched": false
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "opening",
+          "time": "23:30",
+          "events": [],
+          "documents": [
+            "rescueLetter"
+          ],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [],
+            "outcome": null,
+            "hintSeen": false,
+            "matched": false
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened"
+          ],
+          "documents": [],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": []
+        },
+        {
+          "playerName": "訪客",
+          "promiseChoice": 0,
+          "piano": {
+            "input": [
+              "月亮",
+              "鳥",
+              "王冠",
+              "花"
+            ],
+            "outcome": "matched",
+            "hintSeen": false,
+            "matched": true
+          },
+          "stage2": {
+            "phase": "inactive",
+            "command": "cup",
+            "flow": "cup",
+            "cupDry": false,
+            "pending": null,
+            "attempts": [],
+            "candles": {
+              "cup": "lit",
+              "crown": "lit",
+              "chair": "lit",
+              "clock": "lit"
+            }
+          },
+          "stage": "piano",
+          "time": "23:30",
+          "events": [
+            "letterRead",
+            "respondIan",
+            "enterHall",
+            "erinRestricted",
+            "secondRestriction",
+            "readCommand",
+            "pianoGuidance",
+            "promiseHonesty",
+            "explorationOpened",
+            "pianoSequenceMatched",
+            "pianoPerformanceStarted",
+            "pianoPerformanceFinished",
+            "pianoAcknowledged",
+            "pianoDrawerOpened",
+            "pianoPendantCollected"
+          ],
+          "documents": [],
+          "conversations": [],
+          "oath": "sealed",
+          "registrationSubject": "erin",
+          "dummy": {
+            "stableHeartbeat": false,
+            "crownWorn": false,
+            "claspClosed": false
+          },
+          "finale": {
+            "clockReady": false,
+            "brakeConnected": false,
+            "status": "idle"
+          },
+          "hints": {},
+          "items": [
+            "glass"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T7.1.3",
+      "title": "漸暗文字完整可讀且操作隔離",
+      "status": "通過",
+      "evidence": {
+        "sizes": [
+          {
+            "size": {
+              "width": 800,
+              "height": 600
+            },
+            "box": {
+              "x": 70,
+              "y": 127.03125,
+              "width": 660,
+              "height": 345.9375
+            }
+          },
+          {
+            "size": {
+              "width": 390,
+              "height": 844
+            },
+            "box": {
+              "x": 19,
+              "y": 247.4375,
+              "width": 352,
+              "height": 349.125
+            }
+          }
+        ],
+        "backdrop": "stage2-darken",
+        "wordOpacityKeyframes": [
+          "0",
+          "1"
+        ],
+        "controlsResume": true,
+        "screenshotsTaken": 0
+      }
+    },
+    {
+      "id": "T7.1.4",
+      "title": "重入不重複開場或跳時",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "crisis",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "stage2",
+        "time": "23:40",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started"
+        ],
+        "documents": [],
+        "conversations": [
+          {
+            "id": "piano-after-reward-0",
+            "speaker": "ian",
+            "text": "紅玻璃可分辨原墨與後來的王室覆印。"
+          },
+          {
+            "id": "piano-after-reward-1",
+            "speaker": "erin",
+            "text": "有人送我這個。我記得當時很高興，可是……想不起他的臉。"
+          },
+          {
+            "id": "piano-after-reward-2",
+            "speaker": "ian",
+            "text": "先留著。你會用到。"
+          },
+          {
+            "id": "stage2-narrator-管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。",
+            "speaker": "narrator",
+            "text": "管道開始發出運轉聲，暗紅色的液體順著銅管流向銀杯。艾琳雙眼無神，右手僵硬地伸向銀杯，左手死死抓住自己的手腕。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      }
+    },
+    {
+      "id": "T7.1.5",
+      "title": "取消／確認重新開始",
+      "status": "通過",
+      "evidence": {
+        "playerName": "訪客",
+        "promiseChoice": null,
+        "piano": {
+          "input": [],
+          "outcome": null,
+          "hintSeen": false,
+          "matched": false
+        },
+        "stage2": {
+          "phase": "inactive",
+          "command": "cup",
+          "flow": "cup",
+          "cupDry": false,
+          "pending": null,
+          "attempts": [],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "lit",
+            "clock": "lit"
+          }
+        },
+        "stage": "opening",
+        "time": "23:30",
+        "events": [],
+        "documents": [
+          "rescueLetter"
+        ],
+        "conversations": [],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": []
+      }
+    },
+    {
+      "id": "T7.2.1",
+      "title": "強行端走銀杯的失敗回饋",
+      "status": "阻擋",
+      "actual": "阻流四選項待步驟 17。"
+    },
+    {
+      "id": "T7.2.2",
+      "title": "鐵桿卡齒輪的失敗回饋",
+      "status": "阻擋",
+      "actual": "阻流四選項待步驟 17。"
+    },
+    {
+      "id": "T7.2.3",
+      "title": "分流加銅蓋成功並接上改令劇情",
+      "status": "阻擋",
+      "actual": "完整案例包括步驟 18 的典禮冊改令及後續對話；步驟 17 只做到阻流結果。"
+    },
+    {
+      "id": "T7.2.4",
+      "title": "用手擋出口的失敗回饋",
+      "status": "阻擋",
+      "actual": "阻流四選項待步驟 17。"
+    },
+    {
+      "id": "T7.2.5",
+      "title": "三種失敗後皆能重試並改正解",
+      "status": "阻擋",
+      "actual": "阻流四選項待步驟 17。"
+    },
+    {
+      "id": "T7.2.6",
+      "title": "快速選擇與關閉不串錯分支",
+      "status": "阻擋",
+      "actual": "阻流四選項待步驟 17。"
+    },
+    {
+      "id": "T8.1.1",
+      "title": "持有吊墜並使用正確入口",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.1.2",
+      "title": "揭露印記、約束規則與附件線索",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.1.3",
+      "title": "讀完後接續四燭臺引導",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.1.4",
+      "title": "漸暗證據文字可讀且不誤操作場景",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.1.5",
+      "title": "提前退出、重看與缺少前置不誤記成功",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.2.1",
+      "title": "普通翻閱僅顯示提示、不揭露有效證據",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.2.2",
+      "title": "普通翻閱後仍能改用吊墜",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    },
+    {
+      "id": "T8.2.3",
+      "title": "重複普通翻閱不累積進度或取消既有成果",
+      "status": "阻擋",
+      "actual": "步驟 18／19 的改令、普通閱讀及紅玻璃調查前置尚未接入，全文／附件編號仍待補。"
+    }
+  ],
+  "supplemental": [
+    {
+      "id": "S2.2",
+      "title": "燭臺編號／前置與畫廊門鎖",
+      "status": "通過",
+      "evidence": {
+        "door": {
+          "id": "gallery-door",
+          "name": "畫廊木門",
+          "open": false,
+          "locked": true,
+          "closedBounds": {
+            "minX": -1.5,
+            "maxX": 1.5,
+            "minZ": -18.07999999821186,
+            "maxZ": -17.92000000178814
+          },
+          "openBounds": {
+            "minX": -1.5799999982118607,
+            "maxX": -1.4200000017881385,
+            "minZ": -21,
+            "maxZ": -18
+          },
+          "focus": [
+            0,
+            2.3,
+            -18
+          ],
+          "approach": [
+            0,
+            -16.1
+          ]
+        },
+        "candles": [
+          "第 1 根 · 銀杯 · 尚未試驗",
+          "第 2 根 · 王冠 · 尚未試驗",
+          "第 3 根 · 座椅 · 尚未試驗",
+          "第 4 根 · 報時 · 尚未試驗"
+        ]
+      }
+    },
+    {
+      "id": "S2.REDUCED",
+      "title": "減少動態效果不阻擋閱讀",
+      "status": "通過",
+      "evidence": {
+        "reducedMotion": true
+      }
+    },
+    {
+      "id": "S2.HEALTH",
+      "title": "瀏覽器離線與主控台健康",
+      "status": "通過",
+      "evidence": {
+        "errors": [],
+        "externalRequests": [],
+        "title": "時空密室｜午夜之前",
+        "screenshotsTaken": 0
+      }
+    }
+  ],
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-stage2-step16",
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "blocked": 14
+  },
+  "notes": "只有第二關 T7／T8 共 19 案；空白 step8.3 不建案。未執行或前置未具備不得標通過。"
+}

@@ -37,16 +37,17 @@ export function createGameUI(session, { onPause = () => {}, onResume = () => {} 
     }); parent.append(element); return element;
   }
   function paragraph(text, parent = body) { const p = document.createElement('p'); p.textContent = text; parent.append(p); return p; }
-  function show({ heading, text, choices = [], allowClose = true, onClose = null, kind = 'document', renderBody }) {
+  function show({ heading, text, choices = [], allowClose = true, onClose = null, kind = 'document', renderBody, context }) {
     for (const timer of timers) clearTimeout(timer); timers.clear();
     revision++; dismissible = allowClose; closed = onClose; title.textContent = heading;
     body.replaceChildren(); actions.replaceChildren(); dialog.dataset.kind = kind;
-    document.querySelector('#story-context').textContent = ['opening-letter','entry','restriction'].includes(kind) ? '旁白' : kind==='ceremony-page' ? '典禮冊' : kind.startsWith('ian-') ? '對話 · 伊恩' : kind==='erin-story' ? '對話 · 艾琳' : '午夜之前 · 隨身紀錄';
+    document.querySelector('#story-context').textContent = context || (['opening-letter','entry','restriction'].includes(kind) ? '旁白' : kind==='ceremony-page' ? '典禮冊' : kind.startsWith('ian-') ? '對話 · 伊恩' : kind==='erin-story' ? '對話 · 艾琳' : '午夜之前 · 隨身紀錄');
     closeButton.hidden = !allowClose;
     for (const line of [].concat(text || [])) paragraph(line);
     renderBody?.(body);
     for (const choice of choices) {
       const element = button(choice.label, choice.action); if (choice.id) element.dataset.choice = choice.id;
+      if(choice.disabled){element.disabled=true;continue;}
       if(choice.delay&&!matchMedia('(prefers-reduced-motion: reduce)').matches){element.disabled=true;const view=revision;const timer=setTimeout(()=>{timers.delete(timer);if(view===revision&&dialog.open)element.disabled=false;},choice.delay);timers.add(timer);}
     }
     if (!dialog.open) { dialog.showModal(); onPause(); }
@@ -80,7 +81,7 @@ export function createGameUI(session, { onPause = () => {}, onResume = () => {} 
     }
     const heading = document.createElement('h3'); heading.textContent = '交談紀錄'; body.append(heading);
     if (!snapshot.conversations.length) paragraph('尚未交談。');
-    for (const line of snapshot.conversations) paragraph(`${line.speaker === 'erin' ? '艾琳' : line.speaker === 'ian' ? '伊恩' : '訪客'}：${line.text}`);
+    for (const line of snapshot.conversations) paragraph(`${line.speaker === 'erin' ? '艾琳' : line.speaker === 'ian' ? '伊恩' : line.speaker === 'narrator' ? '旁白' : '訪客'}：${line.text}`);
   }
   function dialogue(lines, { onDone, required = false, finalLabel = '結束交談' } = {}) {
     let index = 0;

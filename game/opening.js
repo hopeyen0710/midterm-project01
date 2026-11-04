@@ -27,7 +27,8 @@ export function createOpening({session,ui,getViewer,viewport,onEntered}) {
  function sync(){
   document.querySelector('#player-name').disabled=session.hasEvent('letterRead');
   areaSelect.disabled=true;areaSelect.value=entered()?'hall':'outside';document.querySelector('.area-label').hidden=true;
-  objective.textContent=session.hasEvent('stage1Complete')?'第一關已完成。可重看隨身紀錄，或重新開始。':entered()?(session.hasEvent('explorationOpened')?'前往西側音樂室，查看鋼琴周圍的線索。':'大門在身後關上了。聽艾琳說話。'):session.hasEvent('respondIan')?'大門已開啟。向前踏入城堡。':session.hasEvent('letterRead')?'沿石階靠近大門，對準大門按 F，回應伊恩。':'先讀完艾琳的求救信。';
+  const stage2Objectives={crisis:'阻斷流向銀杯的液體，幫艾琳擺脫危機。',blocked:'銀杯已保持乾燥。留意典禮冊的變化。',investigate:session.snapshot.stage2.bookOpened?'使用紅玻璃調查典禮冊與周遭紀錄。':'銀杯已保持乾燥。可以繼續探索大廳。',guidance:'聽艾琳與伊恩說明燭臺試驗。',candles:'查看桌上四根燭臺，驗證當前有效命令。',verified:'聽取附件線索，尋找真正的記錄。',gallery:'附件線索指向後方的王室畫廊。',complete:'前往後方王室畫廊，或重看隨身紀錄。',entered:'已抵達王室畫廊。可回顧隨身紀錄。'};
+  objective.textContent=session.snapshot.stage==='stage2'?stage2Objectives[session.snapshot.stage2.phase]:entered()?(session.hasEvent('explorationOpened')?'前往西側音樂室，查看鋼琴周圍的線索。':'大門在身後關上了。聽艾琳說話。'):session.hasEvent('respondIan')?'大門已開啟。向前踏入城堡。':session.hasEvent('letterRead')?'沿石階靠近大門，對準大門按 F，回應伊恩。':'先讀完艾琳的求救信。';
  }
  function syncSound(){audio.setMode(document.hidden||document.querySelector('#scene-screen').hidden?'silent':entered()?'inside':'outside');}
  session.subscribe(sync);
