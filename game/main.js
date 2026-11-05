@@ -11,10 +11,14 @@ import {createPianoReward} from './piano-reward.js';
 import {createStage2} from './stage2.js';
 
 const entryScreen = document.querySelector('#entry-screen');
-// 當玩家點擊畫面或進入遊戲時觸發播放音樂
-document.addEventListener('click', () => {
-    playBGM('assets/bgm.mp3', 0.4);
-}, { once: true }); // { once: true } 代表只會觸發一次，點擊後就會開始播音樂
+let bgmInstance = null; // 用來記錄音樂物件，避免重複播放
+
+// 改成點擊「進入遊戲按鈕」時才播音樂
+sceneButton.addEventListener('click', () => {
+    if (!bgmInstance) {
+        bgmInstance = playBGM('assets/bgm.mp3', 0.4);
+    }
+});
 const sceneScreen = document.querySelector('#scene-screen');
 const viewport = document.querySelector('#scene-viewport');
 const sceneButton = document.querySelector('#scene-button');
