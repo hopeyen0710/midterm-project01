@@ -30,3 +30,16 @@ export function createAmbience(onChange=()=>{}) {
   dispose(){for(const source of sources)source.stop();context?.close().catch(()=>{});},
  };
 }
+// ====== 新增：播放下載的 MP3 音樂檔案 ======
+export function playBGM(filePath, volume = 0.5) {
+    const bgm = new Audio(filePath);
+    bgm.loop = true;          // 設定循環播放
+    bgm.volume = volume;      // 設定音量 (0.0 到 1.0)
+    
+    // 播放音樂（處理瀏覽器阻擋自動播放的保護機制）
+    bgm.play().catch(error => {
+        console.log("瀏覽器需要使用者互動後才能播放音樂。");
+    });
+    
+    return bgm;
+}
