@@ -13,7 +13,7 @@ import {createStage2} from './stage2.js';
 const entryScreen = document.querySelector('#entry-screen');
 // 當玩家點擊畫面或進入遊戲時觸發播放音樂
 document.addEventListener('click', () => {
-    playBGM('assets/中世紀神秘古堡（純音樂）- 原調音樂.mp3', 0.4);
+    playBGM('assets/bgm.mp3', 0.4);
 }, { once: true }); // { once: true } 代表只會觸發一次，點擊後就會開始播音樂
 const sceneScreen = document.querySelector('#scene-screen');
 const viewport = document.querySelector('#scene-viewport');
