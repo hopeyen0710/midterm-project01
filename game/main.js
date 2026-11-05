@@ -1,3 +1,4 @@
+import { playBGM } from './audio.js';
 import {createStage3} from './stage3.js';
 import { REVISION } from 'three';
 import { createCastleScene } from './scene.js';
