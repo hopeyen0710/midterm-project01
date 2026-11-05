@@ -1,0 +1,182 @@
+{
+  "recordedAt": "2026-11-05T04:37:37.709Z",
+  "step": 31,
+  "scope": "本輪依步驟功能分組核對同一次連續通關中的證據；非六個不同歷史遊戲版本。31為資料層；32～35各功能在實際通關到達時驗證，36彙整。",
+  "summary": {
+    "passed": 0,
+    "failed": 0,
+    "notApplicable": 3,
+    "pending": 21
+  },
+  "cases": [
+    {
+      "id": "T10.1.1",
+      "title": "由第三關完成狀態進入第四關",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.1.2",
+      "title": "第四關載入畫面與互動可用",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.1.3",
+      "title": "故事時間與 Stage 4 開始節點一致",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.2.1",
+      "title": "大廳右側工匠櫃可辨識",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.2.2",
+      "title": "互動工匠櫃可進入工匠室",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.3.1",
+      "title": "選項內容與呈現",
+      "status": "不適用",
+      "evidence": "使用者本輪明確指示：沒有分支台詞就不需要驗證。"
+    },
+    {
+      "id": "T10.3.2",
+      "title": "各選項對應回覆",
+      "status": "不適用",
+      "evidence": "使用者本輪明確指示：沒有分支台詞就不需要驗證。"
+    },
+    {
+      "id": "T10.3.3",
+      "title": "選項重選與回覆不串段",
+      "status": "不適用",
+      "evidence": "使用者本輪明確指示：沒有分支台詞就不需要驗證。"
+    },
+    {
+      "id": "T10.4.1",
+      "title": "替身人偶研究筆記正文可讀",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.4.2",
+      "title": "場景三指定對話依序顯示",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.4.3",
+      "title": "長文字版面與閱讀操作正常",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.5.1",
+      "title": "三顆齒輪與標記正確呈現",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.5.2",
+      "title": "正確排列為動力、調速、心搏",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.5.3",
+      "title": "錯誤排列可辨識且能重試",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.5.4",
+      "title": "心跳刻度與過快／過慢／正確回饋",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.6.1",
+      "title": "王冠完成第二項條件",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.6.2",
+      "title": "缺少任一條件時不確認有效登記",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.6.3",
+      "title": "兩項完成後典禮冊欄位正確",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.6.4",
+      "title": "典禮冊確認前不得提前解除或結局",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.7.1",
+      "title": "典禮冊確認後才開放離城流程",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.7.2",
+      "title": "正門封印解除與開門回饋",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.7.3",
+      "title": "正門重逢台詞與說話者順序正確",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.7.4",
+      "title": "伊恩消失段落與看海對話完整",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    },
+    {
+      "id": "T10.7.5",
+      "title": "第四關完成訊息、結局名稱與通關時間",
+      "status": "尚未執行",
+      "evidence": "留待後續步驟的功能驗收；第31步以來源與狀態檢查為主。"
+    }
+  ],
+  "unitChecks": [
+    {
+      "id": "31-前置與新局",
+      "status": "通過"
+    },
+    {
+      "id": "31-開始時間與去重",
+      "status": "通過"
+    }
+  ],
+  "sourceHashes": {
+    "VERIFY.md": "4883cfcbf16b03c00d97fdf7ac1bf630d4a7ee04470c45b560cb2d5b6812e257",
+    "TEST.md": "aa09f883f035522cd13ca76158583ad6cb6250364543c99245178bd41f3830e6"
+  },
+  "fullClear": "full-clear.json",
+  "finalSceneEvidence": "stage4-real.json",
+  "deliveryEvidence": "delivery-final.json",
+  "finalHTMLHash": "9f56ddbed1923988b637bced0c6a52be4e00b3745ff63575353a0a502c0f0d05",
+  "componentEvidence": "stage4-ui.json",
+  "stateEvidence": "stage4-state.json",
+  "remaining": [
+    "第二關三份全文與附件編號依指示待補，T8.1.2不作通過判定。",
+    "第三關童年合照正面圖片依指示待補。"
+  ],
+  "environment": "Browser plugin not available; Playwright Chrome, offline file:// production game/index.html. Fresh start; no fixture, no state injection, no teleport test API, no replacement renderer. Travel uses WASD/mouse and production collision geometry. Only scripted story teleports are allowed."
+}

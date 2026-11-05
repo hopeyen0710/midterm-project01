@@ -1,0 +1,73 @@
+{
+  "recordedAt": "2026-11-05T04:32:03.987Z",
+  "method": "Browser plugin not available；Playwright Chrome，離線UI元件測試，正式UI／狀態／CSS；使用合法狀態前置，不載入3D場景、不作場景畫面或F射線驗收。完整正式3D由check-full-clear.cjs另測。",
+  "checks": [
+    {
+      "id": "T10.6.2",
+      "mode": "none",
+      "status": "通過"
+    },
+    {
+      "id": "T10.6.2",
+      "mode": "heart",
+      "status": "通過"
+    },
+    {
+      "id": "T10.6.2",
+      "mode": "crown",
+      "status": "通過"
+    },
+    {
+      "id": "T10.6.4",
+      "status": "通過"
+    },
+    {
+      "id": "T10.6.3",
+      "status": "通過"
+    },
+    {
+      "id": "T10.4.3",
+      "status": "通過"
+    },
+    {
+      "id": "S4-鍵盤點選替代拖放",
+      "status": "通過"
+    },
+    {
+      "id": "S4-三顆齒輪排列與窄版",
+      "status": "通過",
+      "boxes": [
+        {
+          "x": 207,
+          "y": 374.328125,
+          "right": 388.328125,
+          "bottom": 510.015625
+        },
+        {
+          "x": 404.328125,
+          "y": 361.734375,
+          "right": 585.671875,
+          "bottom": 510.015625
+        },
+        {
+          "x": 601.671875,
+          "y": 349.125,
+          "right": 783,
+          "bottom": 510.015625
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "hashes": {
+    "VERIFY.md": "4883cfcbf16b03c00d97fdf7ac1bf630d4a7ee04470c45b560cb2d5b6812e257",
+    "TEST.md": "aa09f883f035522cd13ca76158583ad6cb6250364543c99245178bd41f3830e6",
+    "game/stage4.js": "564473df7922500f5c8569f18822ed4bc0fcde5328a64987c5c9661da5fb12ad",
+    "game/stage4-state.js": "52e2f8c5c51d9b2f5fd5cb55d79bccfe2e414a27a6fc410c2cedb60e7b33036b",
+    "game/stage4-data.js": "ad22d9597df5447c7d84813bbc97d65dddf460cf08b57889241cd8d4a8bc6460",
+    "game/styles.css": "1554135d64ebc2c442011716befca765503a245e7533712ab01323b2aa6e50f7",
+    "game/ui.js": "5ee688d0cd6658b1bfd095d8b71d9ac147f727eaec57481851dabfcb6ff137b7",
+    "tests/check-stage4-ui.cjs": "7d1c4e6b1f3106f5abcdcc484402102d6d10fd0e425aa7f936bce20ba074b99c"
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-stage4-ui"
+}

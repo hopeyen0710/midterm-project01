@@ -1,0 +1,61 @@
+{
+  "recordedAt": "2026-11-05T03:53:42.342Z",
+  "scope": "工坊模型互動標記定點修正；對照 VERIFY 的 F 互動、遮擋與工匠櫃顯示要求，不宣稱未實作的第四關 T10 全部通過。",
+  "method": "Browser plugin not available；Playwright Chrome／離線 file://／正式完整模型及實際 WebGL繪圖。只附加有效狀態準備 API，沒有修改模型、射線或目標判定。",
+  "browser": "156.0.8078.80",
+  "viewport": {
+    "width": 1100,
+    "height": 760
+  },
+  "tests": [
+    {
+      "id": "W1",
+      "status": "通過",
+      "actual": "人偶與胸前機關屬於典禮人偶；工匠櫃不含上述可見模型。"
+    },
+    {
+      "id": "W2",
+      "status": "通過",
+      "actual": "頭部與胸前機關均顯示典禮人偶，F 不開啟工匠櫃或推進劇情。",
+      "evidence": [
+        {
+          "part": "胸前機關",
+          "hit": {
+            "mesh": "workshop-mannequin-clockwork-heart",
+            "distance": 0.6102865726364561,
+            "interactionId": "workshop-mannequin"
+          }
+        },
+        {
+          "part": "頭部",
+          "hit": {
+            "mesh": "workshop-mannequin-imported-mannequin",
+            "distance": 1.1649994116163098,
+            "interactionId": "workshop-mannequin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "W3",
+      "status": "通過",
+      "actual": "繞過人偶後可對準櫃體，F 正確開啟工匠櫃互動。",
+      "evidence": {
+        "mesh": "cabinet-imported-cabinet",
+        "distance": 1.6413271200164647,
+        "interactionId": "cabinet"
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "sourceHashes": {
+    "game/detailed-models.js": "b6f6733e3359e493537efffb9dfb83eb0e00c496112bb2d5625bdafd06fc9b03",
+    "game/interaction-data.js": "04eaec0a8d16e0d6a086a60bb2253f6dfe66d5dd7061a9c986fffa05bb124224",
+    "game/interaction.js": "f6f76cc62c7333d907eba35cd221316d376248dd721b085265039f3852494ebf",
+    "game/index.html": "13de722bb62177cf3f9042ac07c2ce84457c41c4379277705604f05acdc41e48",
+    "VERIFY.md": "4883cfcbf16b03c00d97fdf7ac1bf630d4a7ee04470c45b560cb2d5b6812e257",
+    "tests/check-workshop-targets.cjs": "7a730a7b9fbdf1050efd6c3809072dfe061e5b88a526dfb6fe25286f45bcb15b"
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-workshop-targets"
+}

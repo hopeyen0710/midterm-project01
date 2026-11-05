@@ -82,6 +82,25 @@ export const interactionTargets = [{"id":"gallery-notice","label":"畫廊入口�
     "message": "書桌旁的銀杯連著典禮設施。"
   },
   {
+    "id": "workshop-mannequin",
+    "label": "典禮人偶",
+    "action": "inspect",
+    "area": "repair",
+    "prefixes": [
+      "workshop-mannequin"
+    ],
+    "focus": [
+      33.92,
+      2.35,
+      -3
+    ],
+    "approach": [
+      32.6,
+      -3
+    ],
+    "message": "一具用來排演典禮的人偶，胸前裝著尚未完成的發條機關。"
+  },
+  {
     "id": "cabinet",
     "label": "工匠櫃",
     "action": "operate",
@@ -90,13 +109,13 @@ export const interactionTargets = [{"id":"gallery-notice","label":"畫廊入口�
       "cabinet"
     ],
     "focus": [
-      20.36,
+      21.73,
       2.3,
-      -3
+      -3.7
     ],
     "approach": [
-      19.3,
-      -3
+      21,
+      -4.7
     ],
     "message": "工匠櫃仍然鎖著，現在無法打開。"
   },
@@ -284,3 +303,9 @@ export const interactionTargets = [{"id":"gallery-notice","label":"畫廊入口�
 ];
 
 interactionTargets.push(...pianoClueTargets);
+interactionTargets.push(
+ {id:'repair-base',label:'人偶底座暗格',action:'inspect',area:'repair',prefixes:['repair-base'],focus:[33.13,.86,-3],approach:[32.3,-3],message:'底座藏著一道暗格。'},
+ {id:'repair-parts',label:'零件桌',action:'operate',area:'repair',prefixes:['repair-table','repair-parts'],focus:[36.5,2.03,2.7],approach:[36.5,.8],message:'三顆齒輪、發條與維修圖。'},
+ {id:'repair-crown',label:'王室典禮王冠展示架',action:'operate',area:'repair',prefixes:['repair-crown'],focus:[37.8,2.5,-3],approach:[37.8,-.9],message:'展示架上放著王室典禮王冠。'},
+ {id:'repair-exit',label:'返回東側工坊',action:'operate',area:'repair',prefixes:['repair-exit'],focus:[30.3,2.3,5.78],approach:[30.3,4],message:'沿原路返回大廳東側的工坊。'},
+);

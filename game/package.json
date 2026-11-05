@@ -11,7 +11,9 @@
     "build": "node scripts/build.mjs",
     "test:data": "node ../tests/check-step01.mjs --data-only",
     "test:browser": "node ../tests/check-stage3.cjs",
-    "test:state": "node ../tests/check-stage3-state.cjs"
+    "test:state": "node ../tests/check-stage3-state.cjs",
+    "test:stage4": "node ../tests/check-stage4-state.cjs && node ../tests/check-stage4-ui.cjs",
+    "test:full": "node ../tests/check-full-clear.cjs"
   },
   "dependencies": {
     "three": "0.187.0"

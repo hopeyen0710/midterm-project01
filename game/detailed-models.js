@@ -114,19 +114,19 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
   candleRecord.bounds={min:candleBounds.min.toArray(),max:candleBounds.max.toArray()};
   candleRecord.support={table:bookDesk.name,surfaceY:support.point.y,baseY:candleBounds.min.y,gap:candleBounds.min.y-support.point.y};
   place('vase',{x:-4,y:2.05,z:5,height:.9,target:'flower'});
-  const mannequin=place('mannequin',{x:20.3,y:.6,z:-3,height:2.65,rotation:-Math.PI/2,target:'cabinet',solid:true});
+  const mannequin=place('mannequin',{x:20.3,y:.6,z:-3,height:2.65,rotation:-Math.PI/2,target:'workshop-mannequin',solid:true});
   mannequin.traverse(o=>{
     if(!o.isMesh)return;
     o.material=new MeshStandardMaterial({color:/stainless|Charcoal|walnut/i.test(o.material.name)?'#93713e':'#e4dac5',metalness:/stainless|Charcoal|walnut/i.test(o.material.name)?.65:.08,roughness:.34});
   });
   const brass=new MeshStandardMaterial({color:'#c49951',metalness:.7,roughness:.25});
-  const heart=new Group();heart.name='cabinet-clockwork-heart';
+  const heart=new Group();heart.name='workshop-mannequin-clockwork-heart';
   const outer=new Mesh(new TorusGeometry(.18,.025,8,48),brass);outer.rotation.y=Math.PI/2;heart.add(outer);
   const core=new Mesh(new CylinderGeometry(.13,.13,.035,24),new MeshStandardMaterial({color:'#362b24',metalness:.7,roughness:.35}));core.rotation.z=Math.PI/2;heart.add(core);
   for(let i=0;i<12;i++){
     const a=i*Math.PI/6,tooth=new Mesh(new BoxGeometry(.035,.055,.045),brass);tooth.position.set(0,Math.cos(a)*.145,Math.sin(a)*.145);tooth.rotation.x=a;heart.add(tooth);
   }
-  heart.position.set(19.92,2.35,-3);heart.traverse(o=>{if(o.isMesh)o.name='cabinet-clockwork-heart';});scene.add(heart);
+  heart.position.set(19.92,2.35,-3);heart.traverse(o=>{if(o.isMesh)o.name='workshop-mannequin-clockwork-heart';});scene.add(heart);
   const woman=place('woman',{x:0,y:1.5,z:-2.55,height:2.1,target:'erin'});
   woman.traverse(o=>{
     if(!o.isMesh)return;const n=o.material.name;

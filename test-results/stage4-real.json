@@ -1,0 +1,1203 @@
+{
+  "recordedAt": "2026-11-05T04:35:24.261Z",
+  "status": "通過",
+  "scope": "最終畫面修正後的第四關實際WebGL與全部操作複驗；前關以合法狀態API準備，第四關以實際F與介面走到結局。此處使用測試站位API，實際WASD連續行走證據另見full-clear.json。",
+  "method": "Browser plugin not available；Playwright Chrome，offline file://；完整正式模型及實際繪圖，未替換renderer。",
+  "evidence": [
+    {
+      "label": "第四關，櫃門開啟與維修室",
+      "state": {
+        "stage4": {
+          "active": true,
+          "opened": true,
+          "inspected": false,
+          "notesFound": false,
+          "researchRead": false,
+          "gears": [],
+          "heartStarted": false,
+          "bpm": 80,
+          "stable": false,
+          "crownCollected": false,
+          "crowned": false,
+          "registered": false,
+          "released": false,
+          "atGate": false,
+          "gateOpen": false,
+          "complete": false,
+          "dialogue": {
+            "inspect": 0,
+            "research": 0,
+            "started": 0,
+            "ready": 0,
+            "released": 0,
+            "ending": 0
+          }
+        },
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "entered",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "bookOpened": true,
+          "evidencePages": 3,
+          "guidePages": 3,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage3": {
+          "active": true,
+          "current": "ian",
+          "photo": {
+            "found": false,
+            "side": "front",
+            "backRead": false
+          },
+          "puzzles": {
+            "erin": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 1
+            },
+            "king": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 4
+            },
+            "ian": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 15
+            }
+          }
+        },
+        "stage": "workshop",
+        "time": "23:50",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified",
+          "stage2GuideUnlocked",
+          "stage2Complete",
+          "stage3Entered",
+          "stage3Started",
+          "stage3Puzzle-erin",
+          "stage3Puzzle-king",
+          "stage3Puzzle-ian",
+          "stage3Complete",
+          "stage3WorkshopClue",
+          "stage4Started",
+          "stage4Opened"
+        ],
+        "documents": [
+          "stage3Ledger",
+          "stage3Speech",
+          "stage3OriginalOrder",
+          "stage3Apprentice",
+          "stage3Revision"
+        ],
+        "conversations": [
+          {
+            "id": "stage3-erin-line-0",
+            "speaker": "erin",
+            "text": "我只是想把原本屬於人民的東西還給他們。我沒想到，父王寧願殺了我，也不願承認自己做錯了。"
+          },
+          {
+            "id": "stage3-king-line-0",
+            "speaker": "erin",
+            "text": "我只是想揭發父王做的壞事，沒想到他竟然要殺了我。"
+          },
+          {
+            "id": "stage3-king-line-1",
+            "speaker": "visitor",
+            "text": "他可是妳的親生父親……"
+          },
+          {
+            "id": "stage3-king-line-2",
+            "speaker": "erin",
+            "text": "我也問過他，難道王位比自己的女兒還重要嗎？"
+          },
+          {
+            "id": "stage3-king-line-3",
+            "speaker": "erin",
+            "text": "他沒有回答，只是命令人替我戴上王冠，然後簽下處決令。"
+          },
+          {
+            "id": "stage3-ian-line-0",
+            "speaker": "visitor",
+            "text": "伊恩，是你改的？"
+          },
+          {
+            "id": "stage3-ian-line-1",
+            "speaker": "narrator",
+            "text": "伊恩沉默了一下。"
+          },
+          {
+            "id": "stage3-ian-line-2",
+            "speaker": "ian",
+            "text": "是。"
+          },
+          {
+            "id": "stage3-ian-line-3",
+            "speaker": "visitor",
+            "text": "你為什麼要改？"
+          },
+          {
+            "id": "stage3-ian-line-4",
+            "speaker": "ian",
+            "text": "我改不了國王的命令。"
+          },
+          {
+            "id": "stage3-ian-line-5",
+            "speaker": "ian",
+            "text": "但如果機關只認得『公主』，而不是艾琳本人……也許還有辦法。"
+          },
+          {
+            "id": "stage3-ian-line-6",
+            "speaker": "ian",
+            "text": "所以我偷偷修改了機關的設定。原本它只會處決艾琳，現在它會處決『被登記為公主的人』。"
+          },
+          {
+            "id": "stage3-ian-line-7",
+            "speaker": "visitor",
+            "text": "所以，只要讓其他人代替艾琳成為公主……"
+          },
+          {
+            "id": "stage3-ian-line-8",
+            "speaker": "ian",
+            "text": "沒錯！只要能在午夜前完成新的公主登記，機關就不會再把艾琳當成處決對象。"
+          },
+          {
+            "id": "stage3-ian-line-9",
+            "speaker": "ian",
+            "text": "但我當時還沒找到成功替換身分的方法，就被國王的衛兵發現了。"
+          },
+          {
+            "id": "stage3-ian-line-10",
+            "speaker": "erin",
+            "text": "你不是說過，工坊裡有一具用來排演典禮的人偶嗎？"
+          },
+          {
+            "id": "stage3-ian-line-11",
+            "speaker": "ian",
+            "text": "對！有一次我們替它戴上王冠，機關竟然向它行禮。"
+          },
+          {
+            "id": "stage3-ian-line-12",
+            "speaker": "visitor",
+            "text": "所以那具人偶可能可以代替艾琳？"
+          },
+          {
+            "id": "stage3-ian-line-13",
+            "speaker": "ian",
+            "text": "有可能。研究紀錄藏在人偶底座裡，人偶就在大廳右側的工匠櫃。"
+          },
+          {
+            "id": "stage3-ian-line-14",
+            "speaker": "erin",
+            "text": "那就去找它。我不想再坐在這裡等死了。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": false,
+          "crownWorn": false,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass"
+        ]
+      },
+      "viewport": {
+        "state": "ready",
+        "pianoDrawer": "closed",
+        "pianoPerformanceNote": "",
+        "erinLocation": "hall",
+        "detailedModels": "{\"sources\":14,\"placements\":[{\"id\":\"chair\",\"name\":\"detail-chair\",\"target\":\"throne\",\"bounds\":{\"min\":[-0.8762415045823793,1.32,-3.740861026089154],\"max\":[0.8762415045823793,3.5200000000000005,-2.159138973910846]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,2.5124434113068412],\"max\":[-5.624858298009753,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,4.712443411306841],\"max\":[-5.624858298009753,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,6.912443411306842],\"max\":[-5.624858298009753,2.5,7.487556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,2.5124434113068412],\"max\":[-1.8248582980097519,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,4.712443411306841],\"max\":[-1.8248582980097519,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,6.912443411306842],\"max\":[-1.8248582980097519,2.5,7.487556588693159]}},{\"id\":\"piano\",\"name\":\"detail-piano\",\"target\":\"piano\",\"bounds\":{\"min\":[-20.6,0.6,-4.250057277417812],\"max\":[-17.4,3.8517844338000833,-0.7499427225821877]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-19.15891285164622,0.6,-0.402051993205137],\"max\":[-18.84108714835378,1.6500000000000001,-0.09794800679486296]}},{\"id\":\"console\",\"name\":\"detail-console\",\"target\":\"book\",\"bounds\":{\"min\":[4.999999999999999,0.6,3.05],\"max\":[8.6,2.02,4.95]}},{\"id\":\"cabinet\",\"name\":\"detail-cabinet\",\"target\":\"cabinet\",\"bounds\":{\"min\":[21.71966690171398,0.6,-4.201485043482771],\"max\":[23.28033309828602,3.9,-1.7985149565172287]}},{\"id\":\"clock\",\"name\":\"detail-clock\",\"target\":\"clock\",\"bounds\":{\"min\":[3.7860095171875385,0.6,-13.486873597254508],\"max\":[5.213990482812461,5.6,-12.513126402745492]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,-8.132172105086237],\"max\":[1.1249172384310628,9.25,-5.8678278949137646]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,0.8678278949137637],\"max\":[1.1249172384310628,9.25,3.1321721050862363]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,6.867827894913763],\"max\":[1.1249172384310628,9.25,9.132172105086235]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-6.58490603387819,1.52,-26.783644856648436],\"max\":[-3.41509396612181,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-1.5849060338781904,1.52,-26.783644856648436],\"max\":[1.5849060338781904,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[3.41509396612181,1.52,-26.783644856648436],\"max\":[6.58490603387819,5.22,-26.356355143351564]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-10.190862655572975,0.6,-12.125146415930146],\"max\":[-7.809137344427026,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[7.809137344427026,0.6,-12.125146415930146],\"max\":[10.190862655572975,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-9.125146415930146,0.6,-26.690862655572975],\"max\":[-6.874853584069854,3.25,-24.309137344427025]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[6.874853584069854,0.6,-26.690862655572975],\"max\":[9.125146415930146,3.25,-24.309137344427025]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-10.33080161404612],\"max\":[-9.736970908379368,6.4,-9.669198385953878]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-3.330801614046121],\"max\":[-9.736970908379368,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,3.669198385953879],\"max\":[-9.736970908379368,6.4,4.330801614046121]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,9.66919838595388],\"max\":[-9.736970908379368,6.4,10.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-10.330801614046122],\"max\":[10.163029091620633,6.4,-9.66919838595388]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-3.330801614046121],\"max\":[10.163029091620633,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,3.669198385953879],\"max\":[10.163029091620633,6.4,4.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,9.669198385953878],\"max\":[10.163029091620633,6.4,10.33080161404612]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-18.285760801489527,2.3,-2.585559036506196],\"max\":[-17.214239198510477,3.15,-2.2144409634938036]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[18.86423919851047,1.85,3.814440963493804],\"max\":[19.935760801489522,2.7,4.185559036506196]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-0.5357608014895242,1.32,-3.9855590365061957],\"max\":[0.5357608014895242,2.17,-3.6144409634938035]}},{\"id\":\"bookCandle\",\"name\":\"book-desk-candelabrum\",\"bounds\":{\"min\":[5.442259110314474,2.019999899693997,3.814440963493804],\"max\":[5.857740889685528,2.869999899693997,4.185559036506196]},\"support\":{\"table\":\"detail-console\",\"surfaceY\":2.019999899693997,\"baseY\":2.019999899693997,\"gap\":0}},{\"id\":\"vase\",\"name\":\"detail-vase\",\"target\":\"flower\",\"bounds\":{\"min\":[-4.261091310111994,2.05,4.738908705143325],\"max\":[-3.7389086898880057,2.9499999999999997,5.261091294856675]}},{\"id\":\"mannequin\",\"name\":\"detail-mannequin\",\"target\":\"workshop-mannequin\",\"bounds\":{\"min\":[33.94861880441846,0.35,-3.503921647128528],\"max\":[34.651381195581536,3,-2.496078352871472]},\"area\":\"repair\"},{\"id\":\"woman\",\"name\":\"detail-woman\",\"target\":\"erin\",\"bounds\":{\"min\":[-0.39025615155307686,1.5,-3.1066459098926553],\"max\":[0.39025615155307686,3.6000000000000005,-1.9933540901073448]}}]}",
+        "navigation": "{\"areas\":{\"repair\":{\"name\":\"維修工作室\",\"bounds\":{\"minX\":29.2,\"maxX\":38.8,\"minZ\":-5.8,\"maxZ\":5.8},\"spawn\":{\"x\":31,\"z\":2},\"floor\":0.6},\"hall\":{\"name\":\"大廳\",\"bounds\":{\"minX\":-24.3,\"maxX\":24.3,\"minZ\":-27.3,\"maxZ\":11.7},\"walkable\":[{\"minX\":-10.7,\"maxX\":10.7,\"minZ\":-13.7,\"maxZ\":11.7},{\"minX\":-24,\"maxX\":-14,\"minZ\":-6,\"maxZ\":6},{\"minX\":-14.3,\"maxX\":-10.4,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":14,\"maxX\":24,\"minZ\":-6,\"maxZ\":6},{\"minX\":10.4,\"maxX\":14.3,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":-9,\"maxX\":9,\"minZ\":-27,\"maxZ\":-18},{\"minX\":-1.8,\"maxX\":1.8,\"minZ\":-18.3,\"maxZ\":-13.4}],\"spawn\":{\"x\":0,\"z\":9.8},\"floor\":0.6,\"view\":{\"position\":[0,4,10.8],\"target\":[0,1.7,-5]}},\"outside\":{\"name\":\"城堡外\",\"bounds\":{\"minX\":-13,\"maxX\":13,\"minZ\":12.5,\"maxZ\":23},\"spawn\":{\"x\":0,\"z\":20.5},\"floor\":0,\"view\":{\"position\":[0,3.3,22],\"target\":[0,3.3,12]}}},\"colliders\":[{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11,\"maxX\":-1.8000000000000007,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000007,\"maxX\":11,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"front-left\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.1,\"maxX\":-2.0999999999999996,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"front-right\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":2.0999999999999996,\"maxX\":11.1,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"closed-door\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":12.25},{\"id\":\"pillar--10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar--10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar--10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar--10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"pillar-10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar-10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar-10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar-10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"dais\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.6,\"maxX\":2.6,\"minZ\":-5.1,\"maxZ\":-0.8999999999999999},{\"id\":\"piano-body\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-20.6,\"maxX\":-17.4,\"minZ\":-4.250057277417812,\"maxZ\":-0.7499427225821877},{\"id\":\"piano-bench\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-19.15891285164622,\"maxX\":-18.84108714835378,\"minZ\":-0.402051993205137,\"maxZ\":-0.09794800679486296},{\"id\":\"cabinet\",\"area\":\"hall\",\"section\":\"workshop\",\"minX\":21.71966690171398,\"maxX\":23.28033309828602,\"minZ\":-4.201485043482771,\"maxZ\":-1.7985149565172287},{\"id\":\"book-desk\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":4.999999999999999,\"maxX\":8.6,\"minZ\":3.05,\"maxZ\":4.95},{\"id\":\"banquet-table\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-5.15,\"maxX\":-2.85,\"minZ\":1.9,\"maxZ\":8.1},{\"id\":\"tower--11\",\"area\":\"outside\",\"minX\":-13,\"maxX\":-9,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"tower-11\",\"area\":\"outside\",\"minX\":9,\"maxX\":13,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24.2,\"maxX\":-23.8,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":23.8,\"maxX\":24.2,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"gallery-back\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":9,\"minZ\":-27.2,\"maxZ\":-26.8},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9.2,\"maxX\":-8.8,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":8.8,\"maxX\":9.2,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":-1.8000000000000003,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000003,\"maxX\":9,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.95,\"maxX\":-1.6500000000000001,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.6500000000000001,\"maxX\":1.95,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"workbench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":18.5,\"maxX\":22.5,\"minZ\":3.4,\"maxZ\":4.6},{\"id\":\"gallery-bench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.4,\"maxX\":1.4,\"minZ\":-23.4,\"maxZ\":-22.6},{\"id\":\"room-door-music-door\",\"area\":\"hall\",\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-workshop-door\",\"area\":\"hall\",\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-gallery-door\",\"area\":\"hall\",\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},{\"id\":\"gallery-notice-base\",\"area\":\"hall\",\"minX\":-3.1,\"maxX\":-2.5,\"minZ\":-18.65,\"maxZ\":-18.35},{\"id\":\"exterior-closed-gate\",\"area\":\"outside\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":13,\"enabled\":true},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-clock\",\"area\":\"hall\",\"minX\":3.7860095171875385,\"maxX\":5.213990482812461,\"minZ\":-13.486873597254508,\"maxZ\":-12.513126402745492},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-10.190862655572975,\"maxX\":-7.809137344427026,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":7.809137344427026,\"maxX\":10.190862655572975,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-9.125146415930146,\"maxX\":-6.874853584069854,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":6.874853584069854,\"maxX\":9.125146415930146,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-mannequin\",\"area\":\"repair\",\"minX\":33.94861880441846,\"maxX\":34.651381195581536,\"minZ\":-3.503921647128528,\"maxZ\":-2.496078352871472},{\"id\":\"musicbox-stand\",\"area\":\"hall\",\"minX\":-21.95,\"maxX\":-20.85,\"minZ\":0.35,\"maxZ\":1.25},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":28.85,\"maxX\":29.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":38.85,\"maxX\":39.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":-6.15,\"maxZ\":-5.85},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":5.85,\"maxZ\":6.15},{\"id\":\"repair-doll-chair\",\"area\":\"repair\",\"minX\":34.15,\"maxX\":35.35,\"minZ\":-3.65,\"maxZ\":-2.35},{\"id\":\"repair-base-body\",\"area\":\"repair\",\"minX\":33.15,\"maxX\":35.050000000000004,\"minZ\":-3.95,\"maxZ\":-2.05},{\"id\":\"repair-table\",\"area\":\"repair\",\"minX\":34.85,\"maxX\":38.15,\"minZ\":2,\"maxZ\":3.4000000000000004},{\"id\":\"repair-crown-shelf\",\"area\":\"repair\",\"minX\":37.125,\"maxX\":38.474999999999994,\"minZ\":-3.625,\"maxZ\":-2.375}],\"landmarks\":[{\"id\":\"dais\",\"name\":\"高臺與座椅\",\"area\":\"hall\",\"x\":0,\"z\":-3,\"approach\":[0,0]},{\"id\":\"piano\",\"name\":\"鋼琴\",\"area\":\"hall\",\"x\":-19,\"z\":-2,\"approach\":[-19,0.8]},{\"id\":\"gallery\",\"name\":\"畫廊\",\"area\":\"hall\",\"x\":0,\"z\":-26.1,\"approach\":[3.5,-24.4]},{\"id\":\"cabinet\",\"name\":\"工匠櫃\",\"area\":\"hall\",\"x\":21.5,\"z\":-3,\"approach\":[19.3,-3]},{\"id\":\"book\",\"name\":\"典禮冊書桌\",\"area\":\"hall\",\"x\":6.8,\"z\":4,\"approach\":[6.8,6]},{\"id\":\"banquet\",\"name\":\"宴會長桌\",\"area\":\"hall\",\"x\":-4,\"z\":5,\"approach\":[-1.4,5]},{\"id\":\"clock\",\"name\":\"中央大鐘\",\"area\":\"hall\",\"x\":4.5,\"z\":-13.5,\"approach\":[4.5,-11]},{\"id\":\"entrance\",\"name\":\"城堡大門與石階\",\"area\":\"outside\",\"x\":0,\"z\":12.4,\"approach\":[0,13.7]}]}",
+        "roomDoors": "[{\"id\":\"music-door\",\"name\":\"音樂室木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":-17,\"maxX\":-14,\"minZ\":-1.5799999982118607,\"maxZ\":-1.4200000017881385},\"focus\":[-14,2.3,0],\"approach\":[-12.1,0]},{\"id\":\"workshop-door\",\"name\":\"工坊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":14,\"maxX\":17,\"minZ\":1.4200000017881385,\"maxZ\":1.5799999982118607},\"focus\":[14,2.3,0],\"approach\":[12.1,0]},{\"id\":\"gallery-door\",\"name\":\"畫廊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},\"openBounds\":{\"minX\":-1.5799999982118607,\"maxX\":-1.4200000017881385,\"minZ\":-21,\"maxZ\":-18},\"focus\":[0,2.3,-18],\"approach\":[0,-16.1]}]",
+        "interactionCatalog": "[{\"id\":\"gallery-notice\",\"label\":\"畫廊入口告示\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"gallery-notice-\"],\"focus\":[-2.8,2.5,-18.5],\"approach\":[-2.8,-20.5],\"message\":\"三幅肖像封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"gallery-notice-board\",\"gallery-notice-post\"]},{\"id\":\"door\",\"label\":\"城堡大門\",\"action\":\"operate\",\"area\":\"both\",\"prefixes\":[\"closed-door\",\"door-seam\"],\"focus\":[0,2.9,11.73],\"approach\":[0,9.8],\"message\":\"大門仍然緊閉，門上的機關沒有鬆開。\",\"enabled\":true,\"meshNames\":[\"closed-door\",\"door-seam\",\"door-seam-royal-seal\"]},{\"id\":\"piano\",\"label\":\"鋼琴\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"piano-\",\"white-key\",\"black-key\"],\"focus\":[-19,1.78,-1.35],\"approach\":[-19,0.8],\"message\":\"鋼琴上的符號，似乎與周圍的線索有關。\",\"enabled\":true,\"meshNames\":[\"piano-body\",\"piano-lid\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"piano-bench\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-drawer-bottom\",\"piano-drawer-front\",\"piano-drawer-side\",\"piano-drawer-side\",\"piano-drawer-handle\",\"piano-pendant-gem\",\"piano-pendant-ring\"]},{\"id\":\"book\",\"label\":\"王室典禮紀錄\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"book-\"],\"focus\":[6.7,2.21,4],\"approach\":[6.8,6],\"message\":\"書桌上放著《王室典禮紀錄》，後方夾著艾琳的私人日記。\",\"enabled\":true,\"meshNames\":[\"book-desk\",\"book-cover\",\"book-pages\",\"book-imported-console\"]},{\"id\":\"cup\",\"label\":\"銀杯\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"silver-cup\"],\"focus\":[7.8,2.2,4],\"approach\":[7.8,6],\"message\":\"書桌旁的銀杯連著典禮設施。\",\"enabled\":true,\"meshNames\":[\"silver-cup\"]},{\"id\":\"workshop-mannequin\",\"label\":\"典禮人偶\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"workshop-mannequin\"],\"focus\":[33.92,2.35,-3],\"approach\":[32.6,-3],\"message\":\"一具用來排演典禮的人偶，胸前裝著尚未完成的發條機關。\",\"enabled\":true,\"meshNames\":[\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-dress\",\"workshop-mannequin-light\",\"workshop-mannequin-light\"]},{\"id\":\"cabinet\",\"label\":\"工匠櫃\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"cabinet\"],\"focus\":[21.73,2.3,-3.7],\"approach\":[21,-4.7],\"message\":\"工匠櫃仍然鎖著，現在無法打開。\",\"enabled\":true,\"meshNames\":[\"cabinet\",\"cabinet-front\",\"cabinet-hinge\",\"cabinet-handle\",\"cabinet-handle\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-imported-cabinet\",\"cabinet-open-jamb\",\"cabinet-open-jamb\",\"cabinet-open-top\",\"cabinet-open-dark\",\"cabinet-open-leaf\",\"cabinet-open-handle\",\"cabinet-open-leaf\",\"cabinet-open-handle\"]},{\"id\":\"throne\",\"label\":\"高臺與座椅\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"dais\",\"throne-\"],\"focus\":[1.9,1,-0.9],\"approach\":[1.9,0.2],\"message\":\"座椅位於高臺中央，扶手與底座藏著典禮機關。\",\"enabled\":true,\"meshNames\":[\"dais\",\"dais-trim\",\"throne-back\",\"throne-cushion\",\"throne-arm\",\"throne-arm\",\"throne-imported-chair\"]},{\"id\":\"erin\",\"label\":\"艾琳\",\"action\":\"talk\",\"area\":\"hall\",\"prefixes\":[\"erin-\"],\"focus\":[0,2.8,-2.6],\"approach\":[0,-0.5],\"message\":\"艾琳坐在高臺的座椅上，手裡握著白花。\",\"enabled\":true,\"meshNames\":[\"erin-body\",\"erin-head\",\"erin-skirt\",\"erin-arm\",\"erin-arm\",\"erin-flowers\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-gown\"]},{\"id\":\"gallery\",\"label\":\"王室畫像\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"portrait-\"],\"focus\":[0,3.4,-26.54],\"approach\":[0,-24.4],\"message\":\"三幅破碎的畫像，封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-erin-tile-0\",\"portrait-erin-tile-1\",\"portrait-erin-tile-2\",\"portrait-erin-tile-3\",\"portrait-erin-tile-4\",\"portrait-erin-tile-5\",\"portrait-erin-tile-6\",\"portrait-erin-tile-7\",\"portrait-erin-tile-8\",\"portrait-king-tile-0\",\"portrait-king-tile-1\",\"portrait-king-tile-2\",\"portrait-king-tile-3\",\"portrait-king-tile-4\",\"portrait-king-tile-5\",\"portrait-king-tile-6\",\"portrait-king-tile-7\",\"portrait-king-tile-8\",\"portrait-ian-tile-0\",\"portrait-ian-tile-1\",\"portrait-ian-tile-2\",\"portrait-ian-tile-3\",\"portrait-ian-tile-4\",\"portrait-ian-tile-5\",\"portrait-ian-tile-6\",\"portrait-ian-tile-7\",\"portrait-ian-tile-8\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\"]},{\"id\":\"banquet\",\"label\":\"四根儀式燭臺／宴會長桌\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"banquet-\",\"tablecloth\",\"flower-\",\"withered-food\"],\"focus\":[-4,2.03,7.8],\"approach\":[-1.3,8.5],\"message\":\"餐點已經乾癟，桌上的白花卻仍然新鮮。\",\"enabled\":true,\"meshNames\":[\"banquet-table\",\"tablecloth\",\"banquet-ritual-1-base\",\"banquet-ritual-1-stem\",\"banquet-ritual-1-cup\",\"banquet-ritual-1-wax\",\"banquet-ritual-1-flame\",\"banquet-ritual-1-label\",\"banquet-ritual-2-base\",\"banquet-ritual-2-stem\",\"banquet-ritual-2-cup\",\"banquet-ritual-2-wax\",\"banquet-ritual-2-flame\",\"banquet-ritual-2-label\",\"banquet-ritual-3-base\",\"banquet-ritual-3-stem\",\"banquet-ritual-3-cup\",\"banquet-ritual-3-wax\",\"banquet-ritual-3-flame\",\"banquet-ritual-3-label\",\"banquet-ritual-4-base\",\"banquet-ritual-4-stem\",\"banquet-ritual-4-cup\",\"banquet-ritual-4-wax\",\"banquet-ritual-4-flame\",\"banquet-ritual-4-label\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"flower-vase\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-imported-vase\"]},{\"id\":\"clock\",\"label\":\"中央大鐘\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clock-\",\"pendulum-\",\"minute-hand\",\"hour-hand\"],\"focus\":[4.5,2.85,-13.4],\"approach\":[4.5,-11],\"message\":\"鐘面停在二十三時三十分，鐘擺尚未啟動。\",\"enabled\":true,\"meshNames\":[\"clock-case\",\"clock-face\",\"minute-hand\",\"hour-hand\",\"pendulum-rod\",\"clock-pendulum\",\"clock-imported-clock\"]},{\"id\":\"ribbon\",\"label\":\"褪色白緞帶\",\"action\":\"pickup\",\"area\":\"outside\",\"prefixes\":[\"white-ribbon\"],\"focus\":[0.35,2.4,12.34],\"approach\":[0.35,13.7],\"message\":\"已收起門把上的褪色白緞帶。\",\"enabled\":true,\"meshNames\":[\"white-ribbon\"]},{\"id\":\"music-door\",\"label\":\"音樂室木門\",\"doorId\":\"music-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-music-door\"],\"focus\":[-14,2.3,0],\"approach\":[-12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-music-door\",\"room-door-music-door-handle\",\"room-door-music-door-handle\"]},{\"id\":\"workshop-door\",\"label\":\"工坊木門\",\"doorId\":\"workshop-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-workshop-door\"],\"focus\":[14,2.3,0],\"approach\":[12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-workshop-door\",\"room-door-workshop-door-handle\",\"room-door-workshop-door-handle\"]},{\"id\":\"gallery-door\",\"label\":\"畫廊木門\",\"doorId\":\"gallery-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-gallery-door\"],\"focus\":[0,2.3,-18],\"approach\":[0,-16.1],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-gallery-door\",\"room-door-gallery-door-handle\",\"room-door-gallery-door-handle\"]},{\"id\":\"piano-note\",\"label\":\"鋼琴紙條・賓客的四聲\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-note\"],\"focus\":[-19.45,2.65,-1.05],\"approach\":[-19.45,1.15],\"message\":\"查看琴架上的第一張紙條。\",\"enabled\":true,\"meshNames\":[\"clue-paper-note\"]},{\"id\":\"piano-voices\",\"label\":\"鋼琴紙條・聲部對照\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-voices\"],\"focus\":[-18.55,2.65,-1.05],\"approach\":[-18.55,1.15],\"message\":\"查看格數與聲部對照。\",\"enabled\":true,\"meshNames\":[\"clue-paper-voices\"]},{\"id\":\"music-box\",\"label\":\"老舊音樂盒\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-musicbox\"],\"focus\":[-21.4,1.75,0.8],\"approach\":[-20.1,2.4],\"message\":\"打開音樂盒，查看八個格子。\",\"enabled\":true,\"meshNames\":[\"clue-musicbox-stand\",\"clue-musicbox-case\",\"clue-musicbox-lid\"]},{\"id\":\"repair-base\",\"label\":\"人偶底座暗格\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"repair-base\"],\"focus\":[33.13,0.86,-3],\"approach\":[32.3,-3],\"message\":\"底座藏著一道暗格。\",\"enabled\":true,\"meshNames\":[\"repair-base-body\",\"repair-base-drawer\"]},{\"id\":\"repair-parts\",\"label\":\"零件桌\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-table\",\"repair-parts\"],\"focus\":[36.5,2.03,2.7],\"approach\":[36.5,0.8],\"message\":\"三顆齒輪、發條與維修圖。\",\"enabled\":true,\"meshNames\":[\"repair-table\",\"repair-parts-note\",\"repair-parts-gear-0\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-1\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-2\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\"]},{\"id\":\"repair-crown\",\"label\":\"王室典禮王冠展示架\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-crown\"],\"focus\":[37.8,2.5,-3],\"approach\":[37.8,-0.9],\"message\":\"展示架上放著王室典禮王冠。\",\"enabled\":true,\"meshNames\":[\"repair-crown-shelf\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\"]},{\"id\":\"repair-exit\",\"label\":\"返回東側工坊\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-exit\"],\"focus\":[30.3,2.3,5.78],\"approach\":[30.3,4],\"message\":\"沿原路返回大廳東側的工坊。\",\"enabled\":true,\"meshNames\":[\"repair-exit-door\"]}]",
+        "interactionDistance": "3",
+        "interactionState": "{\"collected\":[\"glass\"],\"counts\":{\"cabinet\":1},\"sequence\":1,\"doors\":{\"music-door\":false,\"workshop-door\":false,\"gallery-door\":false}}",
+        "interactionTarget": "",
+        "area": "repair",
+        "galleryPaintings": "[{\"id\":\"erin\",\"name\":\"艾琳\",\"role\":\"揭露者\",\"x\":-5,\"cell\":4,\"documents\":[\"stage3Ledger\",\"stage3Speech\"],\"tiles\":9},{\"id\":\"king\",\"name\":\"國王\",\"role\":\"裁決者\",\"x\":0,\"cell\":3,\"documents\":[\"stage3OriginalOrder\"],\"tiles\":9},{\"id\":\"ian\",\"name\":\"伊恩\",\"role\":\"改寫者\",\"x\":5,\"cell\":5,\"documents\":[\"stage3Apprentice\",\"stage3Revision\"],\"tiles\":9}]",
+        "workshop": "{\"active\":true,\"opened\":true,\"inspected\":false,\"notesFound\":false,\"researchRead\":false,\"gears\":[],\"heartStarted\":false,\"bpm\":80,\"stable\":false,\"crownCollected\":false,\"crowned\":false,\"registered\":false,\"released\":false,\"atGate\":false,\"gateOpen\":false,\"complete\":false,\"dialogue\":{\"inspect\":0,\"research\":0,\"started\":0,\"ready\":0,\"released\":0,\"ending\":0}}",
+        "ianSpirit": "hidden",
+        "entranceOpen": "false",
+        "inputMode": "active",
+        "erinActors": "[{\"name\":\"detail-woman\",\"position\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411],\"homePosition\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411]},{\"name\":\"erin-gown\",\"position\":[0,0,0],\"homePosition\":[0,0,0]}]",
+        "interactionRay": "null",
+        "cabinetDoor": "open"
+      }
+    },
+    {
+      "label": "齒輪重試、60BPM與王冠拖放完成，尚未登記",
+      "state": {
+        "stage4": {
+          "active": true,
+          "opened": true,
+          "inspected": true,
+          "notesFound": true,
+          "researchRead": true,
+          "gears": [
+            "A",
+            "C",
+            "B"
+          ],
+          "heartStarted": true,
+          "bpm": 60,
+          "stable": true,
+          "crownCollected": true,
+          "crowned": true,
+          "registered": false,
+          "released": false,
+          "atGate": false,
+          "gateOpen": false,
+          "complete": false,
+          "dialogue": {
+            "inspect": 4,
+            "research": 2,
+            "started": 4,
+            "ready": 2,
+            "released": 0,
+            "ending": 0
+          }
+        },
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "entered",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "bookOpened": true,
+          "evidencePages": 3,
+          "guidePages": 3,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage3": {
+          "active": true,
+          "current": "ian",
+          "photo": {
+            "found": false,
+            "side": "front",
+            "backRead": false
+          },
+          "puzzles": {
+            "erin": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 1
+            },
+            "king": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 4
+            },
+            "ian": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 15
+            }
+          }
+        },
+        "stage": "workshop",
+        "time": "23:50",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified",
+          "stage2GuideUnlocked",
+          "stage2Complete",
+          "stage3Entered",
+          "stage3Started",
+          "stage3Puzzle-erin",
+          "stage3Puzzle-king",
+          "stage3Puzzle-ian",
+          "stage3Complete",
+          "stage3WorkshopClue",
+          "stage4Started",
+          "stage4Opened",
+          "stage4HeartStarted",
+          "stage4HeartbeatStable",
+          "stage4CrownCollected",
+          "stage4Crowned"
+        ],
+        "documents": [
+          "stage3Ledger",
+          "stage3Speech",
+          "stage3OriginalOrder",
+          "stage3Apprentice",
+          "stage3Revision",
+          "stage4Notes",
+          "stage4Repair"
+        ],
+        "conversations": [
+          {
+            "id": "stage3-erin-line-0",
+            "speaker": "erin",
+            "text": "我只是想把原本屬於人民的東西還給他們。我沒想到，父王寧願殺了我，也不願承認自己做錯了。"
+          },
+          {
+            "id": "stage3-king-line-0",
+            "speaker": "erin",
+            "text": "我只是想揭發父王做的壞事，沒想到他竟然要殺了我。"
+          },
+          {
+            "id": "stage3-king-line-1",
+            "speaker": "visitor",
+            "text": "他可是妳的親生父親……"
+          },
+          {
+            "id": "stage3-king-line-2",
+            "speaker": "erin",
+            "text": "我也問過他，難道王位比自己的女兒還重要嗎？"
+          },
+          {
+            "id": "stage3-king-line-3",
+            "speaker": "erin",
+            "text": "他沒有回答，只是命令人替我戴上王冠，然後簽下處決令。"
+          },
+          {
+            "id": "stage3-ian-line-0",
+            "speaker": "visitor",
+            "text": "伊恩，是你改的？"
+          },
+          {
+            "id": "stage3-ian-line-1",
+            "speaker": "narrator",
+            "text": "伊恩沉默了一下。"
+          },
+          {
+            "id": "stage3-ian-line-2",
+            "speaker": "ian",
+            "text": "是。"
+          },
+          {
+            "id": "stage3-ian-line-3",
+            "speaker": "visitor",
+            "text": "你為什麼要改？"
+          },
+          {
+            "id": "stage3-ian-line-4",
+            "speaker": "ian",
+            "text": "我改不了國王的命令。"
+          },
+          {
+            "id": "stage3-ian-line-5",
+            "speaker": "ian",
+            "text": "但如果機關只認得『公主』，而不是艾琳本人……也許還有辦法。"
+          },
+          {
+            "id": "stage3-ian-line-6",
+            "speaker": "ian",
+            "text": "所以我偷偷修改了機關的設定。原本它只會處決艾琳，現在它會處決『被登記為公主的人』。"
+          },
+          {
+            "id": "stage3-ian-line-7",
+            "speaker": "visitor",
+            "text": "所以，只要讓其他人代替艾琳成為公主……"
+          },
+          {
+            "id": "stage3-ian-line-8",
+            "speaker": "ian",
+            "text": "沒錯！只要能在午夜前完成新的公主登記，機關就不會再把艾琳當成處決對象。"
+          },
+          {
+            "id": "stage3-ian-line-9",
+            "speaker": "ian",
+            "text": "但我當時還沒找到成功替換身分的方法，就被國王的衛兵發現了。"
+          },
+          {
+            "id": "stage3-ian-line-10",
+            "speaker": "erin",
+            "text": "你不是說過，工坊裡有一具用來排演典禮的人偶嗎？"
+          },
+          {
+            "id": "stage3-ian-line-11",
+            "speaker": "ian",
+            "text": "對！有一次我們替它戴上王冠，機關竟然向它行禮。"
+          },
+          {
+            "id": "stage3-ian-line-12",
+            "speaker": "visitor",
+            "text": "所以那具人偶可能可以代替艾琳？"
+          },
+          {
+            "id": "stage3-ian-line-13",
+            "speaker": "ian",
+            "text": "有可能。研究紀錄藏在人偶底座裡，人偶就在大廳右側的工匠櫃。"
+          },
+          {
+            "id": "stage3-ian-line-14",
+            "speaker": "erin",
+            "text": "那就去找它。我不想再坐在這裡等死了。"
+          },
+          {
+            "id": "stage4-inspect-0",
+            "speaker": "erin",
+            "text": "一具穿著王室禮服的人偶。胸口的金屬蓋板半開，裡面的發條心臟似乎缺少零件。"
+          },
+          {
+            "id": "stage4-inspect-1",
+            "speaker": "erin",
+            "text": "這就是伊恩說的人偶？"
+          },
+          {
+            "id": "stage4-inspect-2",
+            "speaker": "ian",
+            "text": "是。當年我一直想讓它代替艾琳，但直到最後都沒成功。"
+          },
+          {
+            "id": "stage4-inspect-3",
+            "speaker": "visitor",
+            "text": "那我們先調查你的研究紀錄。"
+          },
+          {
+            "id": "stage4-research-0",
+            "speaker": "ian",
+            "text": "原來如此……難怪我當年失敗了！原來戴上王冠還不夠，必須有穩定心跳。"
+          },
+          {
+            "id": "stage4-research-1",
+            "speaker": "erin",
+            "text": "那我們就一項一項完成，不能再只憑猜測。"
+          },
+          {
+            "id": "stage4-started-0",
+            "speaker": "narrator",
+            "text": "齒輪開始轉動。喀、喀、喀……人偶胸口傳出微弱心跳聲。"
+          },
+          {
+            "id": "stage4-started-1",
+            "speaker": "system",
+            "text": "機械心臟已啟動，但跳動速度不穩定。"
+          },
+          {
+            "id": "stage4-started-2",
+            "speaker": "erin",
+            "text": "它真的會動了！"
+          },
+          {
+            "id": "stage4-started-3",
+            "speaker": "ian",
+            "text": "還不行。典禮機關需要規律的心跳，現在它跳得太快了。"
+          },
+          {
+            "id": "stage4-ready-0",
+            "speaker": "narrator",
+            "text": "城堡裡響起一聲低沉的機械提示音。大廳的聚光燈緩緩轉向人偶。"
+          },
+          {
+            "id": "stage4-ready-1",
+            "speaker": "ian",
+            "text": "成功了，我們再回到大廳看看典禮冊是不是已經更改資料了！"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "erin",
+        "dummy": {
+          "stableHeartbeat": true,
+          "crownWorn": true,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass",
+          "royal-crown"
+        ]
+      },
+      "viewport": {
+        "state": "ready",
+        "pianoDrawer": "closed",
+        "pianoPerformanceNote": "",
+        "erinLocation": "hall",
+        "detailedModels": "{\"sources\":14,\"placements\":[{\"id\":\"chair\",\"name\":\"detail-chair\",\"target\":\"throne\",\"bounds\":{\"min\":[-0.8762415045823793,1.32,-3.740861026089154],\"max\":[0.8762415045823793,3.5200000000000005,-2.159138973910846]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,2.5124434113068412],\"max\":[-5.624858298009753,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,4.712443411306841],\"max\":[-5.624858298009753,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,6.912443411306842],\"max\":[-5.624858298009753,2.5,7.487556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,2.5124434113068412],\"max\":[-1.8248582980097519,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,4.712443411306841],\"max\":[-1.8248582980097519,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,6.912443411306842],\"max\":[-1.8248582980097519,2.5,7.487556588693159]}},{\"id\":\"piano\",\"name\":\"detail-piano\",\"target\":\"piano\",\"bounds\":{\"min\":[-20.6,0.6,-4.250057277417812],\"max\":[-17.4,3.8517844338000833,-0.7499427225821877]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-19.15891285164622,0.6,-0.402051993205137],\"max\":[-18.84108714835378,1.6500000000000001,-0.09794800679486296]}},{\"id\":\"console\",\"name\":\"detail-console\",\"target\":\"book\",\"bounds\":{\"min\":[4.999999999999999,0.6,3.05],\"max\":[8.6,2.02,4.95]}},{\"id\":\"cabinet\",\"name\":\"detail-cabinet\",\"target\":\"cabinet\",\"bounds\":{\"min\":[21.71966690171398,0.6,-4.201485043482771],\"max\":[23.28033309828602,3.9,-1.7985149565172287]}},{\"id\":\"clock\",\"name\":\"detail-clock\",\"target\":\"clock\",\"bounds\":{\"min\":[3.7860095171875385,0.6,-13.486873597254508],\"max\":[5.213990482812461,5.6,-12.513126402745492]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,-8.132172105086237],\"max\":[1.1249172384310628,9.25,-5.8678278949137646]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,0.8678278949137637],\"max\":[1.1249172384310628,9.25,3.1321721050862363]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,6.867827894913763],\"max\":[1.1249172384310628,9.25,9.132172105086235]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-6.58490603387819,1.52,-26.783644856648436],\"max\":[-3.41509396612181,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-1.5849060338781904,1.52,-26.783644856648436],\"max\":[1.5849060338781904,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[3.41509396612181,1.52,-26.783644856648436],\"max\":[6.58490603387819,5.22,-26.356355143351564]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-10.190862655572975,0.6,-12.125146415930146],\"max\":[-7.809137344427026,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[7.809137344427026,0.6,-12.125146415930146],\"max\":[10.190862655572975,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-9.125146415930146,0.6,-26.690862655572975],\"max\":[-6.874853584069854,3.25,-24.309137344427025]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[6.874853584069854,0.6,-26.690862655572975],\"max\":[9.125146415930146,3.25,-24.309137344427025]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-10.33080161404612],\"max\":[-9.736970908379368,6.4,-9.669198385953878]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-3.330801614046121],\"max\":[-9.736970908379368,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,3.669198385953879],\"max\":[-9.736970908379368,6.4,4.330801614046121]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,9.66919838595388],\"max\":[-9.736970908379368,6.4,10.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-10.330801614046122],\"max\":[10.163029091620633,6.4,-9.66919838595388]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-3.330801614046121],\"max\":[10.163029091620633,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,3.669198385953879],\"max\":[10.163029091620633,6.4,4.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,9.669198385953878],\"max\":[10.163029091620633,6.4,10.33080161404612]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-18.285760801489527,2.3,-2.585559036506196],\"max\":[-17.214239198510477,3.15,-2.2144409634938036]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[18.86423919851047,1.85,3.814440963493804],\"max\":[19.935760801489522,2.7,4.185559036506196]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-0.5357608014895242,1.32,-3.9855590365061957],\"max\":[0.5357608014895242,2.17,-3.6144409634938035]}},{\"id\":\"bookCandle\",\"name\":\"book-desk-candelabrum\",\"bounds\":{\"min\":[5.442259110314474,2.019999899693997,3.814440963493804],\"max\":[5.857740889685528,2.869999899693997,4.185559036506196]},\"support\":{\"table\":\"detail-console\",\"surfaceY\":2.019999899693997,\"baseY\":2.019999899693997,\"gap\":0}},{\"id\":\"vase\",\"name\":\"detail-vase\",\"target\":\"flower\",\"bounds\":{\"min\":[-4.261091310111994,2.05,4.738908705143325],\"max\":[-3.7389086898880057,2.9499999999999997,5.261091294856675]}},{\"id\":\"mannequin\",\"name\":\"detail-mannequin\",\"target\":\"workshop-mannequin\",\"bounds\":{\"min\":[33.94861880441846,0.35,-3.503921647128528],\"max\":[34.651381195581536,3,-2.496078352871472]},\"area\":\"repair\"},{\"id\":\"woman\",\"name\":\"detail-woman\",\"target\":\"erin\",\"bounds\":{\"min\":[-0.39025615155307686,1.5,-3.1066459098926553],\"max\":[0.39025615155307686,3.6000000000000005,-1.9933540901073448]}}]}",
+        "navigation": "{\"areas\":{\"repair\":{\"name\":\"維修工作室\",\"bounds\":{\"minX\":29.2,\"maxX\":38.8,\"minZ\":-5.8,\"maxZ\":5.8},\"spawn\":{\"x\":31,\"z\":2},\"floor\":0.6},\"hall\":{\"name\":\"大廳\",\"bounds\":{\"minX\":-24.3,\"maxX\":24.3,\"minZ\":-27.3,\"maxZ\":11.7},\"walkable\":[{\"minX\":-10.7,\"maxX\":10.7,\"minZ\":-13.7,\"maxZ\":11.7},{\"minX\":-24,\"maxX\":-14,\"minZ\":-6,\"maxZ\":6},{\"minX\":-14.3,\"maxX\":-10.4,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":14,\"maxX\":24,\"minZ\":-6,\"maxZ\":6},{\"minX\":10.4,\"maxX\":14.3,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":-9,\"maxX\":9,\"minZ\":-27,\"maxZ\":-18},{\"minX\":-1.8,\"maxX\":1.8,\"minZ\":-18.3,\"maxZ\":-13.4}],\"spawn\":{\"x\":0,\"z\":9.8},\"floor\":0.6,\"view\":{\"position\":[0,4,10.8],\"target\":[0,1.7,-5]}},\"outside\":{\"name\":\"城堡外\",\"bounds\":{\"minX\":-13,\"maxX\":13,\"minZ\":12.5,\"maxZ\":23},\"spawn\":{\"x\":0,\"z\":20.5},\"floor\":0,\"view\":{\"position\":[0,3.3,22],\"target\":[0,3.3,12]}}},\"colliders\":[{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11,\"maxX\":-1.8000000000000007,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000007,\"maxX\":11,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"front-left\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.1,\"maxX\":-2.0999999999999996,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"front-right\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":2.0999999999999996,\"maxX\":11.1,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"closed-door\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":12.25},{\"id\":\"pillar--10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar--10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar--10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar--10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"pillar-10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar-10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar-10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar-10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"dais\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.6,\"maxX\":2.6,\"minZ\":-5.1,\"maxZ\":-0.8999999999999999},{\"id\":\"piano-body\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-20.6,\"maxX\":-17.4,\"minZ\":-4.250057277417812,\"maxZ\":-0.7499427225821877},{\"id\":\"piano-bench\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-19.15891285164622,\"maxX\":-18.84108714835378,\"minZ\":-0.402051993205137,\"maxZ\":-0.09794800679486296},{\"id\":\"cabinet\",\"area\":\"hall\",\"section\":\"workshop\",\"minX\":21.71966690171398,\"maxX\":23.28033309828602,\"minZ\":-4.201485043482771,\"maxZ\":-1.7985149565172287},{\"id\":\"book-desk\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":4.999999999999999,\"maxX\":8.6,\"minZ\":3.05,\"maxZ\":4.95},{\"id\":\"banquet-table\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-5.15,\"maxX\":-2.85,\"minZ\":1.9,\"maxZ\":8.1},{\"id\":\"tower--11\",\"area\":\"outside\",\"minX\":-13,\"maxX\":-9,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"tower-11\",\"area\":\"outside\",\"minX\":9,\"maxX\":13,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24.2,\"maxX\":-23.8,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":23.8,\"maxX\":24.2,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"gallery-back\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":9,\"minZ\":-27.2,\"maxZ\":-26.8},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9.2,\"maxX\":-8.8,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":8.8,\"maxX\":9.2,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":-1.8000000000000003,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000003,\"maxX\":9,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.95,\"maxX\":-1.6500000000000001,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.6500000000000001,\"maxX\":1.95,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"workbench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":18.5,\"maxX\":22.5,\"minZ\":3.4,\"maxZ\":4.6},{\"id\":\"gallery-bench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.4,\"maxX\":1.4,\"minZ\":-23.4,\"maxZ\":-22.6},{\"id\":\"room-door-music-door\",\"area\":\"hall\",\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-workshop-door\",\"area\":\"hall\",\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-gallery-door\",\"area\":\"hall\",\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},{\"id\":\"gallery-notice-base\",\"area\":\"hall\",\"minX\":-3.1,\"maxX\":-2.5,\"minZ\":-18.65,\"maxZ\":-18.35},{\"id\":\"exterior-closed-gate\",\"area\":\"outside\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":13,\"enabled\":true},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-clock\",\"area\":\"hall\",\"minX\":3.7860095171875385,\"maxX\":5.213990482812461,\"minZ\":-13.486873597254508,\"maxZ\":-12.513126402745492},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-10.190862655572975,\"maxX\":-7.809137344427026,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":7.809137344427026,\"maxX\":10.190862655572975,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-9.125146415930146,\"maxX\":-6.874853584069854,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":6.874853584069854,\"maxX\":9.125146415930146,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-mannequin\",\"area\":\"repair\",\"minX\":33.94861880441846,\"maxX\":34.651381195581536,\"minZ\":-3.503921647128528,\"maxZ\":-2.496078352871472},{\"id\":\"musicbox-stand\",\"area\":\"hall\",\"minX\":-21.95,\"maxX\":-20.85,\"minZ\":0.35,\"maxZ\":1.25},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":28.85,\"maxX\":29.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":38.85,\"maxX\":39.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":-6.15,\"maxZ\":-5.85},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":5.85,\"maxZ\":6.15},{\"id\":\"repair-doll-chair\",\"area\":\"repair\",\"minX\":34.15,\"maxX\":35.35,\"minZ\":-3.65,\"maxZ\":-2.35},{\"id\":\"repair-base-body\",\"area\":\"repair\",\"minX\":33.15,\"maxX\":35.050000000000004,\"minZ\":-3.95,\"maxZ\":-2.05},{\"id\":\"repair-table\",\"area\":\"repair\",\"minX\":34.85,\"maxX\":38.15,\"minZ\":2,\"maxZ\":3.4000000000000004},{\"id\":\"repair-crown-shelf\",\"area\":\"repair\",\"minX\":37.125,\"maxX\":38.474999999999994,\"minZ\":-3.625,\"maxZ\":-2.375}],\"landmarks\":[{\"id\":\"dais\",\"name\":\"高臺與座椅\",\"area\":\"hall\",\"x\":0,\"z\":-3,\"approach\":[0,0]},{\"id\":\"piano\",\"name\":\"鋼琴\",\"area\":\"hall\",\"x\":-19,\"z\":-2,\"approach\":[-19,0.8]},{\"id\":\"gallery\",\"name\":\"畫廊\",\"area\":\"hall\",\"x\":0,\"z\":-26.1,\"approach\":[3.5,-24.4]},{\"id\":\"cabinet\",\"name\":\"工匠櫃\",\"area\":\"hall\",\"x\":21.5,\"z\":-3,\"approach\":[19.3,-3]},{\"id\":\"book\",\"name\":\"典禮冊書桌\",\"area\":\"hall\",\"x\":6.8,\"z\":4,\"approach\":[6.8,6]},{\"id\":\"banquet\",\"name\":\"宴會長桌\",\"area\":\"hall\",\"x\":-4,\"z\":5,\"approach\":[-1.4,5]},{\"id\":\"clock\",\"name\":\"中央大鐘\",\"area\":\"hall\",\"x\":4.5,\"z\":-13.5,\"approach\":[4.5,-11]},{\"id\":\"entrance\",\"name\":\"城堡大門與石階\",\"area\":\"outside\",\"x\":0,\"z\":12.4,\"approach\":[0,13.7]}]}",
+        "roomDoors": "[{\"id\":\"music-door\",\"name\":\"音樂室木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":-17,\"maxX\":-14,\"minZ\":-1.5799999982118607,\"maxZ\":-1.4200000017881385},\"focus\":[-14,2.3,0],\"approach\":[-12.1,0]},{\"id\":\"workshop-door\",\"name\":\"工坊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":14,\"maxX\":17,\"minZ\":1.4200000017881385,\"maxZ\":1.5799999982118607},\"focus\":[14,2.3,0],\"approach\":[12.1,0]},{\"id\":\"gallery-door\",\"name\":\"畫廊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},\"openBounds\":{\"minX\":-1.5799999982118607,\"maxX\":-1.4200000017881385,\"minZ\":-21,\"maxZ\":-18},\"focus\":[0,2.3,-18],\"approach\":[0,-16.1]}]",
+        "interactionCatalog": "[{\"id\":\"gallery-notice\",\"label\":\"畫廊入口告示\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"gallery-notice-\"],\"focus\":[-2.8,2.5,-18.5],\"approach\":[-2.8,-20.5],\"message\":\"三幅肖像封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"gallery-notice-board\",\"gallery-notice-post\"]},{\"id\":\"door\",\"label\":\"城堡大門\",\"action\":\"operate\",\"area\":\"both\",\"prefixes\":[\"closed-door\",\"door-seam\"],\"focus\":[0,2.9,11.73],\"approach\":[0,9.8],\"message\":\"大門仍然緊閉，門上的機關沒有鬆開。\",\"enabled\":true,\"meshNames\":[\"closed-door\",\"door-seam\",\"door-seam-royal-seal\"]},{\"id\":\"piano\",\"label\":\"鋼琴\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"piano-\",\"white-key\",\"black-key\"],\"focus\":[-19,1.78,-1.35],\"approach\":[-19,0.8],\"message\":\"鋼琴上的符號，似乎與周圍的線索有關。\",\"enabled\":true,\"meshNames\":[\"piano-body\",\"piano-lid\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"piano-bench\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-drawer-bottom\",\"piano-drawer-front\",\"piano-drawer-side\",\"piano-drawer-side\",\"piano-drawer-handle\",\"piano-pendant-gem\",\"piano-pendant-ring\"]},{\"id\":\"book\",\"label\":\"王室典禮紀錄\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"book-\"],\"focus\":[6.7,2.21,4],\"approach\":[6.8,6],\"message\":\"書桌上放著《王室典禮紀錄》，後方夾著艾琳的私人日記。\",\"enabled\":true,\"meshNames\":[\"book-desk\",\"book-cover\",\"book-pages\",\"book-imported-console\"]},{\"id\":\"cup\",\"label\":\"銀杯\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"silver-cup\"],\"focus\":[7.8,2.2,4],\"approach\":[7.8,6],\"message\":\"書桌旁的銀杯連著典禮設施。\",\"enabled\":true,\"meshNames\":[\"silver-cup\"]},{\"id\":\"workshop-mannequin\",\"label\":\"典禮人偶\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"workshop-mannequin\"],\"focus\":[33.92,2.35,-3],\"approach\":[32.6,-3],\"message\":\"一具用來排演典禮的人偶，胸前裝著尚未完成的發條機關。\",\"enabled\":true,\"meshNames\":[\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-dress\",\"workshop-mannequin-light\",\"workshop-mannequin-light\"]},{\"id\":\"cabinet\",\"label\":\"工匠櫃\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"cabinet\"],\"focus\":[21.73,2.3,-3.7],\"approach\":[21,-4.7],\"message\":\"工匠櫃仍然鎖著，現在無法打開。\",\"enabled\":true,\"meshNames\":[\"cabinet\",\"cabinet-front\",\"cabinet-hinge\",\"cabinet-handle\",\"cabinet-handle\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-imported-cabinet\",\"cabinet-open-jamb\",\"cabinet-open-jamb\",\"cabinet-open-top\",\"cabinet-open-dark\",\"cabinet-open-leaf\",\"cabinet-open-handle\",\"cabinet-open-leaf\",\"cabinet-open-handle\"]},{\"id\":\"throne\",\"label\":\"高臺與座椅\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"dais\",\"throne-\"],\"focus\":[1.9,1,-0.9],\"approach\":[1.9,0.2],\"message\":\"座椅位於高臺中央，扶手與底座藏著典禮機關。\",\"enabled\":true,\"meshNames\":[\"dais\",\"dais-trim\",\"throne-back\",\"throne-cushion\",\"throne-arm\",\"throne-arm\",\"throne-imported-chair\"]},{\"id\":\"erin\",\"label\":\"艾琳\",\"action\":\"talk\",\"area\":\"hall\",\"prefixes\":[\"erin-\"],\"focus\":[0,2.8,-2.6],\"approach\":[0,-0.5],\"message\":\"艾琳坐在高臺的座椅上，手裡握著白花。\",\"enabled\":true,\"meshNames\":[\"erin-body\",\"erin-head\",\"erin-skirt\",\"erin-arm\",\"erin-arm\",\"erin-flowers\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-gown\"]},{\"id\":\"gallery\",\"label\":\"王室畫像\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"portrait-\"],\"focus\":[0,3.4,-26.54],\"approach\":[0,-24.4],\"message\":\"三幅破碎的畫像，封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-erin-tile-0\",\"portrait-erin-tile-1\",\"portrait-erin-tile-2\",\"portrait-erin-tile-3\",\"portrait-erin-tile-4\",\"portrait-erin-tile-5\",\"portrait-erin-tile-6\",\"portrait-erin-tile-7\",\"portrait-erin-tile-8\",\"portrait-king-tile-0\",\"portrait-king-tile-1\",\"portrait-king-tile-2\",\"portrait-king-tile-3\",\"portrait-king-tile-4\",\"portrait-king-tile-5\",\"portrait-king-tile-6\",\"portrait-king-tile-7\",\"portrait-king-tile-8\",\"portrait-ian-tile-0\",\"portrait-ian-tile-1\",\"portrait-ian-tile-2\",\"portrait-ian-tile-3\",\"portrait-ian-tile-4\",\"portrait-ian-tile-5\",\"portrait-ian-tile-6\",\"portrait-ian-tile-7\",\"portrait-ian-tile-8\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\"]},{\"id\":\"banquet\",\"label\":\"四根儀式燭臺／宴會長桌\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"banquet-\",\"tablecloth\",\"flower-\",\"withered-food\"],\"focus\":[-4,2.03,7.8],\"approach\":[-1.3,8.5],\"message\":\"餐點已經乾癟，桌上的白花卻仍然新鮮。\",\"enabled\":true,\"meshNames\":[\"banquet-table\",\"tablecloth\",\"banquet-ritual-1-base\",\"banquet-ritual-1-stem\",\"banquet-ritual-1-cup\",\"banquet-ritual-1-wax\",\"banquet-ritual-1-flame\",\"banquet-ritual-1-label\",\"banquet-ritual-2-base\",\"banquet-ritual-2-stem\",\"banquet-ritual-2-cup\",\"banquet-ritual-2-wax\",\"banquet-ritual-2-flame\",\"banquet-ritual-2-label\",\"banquet-ritual-3-base\",\"banquet-ritual-3-stem\",\"banquet-ritual-3-cup\",\"banquet-ritual-3-wax\",\"banquet-ritual-3-flame\",\"banquet-ritual-3-label\",\"banquet-ritual-4-base\",\"banquet-ritual-4-stem\",\"banquet-ritual-4-cup\",\"banquet-ritual-4-wax\",\"banquet-ritual-4-flame\",\"banquet-ritual-4-label\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"flower-vase\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-imported-vase\"]},{\"id\":\"clock\",\"label\":\"中央大鐘\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clock-\",\"pendulum-\",\"minute-hand\",\"hour-hand\"],\"focus\":[4.5,2.85,-13.4],\"approach\":[4.5,-11],\"message\":\"鐘面停在二十三時三十分，鐘擺尚未啟動。\",\"enabled\":true,\"meshNames\":[\"clock-case\",\"clock-face\",\"minute-hand\",\"hour-hand\",\"pendulum-rod\",\"clock-pendulum\",\"clock-imported-clock\"]},{\"id\":\"ribbon\",\"label\":\"褪色白緞帶\",\"action\":\"pickup\",\"area\":\"outside\",\"prefixes\":[\"white-ribbon\"],\"focus\":[0.35,2.4,12.34],\"approach\":[0.35,13.7],\"message\":\"已收起門把上的褪色白緞帶。\",\"enabled\":true,\"meshNames\":[\"white-ribbon\"]},{\"id\":\"music-door\",\"label\":\"音樂室木門\",\"doorId\":\"music-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-music-door\"],\"focus\":[-14,2.3,0],\"approach\":[-12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-music-door\",\"room-door-music-door-handle\",\"room-door-music-door-handle\"]},{\"id\":\"workshop-door\",\"label\":\"工坊木門\",\"doorId\":\"workshop-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-workshop-door\"],\"focus\":[14,2.3,0],\"approach\":[12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-workshop-door\",\"room-door-workshop-door-handle\",\"room-door-workshop-door-handle\"]},{\"id\":\"gallery-door\",\"label\":\"畫廊木門\",\"doorId\":\"gallery-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-gallery-door\"],\"focus\":[0,2.3,-18],\"approach\":[0,-16.1],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-gallery-door\",\"room-door-gallery-door-handle\",\"room-door-gallery-door-handle\"]},{\"id\":\"piano-note\",\"label\":\"鋼琴紙條・賓客的四聲\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-note\"],\"focus\":[-19.45,2.65,-1.05],\"approach\":[-19.45,1.15],\"message\":\"查看琴架上的第一張紙條。\",\"enabled\":true,\"meshNames\":[\"clue-paper-note\"]},{\"id\":\"piano-voices\",\"label\":\"鋼琴紙條・聲部對照\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-voices\"],\"focus\":[-18.55,2.65,-1.05],\"approach\":[-18.55,1.15],\"message\":\"查看格數與聲部對照。\",\"enabled\":true,\"meshNames\":[\"clue-paper-voices\"]},{\"id\":\"music-box\",\"label\":\"老舊音樂盒\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-musicbox\"],\"focus\":[-21.4,1.75,0.8],\"approach\":[-20.1,2.4],\"message\":\"打開音樂盒，查看八個格子。\",\"enabled\":true,\"meshNames\":[\"clue-musicbox-stand\",\"clue-musicbox-case\",\"clue-musicbox-lid\"]},{\"id\":\"repair-base\",\"label\":\"人偶底座暗格\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"repair-base\"],\"focus\":[33.13,0.86,-3],\"approach\":[32.3,-3],\"message\":\"底座藏著一道暗格。\",\"enabled\":true,\"meshNames\":[\"repair-base-body\",\"repair-base-drawer\"]},{\"id\":\"repair-parts\",\"label\":\"零件桌\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-table\",\"repair-parts\"],\"focus\":[36.5,2.03,2.7],\"approach\":[36.5,0.8],\"message\":\"三顆齒輪、發條與維修圖。\",\"enabled\":true,\"meshNames\":[\"repair-table\",\"repair-parts-note\",\"repair-parts-gear-0\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-1\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-2\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\"]},{\"id\":\"repair-crown\",\"label\":\"王室典禮王冠展示架\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-crown\"],\"focus\":[37.8,2.5,-3],\"approach\":[37.8,-0.9],\"message\":\"展示架上放著王室典禮王冠。\",\"enabled\":true,\"meshNames\":[\"repair-crown-shelf\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\"]},{\"id\":\"repair-exit\",\"label\":\"返回東側工坊\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-exit\"],\"focus\":[30.3,2.3,5.78],\"approach\":[30.3,4],\"message\":\"沿原路返回大廳東側的工坊。\",\"enabled\":true,\"meshNames\":[\"repair-exit-door\"]}]",
+        "interactionDistance": "3",
+        "interactionState": "{\"collected\":[\"glass\",\"royal-crown\"],\"counts\":{\"cabinet\":1,\"workshop-mannequin\":1,\"repair-parts\":1,\"repair-crown\":1},\"sequence\":4,\"doors\":{\"music-door\":false,\"workshop-door\":false,\"gallery-door\":false}}",
+        "interactionTarget": "",
+        "area": "repair",
+        "galleryPaintings": "[{\"id\":\"erin\",\"name\":\"艾琳\",\"role\":\"揭露者\",\"x\":-5,\"cell\":4,\"documents\":[\"stage3Ledger\",\"stage3Speech\"],\"tiles\":9},{\"id\":\"king\",\"name\":\"國王\",\"role\":\"裁決者\",\"x\":0,\"cell\":3,\"documents\":[\"stage3OriginalOrder\"],\"tiles\":9},{\"id\":\"ian\",\"name\":\"伊恩\",\"role\":\"改寫者\",\"x\":5,\"cell\":5,\"documents\":[\"stage3Apprentice\",\"stage3Revision\"],\"tiles\":9}]",
+        "workshop": "{\"active\":true,\"opened\":true,\"inspected\":true,\"notesFound\":true,\"researchRead\":true,\"gears\":[\"A\",\"C\",\"B\"],\"heartStarted\":true,\"bpm\":60,\"stable\":true,\"crownCollected\":true,\"crowned\":true,\"registered\":false,\"released\":false,\"atGate\":false,\"gateOpen\":false,\"complete\":false,\"dialogue\":{\"inspect\":4,\"research\":2,\"started\":4,\"ready\":0,\"released\":0,\"ending\":0}}",
+        "ianSpirit": "hidden",
+        "entranceOpen": "false",
+        "inputMode": "active",
+        "erinActors": "[{\"name\":\"detail-woman\",\"position\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411],\"homePosition\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411]},{\"name\":\"erin-gown\",\"position\":[0,0,0],\"homePosition\":[0,0,0]}]",
+        "interactionRay": "null",
+        "cabinetDoor": "open"
+      }
+    },
+    {
+      "label": "完整新局至第四關結局",
+      "state": {
+        "stage4": {
+          "active": true,
+          "opened": true,
+          "inspected": true,
+          "notesFound": true,
+          "researchRead": true,
+          "gears": [
+            "A",
+            "C",
+            "B"
+          ],
+          "heartStarted": true,
+          "bpm": 60,
+          "stable": true,
+          "crownCollected": true,
+          "crowned": true,
+          "registered": true,
+          "released": true,
+          "atGate": true,
+          "gateOpen": true,
+          "complete": true,
+          "dialogue": {
+            "inspect": 4,
+            "research": 2,
+            "started": 4,
+            "ready": 2,
+            "released": 5,
+            "ending": 14
+          }
+        },
+        "playerName": "訪客",
+        "promiseChoice": 0,
+        "piano": {
+          "input": [
+            "月亮",
+            "鳥",
+            "王冠",
+            "花"
+          ],
+          "outcome": "matched",
+          "hintSeen": false,
+          "matched": true
+        },
+        "stage2": {
+          "phase": "entered",
+          "command": "chair",
+          "flow": "drain",
+          "cupDry": true,
+          "pending": null,
+          "attempts": [
+            {
+              "id": "divert-seal",
+              "success": true
+            }
+          ],
+          "bookOpened": true,
+          "evidencePages": 3,
+          "guidePages": 3,
+          "pendingCandle": null,
+          "candleAttempts": [
+            "chair"
+          ],
+          "candles": {
+            "cup": "lit",
+            "crown": "lit",
+            "chair": "relit",
+            "clock": "lit"
+          }
+        },
+        "stage3": {
+          "active": true,
+          "current": "ian",
+          "photo": {
+            "found": false,
+            "side": "front",
+            "backRead": false
+          },
+          "puzzles": {
+            "erin": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 1
+            },
+            "king": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 4
+            },
+            "ian": {
+              "tiles": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ],
+              "solved": true,
+              "readComplete": true,
+              "dialogueIndex": 15
+            }
+          }
+        },
+        "stage": "ending",
+        "time": "00:00",
+        "events": [
+          "letterRead",
+          "respondIan",
+          "enterHall",
+          "erinRestricted",
+          "secondRestriction",
+          "readCommand",
+          "pianoGuidance",
+          "promiseHonesty",
+          "explorationOpened",
+          "pianoSequenceMatched",
+          "pianoPerformanceStarted",
+          "pianoPerformanceFinished",
+          "pianoAcknowledged",
+          "pianoDrawerOpened",
+          "pianoPendantCollected",
+          "stage1Complete",
+          "stage2Started",
+          "stage2Blocked",
+          "stage2CommandRevised",
+          "stage2EvidenceRead",
+          "stage2CandleGuidanceDone",
+          "stage2ChairVerified",
+          "stage2GuideUnlocked",
+          "stage2Complete",
+          "stage3Entered",
+          "stage3Started",
+          "stage3Puzzle-erin",
+          "stage3Puzzle-king",
+          "stage3Puzzle-ian",
+          "stage3Complete",
+          "stage3WorkshopClue",
+          "stage4Started",
+          "stage4Opened",
+          "stage4HeartStarted",
+          "stage4HeartbeatStable",
+          "stage4CrownCollected",
+          "stage4Crowned",
+          "stage4Registered",
+          "stage4GateOpened",
+          "stage4Complete"
+        ],
+        "documents": [
+          "stage3Ledger",
+          "stage3Speech",
+          "stage3OriginalOrder",
+          "stage3Apprentice",
+          "stage3Revision",
+          "stage4Notes",
+          "stage4Repair",
+          "stage4Register"
+        ],
+        "conversations": [
+          {
+            "id": "stage3-erin-line-0",
+            "speaker": "erin",
+            "text": "我只是想把原本屬於人民的東西還給他們。我沒想到，父王寧願殺了我，也不願承認自己做錯了。"
+          },
+          {
+            "id": "stage3-king-line-0",
+            "speaker": "erin",
+            "text": "我只是想揭發父王做的壞事，沒想到他竟然要殺了我。"
+          },
+          {
+            "id": "stage3-king-line-1",
+            "speaker": "visitor",
+            "text": "他可是妳的親生父親……"
+          },
+          {
+            "id": "stage3-king-line-2",
+            "speaker": "erin",
+            "text": "我也問過他，難道王位比自己的女兒還重要嗎？"
+          },
+          {
+            "id": "stage3-king-line-3",
+            "speaker": "erin",
+            "text": "他沒有回答，只是命令人替我戴上王冠，然後簽下處決令。"
+          },
+          {
+            "id": "stage3-ian-line-0",
+            "speaker": "visitor",
+            "text": "伊恩，是你改的？"
+          },
+          {
+            "id": "stage3-ian-line-1",
+            "speaker": "narrator",
+            "text": "伊恩沉默了一下。"
+          },
+          {
+            "id": "stage3-ian-line-2",
+            "speaker": "ian",
+            "text": "是。"
+          },
+          {
+            "id": "stage3-ian-line-3",
+            "speaker": "visitor",
+            "text": "你為什麼要改？"
+          },
+          {
+            "id": "stage3-ian-line-4",
+            "speaker": "ian",
+            "text": "我改不了國王的命令。"
+          },
+          {
+            "id": "stage3-ian-line-5",
+            "speaker": "ian",
+            "text": "但如果機關只認得『公主』，而不是艾琳本人……也許還有辦法。"
+          },
+          {
+            "id": "stage3-ian-line-6",
+            "speaker": "ian",
+            "text": "所以我偷偷修改了機關的設定。原本它只會處決艾琳，現在它會處決『被登記為公主的人』。"
+          },
+          {
+            "id": "stage3-ian-line-7",
+            "speaker": "visitor",
+            "text": "所以，只要讓其他人代替艾琳成為公主……"
+          },
+          {
+            "id": "stage3-ian-line-8",
+            "speaker": "ian",
+            "text": "沒錯！只要能在午夜前完成新的公主登記，機關就不會再把艾琳當成處決對象。"
+          },
+          {
+            "id": "stage3-ian-line-9",
+            "speaker": "ian",
+            "text": "但我當時還沒找到成功替換身分的方法，就被國王的衛兵發現了。"
+          },
+          {
+            "id": "stage3-ian-line-10",
+            "speaker": "erin",
+            "text": "你不是說過，工坊裡有一具用來排演典禮的人偶嗎？"
+          },
+          {
+            "id": "stage3-ian-line-11",
+            "speaker": "ian",
+            "text": "對！有一次我們替它戴上王冠，機關竟然向它行禮。"
+          },
+          {
+            "id": "stage3-ian-line-12",
+            "speaker": "visitor",
+            "text": "所以那具人偶可能可以代替艾琳？"
+          },
+          {
+            "id": "stage3-ian-line-13",
+            "speaker": "ian",
+            "text": "有可能。研究紀錄藏在人偶底座裡，人偶就在大廳右側的工匠櫃。"
+          },
+          {
+            "id": "stage3-ian-line-14",
+            "speaker": "erin",
+            "text": "那就去找它。我不想再坐在這裡等死了。"
+          },
+          {
+            "id": "stage4-inspect-0",
+            "speaker": "erin",
+            "text": "一具穿著王室禮服的人偶。胸口的金屬蓋板半開，裡面的發條心臟似乎缺少零件。"
+          },
+          {
+            "id": "stage4-inspect-1",
+            "speaker": "erin",
+            "text": "這就是伊恩說的人偶？"
+          },
+          {
+            "id": "stage4-inspect-2",
+            "speaker": "ian",
+            "text": "是。當年我一直想讓它代替艾琳，但直到最後都沒成功。"
+          },
+          {
+            "id": "stage4-inspect-3",
+            "speaker": "visitor",
+            "text": "那我們先調查你的研究紀錄。"
+          },
+          {
+            "id": "stage4-research-0",
+            "speaker": "ian",
+            "text": "原來如此……難怪我當年失敗了！原來戴上王冠還不夠，必須有穩定心跳。"
+          },
+          {
+            "id": "stage4-research-1",
+            "speaker": "erin",
+            "text": "那我們就一項一項完成，不能再只憑猜測。"
+          },
+          {
+            "id": "stage4-started-0",
+            "speaker": "narrator",
+            "text": "齒輪開始轉動。喀、喀、喀……人偶胸口傳出微弱心跳聲。"
+          },
+          {
+            "id": "stage4-started-1",
+            "speaker": "system",
+            "text": "機械心臟已啟動，但跳動速度不穩定。"
+          },
+          {
+            "id": "stage4-started-2",
+            "speaker": "erin",
+            "text": "它真的會動了！"
+          },
+          {
+            "id": "stage4-started-3",
+            "speaker": "ian",
+            "text": "還不行。典禮機關需要規律的心跳，現在它跳得太快了。"
+          },
+          {
+            "id": "stage4-ready-0",
+            "speaker": "narrator",
+            "text": "城堡裡響起一聲低沉的機械提示音。大廳的聚光燈緩緩轉向人偶。"
+          },
+          {
+            "id": "stage4-ready-1",
+            "speaker": "ian",
+            "text": "成功了，我們再回到大廳看看典禮冊是不是已經更改資料了！"
+          },
+          {
+            "id": "stage4-released-0",
+            "speaker": "visitor",
+            "text": "成功了！現在機關認定人偶才是公主！"
+          },
+          {
+            "id": "stage4-released-1",
+            "speaker": "erin",
+            "text": "所以……我終於可以離開了？"
+          },
+          {
+            "id": "stage4-released-2",
+            "speaker": "ian",
+            "text": "試試看。現在機關應該不會再阻止妳。"
+          },
+          {
+            "id": "stage4-released-3",
+            "speaker": "narrator",
+            "text": "艾琳緩緩走下高臺。"
+          },
+          {
+            "id": "stage4-released-4",
+            "speaker": "erin",
+            "text": "我真的可以走了……"
+          },
+          {
+            "id": "stage4-ending-0",
+            "speaker": "system",
+            "text": "艾琳已解除王室終典的身分束縛。城堡正門已開啟。"
+          },
+          {
+            "id": "stage4-ending-1",
+            "speaker": "erin",
+            "text": "伊恩！我出來了！"
+          },
+          {
+            "id": "stage4-ending-2",
+            "speaker": "ian",
+            "text": "艾琳……妳真的出來了？"
+          },
+          {
+            "id": "stage4-ending-3",
+            "speaker": "erin",
+            "text": "真的！我還活著！"
+          },
+          {
+            "id": "stage4-ending-4",
+            "speaker": "narrator",
+            "text": "這時，伊恩的靈魂第一次清楚地出現在城堡門口。"
+          },
+          {
+            "id": "stage4-ending-5",
+            "speaker": "ian",
+            "text": "太好了……這次我終於救到妳了。"
+          },
+          {
+            "id": "stage4-ending-6",
+            "speaker": "erin",
+            "text": "你一直都在保護我。謝謝你，伊恩。"
+          },
+          {
+            "id": "stage4-ending-7",
+            "speaker": "ian",
+            "text": "我答應過妳，一定要帶妳離開這座城堡。"
+          },
+          {
+            "id": "stage4-ending-8",
+            "speaker": "narrator",
+            "text": "他的身影開始消失。"
+          },
+          {
+            "id": "stage4-ending-9",
+            "speaker": "erin",
+            "text": "伊恩……？"
+          },
+          {
+            "id": "stage4-ending-10",
+            "speaker": "ian",
+            "text": "別難過。看到妳平安離開，我已經沒有遺憾了。"
+          },
+          {
+            "id": "stage4-ending-11",
+            "speaker": "erin",
+            "text": "可是你還沒帶我去看海。"
+          },
+          {
+            "id": "stage4-ending-12",
+            "speaker": "ian",
+            "text": "那就替我去看看吧。"
+          },
+          {
+            "id": "stage4-ending-13",
+            "speaker": "narrator",
+            "text": "伊恩露出最後的微笑，逐漸消失。"
+          }
+        ],
+        "oath": "sealed",
+        "registrationSubject": "dummy",
+        "dummy": {
+          "stableHeartbeat": true,
+          "crownWorn": true,
+          "claspClosed": false
+        },
+        "finale": {
+          "clockReady": false,
+          "brakeConnected": false,
+          "status": "idle"
+        },
+        "hints": {},
+        "items": [
+          "glass",
+          "royal-crown"
+        ]
+      },
+      "viewport": {
+        "state": "ready",
+        "pianoDrawer": "closed",
+        "pianoPerformanceNote": "",
+        "erinLocation": "gate",
+        "detailedModels": "{\"sources\":14,\"placements\":[{\"id\":\"chair\",\"name\":\"detail-chair\",\"target\":\"throne\",\"bounds\":{\"min\":[-0.8762415045823793,1.32,-3.740861026089154],\"max\":[0.8762415045823793,3.5200000000000005,-2.159138973910846]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,2.5124434113068412],\"max\":[-5.624858298009753,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,4.712443411306841],\"max\":[-5.624858298009753,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-6.175141701990248,0.6,6.912443411306842],\"max\":[-5.624858298009753,2.5,7.487556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,2.5124434113068412],\"max\":[-1.8248582980097519,2.5,3.0875565886931584]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,4.712443411306841],\"max\":[-1.8248582980097519,2.5,5.287556588693159]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-2.375141701990248,0.6,6.912443411306842],\"max\":[-1.8248582980097519,2.5,7.487556588693159]}},{\"id\":\"piano\",\"name\":\"detail-piano\",\"target\":\"piano\",\"bounds\":{\"min\":[-20.6,0.6,-4.250057277417812],\"max\":[-17.4,3.8517844338000833,-0.7499427225821877]}},{\"id\":\"diningChair\",\"name\":\"detail-diningChair\",\"bounds\":{\"min\":[-19.15891285164622,0.6,-0.402051993205137],\"max\":[-18.84108714835378,1.6500000000000001,-0.09794800679486296]}},{\"id\":\"console\",\"name\":\"detail-console\",\"target\":\"book\",\"bounds\":{\"min\":[4.999999999999999,0.6,3.05],\"max\":[8.6,2.02,4.95]}},{\"id\":\"cabinet\",\"name\":\"detail-cabinet\",\"target\":\"cabinet\",\"bounds\":{\"min\":[21.71966690171398,0.6,-4.201485043482771],\"max\":[23.28033309828602,3.9,-1.7985149565172287]}},{\"id\":\"clock\",\"name\":\"detail-clock\",\"target\":\"clock\",\"bounds\":{\"min\":[3.7860095171875385,0.6,-13.486873597254508],\"max\":[5.213990482812461,5.6,-12.513126402745492]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,-8.132172105086237],\"max\":[1.1249172384310628,9.25,-5.8678278949137646]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,0.8678278949137637],\"max\":[1.1249172384310628,9.25,3.1321721050862363]}},{\"id\":\"chandelier\",\"name\":\"detail-chandelier\",\"bounds\":{\"min\":[-1.1249172384310628,6.25,6.867827894913763],\"max\":[1.1249172384310628,9.25,9.132172105086235]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-6.58490603387819,1.52,-26.783644856648436],\"max\":[-3.41509396612181,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[-1.5849060338781904,1.52,-26.783644856648436],\"max\":[1.5849060338781904,5.22,-26.356355143351564]}},{\"id\":\"frame\",\"name\":\"detail-frame\",\"target\":\"portrait\",\"bounds\":{\"min\":[3.41509396612181,1.52,-26.783644856648436],\"max\":[6.58490603387819,5.22,-26.356355143351564]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-10.190862655572975,0.6,-12.125146415930146],\"max\":[-7.809137344427026,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[7.809137344427026,0.6,-12.125146415930146],\"max\":[10.190862655572975,3.25,-9.874853584069854]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[-9.125146415930146,0.6,-26.690862655572975],\"max\":[-6.874853584069854,3.25,-24.309137344427025]}},{\"id\":\"statue\",\"name\":\"detail-statue\",\"bounds\":{\"min\":[6.874853584069854,0.6,-26.690862655572975],\"max\":[9.125146415930146,3.25,-24.309137344427025]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-10.33080161404612],\"max\":[-9.736970908379368,6.4,-9.669198385953878]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,-3.330801614046121],\"max\":[-9.736970908379368,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,3.669198385953879],\"max\":[-9.736970908379368,6.4,4.330801614046121]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[-10.163029091620633,5.5,9.66919838595388],\"max\":[-9.736970908379368,6.4,10.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-10.330801614046122],\"max\":[10.163029091620633,6.4,-9.66919838595388]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,-3.330801614046121],\"max\":[10.163029091620633,6.4,-2.669198385953879]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,3.669198385953879],\"max\":[10.163029091620633,6.4,4.330801614046122]}},{\"id\":\"lion\",\"name\":\"detail-lion\",\"bounds\":{\"min\":[9.736970908379368,5.5,9.669198385953878],\"max\":[10.163029091620633,6.4,10.33080161404612]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-18.285760801489527,2.3,-2.585559036506196],\"max\":[-17.214239198510477,3.15,-2.2144409634938036]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[18.86423919851047,1.85,3.814440963493804],\"max\":[19.935760801489522,2.7,4.185559036506196]}},{\"id\":\"candles\",\"name\":\"detail-candles\",\"bounds\":{\"min\":[-0.5357608014895242,1.32,-3.9855590365061957],\"max\":[0.5357608014895242,2.17,-3.6144409634938035]}},{\"id\":\"bookCandle\",\"name\":\"book-desk-candelabrum\",\"bounds\":{\"min\":[5.442259110314474,2.019999899693997,3.814440963493804],\"max\":[5.857740889685528,2.869999899693997,4.185559036506196]},\"support\":{\"table\":\"detail-console\",\"surfaceY\":2.019999899693997,\"baseY\":2.019999899693997,\"gap\":0}},{\"id\":\"vase\",\"name\":\"detail-vase\",\"target\":\"flower\",\"bounds\":{\"min\":[-4.261091310111994,2.05,4.738908705143325],\"max\":[-3.7389086898880057,2.9499999999999997,5.261091294856675]}},{\"id\":\"mannequin\",\"name\":\"detail-mannequin\",\"target\":\"workshop-mannequin\",\"bounds\":{\"min\":[33.94861880441846,0.35,-3.503921647128528],\"max\":[34.651381195581536,3,-2.496078352871472]},\"area\":\"repair\"},{\"id\":\"woman\",\"name\":\"detail-woman\",\"target\":\"erin\",\"bounds\":{\"min\":[-0.39025615155307686,1.5,-3.1066459098926553],\"max\":[0.39025615155307686,3.6000000000000005,-1.9933540901073448]}}]}",
+        "navigation": "{\"areas\":{\"repair\":{\"name\":\"維修工作室\",\"bounds\":{\"minX\":29.2,\"maxX\":38.8,\"minZ\":-5.8,\"maxZ\":5.8},\"spawn\":{\"x\":31,\"z\":2},\"floor\":0.6},\"hall\":{\"name\":\"大廳\",\"bounds\":{\"minX\":-24.3,\"maxX\":24.3,\"minZ\":-27.3,\"maxZ\":11.7},\"walkable\":[{\"minX\":-10.7,\"maxX\":10.7,\"minZ\":-13.7,\"maxZ\":11.7},{\"minX\":-24,\"maxX\":-14,\"minZ\":-6,\"maxZ\":6},{\"minX\":-14.3,\"maxX\":-10.4,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":14,\"maxX\":24,\"minZ\":-6,\"maxZ\":6},{\"minX\":10.4,\"maxX\":14.3,\"minZ\":-1.8,\"maxZ\":1.8},{\"minX\":-9,\"maxX\":9,\"minZ\":-27,\"maxZ\":-18},{\"minX\":-1.8,\"maxX\":1.8,\"minZ\":-18.3,\"maxZ\":-13.4}],\"spawn\":{\"x\":0,\"z\":9.8},\"floor\":0.6,\"view\":{\"position\":[0,4,10.8],\"target\":[0,1.7,-5]}},\"outside\":{\"name\":\"城堡外\",\"bounds\":{\"minX\":-13,\"maxX\":13,\"minZ\":12.5,\"maxZ\":23},\"spawn\":{\"x\":0,\"z\":20.5},\"floor\":0,\"view\":{\"position\":[0,3.3,22],\"target\":[0,3.3,12]}}},\"colliders\":[{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.25,\"maxX\":-10.75,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-side-north\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":-14,\"maxZ\":-1.8000000000000007},{\"id\":\"hall-side-south\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.75,\"maxX\":11.25,\"minZ\":1.8000000000000007,\"maxZ\":12},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11,\"maxX\":-1.8000000000000007,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"hall-back-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000007,\"maxX\":11,\"minZ\":-14.25,\"maxZ\":-13.75},{\"id\":\"front-left\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-11.1,\"maxX\":-2.0999999999999996,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"front-right\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":2.0999999999999996,\"maxX\":11.1,\"minZ\":11.7,\"maxZ\":12.3},{\"id\":\"closed-door\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":12.25},{\"id\":\"pillar--10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar--10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar--10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar--10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-10.424999999999999,\"maxX\":-9.775,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"pillar-10.1--10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-10.35,\"maxZ\":-9.65},{\"id\":\"pillar-10.1--3\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":-3.35,\"maxZ\":-2.65},{\"id\":\"pillar-10.1-4\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":3.65,\"maxZ\":4.35},{\"id\":\"pillar-10.1-10\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":9.775,\"maxX\":10.424999999999999,\"minZ\":9.65,\"maxZ\":10.35},{\"id\":\"dais\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-2.6,\"maxX\":2.6,\"minZ\":-5.1,\"maxZ\":-0.8999999999999999},{\"id\":\"piano-body\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-20.6,\"maxX\":-17.4,\"minZ\":-4.250057277417812,\"maxZ\":-0.7499427225821877},{\"id\":\"piano-bench\",\"area\":\"hall\",\"section\":\"music\",\"minX\":-19.15891285164622,\"maxX\":-18.84108714835378,\"minZ\":-0.402051993205137,\"maxZ\":-0.09794800679486296},{\"id\":\"cabinet\",\"area\":\"hall\",\"section\":\"workshop\",\"minX\":21.71966690171398,\"maxX\":23.28033309828602,\"minZ\":-4.201485043482771,\"maxZ\":-1.7985149565172287},{\"id\":\"book-desk\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":4.999999999999999,\"maxX\":8.6,\"minZ\":3.05,\"maxZ\":4.95},{\"id\":\"banquet-table\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-5.15,\"maxX\":-2.85,\"minZ\":1.9,\"maxZ\":8.1},{\"id\":\"tower--11\",\"area\":\"outside\",\"minX\":-13,\"maxX\":-9,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"tower-11\",\"area\":\"outside\",\"minX\":9,\"maxX\":13,\"minZ\":12.5,\"maxZ\":14.3},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24.2,\"maxX\":-23.8,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-24,\"maxX\":-14,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-13.8,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-14.2,\"maxX\":-10.8,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"side-room-outer\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":23.8,\"maxX\":24.2,\"minZ\":-6,\"maxZ\":6},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":-6.2,\"maxZ\":-5.8},{\"id\":\"side-room-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":14,\"maxX\":24,\"minZ\":5.8,\"maxZ\":6.2},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":-6,\"maxZ\":-1.7999999999999998},{\"id\":\"side-room-entry\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":13.8,\"maxX\":14.2,\"minZ\":1.7999999999999998,\"maxZ\":6},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":-1.95,\"maxZ\":-1.6500000000000001},{\"id\":\"corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":10.8,\"maxX\":14.2,\"minZ\":1.6500000000000001,\"maxZ\":1.95},{\"id\":\"gallery-back\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":9,\"minZ\":-27.2,\"maxZ\":-26.8},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9.2,\"maxX\":-8.8,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-side\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":8.8,\"maxX\":9.2,\"minZ\":-27,\"maxZ\":-18},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-9,\"maxX\":-1.8000000000000003,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"gallery-front\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.8000000000000003,\"maxX\":9,\"minZ\":-18.2,\"maxZ\":-17.8},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.95,\"maxX\":-1.6500000000000001,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"north-corridor-wall\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":1.6500000000000001,\"maxX\":1.95,\"minZ\":-18.15,\"maxZ\":-13.85},{\"id\":\"workbench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":18.5,\"maxX\":22.5,\"minZ\":3.4,\"maxZ\":4.6},{\"id\":\"gallery-bench\",\"area\":\"hall\",\"section\":\"hall\",\"minX\":-1.4,\"maxX\":1.4,\"minZ\":-23.4,\"maxZ\":-22.6},{\"id\":\"room-door-music-door\",\"area\":\"hall\",\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-workshop-door\",\"area\":\"hall\",\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},{\"id\":\"room-door-gallery-door\",\"area\":\"hall\",\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},{\"id\":\"gallery-notice-base\",\"area\":\"hall\",\"minX\":-3.1,\"maxX\":-2.5,\"minZ\":-18.65,\"maxZ\":-18.35},{\"id\":\"exterior-closed-gate\",\"area\":\"outside\",\"minX\":-2.1,\"maxX\":2.1,\"minZ\":11.75,\"maxZ\":13,\"enabled\":false},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-6.175141701990248,\"maxX\":-5.624858298009753,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":2.5124434113068412,\"maxZ\":3.0875565886931584},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":4.712443411306841,\"maxZ\":5.287556588693159},{\"id\":\"detail-diningChair\",\"area\":\"hall\",\"minX\":-2.375141701990248,\"maxX\":-1.8248582980097519,\"minZ\":6.912443411306842,\"maxZ\":7.487556588693159},{\"id\":\"detail-clock\",\"area\":\"hall\",\"minX\":3.7860095171875385,\"maxX\":5.213990482812461,\"minZ\":-13.486873597254508,\"maxZ\":-12.513126402745492},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-10.190862655572975,\"maxX\":-7.809137344427026,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":7.809137344427026,\"maxX\":10.190862655572975,\"minZ\":-12.125146415930146,\"maxZ\":-9.874853584069854},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":-9.125146415930146,\"maxX\":-6.874853584069854,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-statue\",\"area\":\"hall\",\"minX\":6.874853584069854,\"maxX\":9.125146415930146,\"minZ\":-26.690862655572975,\"maxZ\":-24.309137344427025},{\"id\":\"detail-mannequin\",\"area\":\"repair\",\"minX\":33.94861880441846,\"maxX\":34.651381195581536,\"minZ\":-3.503921647128528,\"maxZ\":-2.496078352871472},{\"id\":\"musicbox-stand\",\"area\":\"hall\",\"minX\":-21.95,\"maxX\":-20.85,\"minZ\":0.35,\"maxZ\":1.25},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":28.85,\"maxX\":29.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":38.85,\"maxX\":39.15,\"minZ\":-6,\"maxZ\":6},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":-6.15,\"maxZ\":-5.85},{\"id\":\"repair-wall\",\"area\":\"repair\",\"minX\":29,\"maxX\":39,\"minZ\":5.85,\"maxZ\":6.15},{\"id\":\"repair-doll-chair\",\"area\":\"repair\",\"minX\":34.15,\"maxX\":35.35,\"minZ\":-3.65,\"maxZ\":-2.35},{\"id\":\"repair-base-body\",\"area\":\"repair\",\"minX\":33.15,\"maxX\":35.050000000000004,\"minZ\":-3.95,\"maxZ\":-2.05},{\"id\":\"repair-table\",\"area\":\"repair\",\"minX\":34.85,\"maxX\":38.15,\"minZ\":2,\"maxZ\":3.4000000000000004},{\"id\":\"repair-crown-shelf\",\"area\":\"repair\",\"minX\":37.125,\"maxX\":38.474999999999994,\"minZ\":-3.625,\"maxZ\":-2.375}],\"landmarks\":[{\"id\":\"dais\",\"name\":\"高臺與座椅\",\"area\":\"hall\",\"x\":0,\"z\":-3,\"approach\":[0,0]},{\"id\":\"piano\",\"name\":\"鋼琴\",\"area\":\"hall\",\"x\":-19,\"z\":-2,\"approach\":[-19,0.8]},{\"id\":\"gallery\",\"name\":\"畫廊\",\"area\":\"hall\",\"x\":0,\"z\":-26.1,\"approach\":[3.5,-24.4]},{\"id\":\"cabinet\",\"name\":\"工匠櫃\",\"area\":\"hall\",\"x\":21.5,\"z\":-3,\"approach\":[19.3,-3]},{\"id\":\"book\",\"name\":\"典禮冊書桌\",\"area\":\"hall\",\"x\":6.8,\"z\":4,\"approach\":[6.8,6]},{\"id\":\"banquet\",\"name\":\"宴會長桌\",\"area\":\"hall\",\"x\":-4,\"z\":5,\"approach\":[-1.4,5]},{\"id\":\"clock\",\"name\":\"中央大鐘\",\"area\":\"hall\",\"x\":4.5,\"z\":-13.5,\"approach\":[4.5,-11]},{\"id\":\"entrance\",\"name\":\"城堡大門與石階\",\"area\":\"outside\",\"x\":0,\"z\":12.4,\"approach\":[0,13.7]}]}",
+        "roomDoors": "[{\"id\":\"music-door\",\"name\":\"音樂室木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-14.07999999821186,\"maxX\":-13.92000000178814,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":-17,\"maxX\":-14,\"minZ\":-1.5799999982118607,\"maxZ\":-1.4200000017881385},\"focus\":[-14,2.3,0],\"approach\":[-12.1,0]},{\"id\":\"workshop-door\",\"name\":\"工坊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":13.92000000178814,\"maxX\":14.07999999821186,\"minZ\":-1.5,\"maxZ\":1.5},\"openBounds\":{\"minX\":14,\"maxX\":17,\"minZ\":1.4200000017881385,\"maxZ\":1.5799999982118607},\"focus\":[14,2.3,0],\"approach\":[12.1,0]},{\"id\":\"gallery-door\",\"name\":\"畫廊木門\",\"open\":false,\"locked\":false,\"closedBounds\":{\"minX\":-1.5,\"maxX\":1.5,\"minZ\":-18.07999999821186,\"maxZ\":-17.92000000178814},\"openBounds\":{\"minX\":-1.5799999982118607,\"maxX\":-1.4200000017881385,\"minZ\":-21,\"maxZ\":-18},\"focus\":[0,2.3,-18],\"approach\":[0,-16.1]}]",
+        "interactionCatalog": "[{\"id\":\"gallery-notice\",\"label\":\"畫廊入口告示\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"gallery-notice-\"],\"focus\":[-2.8,2.5,-18.5],\"approach\":[-2.8,-20.5],\"message\":\"三幅肖像封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"gallery-notice-board\",\"gallery-notice-post\"]},{\"id\":\"door\",\"label\":\"城堡大門\",\"action\":\"operate\",\"area\":\"both\",\"prefixes\":[\"closed-door\",\"door-seam\"],\"focus\":[0,2.9,11.73],\"approach\":[0,9.8],\"message\":\"大門仍然緊閉，門上的機關沒有鬆開。\",\"enabled\":true,\"meshNames\":[\"closed-door\",\"door-seam\",\"door-seam-royal-seal\"]},{\"id\":\"piano\",\"label\":\"鋼琴\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"piano-\",\"white-key\",\"black-key\"],\"focus\":[-19,1.78,-1.35],\"approach\":[-19,0.8],\"message\":\"鋼琴上的符號，似乎與周圍的線索有關。\",\"enabled\":true,\"meshNames\":[\"piano-body\",\"piano-lid\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"white-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"black-key\",\"piano-bench\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-imported-piano\",\"piano-drawer-bottom\",\"piano-drawer-front\",\"piano-drawer-side\",\"piano-drawer-side\",\"piano-drawer-handle\",\"piano-pendant-gem\",\"piano-pendant-ring\"]},{\"id\":\"book\",\"label\":\"王室典禮紀錄\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"book-\"],\"focus\":[6.7,2.21,4],\"approach\":[6.8,6],\"message\":\"書桌上放著《王室典禮紀錄》，後方夾著艾琳的私人日記。\",\"enabled\":true,\"meshNames\":[\"book-desk\",\"book-cover\",\"book-pages\",\"book-imported-console\"]},{\"id\":\"cup\",\"label\":\"銀杯\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"silver-cup\"],\"focus\":[7.8,2.2,4],\"approach\":[7.8,6],\"message\":\"書桌旁的銀杯連著典禮設施。\",\"enabled\":true,\"meshNames\":[\"silver-cup\"]},{\"id\":\"workshop-mannequin\",\"label\":\"典禮人偶\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"workshop-mannequin\"],\"focus\":[33.92,2.35,-3],\"approach\":[32.6,-3],\"message\":\"一具用來排演典禮的人偶，胸前裝著尚未完成的發條機關。\",\"enabled\":true,\"meshNames\":[\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-imported-mannequin\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-clockwork-heart\",\"workshop-mannequin-dress\",\"workshop-mannequin-light\",\"workshop-mannequin-light\"]},{\"id\":\"cabinet\",\"label\":\"工匠櫃\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"cabinet\"],\"focus\":[21.73,2.3,-3.7],\"approach\":[21,-4.7],\"message\":\"工匠櫃仍然鎖著，現在無法打開。\",\"enabled\":true,\"meshNames\":[\"cabinet\",\"cabinet-front\",\"cabinet-hinge\",\"cabinet-handle\",\"cabinet-handle\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-mannequin\",\"cabinet-imported-cabinet\",\"cabinet-open-jamb\",\"cabinet-open-jamb\",\"cabinet-open-top\",\"cabinet-open-dark\",\"cabinet-open-leaf\",\"cabinet-open-handle\",\"cabinet-open-leaf\",\"cabinet-open-handle\"]},{\"id\":\"throne\",\"label\":\"高臺與座椅\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"dais\",\"throne-\"],\"focus\":[1.9,1,-0.9],\"approach\":[1.9,0.2],\"message\":\"座椅位於高臺中央，扶手與底座藏著典禮機關。\",\"enabled\":true,\"meshNames\":[\"dais\",\"dais-trim\",\"throne-back\",\"throne-cushion\",\"throne-arm\",\"throne-arm\",\"throne-imported-chair\"]},{\"id\":\"erin\",\"label\":\"艾琳\",\"action\":\"talk\",\"area\":\"hall\",\"prefixes\":[\"erin-\"],\"focus\":[0,2.8,-2.6],\"approach\":[0,-0.5],\"message\":\"艾琳坐在高臺的座椅上，手裡握著白花。\",\"enabled\":true,\"meshNames\":[\"erin-body\",\"erin-head\",\"erin-skirt\",\"erin-arm\",\"erin-arm\",\"erin-flowers\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-imported-woman\",\"erin-gown\"]},{\"id\":\"gallery\",\"label\":\"王室畫像\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"portrait-\"],\"focus\":[0,3.4,-26.54],\"approach\":[0,-24.4],\"message\":\"三幅破碎的畫像，封存著終典開始前的真相。\",\"enabled\":true,\"meshNames\":[\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-frame\",\"portrait-canvas\",\"portrait-figure\",\"portrait-erin-tile-0\",\"portrait-erin-tile-1\",\"portrait-erin-tile-2\",\"portrait-erin-tile-3\",\"portrait-erin-tile-4\",\"portrait-erin-tile-5\",\"portrait-erin-tile-6\",\"portrait-erin-tile-7\",\"portrait-erin-tile-8\",\"portrait-king-tile-0\",\"portrait-king-tile-1\",\"portrait-king-tile-2\",\"portrait-king-tile-3\",\"portrait-king-tile-4\",\"portrait-king-tile-5\",\"portrait-king-tile-6\",\"portrait-king-tile-7\",\"portrait-king-tile-8\",\"portrait-ian-tile-0\",\"portrait-ian-tile-1\",\"portrait-ian-tile-2\",\"portrait-ian-tile-3\",\"portrait-ian-tile-4\",\"portrait-ian-tile-5\",\"portrait-ian-tile-6\",\"portrait-ian-tile-7\",\"portrait-ian-tile-8\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\",\"portrait-imported-frame\"]},{\"id\":\"banquet\",\"label\":\"四根儀式燭臺／宴會長桌\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"banquet-\",\"tablecloth\",\"flower-\",\"withered-food\"],\"focus\":[-4,2.03,7.8],\"approach\":[-1.3,8.5],\"message\":\"餐點已經乾癟，桌上的白花卻仍然新鮮。\",\"enabled\":true,\"meshNames\":[\"banquet-table\",\"tablecloth\",\"banquet-ritual-1-base\",\"banquet-ritual-1-stem\",\"banquet-ritual-1-cup\",\"banquet-ritual-1-wax\",\"banquet-ritual-1-flame\",\"banquet-ritual-1-label\",\"banquet-ritual-2-base\",\"banquet-ritual-2-stem\",\"banquet-ritual-2-cup\",\"banquet-ritual-2-wax\",\"banquet-ritual-2-flame\",\"banquet-ritual-2-label\",\"banquet-ritual-3-base\",\"banquet-ritual-3-stem\",\"banquet-ritual-3-cup\",\"banquet-ritual-3-wax\",\"banquet-ritual-3-flame\",\"banquet-ritual-3-label\",\"banquet-ritual-4-base\",\"banquet-ritual-4-stem\",\"banquet-ritual-4-cup\",\"banquet-ritual-4-wax\",\"banquet-ritual-4-flame\",\"banquet-ritual-4-label\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"banquet-plate\",\"withered-food\",\"flower-vase\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-stem\",\"flower-petal\",\"flower-imported-vase\"]},{\"id\":\"clock\",\"label\":\"中央大鐘\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clock-\",\"pendulum-\",\"minute-hand\",\"hour-hand\"],\"focus\":[4.5,2.85,-13.4],\"approach\":[4.5,-11],\"message\":\"鐘面停在二十三時三十分，鐘擺尚未啟動。\",\"enabled\":true,\"meshNames\":[\"clock-case\",\"clock-face\",\"minute-hand\",\"hour-hand\",\"pendulum-rod\",\"clock-pendulum\",\"clock-imported-clock\"]},{\"id\":\"ribbon\",\"label\":\"褪色白緞帶\",\"action\":\"pickup\",\"area\":\"outside\",\"prefixes\":[\"white-ribbon\"],\"focus\":[0.35,2.4,12.34],\"approach\":[0.35,13.7],\"message\":\"已收起門把上的褪色白緞帶。\",\"enabled\":true,\"meshNames\":[\"white-ribbon\"]},{\"id\":\"music-door\",\"label\":\"音樂室木門\",\"doorId\":\"music-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-music-door\"],\"focus\":[-14,2.3,0],\"approach\":[-12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-music-door\",\"room-door-music-door-handle\",\"room-door-music-door-handle\"]},{\"id\":\"workshop-door\",\"label\":\"工坊木門\",\"doorId\":\"workshop-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-workshop-door\"],\"focus\":[14,2.3,0],\"approach\":[12.1,0],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-workshop-door\",\"room-door-workshop-door-handle\",\"room-door-workshop-door-handle\"]},{\"id\":\"gallery-door\",\"label\":\"畫廊木門\",\"doorId\":\"gallery-door\",\"action\":\"operate\",\"area\":\"hall\",\"prefixes\":[\"room-door-gallery-door\"],\"focus\":[0,2.3,-18],\"approach\":[0,-16.1],\"message\":\"按 F 開啟或關閉這扇門。\",\"enabled\":true,\"meshNames\":[\"room-door-gallery-door\",\"room-door-gallery-door-handle\",\"room-door-gallery-door-handle\"]},{\"id\":\"piano-note\",\"label\":\"鋼琴紙條・賓客的四聲\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-note\"],\"focus\":[-19.45,2.65,-1.05],\"approach\":[-19.45,1.15],\"message\":\"查看琴架上的第一張紙條。\",\"enabled\":true,\"meshNames\":[\"clue-paper-note\"]},{\"id\":\"piano-voices\",\"label\":\"鋼琴紙條・聲部對照\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-paper-voices\"],\"focus\":[-18.55,2.65,-1.05],\"approach\":[-18.55,1.15],\"message\":\"查看格數與聲部對照。\",\"enabled\":true,\"meshNames\":[\"clue-paper-voices\"]},{\"id\":\"music-box\",\"label\":\"老舊音樂盒\",\"action\":\"inspect\",\"area\":\"hall\",\"prefixes\":[\"clue-musicbox\"],\"focus\":[-21.4,1.75,0.8],\"approach\":[-20.1,2.4],\"message\":\"打開音樂盒，查看八個格子。\",\"enabled\":true,\"meshNames\":[\"clue-musicbox-stand\",\"clue-musicbox-case\",\"clue-musicbox-lid\"]},{\"id\":\"repair-base\",\"label\":\"人偶底座暗格\",\"action\":\"inspect\",\"area\":\"repair\",\"prefixes\":[\"repair-base\"],\"focus\":[33.13,0.86,-3],\"approach\":[32.3,-3],\"message\":\"底座藏著一道暗格。\",\"enabled\":true,\"meshNames\":[\"repair-base-body\",\"repair-base-drawer\"]},{\"id\":\"repair-parts\",\"label\":\"零件桌\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-table\",\"repair-parts\"],\"focus\":[36.5,2.03,2.7],\"approach\":[36.5,0.8],\"message\":\"三顆齒輪、發條與維修圖。\",\"enabled\":true,\"meshNames\":[\"repair-table\",\"repair-parts-note\",\"repair-parts-gear-0\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-1\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-gear-2\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\",\"repair-parts-tooth\"]},{\"id\":\"repair-crown\",\"label\":\"王室典禮王冠展示架\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-crown\"],\"focus\":[37.8,2.5,-3],\"approach\":[37.8,-0.9],\"message\":\"展示架上放著王室典禮王冠。\",\"enabled\":true,\"meshNames\":[\"repair-crown-shelf\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-band\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\",\"repair-crown-point\"]},{\"id\":\"repair-exit\",\"label\":\"返回東側工坊\",\"action\":\"operate\",\"area\":\"repair\",\"prefixes\":[\"repair-exit\"],\"focus\":[30.3,2.3,5.78],\"approach\":[30.3,4],\"message\":\"沿原路返回大廳東側的工坊。\",\"enabled\":true,\"meshNames\":[\"repair-exit-door\"]}]",
+        "interactionDistance": "3",
+        "interactionState": "{\"collected\":[\"glass\",\"royal-crown\"],\"counts\":{\"cabinet\":1,\"workshop-mannequin\":1,\"repair-parts\":1,\"repair-crown\":1,\"repair-exit\":1,\"door\":2,\"book\":1},\"sequence\":8,\"doors\":{\"music-door\":false,\"workshop-door\":false,\"gallery-door\":false}}",
+        "interactionTarget": "",
+        "area": "outside",
+        "galleryPaintings": "[{\"id\":\"erin\",\"name\":\"艾琳\",\"role\":\"揭露者\",\"x\":-5,\"cell\":4,\"documents\":[\"stage3Ledger\",\"stage3Speech\"],\"tiles\":9},{\"id\":\"king\",\"name\":\"國王\",\"role\":\"裁決者\",\"x\":0,\"cell\":3,\"documents\":[\"stage3OriginalOrder\"],\"tiles\":9},{\"id\":\"ian\",\"name\":\"伊恩\",\"role\":\"改寫者\",\"x\":5,\"cell\":5,\"documents\":[\"stage3Apprentice\",\"stage3Revision\"],\"tiles\":9}]",
+        "workshop": "{\"active\":true,\"opened\":true,\"inspected\":true,\"notesFound\":true,\"researchRead\":true,\"gears\":[\"A\",\"C\",\"B\"],\"heartStarted\":true,\"bpm\":60,\"stable\":true,\"crownCollected\":true,\"crowned\":true,\"registered\":true,\"released\":true,\"atGate\":true,\"gateOpen\":true,\"complete\":false,\"dialogue\":{\"inspect\":4,\"research\":2,\"started\":4,\"ready\":2,\"released\":5,\"ending\":14}}",
+        "ianSpirit": "hidden",
+        "entranceOpen": "true",
+        "inputMode": "paused",
+        "erinActors": "[{\"name\":\"detail-woman\",\"position\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411],\"homePosition\":[2.3338689814078606e-8,1.4999999994790854,-2.906283631140411]},{\"name\":\"erin-gown\",\"position\":[0,0,0],\"homePosition\":[0,0,0]}]",
+        "interactionRay": "{\"mesh\":\"door-seam\",\"distance\":2.020688784730631,\"interactionId\":\"door\"}",
+        "cabinetDoor": "open"
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "hashes": {
+    "VERIFY.md": "4883cfcbf16b03c00d97fdf7ac1bf630d4a7ee04470c45b560cb2d5b6812e257",
+    "TEST.md": "aa09f883f035522cd13ca76158583ad6cb6250364543c99245178bd41f3830e6",
+    "game/index.html": "9f56ddbed1923988b637bced0c6a52be4e00b3745ff63575353a0a502c0f0d05",
+    "game/main.js": "b2e9767ff2c93c4e412a4d06e982d91243cc3989ea00909a23f6f9216b580791",
+    "game/scene.js": "29acf7038578f9376c53babd895843ba9e56b8cc7a815a64735acbfcc3b0a2f9",
+    "game/workshop-props.js": "61b320c00f7ad8d0e5e61c6c52275d5583ba4ad9cc42cf7ca5cd8947281e9e0e",
+    "game/stage4.js": "564473df7922500f5c8569f18822ed4bc0fcde5328a64987c5c9661da5fb12ad",
+    "game/stage4-state.js": "52e2f8c5c51d9b2f5fd5cb55d79bccfe2e414a27a6fc410c2cedb60e7b33036b",
+    "game/styles.css": "1554135d64ebc2c442011716befca765503a245e7533712ab01323b2aa6e50f7",
+    "tests/check-stage4-real.cjs": "a967ba091973fcb938adca091441948d08a1e4ecb44bdca72ef909169b55d44d"
+  },
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-stage4-real"
+}

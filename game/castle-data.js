@@ -1,5 +1,6 @@
 // 場景尺度與可行走範圍是實作參數，不是劇本設定。
 export const areas = {
+  repair: {name:'維修工作室',bounds:{minX:29.2,maxX:38.8,minZ:-5.8,maxZ:5.8},spawn:{x:31,z:2},floor:.6},
   hall: { name: '大廳', bounds: { minX: -24.3, maxX: 24.3, minZ: -27.3, maxZ: 11.7 }, walkable: [
     {minX:-10.7,maxX:10.7,minZ:-13.7,maxZ:11.7},
     {minX:-24,maxX:-14,minZ:-6,maxZ:6}, {minX:-14.3,maxX:-10.4,minZ:-1.8,maxZ:1.8},
@@ -19,7 +20,7 @@ export const landmarks = [
   { id: 'entrance', name: '城堡大門與石階', area: 'outside', x: 0, z: 12.4, approach: [0, 13.7] },
 ];
 export function groundHeight(areaId, x, z) {
-  if (areaId === 'hall') return 0.6;
+  if (areaId === 'hall'||areaId==='repair') return 0.6;
   if (Math.abs(x) <= 3.8 && z < 16) return z >= 15 ? 0.2 : z >= 14 ? 0.4 : 0.6;
   return 0;
 }
@@ -33,6 +34,7 @@ export const roomZones = [
   {id:'north-corridor',name:'北側走廊',minX:-1.8,maxX:1.8,minZ:-18.3,maxZ:-13.4},
 ];
 export function roomAt(x,z,areaId='hall') {
+  if(areaId==='repair')return {id:'repair',name:'維修工作室'};
   if(areaId==='outside')return {id:'outside',name:'城堡外石階'};
   return roomZones.find(r=>x>=r.minX&&x<=r.maxX&&z>=r.minZ&&z<=r.maxZ) || {id:'hall',name:'中央大廳'};
 }

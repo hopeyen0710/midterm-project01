@@ -11,6 +11,7 @@ import { createFirstPersonControls } from './controls.js';
 import { createInteractions } from './interaction.js';
 import { addPianoClues } from './piano-props.js';
 import {createErinPose} from './erin-animation.js';
+import {buildWorkshopProps} from './workshop-props.js';
 
 // 城堡空間、渲染與生命週期。
 export async function createCastleScene(container, onError, onControlChange = () => {}, interactionUI = {}) {
@@ -120,6 +121,14 @@ export async function createCastleScene(container, onError, onControlChange = ()
       interactionUI.onProgress?.(`正在載入精細模型 ${done}／${total}…`);
     });
     addPianoClues(scene,castle);
+    const workshop=buildWorkshopProps(scene,castle);
+    let repairVisible=false,outerVisibility=[];
+    function showArea(area){
+      const inside=area==='repair';if(inside===repairVisible)return;
+      if(inside){outerVisibility=scene.children.filter(o=>o!==workshop.interior&&!o.isLight).map(o=>({object:o,visible:o.visible}));for(const row of outerVisibility)row.object.visible=false;}
+      else {for(const row of outerVisibility)row.object.visible=row.visible;outerVisibility=[];}
+      workshop.interior.visible=inside;repairVisible=inside;
+    }
     container.dataset.pianoDrawer='closed';container.dataset.pianoPerformanceNote='';
     const erinActors=['detail-woman','erin-gown'].map(name=>scene.getObjectByName(name)).filter(Boolean);
     const erinPose=createErinPose(erinActors);
@@ -139,6 +148,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
     controls = createFirstPersonControls(camera, renderer.domElement, castle, onControlChange, interactionUI.onLocation);
     interactions = createInteractions(scene, camera, renderer.domElement, container, { ...interactionUI, doors: castle.doors, onGeometryChange() { renderer.shadowMap.needsUpdate = true; publishNavigation(); } });
     function applyArea(id) {
+      showArea(id);
       controls.setArea(id);
       interactions.setArea(id);
       container.dataset.area = id;
@@ -148,11 +158,30 @@ export async function createCastleScene(container, onError, onControlChange = ()
     resize();
     observer = new ResizeObserver(resize);
     observer.observe(container);
+    let workshopView='';
     return {
       resize,
+      syncWorkshop(progress){
+        const key=JSON.stringify([progress.opened,progress.stable,progress.crownCollected,progress.crowned,progress.released,progress.atGate,progress.gateOpen,progress.dialogue.ending]);
+        if(key===workshopView)return;workshopView=key;workshop.sync(progress);
+        if(progress.released){erinPose.apply(1,0);erinActors.forEach((actor,i)=>{actor.position.copy(erinHome[i]);actor.position.y-=.7;actor.position.z+=progress.atGate?13:3;actor.position.x+=progress.atGate?1:0;});container.dataset.erinLocation=progress.atGate?'gate':'hall-floor';}
+        renderer.shadowMap.needsUpdate=true;
+        container.dataset.workshop=JSON.stringify(progress);
+        container.dataset.ianSpirit=progress.gateOpen&&progress.dialogue.ending>=5&&progress.dialogue.ending<14?'visible':'hidden';
+        // 劇情面板開啟時更新迴圈會暫停；仍需繪出人物、封印及靈魂的階段變化。
+        renderer.render(scene,camera);
+      },
+      openWorkshopCabinet(){
+        if(disposed)return Promise.resolve(false);
+        if(workshop.original)workshop.original.visible=false;workshop.portal.visible=true;
+        const start=performance.now();container.dataset.cabinetDoor='opening';
+        return new Promise(resolve=>{let id,done=false;const cancel=()=>{if(done)return;done=true;cancelAnimationFrame(id);cinematics.delete(cancel);resolve(false);};cinematics.add(cancel);
+          function tick(){if(disposed)return cancel();const t=Math.min(1,(performance.now()-start)/1000);workshop.leaves.forEach((h,i)=>h.rotation.y=(i===0?-1:1)*Math.PI*.43*t);renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);if(t<1)id=requestAnimationFrame(tick);else{done=true;cinematics.delete(cancel);container.dataset.cabinetDoor='open';resolve(true);}}id=requestAnimationFrame(tick);
+        });
+      },
       syncGallery(progress){if(castle.gallery.sync(progress))renderer.shadowMap.needsUpdate=true;container.dataset.galleryPaintings=JSON.stringify(castle.gallery.manifest);},
       setArea(id) { if (castle.areas[id]) applyArea(id); },
-      placePlayer(pose){const placed=controls.teleport(pose);if(placed){interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}return placed;},
+      placePlayer(pose){const placed=controls.teleport(pose);if(placed){showArea(pose.area||'hall');interactions.setArea(pose.area||'hall');container.dataset.area=pose.area||'hall';renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);}return placed;},
       requestExploration() { controls.requestLock(); },
       setDoorLocked(id,value){if(castle.doors.setLocked(id,value)){renderer.shadowMap.needsUpdate=true;publishNavigation();}},
       openGalleryDoor(){const door=castle.doors.snapshot().find(d=>d.id==='gallery-door');if(!door||door.locked)return false;if(!door.open)castle.doors.toggle('gallery-door',camera.position);renderer.shadowMap.needsUpdate=true;publishNavigation();return castle.doors.snapshot().find(d=>d.id==='gallery-door').open;},

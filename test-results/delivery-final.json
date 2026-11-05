@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-11-05T04:35:42.563Z",
+  "status": "通過",
+  "method": "Browser plugin not available；Playwright Chrome，實際WebGL，offline file://，正式交付HTML單獨複製至含中文檔名的新目錄開啟。沒有伺服器、狀態注入或renderer替身。",
+  "browser": "156.0.8078.80",
+  "viewport": {
+    "width": 1000,
+    "height": 740
+  },
+  "title": "時空密室｜午夜之前",
+  "sourceHash": "9f56ddbed1923988b637bced0c6a52be4e00b3745ff63575353a0a502c0f0d05",
+  "copy": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-standalone-final\\離線遊戲.html",
+  "errors": [],
+  "external": [],
+  "consoleErrors": [],
+  "checks": [
+    "頁面標題與四關進度",
+    "非空白正式3D畫面",
+    "正常求救信與控制暫停",
+    "沒有開始探索字樣",
+    "沒有測試API外洩",
+    "離線零HTTP請求",
+    "無頁面與主控台錯誤"
+  ],
+  "artifacts": "C:\\Users\\tinge\\AppData\\Local\\Temp\\midterm-standalone-final"
+}
