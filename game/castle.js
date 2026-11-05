@@ -78,7 +78,7 @@ export function buildCastle(scene, state = {}) {
   const lid=box('piano-lid',-7.5,2.65,-2.6,3.4,0.12,1.8,'darkWood');lid.rotation.x=-0.2;
   for(let i=0;i<20;i++)box('white-key',-8.98+i*0.155,1.75,-1.35,0.145,0.12,0.52,'ivory');
   for(let i=0;i<19;i++)if(i%7!==2&&i%7!==6)box('black-key',-8.9+i*0.155,1.84,-1.5,0.08,0.12,0.3,'darkWood');
-  box('piano-bench',-7.5,1.05,-0.45,1.8,0.9,0.6,'wood',true);
+
   label('鋼琴',-7.5,3.7,-2.2,2.5);
   activeSection='gallery';
   // 後方四幅幾何畫像，保留後續拼圖製作空間。

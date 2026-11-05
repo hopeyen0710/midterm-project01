@@ -6,27 +6,48 @@
     <meta name="theme-color" content="#0b0d15" />
     <link rel="icon" href="data:," />
     <!-- INLINE_CSS -->
-    <title>時空密室｜午夜之前</title>
+    <title>時空密室｜公主今晚必須死</title>
   </head>
   <body>
     <main id="entry-screen" class="entry" aria-labelledby="game-title">
-      <header class="entry-header"><span>時空密室</span><span aria-label="故事開始時間">23:30</span></header>
-      <div class="entry-content">
-        <p class="eyebrow">一封求救信，一場尚未結束的典禮</p>
-        <h1 id="game-title">午夜之前</h1>
-        <p class="intro">走進城堡，尋找被封存的真相。<br />為艾琳找出一條離開的路。</p>
-        <label class="name-field" for="player-name">你的稱呼 <span>留白時稱呼為「訪客」</span>
-          <input id="player-name" name="playerName" type="text" maxlength="30" placeholder="訪客" autocomplete="off" />
-        </label>
-        <div class="actions">
-          <button type="button" id="scene-button" aria-describedby="availability">進入城堡</button>
-          <button class="secondary" type="button" id="help-button">操作說明</button>
+      <div class="entry-art" aria-hidden="true"><img id="entry-art-image" alt="" decoding="sync" fetchpriority="high" /></div>
+      <div class="entry-glass">
+        <div class="entry-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <header class="entry-header"><span>時空密室</span><i aria-hidden="true"></i></header>
+        <div class="entry-content">
+          <h1 id="game-title">公主今晚必須死</h1>
+          <p class="entry-subtitle" lang="en">THE PRINCESS MUST DIE TONIGHT</p>
+          <div class="entry-divider" aria-hidden="true"><i></i><svg viewBox="0 0 32 36"><path d="M16 33V12M16 19C4 21 3 12 7 10c5-3 9 4 9 9Zm0 0c12 2 13-7 9-9-5-3-9 4-9 9ZM16 16C9 8 13 4 16 1c3 3 7 7 0 15ZM10 26h12M12 30h8"/></svg><i></i></div>
+          <p class="intro">「國王下令，午夜之前不得離席。<br /><br />但如果公主從來不只是艾琳呢？」</p>
+          <div class="entry-name">
+            <label for="player-name">你的稱呼</label>
+            <div><input id="player-name" name="playerName" type="text" maxlength="30" placeholder="訪客" autocomplete="off" aria-describedby="entry-name-help" /><span id="entry-name-help">留白時稱呼為「訪客」</span></div>
+          </div>
+          <button type="button" id="scene-button" class="entry-start" aria-describedby="availability"><span>進入城堡</span><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M2 12h42M34 3l10 9-10 9"/></svg></button>
+          <nav class="entry-menu" aria-label="首頁目錄">
+            <button type="button" id="entry-story-button"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 7C9 3 5 4 2 6v19c4-3 8-3 12 0 4-3 8-3 12 0V6c-3-2-7-3-12 1Zm0 0v18"/></svg><span>故事序章</span></button>
+            <button type="button" id="help-button"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="m11 3-1 3-3 1-3-1-2 5 3 2v3l-3 2 2 5 3-1 3 1 1 3h6l1-3 3-1 3 1 2-5-3-2v-3l3-2-2-5-3 1-3-1-1-3Z"/><circle cx="14" cy="14.5" r="4"/></svg><span>操作說明</span></button>
+            <button type="button" id="entry-credits-button"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="m2 8 12-6 12 6-12 6ZM2 14l12 6 12-6M2 20l12 6 12-6"/></svg><span>製作名錄</span></button>
+          </nav>
+          <p id="availability" hidden>WASD 移動，F 互動｜四關劇情與離城結局</p>
+          <noscript><p>請啟用 JavaScript，以載入遊戲。</p></noscript>
         </div>
-        <p id="availability" class="availability" role="status">WASD 移動 · 滑鼠環視 · F 互動<br />四關劇情與離城結局 · 雙擊 HTML 即可離線遊玩</p>
-        <noscript><p>請啟用 JavaScript，以載入遊戲。</p></noscript>
+        <footer class="entry-footer"><span>單人探索 · 3D 密室逃脫</span><i aria-hidden="true"></i><time aria-label="故事開始時間">23:30</time></footer>
       </div>
-      <footer>3D 密室逃脫 <span aria-hidden="true">·</span> 華麗王室 <span aria-hidden="true">·</span> 單人探索</footer>
     </main>
+    <dialog id="entry-story-dialog" class="entry-info-dialog" aria-labelledby="entry-story-title">
+      <h2 id="entry-story-title">故事序章</h2>
+      <p>一封署名艾琳的求救信，將你帶到深夜的城堡。</p>
+      <blockquote id="entry-letter"></blockquote>
+      <p>走進城堡，尋找被封存的真相，為艾琳找出一條離開的路。</p>
+      <form method="dialog"><button type="submit">返回首頁</button></form>
+    </dialog>
+    <dialog id="entry-credits-dialog" class="entry-info-dialog" aria-labelledby="entry-credits-title">
+      <h2 id="entry-credits-title">製作名錄</h2>
+      <dl><dt>遊戲技術</dt><dd>Three.js、HTML、CSS、JavaScript</dd><dt>場景與首頁美術</dt><dd>OpenAI ImageGen 生成素材與程式場景製作</dd><dt>家具與人物模型</dt><dd>Poly Haven、Innerscene 的 CC0 素材</dd><dt>環境聲與琴音</dt><dd>Web Audio 即時合成</dd><dt>城堡背景音樂</dt><dd>使用者提供 bgm.m4a</dd></dl>
+      <p>完整素材作者、來源與授權記錄於專案的 CREDITS.md。</p>
+      <form method="dialog"><button type="submit">返回首頁</button></form>
+    </dialog>
     <section id="scene-screen" class="scene-screen" aria-label="城堡場景預覽" hidden>
       <div id="scene-viewport" class="scene-viewport" data-state="idle"></div>
       <header class="scene-toolbar">

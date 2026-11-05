@@ -19,7 +19,7 @@ export function createOpening({session,ui,getViewer,viewport,onEntered}) {
   session.recordLine({id:'opening-reply-'+choice.id,speaker:'ian',text:choice.reply});
   ui.show({heading:'伊恩',kind:'ian-reply',text:choice.reply,allowClose:false,choices:[{label:choice.admits?'聽完回覆，繼續':'重新回答',action(){
    if(!choice.admits){question();return;}
-   if(session.completeEvent('respondIan')){getViewer()?.setEntranceOpen(true);feedback.hidden=false;feedback.textContent='大門開啟了。向前踏入城堡。';}
+   if(session.completeEvent('respondIan')){audio.startBgm();getViewer()?.setEntranceOpen(true);feedback.hidden=false;feedback.textContent='大門開啟了。向前踏入城堡。';}
    ui.close();
   }}]});
  }
@@ -32,7 +32,7 @@ export function createOpening({session,ui,getViewer,viewport,onEntered}) {
   objective.textContent=session.snapshot.stage==='gallery'?(session.hasEvent('stage3Complete')?'前往東側工坊，尋找工匠櫃。':'閱讀畫廊入口告示，依事件順序復原畫像。'):session.snapshot.stage==='stage2'?stage2Objectives[session.snapshot.stage2.phase]:entered()?(session.hasEvent('explorationOpened')?'前往西側音樂室，查看鋼琴周圍的線索。':'大門在身後關上了。聽艾琳說話。'):session.hasEvent('respondIan')?'大門已開啟。向前踏入城堡。':session.hasEvent('letterRead')?'沿石階靠近大門，對準大門按 F，回應伊恩。':'先讀完艾琳的求救信。';
  }
  function syncSound(){audio.setMode(document.hidden||document.querySelector('#scene-screen').hidden?'silent':entered()?'inside':'outside');}
- session.subscribe(sync);
+ session.subscribe(snapshot=>{if(!snapshot.events.includes('respondIan'))audio.resetBgm();sync();});
  return {
   get area(){return entered()?'hall':'outside';},
   get doorOpen(){return session.hasEvent('respondIan')&&!entered();},
