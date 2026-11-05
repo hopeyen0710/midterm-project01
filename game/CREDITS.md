@@ -71,3 +71,5 @@ Poly Haven 授權：https://polyhaven.com/license 。Innerscene 素材庫條款�
 第23～25步：第三關三幅畫像沿用既有 royal-atlas.png 油畫與 CC0 畫框，以 Three.js 平面及 Canvas 裁切成3×3九片，告示與角色牌為本機文字繪製。未新增網路素材；童年合照正面尚未提供，未以成人畫像替代。
 
 第26～30步：封存文件與對話依 Stage/stage3.md 以HTML/CSS呈現；照片翻面為文字及CSS框，正面圖片依使用者指示待補，沒有使用成人肖像或新增網路圖片／音效。
+
+第31～36步：維修工作室、齒輪、指示燈、王冠、櫃門與伊恩靈魂輪廓為本機 Three.js／SVG 程序幾何；沿用既有 CC0 mannequin 與原家具素材，人偶下身以頂點變形調整坐姿並補白色禮服。未新增網路素材；來源劇本文字為 Stage/stage4.md。

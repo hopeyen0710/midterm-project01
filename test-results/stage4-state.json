@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-11-05T04:34:16.442Z",
+  "checks": [
+    {
+      "id": "31-前置與新局",
+      "status": "通過"
+    },
+    {
+      "id": "31-開始時間與去重",
+      "status": "通過"
+    },
+    {
+      "id": "32-開櫃與研究閱讀門檻",
+      "status": "通過"
+    },
+    {
+      "id": "33-錯排可重試與正解",
+      "status": "通過"
+    },
+    {
+      "id": "33-快慢與60BPM",
+      "status": "通過"
+    },
+    {
+      "id": "34-缺王冠不得登記",
+      "status": "通過"
+    },
+    {
+      "id": "34-缺心跳不得登記",
+      "status": "通過"
+    },
+    {
+      "id": "34-兩項完成仍待冊子確認",
+      "status": "通過"
+    },
+    {
+      "id": "34-典禮冊確認",
+      "status": "通過"
+    },
+    {
+      "id": "35-完整結尾門檻與一次性完成",
+      "status": "通過"
+    },
+    {
+      "id": "35-新局清除",
+      "status": "通過"
+    }
+  ],
+  "hashes": {
+    "VERIFY.md": "4883cfcbf16b03c00d97fdf7ac1bf630d4a7ee04470c45b560cb2d5b6812e257",
+    "TEST.md": "aa09f883f035522cd13ca76158583ad6cb6250364543c99245178bd41f3830e6",
+    "Stage/stage4.md": "6cd0f71a2e9489750926563b7fc3ddc3009e2603bd7def9870cb1a0fbb0bd6cf",
+    "game/state.js": "541f113e5168f3c27c48117046a73eb5bdec54917df350cd0f2cc7edd4999832",
+    "game/stage4-state.js": "52e2f8c5c51d9b2f5fd5cb55d79bccfe2e414a27a6fc410c2cedb60e7b33036b",
+    "game/stage4-data.js": "ad22d9597df5447c7d84813bbc97d65dddf460cf08b57889241cd8d4a8bc6460",
+    "tests/check-stage4-state.cjs": "4c82db0df44c53cdb248625f07d07008b491efbb89d6f44696fdaebd21ece639"
+  },
+  "scope": "31～35資料層補充檢查；不是瀏覽器畫面驗收，也不取代正式T10。"
+}

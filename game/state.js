@@ -1,9 +1,11 @@
+import {freshStage4,stage4State} from './stage4-state.js';
+import {stage4Script} from './stage4-data.js';
 import {shufflePortrait} from './puzzle-shuffle.js';
 import {stage3Script} from './stage3-data.js';
 import { stages, documents, storyObjects } from './story-data.js';
 import {stage1Piano} from './stage1-data.js';
 import {stage2Script} from './stage2-data.js';
-const knownDocuments=new Set([...documents.map(d=>d.id),'catalogueCover','openingCommand','pianoNote','pianoVoices','musicBox','stage2Revision','stage2Evidence','stage2Guide',...stage3Script.documents.map(d=>d.id)]);
+const knownDocuments=new Set([...documents.map(d=>d.id),'catalogueCover','openingCommand','pianoNote','pianoVoices','musicBox','stage2Revision','stage2Evidence','stage2Guide',...stage3Script.documents.map(d=>d.id),stage4Script.notes.id,stage4Script.repair.id,stage4Script.register.id]);
 const knownItems=new Set(storyObjects.map(o=>o.id));
 const hints={
  opening:['先查看隨身的求救信與城堡大門。','艾琳在信上交代：有人在門旁叫住你時，要回答他。','靠近大門按 F，回應伊恩；門開啟後，向前踏入城堡。'],
@@ -26,7 +28,7 @@ const stage2Hints={
 export function createGameState() {
  const interaction={collected:new Set(),counts:{},sequence:0,doors:{},locks:{}};
  const listeners=new Set();let data;
- function fresh(){return {playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage3:{active:false,current:'erin',photo:{found:false,side:'front',backRead:false},puzzles:Object.fromEntries(stage3Script.portraits.map(p=>[p.id,{tiles:shufflePortrait(),solved:false,readComplete:false,dialogueIndex:0}]))},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
+ function fresh(){return {stage4:freshStage4(),playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage3:{active:false,current:'erin',photo:{found:false,side:'front',backRead:false},puzzles:Object.fromEntries(stage3Script.portraits.map(p=>[p.id,{tiles:shufflePortrait(),solved:false,readComplete:false,dialogueIndex:0}]))},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
  data=fresh();
  const snapshot=()=>structuredClone({...data,items:[...interaction.collected]});
  const emit=()=>{for(const listener of listeners)listener(snapshot());};
@@ -156,7 +158,7 @@ export function createGameState() {
   completeEvent(id,{actor='visitor'}={}){
    if(data.events.includes(id))return false;
    // 新版第一關有自己的演奏／領取鏈，不得觸發舊版關卡自動跳時與下一關。
-   if(['piano','stage2','gallery'].includes(data.stage))return false;
+   if(['piano','stage2','gallery','workshop','ending'].includes(data.stage))return false;
    if(id==='letterRead'){if(data.stage!=='opening')return false;data.events.push(id);emit();return true;}
    const stage=stages.find(stage=>stage.id===data.stage),index=stage.completionConditions.indexOf(id);
    if(index<0||!stage.completionConditions.slice(0,index).every(event=>data.events.includes(event)))return false;
@@ -182,11 +184,12 @@ export function createGameState() {
   setFinale(values){for(const key of ['clockReady','brakeConnected'])if(typeof values[key]==='boolean')data.finale[key]=values[key];emit();},
   getHint(){
    const level=Math.min((data.hints[data.stage]||0)+1,3);data.hints[data.stage]=level;
-   const choices=data.stage==='gallery'?(data.events.includes('stage3Complete')?['畫廊的封存紀錄已經讀完。','沿原路回到大廳，再走向東側工坊。','工匠櫃中的人偶底座藏著研究紀錄。']:['閱讀畫廊入口告示。','依揭露者、裁決者、改寫者的順序復原畫像。','點選兩片畫面即可交換，九片全部復原才完成畫作。']):data.stage==='stage2'?(stage2Hints[data.stage2.phase]||hints.stage2):data.stage==='opening'&&data.events.includes('enterHall')?['艾琳在中央高臺上等候。','沿中央走道接近高臺，留意艾琳與她手中的白花。','對準艾琳按 F 交談；也可以隨時重看隨身紀錄。']:hints[data.stage];
+   const choices=data.stage4.active?(data.stage4.complete?['艾琳已走出城堡。','可以回顧隨身紀錄。','重新開始即可遊玩新的一局。']:data.stage4.registered?['艾琳的拘束已解除。','帶艾琳前往城堡正門。','對準正門按 F，解除封印並離城。']:data.stage4.stable&&data.stage4.crowned?['兩項條件均已完成。','離開維修室，回到大廳。','查看典禮冊，確認登記結果。']:['調查人偶底座，讀完研究筆記。','齒輪順序為動力、調速、心搏；心跳調至60 BPM。','從展示架取得王冠，拖曳至人偶頭上。']):data.stage==='gallery'?(data.events.includes('stage3Complete')?['畫廊的封存紀錄已經讀完。','沿原路回到大廳，再走向東側工坊。','工匠櫃中的人偶底座藏著研究紀錄。']:['閱讀畫廊入口告示。','依揭露者、裁決者、改寫者的順序復原畫像。','點選兩片畫面即可交換，九片全部復原才完成畫作。']):data.stage==='stage2'?(stage2Hints[data.stage2.phase]||hints.stage2):data.stage==='opening'&&data.events.includes('enterHall')?['艾琳在中央高臺上等候。','沿中央走道接近高臺，留意艾琳與她手中的白花。','對準艾琳按 F 交談；也可以隨時重看隨身紀錄。']:hints[data.stage];
    emit();return {level,text:choices[level-1]};
   },
   reset(){data=fresh();interaction.collected.clear();interaction.counts={};interaction.sequence=0;interaction.doors={};interaction.locks={};emit();},
  };
+ Object.assign(api,stage4State({api,current:()=>data,interaction,emit}));
  return api;
 }
 
