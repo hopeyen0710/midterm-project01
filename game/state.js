@@ -2,6 +2,7 @@ import {freshStage4,stage4State} from './stage4-state.js';
 import {stage4Script} from './stage4-data.js';
 import {shufflePortrait} from './puzzle-shuffle.js';
 import {stage3Script} from './stage3-data.js';
+import {documentUnlocked,dialogueUnlocked} from './stage3-reading-flow.js';
 import { stages, documents, storyObjects } from './story-data.js';
 import {stage1Piano} from './stage1-data.js';
 import {stage2Script} from './stage2-data.js';
@@ -28,7 +29,7 @@ const stage2Hints={
 export function createGameState() {
  const interaction={collected:new Set(),counts:{},sequence:0,doors:{},locks:{}};
  const listeners=new Set();let data;
- function fresh(){return {stage4:freshStage4(),playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage3:{active:false,current:'erin',photo:{found:false,side:'front',backRead:false},puzzles:Object.fromEntries(stage3Script.portraits.map(p=>[p.id,{tiles:shufflePortrait(),solved:false,readComplete:false,dialogueIndex:0}]))},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
+ function fresh(){return {stage4:freshStage4(),playerName:'訪客',promiseChoice:null,piano:{input:[],outcome:null,hintSeen:false,matched:false},stage2:{phase:'inactive',command:'cup',flow:'cup',cupDry:false,pending:null,attempts:[],bookOpened:false,evidencePages:0,guidePages:0,pendingCandle:null,candleAttempts:[],candles:{cup:'lit',crown:'lit',chair:'lit',clock:'lit'}},stage3:{active:false,current:'erin',puzzles:Object.fromEntries(stage3Script.portraits.map(p=>[p.id,{tiles:shufflePortrait(),solved:false,readComplete:false,dialogueIndex:0}]))},stage:'opening',time:'23:30',events:[],documents:[],conversations:[],oath:'sealed',registrationSubject:'erin',dummy:{stableHeartbeat:false,crownWorn:false,claspClosed:false},finale:{clockReady:false,brakeConnected:false,status:'idle'},hints:{}};}
  data=fresh();
  const snapshot=()=>structuredClone({...data,items:[...interaction.collected]});
  const emit=()=>{for(const listener of listeners)listener(snapshot());};
@@ -135,17 +136,14 @@ export function createGameState() {
   },
   canReadStage3Document(id){
    const def=stage3Script.portraits.find(p=>p.documents.includes(id));if(!def||!api.canOpenStage3(def.id)||!data.stage3.puzzles[def.id].solved)return false;
-   return def.documents.slice(0,def.documents.indexOf(id)).every(d=>data.documents.includes(d));
+   return documentUnlocked(def.id,id,data.stage3.puzzles[def.id],data.documents);
   },
   ackStage3Document(id){if(!api.canReadStage3Document(id))return false;return api.readDocument(id);},
   ackStage3Line(id,index){
    const def=stage3Script.portraits.find(p=>p.id===id),p=data.stage3.puzzles[id];
-   if(!def||!api.canOpenStage3(id)||!p.solved||p.readComplete||!def.documents.every(d=>data.documents.includes(d))||!Number.isInteger(index)||index!==p.dialogueIndex||!stage3Script.dialogs[id][index])return false;
+   if(!def||!api.canOpenStage3(id)||!p.solved||p.readComplete||!Number.isInteger(index)||index!==p.dialogueIndex||!stage3Script.dialogs[id][index]||!dialogueUnlocked(id,index,data.documents))return false;
    p.dialogueIndex++;api.recordLine(stage3Script.dialogs[id][index]);emit();return true;
   },
-  discoverStage3Photo(){if(!api.canOpenStage3('ian')||!data.stage3.puzzles.ian.solved)return false;data.stage3.photo.found=true;emit();return true;},
-  flipStage3Photo(side){if(!data.stage3.photo.found||!['front','back'].includes(side))return false;data.stage3.photo.side=side;emit();return true;},
-  ackStage3PhotoBack(){if(!data.stage3.photo.found||data.stage3.photo.side!=='back')return false;data.stage3.photo.backRead=true;api.readDocument('stage3Photo');emit();return true;},
   completeStage3Reading(id){
    const def=stage3Script.portraits.find(p=>p.id===id),p=data.stage3.puzzles[id];
    if(!api.canOpenStage3(id)||!p.solved||p.readComplete||!def.documents.every(d=>data.documents.includes(d))||p.dialogueIndex!==stage3Script.dialogs[id].length)return false;

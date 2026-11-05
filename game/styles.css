@@ -164,11 +164,10 @@ button, select { border-radius: 1px; font-size: 14px; }
  .story-dialog[data-kind="stage3-puzzle"] .story-body>p{margin:8px 0;}
  .story-dialog[data-kind="stage3-puzzle"] .portrait-puzzle{width:min(100%,220px);margin:8px auto;}
 }
-.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop{background:#02040bf2;animation:stage2-darken .3s ease-out both;}
-.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation:stage2-words .15s .3s both;}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"])::backdrop{background:#02040bf2;animation:stage2-darken .3s ease-out both;}
+.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"])>*{animation:stage2-words .15s .3s both;}
 .story-dialog[data-kind="stage3-document"] .story-body{line-height:2.05;color:#f2e5cb;}
-.childhood-photo{margin:12px auto 20px;min-height:180px;width:min(100%,320px);display:grid;place-items:center;border:10px solid #bca579;outline:1px solid #6c5435;background:#29231e;color:#e6d6b5;font-size:18px;}
-@media(prefers-reduced-motion:reduce){.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])::backdrop,.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"],[data-kind="stage3-photo"])>*{animation-duration:.01s;animation-delay:0s;}}
+@media(prefers-reduced-motion:reduce){.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"])::backdrop,.story-dialog:is([data-kind="stage3-document"],[data-kind="stage3-dialogue"])>*{animation-duration:.01s;animation-delay:0s;}}
 /* 第四關：齒輪、心跳及王冠操作。沿用文件面板的暫停與捲動。 */
 .workshop-gears{display:flex;align-items:flex-end;justify-content:center;gap:1rem;flex-wrap:wrap;margin:1.2rem 0}
 .workshop-gear{display:flex;flex-direction:column;align-items:center;gap:.6rem;min-width:130px;padding:1rem;color:#d9b76f;border:1px solid #786644;background:#181c22;border-radius:12px}
