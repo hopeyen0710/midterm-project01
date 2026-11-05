@@ -23,6 +23,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
   let disposed = false;
   let lastFrame = 0;
   let castle;
+  let pianoClues;
   let lastView = '';
   let drawerView = null;
   const cinematics = new Set();
@@ -81,9 +82,10 @@ export async function createCastleScene(container, onError, onControlChange = ()
     controls?.update(delta);
     interactionUI.onPosition?.(camera.position, container.dataset.area);
     interactions?.update();
+    const musicBoxChanged=pianoClues?.update(timestamp,camera.position);
     // 沒有動畫或鏡頭變化的暫停畫面不重複繪圖，讓操作介面保持回應。
     const view=camera.position.toArray().concat(camera.rotation.toArray()).join(',');
-    try { if(view!==lastView||renderer.shadowMap.needsUpdate){renderer.render(scene, camera);lastView=view;} }
+    try { if(view!==lastView||renderer.shadowMap.needsUpdate||musicBoxChanged){renderer.render(scene, camera);lastView=view;} }
     catch (error) { console.error('3D 畫面更新失敗', error); onError(); }
   }
 
@@ -120,7 +122,7 @@ export async function createCastleScene(container, onError, onControlChange = ()
     await loadDetailedModels(scene,castle,(done,total)=>{
       interactionUI.onProgress?.(`正在載入精細模型 ${done}／${total}…`);
     });
-    addPianoClues(scene,castle);
+    pianoClues=addPianoClues(scene,castle);
     const workshop=buildWorkshopProps(scene,castle);
     let repairVisible=false,outerVisibility=[];
     function showArea(area){

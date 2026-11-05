@@ -1,5 +1,6 @@
 import {Mesh,Group,BoxGeometry,OctahedronGeometry,TorusGeometry,MeshStandardMaterial,CanvasTexture,SRGBColorSpace} from 'three';
 import {pianoClueTargets} from './piano-clue-data.js';
+import {createGothicMusicBox} from './gothic-musicbox.js';
 
 export function addPianoClues(scene,castle){
   function box(name,position,size,material){const mesh=new Mesh(new BoxGeometry(...size),material);mesh.name=name;mesh.position.set(...position);mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh);return mesh;}
@@ -15,10 +16,7 @@ export function addPianoClues(scene,castle){
   paper(pianoClueTargets[0],'賓客的四聲',['國王的聲音','不屬於賓客的合唱']);
   paper(pianoClueTargets[1],'聲部對照',['1 2 3 4 5 6 7 8','賓 王 賓 王 賓 王 賓 王']);
   const wood=new MeshStandardMaterial({color:'#493027',roughness:.65}),gold=new MeshStandardMaterial({color:'#b28c4e',metalness:.6,roughness:.3});
-  box('clue-musicbox-stand',[-21.4,1,.8],[1.1,.8,.9],wood).userData.ignoreInteractionRay=true;
-  box('clue-musicbox-case',[-21.4,1.65,.8],[.9,.4,.6],wood);
-  box('clue-musicbox-lid',[-21.4,1.9,.8],[.94,.08,.64],gold);
-  castle.colliders.push({id:'musicbox-stand',area:'hall',minX:-21.95,maxX:-20.85,minZ:.35,maxZ:1.25});
+  const musicBox=createGothicMusicBox(scene,castle);
   const drawer=new Group();drawer.name='piano-secret-drawer';drawer.position.set(-19,1.45,-1.15);
   function part(name,size,position,material){const mesh=new Mesh(new BoxGeometry(...size),material);mesh.name=name;mesh.position.set(...position);mesh.castShadow=true;drawer.add(mesh);return mesh;}
   part('piano-drawer-bottom',[.9,.06,.65],[0,0,0],wood);
@@ -29,4 +27,5 @@ export function addPianoClues(scene,castle){
   const gem=new Mesh(new OctahedronGeometry(.13),new MeshStandardMaterial({color:'#a81933',metalness:.3,roughness:.16,emissive:'#6b0616',emissiveIntensity:.4}));gem.name='piano-pendant-gem';gem.scale.set(1,.6,1.3);pendant.add(gem);
   const ring=new Mesh(new TorusGeometry(.055,.012,8,24),gold);ring.name='piano-pendant-ring';ring.rotation.x=Math.PI/2;ring.position.z=-.16;pendant.add(ring);
   drawer.add(pendant);scene.add(drawer);drawer.visible=false;
+  return musicBox;
 }

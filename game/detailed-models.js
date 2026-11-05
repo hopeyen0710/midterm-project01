@@ -85,7 +85,7 @@ export async function loadDetailedModels(scene,castle,onProgress=()=>{}) {
   for(let i=castle.colliders.length-1;i>=0;i--)if(castle.colliders[i].id==='empty-chair')castle.colliders.splice(i,1);
   for(const x of [-5.9,-2.1])for(const z of [2.8,5,7.2])place('diningChair',{x,y:.6,z,height:1.9,rotation:x<-4?Math.PI/2:-Math.PI/2,solid:true});
   const piano=place('piano',{x:-19,y:.6,z:-2.5,width:3.2,target:'piano',colliderId:'piano-body'});
-  place('diningChair',{x:-19,y:.6,z:-.25,height:1.05,colliderId:'piano-bench'});
+
   // 原始木色鋼琴保留細緻的琴弦、鍵盤與金屬件，外殼改為 A 的黑檀色。
   piano.traverse(o=>{if(o.isMesh&&o.material.name==='music_walnut'){o.material=o.material.clone();o.material.color.set('#14121b');o.material.roughness=.23;}});
   // 寬桌面完整承托典禮冊、銀杯與裝飾，碰撞體使用放大後的實際尺寸。

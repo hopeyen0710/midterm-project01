@@ -1,4 +1,4 @@
-import { playBGM } from './audio.js';
+import './entry-screen.js';
 import {createStage3} from './stage3.js';
 import {createStage4} from './stage4.js';
 import { REVISION } from 'three';
@@ -12,14 +12,6 @@ import {createPianoReward} from './piano-reward.js';
 import {createStage2} from './stage2.js';
 
 const entryScreen = document.querySelector('#entry-screen');
-let bgmInstance = null; // 用來記錄音樂物件，避免重複播放
-
-// 改成點擊「進入遊戲按鈕」時才播音樂
-sceneButton.addEventListener('click', () => {
-    if (!bgmInstance) {
-        bgmInstance = playBGM('assets/bgm.mp3', 0.4);
-    }
-});
 const sceneScreen = document.querySelector('#scene-screen');
 const viewport = document.querySelector('#scene-viewport');
 const sceneButton = document.querySelector('#scene-button');
